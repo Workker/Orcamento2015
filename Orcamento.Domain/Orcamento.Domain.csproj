@@ -1,0 +1,405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Orcamento.Domain</RootNamespace>
+    <AssemblyName>Orcamento.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <CodeContractsAssemblyMode>0</CodeContractsAssemblyMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <CodeContractsEnableRuntimeChecking>False</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>False</CodeContractsSuggestRequires>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsDisjunctiveRequires>False</CodeContractsDisjunctiveRequires>
+    <CodeContractsRunInBackground>False</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+    <CodeContractsEnableRuntimeChecking>True</CodeContractsEnableRuntimeChecking>
+    <CodeContractsRuntimeOnlyPublicSurface>False</CodeContractsRuntimeOnlyPublicSurface>
+    <CodeContractsRuntimeThrowOnFailure>True</CodeContractsRuntimeThrowOnFailure>
+    <CodeContractsRuntimeCallSiteRequires>False</CodeContractsRuntimeCallSiteRequires>
+    <CodeContractsRuntimeSkipQuantifiers>False</CodeContractsRuntimeSkipQuantifiers>
+    <CodeContractsRunCodeAnalysis>False</CodeContractsRunCodeAnalysis>
+    <CodeContractsSuggestAssumptions>False</CodeContractsSuggestAssumptions>
+    <CodeContractsSuggestRequires>False</CodeContractsSuggestRequires>
+    <CodeContractsDisjunctiveRequires>False</CodeContractsDisjunctiveRequires>
+    <CodeContractsRunInBackground>False</CodeContractsRunInBackground>
+    <CodeContractsShowSquigglies>False</CodeContractsShowSquigglies>
+    <CodeContractsUseBaseLine>False</CodeContractsUseBaseLine>
+    <CodeContractsEmitXMLDocs>False</CodeContractsEmitXMLDocs>
+    <CodeContractsCustomRewriterAssembly />
+    <CodeContractsCustomRewriterClass />
+    <CodeContractsLibPaths />
+    <CodeContractsExtraRewriteOptions />
+    <CodeContractsExtraAnalysisOptions />
+    <CodeContractsBaseLineFile />
+    <CodeContractsCacheAnalysisResults>False</CodeContractsCacheAnalysisResults>
+    <CodeContractsRuntimeCheckingLevel>Full</CodeContractsRuntimeCheckingLevel>
+    <CodeContractsReferenceAssembly>%28none%29</CodeContractsReferenceAssembly>
+    <CodeContractsAnalysisWarningLevel>0</CodeContractsAnalysisWarningLevel>
+    <CodeContractsNonNullObligations>False</CodeContractsNonNullObligations>
+    <CodeContractsBoundsObligations>False</CodeContractsBoundsObligations>
+    <CodeContractsEnumObligations>False</CodeContractsEnumObligations>
+    <CodeContractsInferRequires>False</CodeContractsInferRequires>
+    <CodeContractsInferEnsures>False</CodeContractsInferEnsures>
+    <CodeContractsInferObjectInvariants>False</CodeContractsInferObjectInvariants>
+    <CodeContractsSuggestEnsures>False</CodeContractsSuggestEnsures>
+    <CodeContractsSuggestObjectInvariants>False</CodeContractsSuggestObjectInvariants>
+    <CodeContractsArithmeticObligations>False</CodeContractsArithmeticObligations>
+    <CodeContractsRedundantAssumptions>False</CodeContractsRedundantAssumptions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <PlatformTarget>x64</PlatformTarget>
+    <OutputPath>bin\x64\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.FactorySupport, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Facilities.FactorySupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Logging, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Facilities.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Remoting, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Facilities.Remoting.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.Synchronize, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Facilities.Synchronize.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.WcfIntegration, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Facilities.WcfIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.Log4netIntegration, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Services.Logging.Log4netIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Logging.NLogIntegration, Version=3.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Services.Logging.NLogIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.2.0.712, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.LambdaExtensions, Version=1.0.10.0, Culture=neutral, PublicKeyToken=706dcfc1e2725d62, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\NHibernate.LambdaExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComponentesDeOrcamento\DRETotal.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\CustoUnitario.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\CustoUnitarioTotal.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\Insumo.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\TicketDeProducao.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\TicketDeReceita.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\TicketParcela.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\AcordoDeConvencao.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\ControleDeCentroDeCusto.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Aumentado\FGTSComAumento.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Aumentado\INSSComAumento.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Beneficios\Beneficios.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Demitido\FGTSRecisao.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Demitido\INSSRecisao.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Extras.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Normal\INSS.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\OrcamentoPessoal.cs" />
+    <Compile Include="DB\Mappers\FuncionarioDTO.cs" />
+    <Compile Include="DB\Mappings\Entidades\AcordoDeConvencaoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\CentroDeCustoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\ContaHospital.cs" />
+    <Compile Include="DB\Mappings\Entidades\ContaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\ContaTicketMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\ControleDeCentroDeCustoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\CustoUnitarioMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\DepartamentoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\DespesaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\DespesaPessoalMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\DRETotalMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\FatorReceitaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\FuncionarioMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\GrupoDeContaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\GrupoResumoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\IncrementoDaComplexidadeMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\Insumo.cs" />
+    <Compile Include="DB\Mappings\Entidades\NovoOrcamentoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\OrcamentoHospitalarMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\OrcamentoOperacionalVersaoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\DiariaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\DiariaViagemMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\HospitalMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\IDespesaDeViagemMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\OrcamentoDeViagemMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\OrcamentoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\OrcamentoPessoalMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\ParcelaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\ServicoHospitalarMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\SetorHospitalMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\SetorMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\SubSetorHospitalMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\TicketDeOrcamentoPessoalMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\TicketDeProducaoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\TicketDeReceitaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\TicketMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\TicketParcela.cs" />
+    <Compile Include="DB\Mappings\Entidades\TipoContaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\TipoUsuarioMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\UsuarioMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\ValorServicoHospitalarMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\ViagemCidadeMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\ViagemMap.cs" />
+    <Compile Include="DB\Mappings\ValueObjects\CidadeMap.cs" />
+    <Compile Include="DB\Mappings\ValueObjects\TipoTicketMap.cs" />
+    <Compile Include="DB\Mappings\ValueObjects\ValueObjectMap.cs" />
+    <Compile Include="DB\Repositorio\AcordosDeConvencao.cs" />
+    <Compile Include="DB\Repositorio\BaseRepository.cs" />
+    <Compile Include="DB\Repositorio\CentrosDeCusto.cs" />
+    <Compile Include="DB\Repositorio\Cidades.cs" />
+    <Compile Include="DB\Repositorio\Contas.cs" />
+    <Compile Include="DB\Repositorio\ContasHospitalares.cs" />
+    <Compile Include="DB\Repositorio\ControlesCentroDeCusto.cs" />
+    <Compile Include="DB\Repositorio\Departamentos.cs" />
+    <Compile Include="DB\Repositorio\DespesaOperacional.cs" />
+    <Compile Include="DB\Repositorio\DespesasOperacionais.cs" />
+    <Compile Include="DB\Repositorio\DespesasPessoais.cs" />
+    <Compile Include="DB\Repositorio\Diarias.cs" />
+    <Compile Include="DB\Repositorio\DRES.cs" />
+    <Compile Include="DB\Repositorio\Funcionarios.cs" />
+    <Compile Include="DB\Repositorio\GrupoDeConta.cs" />
+    <Compile Include="DB\Repositorio\GruposResumo.cs" />
+    <Compile Include="DB\Repositorio\Hospitais.cs" />
+    <Compile Include="DB\Repositorio\IHttpModule.cs" />
+    <Compile Include="DB\Repositorio\Interfaces\IHospitais.cs" />
+    <Compile Include="DB\Repositorio\Interfaces\IContas.cs" />
+    <Compile Include="DB\Repositorio\Insumos.cs" />
+    <Compile Include="DB\Repositorio\Interfaces\IDiarias.cs" />
+    <Compile Include="DB\Repositorio\Interfaces\Tickets.cs" />
+    <Compile Include="DB\Repositorio\Interfaces\IOrcamentos.cs" />
+    <Compile Include="DB\Repositorio\Interfaces\ITicketsDeViagens.cs" />
+    <Compile Include="DB\Repositorio\Interfaces\IViagens.cs" />
+    <Compile Include="DB\Repositorio\NhibernateSessionModule.cs" />
+    <Compile Include="DB\Repositorio\NHibernateSessionPerRequest.cs" />
+    <Compile Include="DB\Repositorio\NovosOrcamentosPessoais.cs" />
+    <Compile Include="DB\Repositorio\Orcamentos.cs" />
+    <Compile Include="DB\Repositorio\OrcamentosDeViagens.cs" />
+    <Compile Include="DB\Repositorio\OrcamentosOperacionaisVersoes.cs" />
+    <Compile Include="DB\Repositorio\Setores.cs" />
+    <Compile Include="DB\Repositorio\SetoresHospitalares.cs" />
+    <Compile Include="DB\Repositorio\Tickets.cs" />
+    <Compile Include="DB\Repositorio\TicketsDeOrcamento.cs" />
+    <Compile Include="DB\Repositorio\TicketsDeProducao.cs" />
+    <Compile Include="DB\Repositorio\Tipos.cs" />
+    <Compile Include="DB\Repositorio\TiposConta.cs" />
+    <Compile Include="DB\Repositorio\TipoUsuarios.cs" />
+    <Compile Include="DB\Repositorio\Usuarios.cs" />
+    <Compile Include="DB\Repositorio\Viagens.cs" />
+    <Compile Include="DTO\ContaDTO.cs" />
+    <Compile Include="DTO\DespesaDTO.cs" />
+    <Compile Include="DTO\OrcamentoPessoal\ContaDespesaPessoalDTO.cs" />
+    <Compile Include="DTO\OrcamentoPessoal\DespesaPessoalDTO.cs" />
+    <Compile Include="DTO\OrcamentoPessoal\DespesasGrupoDeContaDTO.cs" />
+    <Compile Include="DTO\OrcamentoPessoal\GrupoDeContaDTO.cs" />
+    <Compile Include="DTO\OrcamentoPessoal\OrcamentoPessoalDTO.cs" />
+    <Compile Include="DTO\OrcamentoPessoal\TotalizadorDeGrupo.cs" />
+    <Compile Include="DTO\OrcamentoPessoal\TotalOrcamentoMensalDTO.cs" />
+    <Compile Include="DTO\OutrasDespesas\ItemOutraDespesaDTO.cs" />
+    <Compile Include="DTO\OutrasDespesas\OutraDespesaDTO.cs" />
+    <Compile Include="DTO\ReceitaDTO.cs" />
+    <Compile Include="DTO\ServicoHospitalar\ContaHospitalarDTO.cs" />
+    <Compile Include="DTO\ServicoHospitalar\ValorContaDTO.cs" />
+    <Compile Include="DTO\VersaoDeDespesaDTO.cs" />
+    <Compile Include="DTO\Viagem\DespesaDeViagemDTO.cs" />
+    <Compile Include="DTO\Viagem\ItemDespesaDeViagemDTO.cs" />
+    <Compile Include="Gerenciamento\CentroDeCusto.cs" />
+    <Compile Include="Gerenciamento\Conta.cs" />
+    <Compile Include="Gerenciamento\Departamento.cs" />
+    <Compile Include="Gerenciamento\GrupoDeConta.cs" />
+    <Compile Include="Gerenciamento\GrupoResumo.cs" />
+    <Compile Include="Gerenciamento\Hospital\ContaHospital.cs" />
+    <Compile Include="Gerenciamento\Hospital\Hospital.cs" />
+    <Compile Include="Gerenciamento\Corporativo\Setor.cs" />
+    <Compile Include="Gerenciamento\Hospital\SetorHospitalar.cs" />
+    <Compile Include="Gerenciamento\Hospital\SubSetorHospital.cs" />
+    <Compile Include="Gerenciamento\Usuario.cs" />
+    <Compile Include="ComponentesDeOrcamento\DRE.cs" />
+    <Compile Include="ComponentesDeOrcamento\GerenciadorDeOrcamentos.cs" />
+    <Compile Include="ComponentesDeOrcamento\Orcamento.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\FatorReceita.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\IncrementoDaComplexidade.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\OrcamentoHospitalar.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\ProducaoHospitalar.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeProducao\ServicoHospitalar.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\Cidade.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\Diaria.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\DiariaViagem.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\IDespesaDeViagem.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\OrcamentoDeViagem.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\Ticket.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\TipoTicket.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\Viagem.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoDeViagem\ViagemCidade.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoOperacional\Despesa.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoOperacional\OrcamentoOperacionalVersao.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Aumentado\DecimoTerceiroComAumento.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Aumentado\FeriasComAumento.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Aumentado\SalarioComAumento.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Demitido\DecimoTerceiroRecisao.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Demitido\FeriasRecisao.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Demitido\SalarioRecisao.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Normal\DecimoTerceiro.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\DespesaPessoal.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\LegislacaoBrasileira.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Normal\Ferias.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Normal\FGTS.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Funcionario.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\NovoOrcamentoPessoal.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Parcela.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Demitido\Recisao.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Normal\Salario.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\TicketPessoal.cs" />
+    <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\TipoDespesaEnum.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Servico\Hospitalar\IServicoSalvarDepartamento.cs" />
+    <Compile Include="Servico\Hospitalar\ServicoCriarOrcamentoHospitalar.cs" />
+    <Compile Include="Servico\Hospitalar\ServicoSalvarDepartamento.cs" />
+    <Compile Include="Servico\OutrasDespesas\ServicoAtualizarDespesasOperacionais.cs" />
+    <Compile Include="Servico\ServicoClonarObjetos\ServicoClonarOrcamentoHospitalar.cs" />
+    <Compile Include="Servico\Viagem\ServicoDesnormalizarContas.cs" />
+    <Compile Include="Servico\Viagem\ServicoDesnormalizarTotaisEmDespesasPorMeses.cs" />
+    <Compile Include="Servico\Viagem\ServicoDesnormalizarVersoesDeOrcamentoDeViagens.cs" />
+    <Compile Include="Servico\Pessoal\ServicoGerarOrcamentoPessoalPorCentroDeCusto.cs" />
+    <Compile Include="Servico\Pessoal\ServicoObterTotalizadorDePessoal.cs" />
+    <Compile Include="Servico\Viagem\ServicoOrcamentoDeViagens.cs" />
+    <Compile Include="Servico\OutrasDespesas\ServicoOrcamentoOperacional.cs" />
+    <Compile Include="Servico\Hospitalar\ServicoTrasnformaOrcamentoProducaoEmDTO.cs" />
+    <Compile Include="TipoValor.cs" />
+    <Compile Include="Util\ClonarObjetos.cs" />
+    <Compile Include="Util\VerificarTipo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Orcamento.InfraStructure\Orcamento.InfraStructure.csproj">
+      <Project>{9F07C30D-C5D9-4E10-8DAE-7E3FB9485450}</Project>
+      <Name>Orcamento.InfraStructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Dominio.cd" />
+    <None Include="ModeloPessoal.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

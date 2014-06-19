@@ -1,0 +1,57 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Principal.Master.cs" Inherits="WebSimuladorRH.Principal"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1" runat="server">
+        <meta http-equiv="X-UA-Compatible" content="IE=7" />
+        <title>"Or&ccedil;amento Operacional"</title>
+        <link href="Styles/workkerReset.css" rel="stylesheet" type="text/css" />
+        <link href="Styles/site-structure.css" rel="stylesheet" type="text/css" />
+        <link href="Styles/site-style.css" rel="stylesheet" type="text/css" />
+        <link href="Styles/workkerForm-structure.css" rel="stylesheet" type="text/css" />
+        <link href="Styles/workkerStyle-structure.css" rel="stylesheet" type="text/css" />
+        <link href="Styles/workkerGrids.css" rel="stylesheet" type="text/css" />
+        <link href="Styles/dev.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" language="javascript" src="../Scripts/jquery-1.7.2.js"> </script>
+        <script type="text/javascript" language="javascript" src="../Scripts/ScriptsWorkker.js"> </script>
+        <script type="text/javascript" language="javascript" src="../Scripts/jquery.alphanumeric.js"> </script>
+        <script type="text/javascript" language="javascript" src="../Scripts/jquery.alphanumeric.pack.js"> </script>
+        <script type="text/javascript" language="javascript" src="../Scripts/jquery.price_format.1.7.js"></script>
+        <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+        </asp:ContentPlaceHolder>
+    </head>
+    <body>
+        <form id="Form1" class="workkerForm" runat="server">
+            <div class="page">
+                <div class="header topo">
+                    <asp:ImageButton ID="Image1" runat="server" CssClass="logo" 
+                                     ImageUrl="/imagens/logo.png" onclick="IndoParaOPainelOrcamento" />
+                    <h1 class="titulo" style="margin-right: 20px; text-align: right;">
+                        Or&ccedil;amento <span>2013 
+                                  </span>
+                        <asp:Literal runat="server" ID="ltlDepartamento"></asp:Literal>
+                    </h1>
+                </div>
+                <div class="main">
+                    <div class="grid-12-12">
+                        <div style="float: right; margin-right: 10px; text-align: left;">
+                            <asp:Button ID="btnLogout" onclick="Deslogando" CssClass="logoutButton bold" 
+                                        runat="server" Text="Logout" />
+                        </div>
+                        <div runat="server" ID="divNomeDoUsuarioLogado" Visible="False" style="float: left; margin-left: 10px;">
+                            <b>Usu&aacute;rio:</b> <asp:Literal runat="server" ID="ltlNomeDoUsuario"></asp:Literal>
+                        </div>
+                        <div style="float: right; margin-right: 10px;">
+                            <asp:DropDownList ID="ddlDepartamentos" runat="server" Visible="False" AutoPostBack="True"
+                                              OnSelectedIndexChanged="ddlDepartamentos_SelectedIndexChanged" Width="150px">
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+                    <div class="grid-12-12">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>

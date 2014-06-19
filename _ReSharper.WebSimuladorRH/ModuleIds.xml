@@ -1,0 +1,7 @@
+<Modules>
+  <Module PersistentId="1BB71C6C-AC85-4A32-9E58-DA0F36C30488" ModuleId="WebSimuladorRH" />
+  <Module PersistentId="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C" ModuleId="Orcamento.Domain" />
+  <Module PersistentId="9F07C30D-C5D9-4E10-8DAE-7E3FB9485450" ModuleId="Orcamento.InfraStructure" />
+  <Module PersistentId="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD" ModuleId="Orcamento.Test" />
+  <Module PersistentId="701515A0-20B7-4565-AF31-AD2DF93CD465" ModuleId="Orcamento.Controller" />
+</Modules>

@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BB71C6C-AC85-4A32-9E58-DA0F36C30488}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebSimuladorRH</RootNamespace>
+    <AssemblyName>WebSimuladorRH</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <TargetFrameworkProfile />
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccProvider>
+    </SccProvider>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Contracts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=736440c9b414ea16, processorArchitecture=MSIL" />
+    <Reference Include="msmdvbanet, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\Lib\msmdvbanet.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\Lib\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.0.12035, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\Lib\Rhino.Mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.DirectoryServices, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices.AccountManagement, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.DirectoryServices.Protocols, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AlterarLocacaoFuncionario.aspx" />
+    <Content Include="AlterarSenha.aspx" />
+    <Content Include="AlteracaoDeCentroDeCusto.aspx" />
+    <Content Include="AlteracaoDeHospital.aspx" />
+    <Content Include="CadastrarDepartamentoCorporativo.aspx" />
+    <Content Include="CadastroDeCentroDeCusto.aspx" />
+    <Content Include="CadastroDeConta.aspx" />
+    <Content Include="CadastroUsuario.aspx" />
+    <Content Include="ControleDeCentroDeCusto.aspx" />
+    <Content Include="DemonstracaoDeResultado\DemonstracaoDeResultadoGeral.aspx" />
+    <Content Include="DespesaOperacional.aspx" />
+    <Content Include="DemonstracaoDeResultado\DemonstracaoDeResultado.aspx" />
+    <Content Include="Erro.aspx" />
+    <Content Include="imagens\selecao_de_unidade.png" />
+    <Content Include="Insumo\Insumos.aspx" />
+    <Content Include="Pessoal\Funcionario.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Imagem\1306944482_OK.png" />
+    <Content Include="Imagem\1317067945_application_go.png" />
+    <Content Include="Imagem\1317068710_disk.png" />
+    <Content Include="Imagem\1317068807_150.png" />
+    <Content Include="Imagem\Cancelar.png" />
+    <Content Include="Imagem\indicator_big.gif" />
+    <Content Include="Imagem\information.png" />
+    <Content Include="Imagem\loading2.gif" />
+    <Content Include="Imagem\loading25.gif" />
+    <Content Include="Imagem\loading30.gif" />
+    <Content Include="Imagem\Salvar.png" />
+    <Content Include="Imagem\wait30.gif" />
+    <Content Include="Imagem\wait30trans.gif" />
+    <Content Include="imagens\1317068807_150.png" />
+    <Content Include="imagens\bot.png" />
+    <Content Include="imagens\delete.jpg" />
+    <Content Include="imagens\delete.png" />
+    <Content Include="imagens\edit.png" />
+    <Content Include="imagens\fatia_menu.jpg" />
+    <Content Include="imagens\icone_delete.jpg" />
+    <Content Include="imagens\icone_edit.jpg" />
+    <Content Include="imagens\icone_save.jpg" />
+    <Content Include="imagens\indicator_wheel3.gif" />
+    <Content Include="imagens\login.png" />
+    <Content Include="imagens\logo.png" />
+    <Content Include="imagens\menu_bg.jpg" />
+    <Content Include="imagens\save.png" />
+    <Content Include="imagens\topo.jpg" />
+    <Content Include="imagens\topo_tabela.jpg" />
+    <Content Include="ImgWorkker\1344622267_doc_edit.png" />
+    <Content Include="ImgWorkker\1344622285_checkbox_checked.png" />
+    <Content Include="Jquery\jquery-1.5.2.js" />
+    <Content Include="Jquery\jquery-ui.css" />
+    <Content Include="Jquery\jquery.sheet.css" />
+    <Content Include="Jquery\jquery.sheet.js" />
+    <Content Include="Jquery\parser.js" />
+    <Content Include="Login.aspx" />
+    <Content Include="OrcamentoDeProducao.aspx" />
+    <Content Include="OrcamentoDeViagem.aspx" />
+    <Content Include="Pessoal\OrcamentoPessoal.aspx" />
+    <Content Include="PainelOrcamento.aspx" />
+    <Content Include="ResultadoOrcado.aspx" />
+    <Content Include="Scripts\DespesaOperacional.js" />
+    <Content Include="Scripts\jquery-1.7.2.js" />
+    <Content Include="Scripts\jquery-latest.js" />
+    <Content Include="Scripts\jquery.alphanumeric.js" />
+    <Content Include="Scripts\jquery.alphanumeric.pack.js" />
+    <Content Include="Scripts\jquery.autocomplete.css" />
+    <Content Include="Scripts\jquery.autocomplete.js" />
+    <Content Include="Scripts\jquery.price_format.1.7.js" />
+    <Content Include="Scripts\OrcamentoDeProducao.js" />
+    <Content Include="Scripts\ScriptsWorkker.js" />
+    <Content Include="Styles\dev.css" />
+    <Content Include="Styles\site-structure.css" />
+    <Content Include="Styles\site-style.css" />
+    <Content Include="Styles\workkerForm-structure.css" />
+    <Content Include="Styles\workkerGrids.css" />
+    <Content Include="Styles\workkerReset.css" />
+    <Content Include="Styles\workkerStyle-structure.css" />
+    <Content Include="TicketDeProducao.aspx" />
+    <Content Include="TicketDeViagem.aspx" />
+    <Content Include="Pessoal\CadastroDeTicketsPessoal.aspx" />
+    <Content Include="Totalizador.aspx" />
+    <Content Include="TotalizadorCentroDeCusto.aspx" />
+    <Content Include="TotalizadorDeDespesas.aspx" />
+    <Content Include="TotalizadorPessoalPorGrupoDeConta.aspx" />
+    <Content Include="TotalizadorPorHospitalDiretoria.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlterarLocacaoFuncionario.aspx.cs">
+      <DependentUpon>AlterarLocacaoFuncionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlterarLocacaoFuncionario.aspx.designer.cs">
+      <DependentUpon>AlterarLocacaoFuncionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AlterarSenha.aspx.cs">
+      <DependentUpon>AlterarSenha.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlterarSenha.aspx.designer.cs">
+      <DependentUpon>AlterarSenha.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlteracaoDeCentroDeCusto.aspx.cs">
+      <DependentUpon>AlteracaoDeCentroDeCusto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlteracaoDeCentroDeCusto.aspx.designer.cs">
+      <DependentUpon>AlteracaoDeCentroDeCusto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AlteracaoDeHospital.aspx.cs">
+      <DependentUpon>AlteracaoDeHospital.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AlteracaoDeHospital.aspx.designer.cs">
+      <DependentUpon>AlteracaoDeHospital.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CadastrarDepartamentoCorporativo.aspx.cs">
+      <DependentUpon>CadastrarDepartamentoCorporativo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CadastrarDepartamentoCorporativo.aspx.designer.cs">
+      <DependentUpon>CadastrarDepartamentoCorporativo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroDeCentroDeCusto.aspx.cs">
+      <DependentUpon>CadastroDeCentroDeCusto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CadastroDeCentroDeCusto.aspx.designer.cs">
+      <DependentUpon>CadastroDeCentroDeCusto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroDeConta.aspx.cs">
+      <DependentUpon>CadastroDeConta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CadastroDeConta.aspx.designer.cs">
+      <DependentUpon>CadastroDeConta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroUsuario.aspx.cs">
+      <DependentUpon>CadastroUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CadastroUsuario.aspx.designer.cs">
+      <DependentUpon>CadastroUsuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ControleDeCentroDeCusto.aspx.cs">
+      <DependentUpon>ControleDeCentroDeCusto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ControleDeCentroDeCusto.aspx.designer.cs">
+      <DependentUpon>ControleDeCentroDeCusto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DemonstracaoDeResultado\DemonstracaoDeResultadoGeral.aspx.cs">
+      <DependentUpon>DemonstracaoDeResultadoGeral.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DemonstracaoDeResultado\DemonstracaoDeResultadoGeral.aspx.designer.cs">
+      <DependentUpon>DemonstracaoDeResultadoGeral.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DespesaOperacional.aspx.cs">
+      <DependentUpon>DespesaOperacional.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DespesaOperacional.aspx.designer.cs">
+      <DependentUpon>DespesaOperacional.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DemonstracaoDeResultado\DemonstracaoDeResultado.aspx.cs">
+      <DependentUpon>DemonstracaoDeResultado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DemonstracaoDeResultado\DemonstracaoDeResultado.aspx.designer.cs">
+      <DependentUpon>DemonstracaoDeResultado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Erro.aspx.cs">
+      <DependentUpon>Erro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Erro.aspx.designer.cs">
+      <DependentUpon>Erro.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Insumo\Insumos.aspx.cs">
+      <DependentUpon>Insumos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Insumo\Insumos.aspx.designer.cs">
+      <DependentUpon>Insumos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pessoal\Funcionario.aspx.cs">
+      <DependentUpon>Funcionario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pessoal\Funcionario.aspx.designer.cs">
+      <DependentUpon>Funcionario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Principal.Master.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Principal.Master.designer.cs">
+      <DependentUpon>Principal.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Orcamento.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Orcamento.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="OrcamentoDeProducao.aspx.cs">
+      <DependentUpon>OrcamentoDeProducao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrcamentoDeProducao.aspx.designer.cs">
+      <DependentUpon>OrcamentoDeProducao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="OrcamentoDeViagem.aspx.cs">
+      <DependentUpon>OrcamentoDeViagem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OrcamentoDeViagem.aspx.designer.cs">
+      <DependentUpon>OrcamentoDeViagem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pessoal\OrcamentoPessoal.aspx.cs">
+      <DependentUpon>OrcamentoPessoal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pessoal\OrcamentoPessoal.aspx.designer.cs">
+      <DependentUpon>OrcamentoPessoal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PainelOrcamento.aspx.cs">
+      <DependentUpon>PainelOrcamento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PainelOrcamento.aspx.designer.cs">
+      <DependentUpon>PainelOrcamento.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadoOrcado.aspx.cs">
+      <DependentUpon>ResultadoOrcado.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResultadoOrcado.aspx.designer.cs">
+      <DependentUpon>ResultadoOrcado.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TicketDeProducao.aspx.cs">
+      <DependentUpon>TicketDeProducao.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketDeProducao.aspx.designer.cs">
+      <DependentUpon>TicketDeProducao.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TicketDeViagem.aspx.cs">
+      <DependentUpon>TicketDeViagem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TicketDeViagem.aspx.designer.cs">
+      <DependentUpon>TicketDeViagem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pessoal\CadastroDeTicketsPessoal.aspx.cs">
+      <DependentUpon>CadastroDeTicketsPessoal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pessoal\CadastroDeTicketsPessoal.aspx.designer.cs">
+      <DependentUpon>CadastroDeTicketsPessoal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Totalizador.aspx.cs">
+      <DependentUpon>Totalizador.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Totalizador.aspx.designer.cs">
+      <DependentUpon>Totalizador.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TotalizadorCentroDeCusto.aspx.cs">
+      <DependentUpon>TotalizadorCentroDeCusto.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TotalizadorCentroDeCusto.aspx.designer.cs">
+      <DependentUpon>TotalizadorCentroDeCusto.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TotalizadorDeDespesas.aspx.cs">
+      <DependentUpon>TotalizadorDeDespesas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TotalizadorDeDespesas.aspx.designer.cs">
+      <DependentUpon>TotalizadorDeDespesas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TotalizadorPessoalPorGrupoDeConta.aspx.cs">
+      <DependentUpon>TotalizadorPessoalPorGrupoDeConta.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TotalizadorPessoalPorGrupoDeConta.aspx.designer.cs">
+      <DependentUpon>TotalizadorPessoalPorGrupoDeConta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TotalizadorPorHospitalDiretoria.aspx.cs">
+      <DependentUpon>TotalizadorPorHospitalDiretoria.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TotalizadorPorHospitalDiretoria.aspx.designer.cs">
+      <DependentUpon>TotalizadorPorHospitalDiretoria.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Imagem\1306937541_3floppy_unmount.png" />
+    <Content Include="Imagem\1306939004_edit.png" />
+    <Content Include="Imagem\1306945259_43.png" />
+    <Content Include="Imagem\dialog-warning.png" />
+    <Content Include="Imagem\rededor_logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="App_Themes\Theme1\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Orcamento.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Orcamento.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Orcamento.Controller\Orcamento.Controller.csproj">
+      <Project>{701515A0-20B7-4565-AF31-AD2DF93CD465}</Project>
+      <Name>Orcamento.Controller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orcamento.Domain\Orcamento.Domain.csproj">
+      <Project>{66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C}</Project>
+      <Name>Orcamento.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orcamento.InfraStructure\Orcamento.InfraStructure.csproj">
+      <Project>{9F07C30D-C5D9-4E10-8DAE-7E3FB9485450}</Project>
+      <Name>Orcamento.InfraStructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Principal.Master" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2308</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

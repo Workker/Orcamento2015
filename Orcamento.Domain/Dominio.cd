@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Orcamento.Domain.Orcamento" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>oAAKAAABAMAAAIAAIAAAAAAAAAAAAAAAAQAAAAAAAAQ=</HashCode>
+      <FileName>Orcamento\IOrcamento.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Tipo" />
+      <Property Name="Setor" />
+      <Property Name="CentroDeCusto" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Orcamento.Domain.GerenciadorDeOrcamentos" Collapsed="true">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orcamento\GerenciadorDeOrcamentos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orcamento.Domain.Setor" Collapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAAACA=</HashCode>
+      <FileName>Gerenciamento\Setor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.CentroDeCusto" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAAABAAAFAgAA=</HashCode>
+      <FileName>Gerenciamento\CentroDeCusto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.Despesa">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Conta" Type="Orcamento.Domain.Conta" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="0.875" Y="6.69" />
+        <Point X="0.875" Y="8.062" />
+        <Point X="3" Y="8.062" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAIAABAAAAAAAEAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Orcamento\OrcamentoOperacional\Despesa.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Conta" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.OrcamentoOperacionalVersao">
+    <Position X="2.75" Y="4" Width="1.75" />
+    <InheritanceLine Type="Orcamento.Domain.Orcamento" FixedFromPoint="true">
+      <Path>
+        <Point X="4.25" Y="3.017" />
+        <Point X="4.25" Y="3.625" />
+        <Point X="3.625" Y="3.625" />
+        <Point X="3.625" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAIAAAAAAACAAAAAAAAgAAAAAAAAAAAQ=</HashCode>
+      <FileName>Orcamento\OrcamentoOperacional\OrcamentoOperacionalVersao.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="DespesasOperacionais" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Orcamento.Domain.Conta">
+    <Position X="3" Y="7.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Gerenciamento\Conta.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.Cidade">
+    <Position X="10" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\Cidade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orcamento.Domain.ViagemCidade">
+    <Position X="11.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAAAACAAAAAIDAAAAAAAAAAIAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\ViagemCidade.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Viagem" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Orcamento.Domain.Diaria" BaseTypeListCollapsed="true">
+    <Position X="6" Y="9.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAQCAEAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\Diaria.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cidade" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tickets" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Orcamento.Domain.DiariaViagem">
+    <Position X="8.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABYAAAACAAAAAIBAAAAAAAAAAAAAAAAAAAAAQAAAACA=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\DiariaViagem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Diaria" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Orcamento.Domain.DespesaDeViagem">
+    <Position X="10" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCAAACAAAAAIDBAAAAAAAAAAAAAAAAAAAQQAAAACA=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\IDespesaDeViagem.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.OrcamentoDeViagem">
+    <Position X="6.25" Y="4" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <AssociationLine Name="Despesas" Type="Orcamento.Domain.DespesaDeViagem">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-0.005" Y="1.404" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAIAAAAAAAAAAAAAAAAgACQAAAAAAAAQ=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\OrcamentoDeViagem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Despesas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Orcamento.Domain.Ticket" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAQACAAABAAAAAAAAAACEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\Ticket.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Orcamento.Domain.TipoTicket" Collapsed="true">
+    <Position X="13" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\TipoTicket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orcamento.Domain.Viagem" BaseTypeListCollapsed="true">
+    <Position X="14" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAEAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orcamento\OrcamentoDeViagem\Viagem.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cidade" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tickets" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Enum Name="Orcamento.Domain.TipoOrcamentoEnum">
+    <Position X="1" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orcamento\IOrcamento.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

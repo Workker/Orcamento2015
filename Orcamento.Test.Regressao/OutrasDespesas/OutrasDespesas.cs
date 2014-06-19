@@ -1,0 +1,481 @@
+﻿using NUnit.Framework;
+
+namespace Orcamento.Test.Regressao.OutrasDespesas
+{
+    [TestFixture]
+    public class OutrasDespesas : TestBase
+    {
+        #region Setup/Teardown
+
+        [SetUp]
+        public override void SetupTest()
+        {
+            BaseUrl = "http://workker.no-ip.org:8181";
+            TestUsingInternetExplorer();
+        }
+
+        [TearDown]
+        public override void TeardownTest()
+        {
+            StopTest();
+        }
+
+        #endregion
+
+        //[Test]
+        //public void Incluir_nova_versaoTest()
+        //{
+        //    LogarComUsuarioEmCorporativo();
+        //    Selenium.Open("/PainelOrcamento.aspx?alert=on");
+        //    Selenium.Click("id=ctl00_MainContent_btnOutrasDespesas");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Select("id=ctl00_MainContent_dropCentroDeCusto", "label=Contas a Pagar");
+        //    Selenium.Click("css=option[value=\"94\"]");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Click("id=ctl00_MainContent_btnIncluirNovaVersao");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Click("id=ctl00_MainContent_btnSalvar");
+        //    Assert.IsTrue(Regex.IsMatch(Selenium.GetConfirmation(), "^Deseja salvar esse orçamento[\\s\\S]$"));
+        //    Selenium.Click("id=ctl00_MainContent_btnVersaoFInal");
+        //    Assert.IsTrue(Regex.IsMatch(Selenium.GetConfirmation(), "^Deseja atribuir este orçamento como versão final[\\s\\S]$"));
+        //    DeslogarTest();
+        //    DeletarVersao();
+        //}
+
+        //[Test]
+        //public void Cadastrar_nova_versao_com_campo_vazioTest()
+        //{
+        //    LogarComUsuarioEmCorporativo();
+        //    Selenium.Open("/PainelOrcamento.aspx?alert=on");
+        //    Selenium.Click("id=ctl00_MainContent_btnOutrasDespesas");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Select("id=ctl00_MainContent_dropCentroDeCusto", "label=Contas a Pagar");
+        //    Selenium.Click("css=option[value=\"94\"]");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Click("id=ctl00_MainContent_btnIncluirNovaVersao");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl00_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl01_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl02_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl03_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl04_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl05_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl06_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl07_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl08_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl09_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl10_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl11_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl00_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl01_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl02_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl03_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl04_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl05_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl06_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl07_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl08_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl09_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl10_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl11_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl00_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl01_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl02_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl03_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl04_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl05_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl06_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl07_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl08_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl09_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl10_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl11_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl00_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl01_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl02_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl03_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl04_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl05_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl06_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl07_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl08_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl09_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl10_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl11_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl00_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl01_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl02_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl03_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl04_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl05_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl06_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl07_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl08_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl09_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl10_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl11_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl00_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl01_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl02_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl03_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl04_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl05_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl06_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl07_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl08_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl09_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl10_valorDespesa", "");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl11_valorDespesa", "");
+        //    Selenium.Click("id=ctl00_MainContent_btnSalvar");
+        //    Assert.IsTrue(Regex.IsMatch(Selenium.GetConfirmation(), "^Deseja salvar esse orçamento[\\s\\S]$"));
+        //    DeslogarTest();
+        //    DeletarVersao();
+
+        //}
+
+        //[Test]
+        //public void Cadastrar_nova_versao_com_letras_e_caracteresTest()
+        //{
+        //    LogarComUsuarioEmCorporativo();
+        //    Selenium.Open("/PainelOrcamento.aspx?alert=on");
+        //    Selenium.Click("id=ctl00_MainContent_btnOutrasDespesas");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Select("id=ctl00_MainContent_dropCentroDeCusto", "label=Contas a Pagar");
+        //    Selenium.Click("css=option[value=\"94\"]");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Click("id=ctl00_MainContent_btnIncluirNovaVersao");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl00_valorDespesa", "\"");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl01_valorDespesa", "!");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl02_valorDespesa", "#");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl03_valorDespesa", "$");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl04_valorDespesa", "%");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl05_valorDespesa", "¨");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl06_valorDespesa", "&");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl07_valorDespesa", "*");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl08_valorDespesa", "(");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl09_valorDespesa", ")");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl10_valorDespesa", "_");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl11_valorDespesa", "+");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl00_valorDespesa", "`_");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl01_valorDespesa", "^");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl02_valorDespesa", "Ç");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl03_valorDespesa", "c");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl04_valorDespesa", "Q");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl05_valorDespesa", "w");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl06_valorDespesa", "Z");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl07_valorDespesa", "G");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl08_valorDespesa", "M");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl09_valorDespesa", "m");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl10_valorDespesa", "/");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl11_valorDespesa", "lk");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl00_valorDespesa", "4h");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl01_valorDespesa", "lp");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl02_valorDespesa", ".;");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl03_valorDespesa", "?");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl04_valorDespesa", "a");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl05_valorDespesa", "s");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl06_valorDespesa", "d");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl07_valorDespesa", "f");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl08_valorDespesa", "\\");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl09_valorDespesa", "|");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl10_valorDespesa", "gt");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl11_valorDespesa", "258");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl00_valorDespesa", "/");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl01_valorDespesa", "g");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl02_valorDespesa", "h");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl03_valorDespesa", "j");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl04_valorDespesa", "k");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl06_valorDespesa", "l");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl05_valorDespesa", "m");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl07_valorDespesa", "n");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl08_valorDespesa", "q");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl09_valorDespesa", "w");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl10_valorDespesa", "e");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl11_valorDespesa", "r");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl00_valorDespesa", "t");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl01_valorDespesa", "y");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl02_valorDespesa", "u");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl03_valorDespesa", "i");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl04_valorDespesa", "o");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl05_valorDespesa", "p");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl06_valorDespesa", "A");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl07_valorDespesa", "B");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl08_valorDespesa", "C");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl09_valorDespesa", "F");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl10_valorDespesa", "D");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl11_valorDespesa", "S");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl00_valorDespesa", "Q");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl01_valorDespesa", "P");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl02_valorDespesa", "]");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl03_valorDespesa", "}");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl04_valorDespesa", "{");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl05_valorDespesa", "[");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl06_valorDespesa", "N");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl07_valorDespesa", "M");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl08_valorDespesa", "Y");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl09_valorDespesa", "P");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl10_valorDespesa", "J");
+        //    Selenium.Click("id=ctl00_MainContent_btnSalvar");
+        //    Assert.IsTrue(Regex.IsMatch(Selenium.GetConfirmation(), "^Deseja salvar esse orçamento[\\s\\S]$"));
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl11_valorDespesa", "D");
+
+        //    DeslogarTest();
+        //    DeletarVersao();
+        //}
+
+        //[Test]
+        //public void Inserir_e_editar_uma_versaoTest()
+        //{
+        //    LogarComUsuarioEmCorporativo();
+        //    Selenium.Open("/PainelOrcamento.aspx?alert=on");
+        //    Selenium.Click("id=ctl00_MainContent_btnOutrasDespesas");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Select("id=ctl00_MainContent_dropCentroDeCusto", "label=Contas a Pagar");
+        //    Selenium.Click("css=option[value=\"94\"]");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Click("id=ctl00_MainContent_btnIncluirNovaVersao");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl00_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl01_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl02_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl03_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl04_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl05_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl06_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl07_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl08_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl09_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl10_valorDespesa", "1");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl11_valorDespesa", "1");
+        //    Selenium.Click("id=ctl00_MainContent_btnSalvar");
+        //    Assert.IsTrue(Regex.IsMatch(Selenium.GetConfirmation(), "^Deseja salvar esse orçamento[\\s\\S]$"));
+        //    Selenium.Click("id=ctl00_MainContent_rptVersoesDeOrcamento_ctl01_lknOrcamento");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl00_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl01_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl02_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl03_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl04_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl05_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl06_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl07_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl08_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl09_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl10_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl01_rptContas_ctl11_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl00_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl01_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl02_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl03_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl04_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl05_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl06_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl07_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl08_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl09_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl10_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl02_rptContas_ctl11_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl00_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl01_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl02_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl04_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl05_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl06_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl07_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl08_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl09_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl10_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl11_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl03_rptContas_ctl03_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl00_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl01_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl02_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl03_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl04_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl05_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl06_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl07_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl08_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl09_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl10_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl04_rptContas_ctl11_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl00_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl01_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl02_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl03_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl04_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl05_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl06_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl07_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl08_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl09_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl10_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl05_rptContas_ctl11_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl00_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl01_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl02_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl03_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl04_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl05_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl06_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl07_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl08_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl09_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl10_valorDespesa", "2");
+        //    Selenium.Type("id=ctl00_MainContent_rptDespesasOperacionais_ctl06_rptContas_ctl11_valorDespesa", "2");
+        //    Selenium.Click("id=ctl00_MainContent_btnSalvar");
+        //    Assert.IsTrue(Regex.IsMatch(Selenium.GetConfirmation(), "^Deseja salvar esse orçamento[\\s\\S]$"));
+        //    DeslogarTest();
+        //    DeletarVersao();
+        //}
+
+        //private void DeletarVersao()
+        //{
+        //    LogarComUsuarioEmCorporativo();
+        //    Selenium.Open("/PainelOrcamento.aspx?alert=on");
+        //    Selenium.Click("id=ctl00_MainContent_btnOutrasDespesas");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Select("id=ctl00_MainContent_dropCentroDeCusto", "label=Contas a Pagar");
+        //    Selenium.Click("css=option[value=\"94\"]");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Click("id=ctl00_MainContent_rptVersoesDeOrcamento_ctl01_lknOrcamento");
+        //    Selenium.WaitForPageToLoad("30000");
+        //    Selenium.Click("id=btnApagarVersao");
+        //    Assert.IsTrue(Regex.IsMatch(Selenium.GetConfirmation(), "^Deseja apagar esta versão do orçamento[\\s\\S]$"));
+        //    DeslogarTest();
+        //}
+    }
+}

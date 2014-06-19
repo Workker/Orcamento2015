@@ -1,0 +1,145 @@
+﻿@charset "UTF-8";
+html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	outline: 0px;
+}
+body {
+	-webkit-text-size-adjust: none;
+	background: transparent;
+	color: #000;
+	font-size: 100%;
+	font-weight: normal;
+	vertical-align: baseline;
+	font-style: normal;
+	line-height: 1;
+	text-decoration: none;
+	text-align: left;
+	white-space: normal;
+}
+a:link {
+	color: #00F;
+	text-decoration: none;
+}
+a:visited {
+	color: #F00;
+	text-decoration: none;
+}
+a:hover {
+	color: #FF0;
+	text-decoration: underline;
+}
+a:active {
+	color: #0F0;
+	text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+	outline: 0px;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+nav ul {
+	list-style: none;
+}
+hr {
+	border: 0px;
+	border-top: 1px solid #cccccc;
+	margin: 0px;
+	height: 1px;
+}
+:focus {
+	outline: 0px;
+}
+ol, ul {
+	list-style: none;
+}
+table {
+	border-collapse: separate;
+	border-spacing: 0px;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+	content: '';
+	content: normal;
+}
+* html .clear {
+	height: 1%;
+}
+.clear {
+	clear: both;
+	display: block;
+}
+.clear:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {
+	display: block;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0px;
+	clear: both;
+	visibility: hidden;
+}
+a img {
+	border: none;
+}
+mark {
+	background-color: #ff9;
+	color: #000;
+	font-style: italic;
+	font-weight: bold;
+}
+del {
+	text-decoration: line-through;
+}
+abbr[title], dfn[title], ins {
+	border-bottom: 1px dotted #ccc;
+}
+button, input, isindex, select {
+	padding: 0px;
+	margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+input, textarea, keygen, select, button, isindex {
+	font-size: 100%;
+	-webkit-text-size-adjust: none;
+	letter-spacing: normal;
+	word-spacing: normal;
+	line-height: 1;
+	text-transform: none;
+	text-indent: 0px;
+	text-shadow: none;
+	display: inline-block;
+	/*background-color: #FFF;*/
+	border-image: none;
+}
+select, input[type="button"], input[type="submit"], input[type="reset"], input[type="file"], button, input[type="radio"], input[type="checkbox"] {
+	box-sizing: border-box;
+	border-image: none;
+	white-space: pre;
+	/*background-color: #FFF;*/
+}
+input, select {
+	vertical-align: middle;
+}
+input[type="button"], input[type="submit"], input[type="reset"], input[type="file"], button {
+	text-align: center;
+	color: #000;
+}
+input:focus, textarea:focus, isindex:focus, keygen:focus, select:focus {
+	background-color: #FFF;
+}

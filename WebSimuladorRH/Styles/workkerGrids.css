@@ -1,0 +1,77 @@
+﻿table { border-spacing: 0px; }
+
+table thead, table tfoot, table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead th, tbody td, tfoot td, tfoot th { padding: 3px 3px 3px 3px; }
+
+tbody td { height: 32px; }
+
+tfoot td { }
+
+thead th, tfoot, tfoot input, .header td {
+    background-color: #595959;
+    color: #FFF !important;
+}
+
+.coluna55px {
+    padding: 0px;
+    width: 66px;
+}
+.coluna66px {
+    padding: 0px;
+    width: 66px;
+}
+.coluna77px {
+    padding: 0px;
+    width: 77px;
+}
+.coluna88px {
+    padding: 0px;
+    width: 88px;
+}
+.coluna100px {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+}
+
+.coluna125px {
+    max-width: 125px;
+    width: 125px;
+}
+
+.coluna130px {
+    max-width: 130px;
+    width: 130px;
+}
+
+.coluna150px {
+    max-width: 150px;
+    width: 150px;
+}
+.coluna450px {
+    max-width: 450px;
+    width: 450px;
+}
+.coluna190px {
+    max-width: 150px;
+    width: 190px;
+}
+
+table input[type="text"] {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 0px;
+    box-sizing: border-box;
+    margin: 0px;
+    outline: 0px;
+    overflow: hidden;
+    padding: 0px;
+    /*ie*/
+    width: 100%;
+}
+
+.gridBorder td { border: 1px solid #dfe8f7; }

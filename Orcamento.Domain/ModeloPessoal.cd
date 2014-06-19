@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Orcamento.Domain.CentroDeCusto">
+    <Position X="4.75" Y="0.75" Width="2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAAQAAAAAAABAAAAAAIAAAAAAAABAAAFAgAA=</HashCode>
+      <FileName>Gerenciamento\CentroDeCusto.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="GrupoDeContas" />
+      <Property Name="Funcionarios" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.Gerenciamento.GrupoDeConta" Collapsed="true">
+    <Position X="1.75" Y="2.75" Width="1.5" />
+    <AssociationLine Name="Contas" Type="Orcamento.Domain.Conta">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.133" Y="0.318" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAEAgAA=</HashCode>
+      <FileName>Gerenciamento\GrupoDeConta.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Contas" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.Conta" Collapsed="true">
+    <Position X="1.75" Y="4.5" Width="1.5" />
+    <AssociationLine Name="Tickets" Type="Orcamento.Domain.TicketDeOrcamentoPessoal">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.07" Y="0.381" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AIQCAAAAAAAAAAAAgADAAAAAAAAAAIAAAAAAAAEAAAA=</HashCode>
+      <FileName>Gerenciamento\Conta.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Tickets" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.Funcionario" Collapsed="true">
+    <Position X="9.25" Y="2.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>ACAKEGAAEEQQAAAAAgBAQABAACAAAAAAAAAAAgEAAAA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoPessoal\Funcionario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Despesas" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.DespesaPessoal">
+    <Position X="9.25" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAgAAAAAEAAAABAAAAAAgAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoPessoal\Despesas\DespesaPessoal.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Conta" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Parcelas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Orcamento.Domain.Parcela" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAABgAAAAAAEAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoPessoal\Despesas\Parcela.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.NovoOrcamentoPessoal">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoPessoal\NovoOrcamentoPessoal.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="CentroDeCusto" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Orcamento.Domain.TicketDeOrcamentoPessoal" Collapsed="true">
+    <Position X="1.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAABAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoPessoal\TicketPessoal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

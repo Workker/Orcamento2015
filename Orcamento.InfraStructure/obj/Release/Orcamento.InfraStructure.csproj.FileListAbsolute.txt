@@ -1,0 +1,5 @@
+B:\Documents\Orcamento2014\Orcamento.InfraStructure\bin\Release\Orcamento.InfraStructure.dll
+B:\Documents\Orcamento2014\Orcamento.InfraStructure\bin\Release\Orcamento.InfraStructure.pdb
+B:\Documents\Orcamento2014\Orcamento.InfraStructure\bin\Release\log4net.dll
+B:\Documents\Orcamento2014\Orcamento.InfraStructure\obj\Release\Orcamento.InfraStructure.dll
+B:\Documents\Orcamento2014\Orcamento.InfraStructure\obj\Release\Orcamento.InfraStructure.pdb

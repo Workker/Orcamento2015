@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="WebSimuladorRH">
+</Property><Property Name="Solution File" Value="C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\WebSimuladorRH.sln">
+</Property><Property Name="User Options File" Value="C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\WebSimuladorRH.suo">
+</Property><Property Name="Date" Value="segunda-feira, 26 de setembro de 2011">
+</Property><Property Name="Time" Value="10:42">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="WebSimuladorRH.sln" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH.sln">
+</Event><Event ErrorLevel="0" Project="" Source="WebSimuladorRH.suo" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH.suo">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\WebSimuladorRH.csproj" Description="Project file successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\WebSimuladorRH.csproj">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\WebSimuladorRH.csproj.user" Description="Project user file successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\WebSimuladorRH.csproj.user">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Dados\ConectarBanco.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Dados\ConectarBanco.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Dados\rpSimulador.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Dados\rpSimulador.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Default.aspx.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Default.aspx.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Default.aspx.designer.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Default.aspx.designer.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Properties\AssemblyInfo.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Site1.Master.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Site1.Master.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Site1.Master.designer.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Site1.Master.designer.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\SumarioDiagnostico.aspx.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\SumarioDiagnostico.aspx.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\SumarioDiagnostico.aspx.designer.cs" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\SumarioDiagnostico.aspx.designer.cs">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Default.aspx" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Default.aspx">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Web.config" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Web.config">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Imagem\1306937541_3floppy_unmount.png" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Imagem\1306937541_3floppy_unmount.png">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Imagem\1306939004_edit.png" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Imagem\1306939004_edit.png">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Imagem\1306945259_43.png" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Imagem\1306945259_43.png">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Imagem\dialog-warning.png" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Imagem\dialog-warning.png">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Imagem\rededor_logo.png" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Imagem\rededor_logo.png">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Styles\Site.css" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Styles\Site.css">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Site1.Master" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Site1.Master">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\SumarioDiagnostico.aspx" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\SumarioDiagnostico.aspx">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\Properties\licenses.licx" Description="File successfully backed up as C:\PROGRAMAS_FONTES\WebSimulador2010\WebSimuladorRH\Backup\WebSimuladorRH\Properties\licenses.licx">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\WebSimuladorRH.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="WebSimuladorRH" Source="WebSimuladorRH\WebSimuladorRH.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="WebSimuladorRH.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="WebSimuladorRH.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="WebSimuladorRH" Source="WebSimuladorRH\WebSimuladorRH.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
