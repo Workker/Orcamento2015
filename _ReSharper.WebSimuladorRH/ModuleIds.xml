@@ -4,4 +4,5 @@
   <Module PersistentId="9F07C30D-C5D9-4E10-8DAE-7E3FB9485450" ModuleId="Orcamento.InfraStructure" />
   <Module PersistentId="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD" ModuleId="Orcamento.Test" />
   <Module PersistentId="701515A0-20B7-4565-AF31-AD2DF93CD465" ModuleId="Orcamento.Controller" />
+  <Module PersistentId="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D" ModuleId="Orcamento.Robo.Web" />
 </Modules>

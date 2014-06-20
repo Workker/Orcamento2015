@@ -224,6 +224,8 @@
     <Compile Include="DB\Mappings\Entidades\OrcamentoMap.cs" />
     <Compile Include="DB\Mappings\Entidades\OrcamentoPessoalMap.cs" />
     <Compile Include="DB\Mappings\Entidades\ParcelaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\Robo\CargaMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\Robo\DetalheMap.cs" />
     <Compile Include="DB\Mappings\Entidades\ServicoHospitalarMap.cs" />
     <Compile Include="DB\Mappings\Entidades\SetorHospitalMap.cs" />
     <Compile Include="DB\Mappings\Entidades\SetorMap.cs" />
@@ -366,6 +368,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Robo\Monitoramento\Carga.cs" />
+    <Compile Include="Robo\Monitoramento\Detalhe.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\Funcionarios.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\IProcessaCarga.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketDePessoal.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketDeProducao.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\UnitariosDeInsumo.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\UsuarioEDepartamento.cs" />
     <Compile Include="Servico\Hospitalar\IServicoSalvarDepartamento.cs" />
     <Compile Include="Servico\Hospitalar\ServicoCriarOrcamentoHospitalar.cs" />
     <Compile Include="Servico\Hospitalar\ServicoSalvarDepartamento.cs" />

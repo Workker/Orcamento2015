@@ -5,3 +5,10 @@ B:\Documents\Orcamento2014\Orcamento.Test.Regressao\bin\x86\Debug\WebDriver.dll
 B:\Documents\Orcamento2014\Orcamento.Test.Regressao\obj\x86\Debug\Orcamento.Test.Regressao.csprojResolveAssemblyReference.cache
 B:\Documents\Orcamento2014\Orcamento.Test.Regressao\obj\x86\Debug\Orcamento.Test.Regressao.dll
 B:\Documents\Orcamento2014\Orcamento.Test.Regressao\obj\x86\Debug\Orcamento.Test.Regressao.pdb
+B:\Documents\Orcamento2015\Orcamento.Test.Regressao\bin\x86\Debug\Orcamento.Test.Regressao.dll
+B:\Documents\Orcamento2015\Orcamento.Test.Regressao\bin\x86\Debug\Orcamento.Test.Regressao.pdb
+B:\Documents\Orcamento2015\Orcamento.Test.Regressao\bin\x86\Debug\nunit.framework.dll
+B:\Documents\Orcamento2015\Orcamento.Test.Regressao\bin\x86\Debug\WebDriver.dll
+B:\Documents\Orcamento2015\Orcamento.Test.Regressao\obj\x86\Debug\Orcamento.Test.Regressao.csprojResolveAssemblyReference.cache
+B:\Documents\Orcamento2015\Orcamento.Test.Regressao\obj\x86\Debug\Orcamento.Test.Regressao.dll
+B:\Documents\Orcamento2015\Orcamento.Test.Regressao\obj\x86\Debug\Orcamento.Test.Regressao.pdb
