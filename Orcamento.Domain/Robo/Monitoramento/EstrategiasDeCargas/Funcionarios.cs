@@ -126,8 +126,8 @@ namespace Orcamento.Domain.Entities.Monitoramento
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios)
         {
             string _conectionstring;
-            _conectionstring = @"Provider=Microsoft.Jet.OLEDB.4.0;";
-            _conectionstring += carga.Diretorio;
+            _conectionstring = @"Provider=Microsoft.ACE.OLEDB.12.0;";
+            _conectionstring += String.Format("Data Source={0};", carga.Diretorio);
             _conectionstring += "Extended Properties='Excel 8.0;HDR=NO;'";
 
             var cn = new OleDbConnection(_conectionstring);

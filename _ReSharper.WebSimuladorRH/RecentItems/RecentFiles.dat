@@ -1,23 +1,7 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/d:Despesas/d:Aumentado/f:FeriasComAumento.cs" caret="2958" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/f:Funcionario.cs" caret="844" fromTop="19" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/d:Despesas/d:Demitido/f:FeriasRecisao.cs" caret="1768" fromTop="27" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/d:Despesas/d:Normal/f:DecimoTerceiro.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/d:Despesas/f:DespesaPessoal.cs" caret="1633" fromTop="25" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/d:Despesas/d:Normal/f:Ferias.cs" caret="2168" fromTop="25" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/f:TicketPessoal.cs" caret="895" fromTop="30" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/f:LegislacaoBrasileira.cs" caret="980" fromTop="18" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Util/f:VerificarTipo.cs" caret="776" fromTop="23" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/f:AcordoDeConvencao.cs" caret="741" fromTop="21" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Gerenciamento/f:Usuario.cs" caret="797" fromTop="24" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/f:BaseRepository.cs" caret="1029" fromTop="26" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Servico/d:Hospitalar/f:ServicoSalvarDepartamento.cs" caret="1190" fromTop="21" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/f:Setores.cs" caret="427" fromTop="15" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Servico/d:OutrasDespesas/f:ServicoAtualizarDespesasOperacionais.cs" caret="324" fromTop="11" />
     <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/f:CentroDeCustoController.cs" caret="2354" fromTop="16" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/f:IniciarSistemaTest.cs" caret="0" fromTop="0" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/f:App.config" caret="686" fromTop="16" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Servico/d:OutrasDespesas/f:ServicoOrcamentoOperacional.cs" caret="0" fromTop="0" />
     <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/f:Web.config" caret="105" fromTop="0" />
     <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/d:Pessoal/f:Funcionario.aspx.cs" caret="0" fromTop="0" />
@@ -28,14 +12,26 @@
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/f:Orcamento.cs" caret="1030" fromTop="35" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Mappings/d:Entidades/f:ContaMap.cs" caret="177" fromTop="5" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/d:2014/f:AtualizarFuncionarios.cs" caret="954" fromTop="9" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/d:2014/f:AtualizarDepartamentoCentroDeCustoEConta.cs" caret="1135" fromTop="24" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/d:2014/f:AjustarEstruturaHospitalarcs.cs" caret="893" fromTop="9" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/f:Web.config" caret="2922" fromTop="36" />
+    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/f:IniciarSistemaTest.cs" caret="29348" fromTop="20" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Mappings/d:Entidades/d:Robo/f:CargaMap.cs" caret="295" fromTop="9" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Index.cshtml" caret="0" fromTop="0" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:IProcessaCarga.cs" caret="234" fromTop="10" />
+    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/d:2014/f:AtualizarDepartamentoCentroDeCustoEConta.cs" caret="851" fromTop="25" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Contact.cshtml" caret="0" fromTop="0" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/f:Carga.cs" caret="1339" fromTop="18" />
+    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Robo/d:Carga/f:CargaFuncionarioTest.cs" caret="630" fromTop="20" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Status/f:Index.cshtml" caret="26" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:_Layout.cshtml" caret="5160" fromTop="12" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Login/f:Index.cshtml" caret="4739" fromTop="136" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="168" fromTop="8" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:About.cshtml" caret="0" fromTop="0" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="1223" fromTop="6" />
+    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/f:App.config" caret="471" fromTop="10" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Web.config" caret="315" fromTop="7" />
   </RecentFiles>
   <RecentEdits>
-    <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/d:DemonstracaoDeResultado/f:DemonstracaoDeResultado.aspx.cs" caret="21043" fromTop="27" />
-    <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/f:PainelOrcamento.aspx.cs" caret="10073" fromTop="52" />
-    <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/f:PainelOrcamento.aspx" caret="4167" fromTop="8" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Controller/d:Viagem/f:CarregarPaginaTest.cs" caret="2280" fromTop="36" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Controller/d:Viagem/f:CriarNovoOrcamentoTest.cs" caret="2438" fromTop="21" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Domain/f:DespesaOperacionalTest.cs" caret="518" fromTop="16" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Servico/f:ServicoOrcamentoDeViagensTest.cs" caret="25891" fromTop="16" />
@@ -58,9 +54,13 @@
     <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/d:Pessoal/f:Funcionario.aspx.cs" caret="23009" fromTop="16" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/f:Funcionario.cs" caret="1339" fromTop="14" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoPessoal/d:Despesas/f:DespesaPessoal.cs" caret="4038" fromTop="23" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/f:App.config" caret="1279" fromTop="25" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/d:2014/f:AtualizarFuncionarios.cs" caret="4156" fromTop="16" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/d:2014/f:AtualizarDepartamentoCentroDeCustoEConta.cs" caret="17035" fromTop="17" />
     <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/f:Web.config" caret="1467" fromTop="28" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Web.config" caret="1247" fromTop="19" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:_Layout.cshtml" caret="5124" fromTop="11" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="0" fromTop="0" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="5740" fromTop="21" />
+    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/f:App.config" caret="1421" fromTop="26" />
   </RecentEdits>
 </RecentFiles>

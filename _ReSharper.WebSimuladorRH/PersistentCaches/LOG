@@ -1,13 +1,1 @@
-2014/06/19-12:47:01.391 1d94 Recovering log #138
-2014/06/19-12:47:01.392 1d94 Level-0 table #140: started
-2014/06/19-12:47:01.392 1d94 Level-0 table #140: 0 bytes OK
-2014/06/19-12:47:01.507 1d94 Delete type=0 #138
-2014/06/19-12:47:01.507 1d94 Delete type=3 #136
-2014/06/19-13:12:13.163 16ac Compacting 3@0 + 1@1 files
-2014/06/19-13:12:13.252 16ac Generated table #142: 1604 keys, 248053 bytes
-2014/06/19-13:12:13.253 16ac Compacted 3@0 + 1@1 files => 248053 bytes
-2014/06/19-13:12:13.280 16ac Delete type=2 #129
-2014/06/19-13:12:13.281 16ac Delete type=2 #131
-2014/06/19-13:12:13.281 16ac Delete type=2 #134
-2014/06/19-13:12:13.281 16ac Delete type=2 #137
-2014/06/19-13:12:13.281 16ac compacted to: files[ 0 1 0 0 0 0 0 ]
+2014/06/21-20:20:51.267 1224 Delete type=3 #1
