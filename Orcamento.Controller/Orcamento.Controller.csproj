@@ -149,6 +149,7 @@
     <Compile Include="DespesaOperacionalController.cs" />
     <Compile Include="FuncionarioController.cs" />
     <Compile Include="OrcamentoPessoalController.cs" />
+    <Compile Include="Robo\ImportarController.cs" />
     <Compile Include="TicketsController.cs" />
     <Compile Include="Views\IViewDespesaOperacional.cs" />
     <Compile Include="Views\IViewOrcamentoDeProducao.cs" />

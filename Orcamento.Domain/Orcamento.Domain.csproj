@@ -368,12 +368,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Robo\Fabricas\FabricaDeImportacao.cs" />
     <Compile Include="Robo\Monitoramento\Carga.cs" />
     <Compile Include="Robo\Monitoramento\Detalhe.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\Funcionarios.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\IProcessaCarga.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketDePessoal.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketDeProducao.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TipoEstrategiaDeCargaEnumcs.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\UnitariosDeInsumo.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\UsuarioEDepartamento.cs" />
     <Compile Include="Servico\Hospitalar\IServicoSalvarDepartamento.cs" />

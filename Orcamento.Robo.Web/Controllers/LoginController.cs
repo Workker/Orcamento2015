@@ -8,7 +8,7 @@ using System.Web.Security;
 
 namespace Orcamento.Robo.Web.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : System.Web.Mvc.Controller
     {
         [HttpGet]
         public ActionResult Index()

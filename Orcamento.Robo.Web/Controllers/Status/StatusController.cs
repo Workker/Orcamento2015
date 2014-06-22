@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Orcamento.Robo.Web.Controllers.Status
 {
-    public class StatusController : Controller
+    public class StatusController : System.Web.Mvc.Controller
     {
         public ActionResult Index()
         {

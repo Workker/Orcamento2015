@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas;
+using Orcamento.Robo.Web.Models.Importar;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,14 +8,16 @@ using System.Web.Mvc;
 
 namespace Orcamento.Robo.Web.Controllers.Importar
 {
-    public class ImportarController : Controller
+    public class ImportarController : System.Web.Mvc.Controller
     {
         //
         // GET: /Importar/
 
         public ActionResult Index()
         {
-            return View();
+            ImportarModel model = new ImportarModel();
+            model.TiposImportacao.Add(new TipoImportacaoModel() { Id = TipoEstrategiaDeCargaEnum.Funcionarios, Selecionado = true, Tipo = "Funcionarios" });
+            return View(model);
         }
 
         //
@@ -99,6 +103,25 @@ namespace Orcamento.Robo.Web.Controllers.Importar
             catch
             {
                 return View();
+            }
+        }
+
+
+        [HttpPost]
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+        public ActionResult Importar(TipoImportacaoModel model)
+        {
+            try
+            {
+                Orcamento.Controller.Robo.ImportarController controller = new Controller.Robo.ImportarController();
+                controller.ImportarCarga(model.Id);
+
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.ShowMessage(MessageTypeEnum.danger, ex.Message);
+                return View( model);
             }
         }
     }

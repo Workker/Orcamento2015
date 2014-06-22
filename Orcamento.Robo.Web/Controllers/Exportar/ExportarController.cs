@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Orcamento.Robo.Web.Controllers.Exportar
 {
-    public class ExportarController : Controller
+    public class ExportarController : System.Web.Mvc.Controller
     {
         //
         // GET: /Exportar/

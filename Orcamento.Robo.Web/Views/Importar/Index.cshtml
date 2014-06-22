@@ -1,8 +1,103 @@
-﻿@*@model Orcamento.Robo.Web.Models.Exportar.ExportarModel*@
+﻿@model Orcamento.Robo.Web.Models.Importar.ImportarModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Importar</h2>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<div class="row">
+
+    <div class="col-md-12">
+
+        <div class="widget stacked">
+
+            <div class="widget-header">
+                <i class="icon-ok"></i>
+                <h3>Importacao</h3>
+            </div>
+            <!-- /widget-header -->
+            <div class="widget-content">
+
+                <div id="form" class="form-horizontal col-md-12">
+                    <div class="form-group">
+                        <label for="filtroCliente" class="col-lg-1">Tipo de Importacao</label>
+                        <div class="col-lg-4">
+                            <select id="IdCliente" name="IdCliente" onchange="FiltrarVeiculos();" class="form-control">
+                                <option value="">Select...</option>
+                                @foreach (var importacao in Model.TiposImportacao)
+                                {
+                                    if (importacao.Selecionado)
+                                    {
+                                    <option selected="selected" value="@importacao.Id">@importacao.Tipo</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@importacao.Id">@importacao.Tipo</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-2">
+                            <button type="submit" onclick="Importar();" class="btn btn-success"><i class="icon-ok"></i>Importar</button>&nbsp;&nbsp;
+                        </div>
+
+                        <div class="col-lg-2">
+                            <button type="submit" onclick="ObterLayout();" class="btn btn-success"><i class="icon-ok"></i>ObterLayoutDeCarga</button>&nbsp;&nbsp;
+                        </div>
+                    </div>
+
+@*                    <div class="form-group">
+                        <div class="col-lg-2">
+                            <button type="submit" onclick="posicionarVeiculosELinhas();" class="btn btn-success"><i class="icon-ok"></i>Todos os veículos e linhas</button>&nbsp;&nbsp;
+                        </div>
+                    </div>
+
+                    <div id="Principal">
+                       
+                    </div>*@
+                </div>
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+
+    </div>
+    <!-- /col-md-12 -->
+</div>
+<script src="../../js/libs/jquery-1.9.1.min.js"></script>
+<script src="../../js/jquery.timer.js" ></script>
+
+<script type="text/javascript">
+    function ObterLayout() {
+        //var idCliente = $("#IdCliente").val();
+
+        //$.ajax({
+        //    url: "/PosicoesDosVeiculos/FiltrarVeiculos",
+        //    type: "POST",
+        //    cache: false,
+        //    data: { IdClienteSelecionado: idCliente }
+        //}).success(function (veiculos) {
+        //    $('#Principal').replaceWith(veiculos);
+        //});
+    }
+
+    function Importar() {
+        var id = $("#IdTipo").val();
+
+        $.ajax({
+            url: "/Importar/Importar",
+            type: "POST",
+            cache: false,
+            data: { Id: id }
+        }).success(function () {
+        });
+  
+    }
+</script>
+

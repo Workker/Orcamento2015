@@ -125,3 +125,5 @@ B:\Documents\Orcamento2015\Orcamento.Robo.Web\bin\Mono.Math.xml
 B:\Documents\Orcamento2015\Orcamento.Robo.Web\obj\Debug\Orcamento.Robo.Web.csprojResolveAssemblyReference.cache
 B:\Documents\Orcamento2015\Orcamento.Robo.Web\obj\Debug\Orcamento.Robo.Web.dll
 B:\Documents\Orcamento2015\Orcamento.Robo.Web\obj\Debug\Orcamento.Robo.Web.pdb
+B:\Documents\Orcamento2015\Orcamento.Robo.Web\bin\Orcamento.Controller.dll
+B:\Documents\Orcamento2015\Orcamento.Robo.Web\bin\Orcamento.Controller.pdb

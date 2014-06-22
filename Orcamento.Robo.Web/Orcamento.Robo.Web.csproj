@@ -533,6 +533,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Orcamento.Controller\Orcamento.Controller.csproj">
+      <Project>{701515a0-20b7-4565-af31-ad2df93cd465}</Project>
+      <Name>Orcamento.Controller</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Orcamento.Domain\Orcamento.Domain.csproj">
       <Project>{66d21d9a-dd04-4bd5-8ba4-a45be3b7f44c}</Project>
       <Name>Orcamento.Domain</Name>
