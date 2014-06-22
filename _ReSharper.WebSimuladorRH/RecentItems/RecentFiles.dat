@@ -1,6 +1,5 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Servico/d:OutrasDespesas/f:ServicoAtualizarDespesasOperacionais.cs" caret="324" fromTop="11" />
     <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/f:CentroDeCustoController.cs" caret="2354" fromTop="16" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Servico/d:OutrasDespesas/f:ServicoOrcamentoOperacional.cs" caret="0" fromTop="0" />
     <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/f:Web.config" caret="105" fromTop="0" />
@@ -19,17 +18,18 @@
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Index.cshtml" caret="0" fromTop="0" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:IProcessaCarga.cs" caret="234" fromTop="10" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/d:2014/f:AtualizarDepartamentoCentroDeCustoEConta.cs" caret="851" fromTop="25" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Contact.cshtml" caret="0" fromTop="0" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/f:Carga.cs" caret="1339" fromTop="18" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Robo/d:Carga/f:CargaFuncionarioTest.cs" caret="630" fromTop="20" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="1223" fromTop="6" />
+    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/f:App.config" caret="471" fromTop="10" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Status/f:Index.cshtml" caret="26" fromTop="0" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:_Layout.cshtml" caret="5160" fromTop="12" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Login/f:Index.cshtml" caret="4739" fromTop="136" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="168" fromTop="8" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:About.cshtml" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="1223" fromTop="6" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/f:App.config" caret="471" fromTop="10" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Contact.cshtml" caret="0" fromTop="0" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Web.config" caret="315" fromTop="7" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Bootstrapper.cs" caret="745" fromTop="20" />
   </RecentFiles>
   <RecentEdits>
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Controller/d:Viagem/f:CriarNovoOrcamentoTest.cs" caret="2438" fromTop="21" />
