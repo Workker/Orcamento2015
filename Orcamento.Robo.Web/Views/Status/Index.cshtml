@@ -1,0 +1,47 @@
+﻿@model Orcamento.Robo.Web.Models.Status.StatusListModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Status</h2>
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Nome do arquivo</th>
+            <th>Data/Hora do processo</th>
+            <th>Status do processo</th>
+            <th>Detalhes</th>
+    </thead>
+    <tbody>
+
+        @if (Model == null || Model.StatusList == null || Model.StatusList.Count <= 0)
+        {
+            <tr>
+                <td>Sem resuldatos</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+        else
+        {
+            foreach (var status in Model.StatusList.OrderBy(x => x.DataProcesso))
+            {
+            <tr>
+                <td>@status.NomeArquivo</td>
+                <td>@status.DataProcesso</td>
+                <td>@status.Status</td>
+                <td class="td-actions">
+                    <a href="javascript:;"@* onclick="GerarGrafico('@veiculo.IdEquipamento');"*@   class="btn btn-xs btn-primary">
+                        <i class="btn-icon-only icon-ok"></i>
+                    </a>
+                </td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

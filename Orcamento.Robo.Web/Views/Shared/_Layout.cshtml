@@ -1,57 +1,63 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-   @* @using Orcamento.Robo.Web*@
-    <meta charset="utf-8">
-    <title>Sistema de integração</title>
+    <head>
+        @using Orcamento.Robo.Web
+        
+        <title>Sistema de integração</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/bootstrap-responsive.min.css" rel="stylesheet">
+        @*  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">*@
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
 
-  @*  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">*@
-    <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
 
-    <link href="../css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
+        <link href="../css/base-admin-3.css" rel="stylesheet">
+        <link href="../css/base-admin-3-responsive.css" rel="stylesheet">
 
-    <link href="../css/base-admin-3.css" rel="stylesheet">
-    <link href="../css/base-admin-3-responsive.css" rel="stylesheet">
+        <link href="../css/pages/dashboard.css" rel="stylesheet">
 
-    <link href="../css/pages/dashboard.css" rel="stylesheet">
+        <link href="../css/custom.css" rel="stylesheet">
 
-    <link href="../css/custom.css" rel="stylesheet">
-
-    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
             <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
         <![endif]-->
-</head>
+    </head>
 
-<body>
+    <body>
+        
+        @if (!Request.IsAuthenticated)
+        {
+            Response.Redirect("/Login");
+        }
+       
+        <nav class="navbar navbar-inverse" role="navigation">
 
-    <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="icon-cog"></i>
+                    </button>
+                    <a class="navbar-brand" href="~/PosicoesDosVeiculos">Sistema de integração</a>
+                </div>
 
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="icon-cog"></i>
-                </button>
-                <a class="navbar-brand" href="~/PosicoesDosVeiculos">Sistema de integração</a>
-            </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        @*<li class="dropdown">*@
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-
-                        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+                        @*                        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-cog"></i>
                             Configurações
-				<b class="caret"></b>
+                                <b class="caret"></b>
                         </a>
 
                         <ul class="dropdown-menu">
@@ -61,158 +67,149 @@
                             <li><a href="javascript:;">Ajuda</a></li>
                         </ul>
 
-                    </li>
-
-                    <li class="dropdown">
-
-                        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i>
-                            Workker
-				<b class="caret"></b>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="javascript:;">Meu Perfil</a></li>
-                            <li><a href="javascript:;">Meus Grupos</a></li>
-                            <li class="divider"></li>
-                            <li><a href="~/Login">Sair</a></li>
-                        </ul>
-
-                    </li>
-                </ul>
-
-               @* <form class="navbar-form navbar-right" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control input-sm search-query" placeholder="Pesquisa">
-                    </div>
-                </form>*@
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <div class="subnavbar">
-
-        <div class="subnavbar-inner">
-
-            <div class="container">
-
-                <a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="icon-reorder"></i>
-
-                </a>
-
-                <div id="DivMenu" class="collapse subnav-collapse">
-                    <ul class="mainnav">
-
-                        <li class="active">
-                            <a href="~/PosicoesDosVeiculos">
-                                <i class="icon-home"></i>
-                                <span>Principal</span>
-                            </a>
-                        </li>
+                    </li>*@
 
                         <li class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-copy"></i>
-                                <span>Configurar</span>
+
+                            <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user"></i>
+                                @User.Identity.Name
                                 <b class="caret"></b>
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li><a href="~/Importar">Importar Planilha</a></li>
-                                <li><a href="~/Exportar">Importar Planilha</a></li>
+                                <li><a href="~/Login/Logout">Sair</a></li>
                             </ul>
-                        </li>
 
-                        <li class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-dashboard"></i>
-                                <span>Monitoramento</span>
-                                <b class="caret"></b>
-                            </a>
-
-                            <ul class="dropdown-menu">
-                                 <li><a href="~/Fila">Status importação</a></li>
-                            </ul>
                         </li>
                     </ul>
                 </div>
-                <!-- /.subnav-collapse -->
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <div class="subnavbar">
+
+            <div class="subnavbar-inner">
+
+                <div class="container">
+
+                    <a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="icon-reorder"></i>
+
+                    </a>
+
+                    <div id="DivMenu" class="collapse subnav-collapse">
+                        <ul class="mainnav">
+
+                            <li class="active">
+                                <a href="~/Login">
+                                    <i class="icon-home"></i>
+                                    <span>Principal</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-copy"></i>
+                                    <span>Configurar</span>
+                                    <b class="caret"></b>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Importar">Importar Planilha</a></li>
+                                    <li><a href="~/Exportar">Importar Planilha</a></li>
+                                </ul>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-dashboard"></i>
+                                    <span>Monitoramento</span>
+                                    <b class="caret"></b>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Status">Status importação</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.subnav-collapse -->
+
+                </div>
+                <!-- /container -->
+
+            </div>
+            <!-- /subnavbar-inner -->
+
+        </div>
+        <!-- /subnavbar -->
+
+
+        <div class="main">
+
+            <div class="container">
+         
+                <div id="messagewrapper" style="display: block">
+                        @Html.RenderMessages()
+                </div>
+
+                @RenderBody()
 
             </div>
             <!-- /container -->
 
         </div>
-        <!-- /subnavbar-inner -->
-
-    </div>
-    <!-- /subnavbar -->
+        <!-- /main -->
 
 
-    <div class="main">
+        <div class="footer">
 
-        <div class="container">
-          @*  <div id="messagewrapper" style="display: block">
-                @Html.RenderMessages()
-            </div>*@
+            <div class="container">
 
+                <div class="row">
 
-            @RenderBody()
+                    <div id="footer-copyright" class="col-md-6">
+                        &copy; 2012-13 Workker.
+                    </div>
+                    <!-- /span6 -->
 
-        </div>
-        <!-- /container -->
+                    <div id="footer-terms" class="col-md-6">
+                        Powered by <a href="http://workker.com.br" target="_blank">Workker</a>
+                    </div>
+                    <!-- /.span6 -->
 
-    </div>
-    <!-- /main -->
-
-
-    <div class="footer">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div id="footer-copyright" class="col-md-6">
-                    &copy; 2012-13 Workker.
                 </div>
-                <!-- /span6 -->
-
-                <div id="footer-terms" class="col-md-6">
-                    Powered by <a href="http://workker.com.br" target="_blank">Workker</a>
-                </div>
-                <!-- /.span6 -->
+                <!-- /row -->
 
             </div>
-            <!-- /row -->
+            <!-- /container -->
 
         </div>
-        <!-- /container -->
+        <!-- /footer -->
 
-    </div>
-    <!-- /footer -->
+        <!-- Le javascript
+            ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="../js/libs/jquery-1.9.1.min.js"></script>
+        @*<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>*@
+        <script src="../js/libs/jquery-ui-1.10.0.custom.min.js"></script>
+        <script src="../js/libs/bootstrap.min.js"></script>
 
-    <!-- Le javascript
-================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../js/libs/jquery-1.9.1.min.js"></script>
-    @*<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.min.js"></script>*@
-    <script src="../js/libs/jquery-ui-1.10.0.custom.min.js"></script>
-    <script src="../js/libs/bootstrap.min.js"></script>
+        <script src="../js/plugins/flot/jquery.flot.js"></script>
+        <script src="../js/plugins/flot/jquery.flot.pie.js"></script>
+        <script src="../js/plugins/flot/jquery.flot.resize.js"></script>
+        <script src="../../Scripts/DocumentReady.js"></script>
+        <script src="../js/Application.js"></script>
 
-    <script src="../js/plugins/flot/jquery.flot.js"></script>
-    <script src="../js/plugins/flot/jquery.flot.pie.js"></script>
-    <script src="../js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="../../Scripts/DocumentReady.js"></script>
-    <script src="../js/Application.js"></script>
+        <script src="../js/charts/area.js"></script>
+        <script src="../js/charts/donut.js"></script>
+        @* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyConwsXIxSLnOIZHHHAbZtJo3w2opELm7I&sensor=false"></script>*@
 
-    <script src="../js/charts/area.js"></script>
-    <script src="../js/charts/donut.js"></script>
-   @* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyConwsXIxSLnOIZHHHAbZtJo3w2opELm7I&sensor=false"></script>*@
+        @*  @Scripts.Render("~/bundless/otf")*@
 
-    @*  @Scripts.Render("~/bundless/otf")*@
-
-</body>
+    </body>
 </html>

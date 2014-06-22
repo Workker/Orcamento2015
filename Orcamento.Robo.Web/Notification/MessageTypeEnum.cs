@@ -1,4 +1,4 @@
-﻿namespace Workker.Telemetria.Web
+﻿namespace Orcamento.Robo.Web
 {
     public enum MessageTypeEnum
     {
