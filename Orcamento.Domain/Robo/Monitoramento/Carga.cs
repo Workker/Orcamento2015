@@ -46,5 +46,10 @@ namespace Orcamento.Domain.Entities.Monitoramento
         {
             _processaCarga.Processar(this);
         }
+
+        public virtual bool Ok()
+        {
+            return this.Detalhes != null && this.Detalhes.Count > 0;
+        }
     }
 }

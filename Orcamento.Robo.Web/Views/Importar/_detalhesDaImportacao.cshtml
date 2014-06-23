@@ -1,0 +1,42 @@
+﻿@model Orcamento.Robo.Web.Models.Importar.DetalhesDaImportacaoModel
+
+<div id="Principal">
+    @if (Model.ImportacaoOk)
+    {
+        <label>Importacao Realizada com Sucesso.</label>
+    }
+    else
+    {
+        <label>Importacao nao foi realizada, por favor verifique os erros.</label>
+    }
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>Erro</th>
+                <th>Descricao</th>
+                <th>Linha do Excel</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.ImportacaoOk)
+            {
+                foreach (var detalhe in Model.Detalhes)
+                {
+                <tr>
+                    <td>@detalhe.Nome</td>
+                    <td>@detalhe.Descricao</td>
+                    <td>@detalhe.Linha</td>
+                </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td>Sem resuldatos</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

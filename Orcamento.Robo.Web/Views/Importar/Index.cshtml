@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="filtroCliente" class="col-lg-1">Tipo de Importacao</label>
                         <div class="col-lg-4">
-                            <select id="IdCliente" name="IdCliente" onchange="FiltrarVeiculos();" class="form-control">
+                            <select id="IdTipo" name="IdTipo" onchange="FiltrarVeiculos();" class="form-control">
                                 <option value="">Select...</option>
                                 @foreach (var importacao in Model.TiposImportacao)
                                 {
@@ -49,16 +49,16 @@
                             <button type="submit" onclick="ObterLayout();" class="btn btn-success"><i class="icon-ok"></i>ObterLayoutDeCarga</button>&nbsp;&nbsp;
                         </div>
                     </div>
-
+                     <div id="Principal">
+                       
+                    </div>
 @*                    <div class="form-group">
                         <div class="col-lg-2">
                             <button type="submit" onclick="posicionarVeiculosELinhas();" class="btn btn-success"><i class="icon-ok"></i>Todos os veículos e linhas</button>&nbsp;&nbsp;
                         </div>
                     </div>
 
-                    <div id="Principal">
-                       
-                    </div>*@
+                   *@
                 </div>
 
             </div>
@@ -94,8 +94,9 @@
             url: "/Importar/Importar",
             type: "POST",
             cache: false,
-            data: { Id: id }
-        }).success(function () {
+            data: { Tipo: id }
+        }).success(function (detalhes) {
+            $('#Principal').replaceWith(detalhes);
         });
   
     }

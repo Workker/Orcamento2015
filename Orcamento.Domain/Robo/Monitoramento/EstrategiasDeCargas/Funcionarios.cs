@@ -38,32 +38,31 @@ namespace Orcamento.Domain.Entities.Monitoramento
             var departamentos = new List<Departamento>();
             var centros = new List<CentroDeCusto>();
             var centrosNaoEncontrados = new List<string>();
+
             foreach (var funcionarioExcel in funcionarios)
             {
                 if (!departamentos.Any(d => d.Nome == funcionarioExcel.Departamento))
                 {
-                    var setor = setores.ObterPor(funcionarioExcel.Departamento);
-                    if (setor == null)
-                        throw new Exception();
-                    departamentos.Add(setor);
+                    var setorCarga = setores.ObterPor(funcionarioExcel.Departamento);
+
+                    if (setorCarga == null)
+                        carga.AdicionarDetalhe("Hospital/Setor nao encontrado", "Hospital/Setor: " + funcionarioExcel.Departamento + " inexistente.", funcionarioExcel.Linha);
+                    else
+                        departamentos.Add(setorCarga);
                 }
 
                 if (!centros.Any(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto))
                 {
-                    var centroR = centrosDeCusto.ObterPor(funcionarioExcel.CodigoCentroDeCusto);
+                    var centroCarga = centrosDeCusto.ObterPor(funcionarioExcel.CodigoCentroDeCusto);
 
-                    if (centroR == null)
-                        centrosNaoEncontrados.Add(funcionarioExcel.CodigoCentroDeCusto);
+                    if (centroCarga == null)
+                        carga.AdicionarDetalhe("Centro de custo nao encontrado", "centro de custo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha);
                     else
-                    {
-                        centros.Add(centroR);
-                    }
+                        centros.Add(centroCarga);
 
                 }
 
             }
-
-            List<string> centrosNaoEncontradosNew = new List<string>();
 
             foreach (var funcionarioExcel in funcionarios)
             {
@@ -74,7 +73,12 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 if (centro == null)
                 {
                     carga.AdicionarDetalhe("Centro de custo nulo", "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha);
-                    centrosNaoEncontradosNew.Add(funcionarioExcel.CodigoCentroDeCusto);
+                    continue;
+                }
+                
+                if (centro == null)
+                {
+                    carga.AdicionarDetalhe("Centro de custo nulo", "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha);
                     continue;
                 }
                 var funcionario = new Funcionario(setor);
@@ -116,11 +120,9 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
                 centro.Adicionar(funcionario);
             }
-            var teste = centrosNaoEncontradosNew.Distinct();
 
-
-
-          //  centrosDeCusto.SalvarLista(centros);
+            if(carga.Ok())
+              centrosDeCusto.SalvarLista(centros);
         }
 
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios)

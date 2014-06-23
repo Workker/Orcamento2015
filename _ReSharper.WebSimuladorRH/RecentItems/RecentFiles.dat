@@ -1,40 +1,37 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Index.cshtml" caret="0" fromTop="0" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/f:App.config" caret="471" fromTop="10" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Exportar/f:ExportarModel.cs" caret="177" fromTop="8" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Bootstrapper.cs" caret="745" fromTop="20" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/d:2014/f:AtualizarDepartamentoCentroDeCustoEConta.cs" caret="851" fromTop="25" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Contact.cshtml" caret="0" fromTop="0" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Login/f:LoginModel.cs" caret="967" fromTop="24" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Status/f:StatusController.cs" caret="268" fromTop="9" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/f:LoginController.cs" caret="249" fromTop="10" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Importar/f:ImportarController.cs" caret="2795" fromTop="20" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Exportar/f:ExportarController.cs" caret="231" fromTop="8" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/f:HomeController.cs" caret="193" fromTop="8" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Importar/f:ImportarModel.cs" caret="255" fromTop="10" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:TipoEstrategiaDeCargaEnumcs.cs" caret="120" fromTop="5" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:UsuarioEDepartamento.cs" caret="0" fromTop="0" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:TicketDeProducao.cs" caret="0" fromTop="0" />
     <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/f:FuncionarioController.cs" caret="0" fromTop="0" />
     <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/f:DespesaOperacionalController.cs" caret="0" fromTop="0" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="2976" fromTop="0" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Web.config" caret="315" fromTop="7" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Fabricas/f:FabricaDeImportacao.cs" caret="526" fromTop="16" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/f:Carga.cs" caret="1165" fromTop="8" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/f:Detalhe.cs" caret="349" fromTop="12" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="3319" fromTop="23" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Importar/f:ImportarController.cs" caret="2668" fromTop="7" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="3629" fromTop="30" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:_detalhesDaImportacao.cshtml" caret="115" fromTop="3" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Importar/f:DetalhesDaImportacaoModel.cs" caret="286" fromTop="11" />
+    <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/d:Robo/f:ImportarController.cs" caret="601" fromTop="16" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:IProcessaCarga.cs" caret="234" fromTop="10" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Importar/f:ImportarModel.cs" caret="452" fromTop="15" />
+    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Robo/d:Carga/f:CargaFuncionarioTest.cs" caret="639" fromTop="20" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Status/f:Index.cshtml" caret="0" fromTop="0" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:_Layout.cshtml" caret="5160" fromTop="12" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Login/f:Index.cshtml" caret="0" fromTop="0" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:About.cshtml" caret="0" fromTop="0" />
-    <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/d:Robo/f:ImportarController.cs" caret="597" fromTop="16" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/f:Carga.cs" caret="1356" fromTop="20" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:IProcessaCarga.cs" caret="234" fromTop="10" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:Robo/d:Carga/f:CargaFuncionarioTest.cs" caret="648" fromTop="20" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Fabricas/f:FabricaDeImportacao.cs" caret="526" fromTop="16" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="1900" fromTop="22" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Contact.cshtml" caret="0" fromTop="0" />
   </RecentFiles>
   <RecentEdits>
-    <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/f:OrcamentoDeProducao.aspx.cs" caret="31484" fromTop="21" />
-    <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/f:FuncionarioController.cs" caret="1989" fromTop="22" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Mappings/d:Entidades/f:FuncionarioMap.cs" caret="1126" fromTop="28" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/f:NHibernateSessionPerRequest.cs" caret="1482" fromTop="17" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/f:Funcionarios.cs" caret="3043" fromTop="43" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Mappers/f:FuncionarioDTO.cs" caret="1348" fromTop="17" />
@@ -51,7 +48,6 @@
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Web.config" caret="1247" fromTop="19" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:_Layout.cshtml" caret="5124" fromTop="11" />
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/f:App.config" caret="1421" fromTop="26" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="2715" fromTop="17" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:TipoEstrategiaDeCargaEnumcs.cs" caret="259" fromTop="10" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Importar/f:ImportarModel.cs" caret="232" fromTop="8" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Fabricas/f:FabricaDeImportacao.cs" caret="619" fromTop="19" />
@@ -59,8 +55,12 @@
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Exportar/f:ExportarController.cs" caret="231" fromTop="8" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Status/f:StatusController.cs" caret="268" fromTop="9" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/f:LoginController.cs" caret="249" fromTop="10" />
-    <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/d:Robo/f:ImportarController.cs" caret="472" fromTop="14" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Importar/f:ImportarController.cs" caret="3019" fromTop="27" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="1832" fromTop="16" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="5725" fromTop="12" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/f:Carga.cs" caret="1498" fromTop="20" />
+    <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/d:Robo/f:ImportarController.cs" caret="633" fromTop="17" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Importar/f:ImportarController.cs" caret="3247" fromTop="18" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="3629" fromTop="30" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:_detalhesDaImportacao.cshtml" caret="178" fromTop="5" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Importar/f:DetalhesDaImportacaoModel.cs" caret="579" fromTop="20" />
   </RecentEdits>
 </RecentFiles>

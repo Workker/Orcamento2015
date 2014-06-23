@@ -109,19 +109,30 @@ namespace Orcamento.Robo.Web.Controllers.Importar
 
         [HttpPost]
         [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
-        public ActionResult Importar(TipoImportacaoModel model)
+        public ActionResult Importar(TipoEstrategiaDeCargaEnum tipo)
         {
             try
             {
                 Orcamento.Controller.Robo.ImportarController controller = new Controller.Robo.ImportarController();
-                controller.ImportarCarga(model.Id);
+                var carga = controller.ImportarCarga(tipo);
 
-                return View(model);
+                DetalhesDaImportacaoModel detalhes = new DetalhesDaImportacaoModel();
+
+                TransformarDetalhes(carga, detalhes);
+                return PartialView("_detalhesDaImportacao", detalhes);
             }
             catch (Exception ex)
             {
                 this.ShowMessage(MessageTypeEnum.danger, ex.Message);
-                return View( model);
+                return PartialView("_detalhesDaImportacao", null);
+            }
+        }
+
+        private void TransformarDetalhes(Domain.Entities.Monitoramento.Carga carga, DetalhesDaImportacaoModel detalhes)
+        {
+            foreach (var detalhe in carga.Detalhes)
+            {
+                detalhes.Detalhes.Add(new DetalheImportacaoModel() { Nome = detalhe.Nome, Descricao = detalhe.Descricao, Linha = detalhe.Linha });
             }
         }
     }

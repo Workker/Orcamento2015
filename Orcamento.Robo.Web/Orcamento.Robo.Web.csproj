@@ -195,6 +195,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Exportar\ExportarModel.cs" />
+    <Compile Include="Models\Importar\DetalhesDaImportacaoModel.cs" />
     <Compile Include="Models\Status\StatusModel.cs" />
     <Compile Include="Models\HtmlHelperExtensions.cs" />
     <Compile Include="Models\Importar\ImportarModel.cs" />
@@ -524,6 +525,7 @@
     <Content Include="Views\Status\Index.cshtml" />
     <Content Include="Views\Exportar\Index.cshtml" />
     <Content Include="Views\Importar\Index.cshtml" />
+    <Content Include="Views\Importar\_detalhesDaImportacao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
