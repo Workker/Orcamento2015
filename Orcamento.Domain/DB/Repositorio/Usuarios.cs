@@ -10,7 +10,7 @@ namespace Orcamento.Domain.DB.Repositorio
         {
             return Session.QueryOver<Usuario>().Where(x => x.Login == login).And(y => y.Senha == senha).SingleOrDefault();
         }
-
+        
         public virtual List<Usuario> ObterPor(Departamento departamento)
         {
             return Session.QueryOver<Usuario>().JoinQueryOver(d => d.Departamentos).Where(u => u.ToList().Any(ui => ui.Id == departamento.Id)).List<Usuario>().ToList();

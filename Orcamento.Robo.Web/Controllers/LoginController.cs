@@ -29,7 +29,7 @@ namespace Orcamento.Robo.Web.Controllers
                 }
                 else
                 {
-                    this.ShowMessage(MessageTypeEnum.danger, "Usuário e Senha invalido");
+                    this.ShowMessage(MessageTypeEnum.danger, "Usuário não existe ou não tem autorização para acessar o sistema");
                 }
             }
             return View(user);

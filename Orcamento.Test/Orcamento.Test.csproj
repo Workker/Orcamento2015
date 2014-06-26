@@ -256,6 +256,7 @@
     <Compile Include="Mappings\TicketDeOrcamentoMapTest.cs" />
     <Compile Include="Repositorio\GrupoDeContaTeste.cs" />
     <Compile Include="Robo\Carga\CargaFuncionarioTest.cs" />
+    <Compile Include="Robo\Carga\InserirCargaTeste.cs" />
     <Compile Include="Servico\ServicoCriarOrcamentoHospitalarTest.cs" />
     <Compile Include="Servico\ServicoCriarOrcamentoOperacionalTest.cs" />
     <Compile Include="Servico\ServicoGerarOrcamentoPessoalPorDepartamentoECentroDeCustoTeste.cs" />

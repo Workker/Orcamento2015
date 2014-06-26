@@ -28,9 +28,16 @@ namespace Orcamento.Robo.Web.Models.Login
             var usuario = usuarios.ObterAcesso(login, senha);
 
             //Melhorar
-            Nome = usuario != null ?  usuario.Nome : string.Empty;
+            if (usuario == null || usuario.TipoUsuario.Id != (int) TipoUsuarioEnum.Administrador)
+            {
+                return false;
+            }
+            else
+            {
+                Nome = usuario.Nome;
 
-            return usuario != null ;
+                return true;
+            }
         }
     }
 }

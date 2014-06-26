@@ -1,5 +1,0 @@
-B:\Documents\Orcamento2014\Orcamento.Test.Regressao\bin\x86\Release\Orcamento.Test.Regressao.dll
-B:\Documents\Orcamento2014\Orcamento.Test.Regressao\bin\x86\Release\nunit.framework.dll
-B:\Documents\Orcamento2014\Orcamento.Test.Regressao\bin\x86\Release\WebDriver.dll
-B:\Documents\Orcamento2014\Orcamento.Test.Regressao\obj\x86\Release\Orcamento.Test.Regressao.dll
-B:\Documents\Orcamento2014\Orcamento.Test.Regressao\obj\x86\Release\Orcamento.Test.Regressao.csprojResolveAssemblyReference.cache

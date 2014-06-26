@@ -17,6 +17,7 @@ namespace Orcamento.Robo.Web.Models.Importar
     public class DetalhesDaImportacaoModel
     {
         public List<DetalheImportacaoModel> Detalhes { get; set; }
+
         public bool ImportacaoOk
         {
             get { return this.Detalhes == null || this.Detalhes.Count == 0; }

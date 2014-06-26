@@ -14,6 +14,7 @@ namespace Orcamento.Domain.DB.Mappings.Entidades.Robo
             Id(x => x.Id).GeneratedBy.Guid();
             Map(x => x.Nome);
             Map(x => x.Descricao);
+            Map(x => x.Linha);
         }
     }
 }

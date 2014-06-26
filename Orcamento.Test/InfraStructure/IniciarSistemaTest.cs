@@ -749,10 +749,10 @@ namespace Orcamento.Test.InfraStructure
         private void BuildSchema(Configuration config)
         {
             new SchemaExport(config)
-                .Drop(true, false);
+                .Drop(false, false);
 
             new SchemaExport(config)
-                .Create(true, true);
+                .Create(true, false);
         }
 
         public void InserirContas(Departamento setor)

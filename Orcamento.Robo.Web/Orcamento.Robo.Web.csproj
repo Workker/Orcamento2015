@@ -187,7 +187,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\Exportar\ExportarController.cs" />
-    <Compile Include="Controllers\Status\StatusController.cs" />
+    <Compile Include="Controllers\Carga\CargaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Importar\ImportarController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -196,7 +196,7 @@
     </Compile>
     <Compile Include="Models\Exportar\ExportarModel.cs" />
     <Compile Include="Models\Importar\DetalhesDaImportacaoModel.cs" />
-    <Compile Include="Models\Status\StatusModel.cs" />
+    <Compile Include="Models\Carga\CargaModel.cs" />
     <Compile Include="Models\HtmlHelperExtensions.cs" />
     <Compile Include="Models\Importar\ImportarModel.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
@@ -290,6 +290,12 @@
     <Content Include="css\ui-lightness\images\ui-icons_ffffff_256x240.png" />
     <Content Include="css\ui-lightness\jquery-ui-1.10.0.custom.css" />
     <Content Include="css\ui-lightness\jquery-ui-1.10.0.custom.min.css" />
+    <Content Include="css\ui-lightness\jquery-ui-1.10.4.custom.css" />
+    <Content Include="css\ui-lightness\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="Docs\InsertCarga.sql" />
+    <Content Include="Docs\InsertDetalhes.sql" />
+    <Content Include="Docs\ScriptTabelaCarga.sql" />
+    <Content Include="Docs\ScriptTabelaDetalhe.sql" />
     <Content Include="favicon.ico" />
     <Content Include="font\fontawesome-webfont.svg" />
     <Content Include="font\glyphicons-halflings-regular.svg" />
@@ -358,6 +364,9 @@
     <Content Include="js\demo\sliders.js" />
     <Content Include="js\demo\validation.js" />
     <Content Include="js\infobox.js" />
+    <Content Include="js\jquery-1.10.2.js" />
+    <Content Include="js\jquery-ui-1.10.4.custom.js" />
+    <Content Include="js\jquery-ui-1.10.4.custom.min.js" />
     <Content Include="js\jquery.reveal.js" />
     <Content Include="js\jquery.timer.js" />
     <Content Include="js\libs\bootstrap.js" />
@@ -522,10 +531,11 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Carga\Index.cshtml" />
     <Content Include="Views\Exportar\Index.cshtml" />
     <Content Include="Views\Importar\Index.cshtml" />
     <Content Include="Views\Importar\_detalhesDaImportacao.cshtml" />
+    <Content Include="Views\Carga\_DetalheCarga.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

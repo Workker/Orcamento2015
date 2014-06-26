@@ -1,6 +1,5 @@
-B:\Documents\Orcamento2014\Orcamento.InfraStructure\bin\x86\Debug\Orcamento.InfraStructure.dll
-B:\Documents\Orcamento2014\Orcamento.InfraStructure\bin\x86\Debug\Orcamento.InfraStructure.pdb
-B:\Documents\Orcamento2014\Orcamento.InfraStructure\bin\x86\Debug\log4net.dll
-B:\Documents\Orcamento2014\Orcamento.InfraStructure\obj\x86\Debug\Orcamento.InfraStructure.dll
-B:\Documents\Orcamento2014\Orcamento.InfraStructure\obj\x86\Debug\Orcamento.InfraStructure.pdb
-B:\Documents\Orcamento2014\Orcamento.InfraStructure\obj\x86\Debug\Orcamento.InfraStructure.csprojResolveAssemblyReference.cache
+D:\ProjectsWorkker\Orcamento2015\Orcamento.InfraStructure\bin\x86\Debug\Orcamento.InfraStructure.dll
+D:\ProjectsWorkker\Orcamento2015\Orcamento.InfraStructure\bin\x86\Debug\Orcamento.InfraStructure.pdb
+D:\ProjectsWorkker\Orcamento2015\Orcamento.InfraStructure\bin\x86\Debug\log4net.dll
+D:\ProjectsWorkker\Orcamento2015\Orcamento.InfraStructure\obj\x86\Debug\Orcamento.InfraStructure.dll
+D:\ProjectsWorkker\Orcamento2015\Orcamento.InfraStructure\obj\x86\Debug\Orcamento.InfraStructure.pdb

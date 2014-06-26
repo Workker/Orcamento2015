@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NHibernate;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
@@ -50,6 +51,25 @@ namespace Orcamento.Domain.DB.Repositorio
                 throw ex;
             }
         }
+
+
+
+        public virtual void Salvar(IAggregateRoot<Guid> root)
+        {
+            var transaction = Session.BeginTransaction();
+
+            try
+            {
+                Session.SaveOrUpdate(root);
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+        }
+
 
         public virtual void SalvarAndFlush(IAggregateRoot<int> root)
         {

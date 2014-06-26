@@ -29,7 +29,9 @@ namespace Orcamento.Domain.Entities.Monitoramento
         public virtual DateTime DataFim { get; set; }
         public virtual string Diretorio { get; set; }
         public virtual Usuario Usuario { get; set; }
-        public virtual IList<Detalhe> Detalhes { get; set; }
+        public virtual string Status { get; set; } //Altera 
+        public virtual string NomeArquivo { get; set; }
+        public virtual IList<Detalhe> Detalhes { get; set; }   
 
         public virtual void AdicionarDetalhe(string nome, string descricao, int linha)
         {

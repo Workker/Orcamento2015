@@ -266,6 +266,7 @@
     <Compile Include="DB\Repositorio\Interfaces\IContas.cs" />
     <Compile Include="DB\Repositorio\Insumos.cs" />
     <Compile Include="DB\Repositorio\Interfaces\IDiarias.cs" />
+    <Compile Include="DB\Repositorio\Interfaces\Robo\ICargas.cs" />
     <Compile Include="DB\Repositorio\Interfaces\Tickets.cs" />
     <Compile Include="DB\Repositorio\Interfaces\IOrcamentos.cs" />
     <Compile Include="DB\Repositorio\Interfaces\ITicketsDeViagens.cs" />
@@ -276,6 +277,7 @@
     <Compile Include="DB\Repositorio\Orcamentos.cs" />
     <Compile Include="DB\Repositorio\OrcamentosDeViagens.cs" />
     <Compile Include="DB\Repositorio\OrcamentosOperacionaisVersoes.cs" />
+    <Compile Include="DB\Repositorio\Robo\Cargas.cs" />
     <Compile Include="DB\Repositorio\Setores.cs" />
     <Compile Include="DB\Repositorio\SetoresHospitalares.cs" />
     <Compile Include="DB\Repositorio\Tickets.cs" />

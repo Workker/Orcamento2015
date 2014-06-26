@@ -1,0 +1,30 @@
+﻿@model Orcamento.Robo.Web.Models.Carga.CargaModel
+
+
+<h2>Detalhe</h2>
+
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>Linha do arquivo</th>
+            <th>Nome do arquivo</th>
+            <th>Descrição</th>
+
+    </thead>
+    <tbody>
+
+        @if (Model != null && Model.Detalhes != null)
+        {
+
+            foreach (var detalhe in Model.Detalhes)
+            {
+        
+            <tr>
+                <td>@detalhe.Linha</td>
+                <td>@detalhe.Nome </td>
+                <td>@detalhe.Descricao</td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>

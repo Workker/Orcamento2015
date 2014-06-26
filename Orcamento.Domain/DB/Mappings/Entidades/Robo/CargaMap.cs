@@ -18,6 +18,8 @@ namespace Orcamento.Domain.Mapping.Entities
             Map(x => x.DataFim);
             Map(x => x.DataInicio);
             Map(x => x.Diretorio);
+            Map(x => x.Status);
+            Map(x => x.NomeArquivo);
             References(x => x.Usuario);
             HasMany(x => x.Detalhes).Cascade.AllDeleteOrphan().LazyLoad();
         }
