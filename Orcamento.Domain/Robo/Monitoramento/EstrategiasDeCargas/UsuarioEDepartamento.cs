@@ -10,6 +10,7 @@ namespace Orcamento.Domain.Robo.Monitoramento
     {
         public void Processar(Carga carga)
         {
+            //aaa
             throw new NotImplementedException();
         }
     }
