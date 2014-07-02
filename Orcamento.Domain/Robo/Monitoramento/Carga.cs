@@ -33,13 +33,13 @@ namespace Orcamento.Domain.Entities.Monitoramento
         public virtual string NomeArquivo { get; set; }
         public virtual IList<Detalhe> Detalhes { get; set; }   
 
-        public virtual void AdicionarDetalhe(string nome, string descricao, int linha)
+        public virtual void AdicionarDetalhe(string nome, string descricao, int linha, TipoDetalheEnum detalheEnum)
         {
 
             if (Detalhes == null)
                 Detalhes = new List<Detalhe>();
 
-            var detalhe = new Detalhe() { Nome = nome, Descricao = descricao , Linha = linha};
+            var detalhe = new Detalhe() { Nome = nome, Descricao = descricao , Linha = linha, TipoDetalhe = detalheEnum};
 
             Detalhes.Add(detalhe);
         }
@@ -51,7 +51,8 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         public virtual bool Ok()
         {
-            return this.Detalhes != null && this.Detalhes.Count > 0;
+            return this.Detalhes == null || this.Detalhes.Count == 0 || this.Detalhes.Where(d=> d.TipoDetalhe == TipoDetalheEnum.erro) != null
+                && this.Detalhes.Where(d=> d.TipoDetalhe == TipoDetalheEnum.erro).Count() == 0;
         }
     }
 }

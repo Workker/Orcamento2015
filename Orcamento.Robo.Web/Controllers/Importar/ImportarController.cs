@@ -113,7 +113,7 @@ namespace Orcamento.Robo.Web.Controllers.Importar
         {
             try
             {
-                Orcamento.Controller.Robo.ImportarController controller = new Controller.Robo.ImportarController();
+                var controller = new Controller.Robo.ImportarController();
                 var carga = controller.ImportarCarga(tipo);
 
                 DetalhesDaImportacaoModel detalhes = new DetalhesDaImportacaoModel();
@@ -132,7 +132,7 @@ namespace Orcamento.Robo.Web.Controllers.Importar
         {
             foreach (var detalhe in carga.Detalhes)
             {
-                detalhes.Detalhes.Add(new DetalheImportacaoModel() { Nome = detalhe.Nome, Descricao = detalhe.Descricao, Linha = detalhe.Linha });
+                detalhes.Detalhes.Add(new DetalheImportacaoModel() { Nome = detalhe.Nome, Descricao = detalhe.Descricao, Linha = detalhe.Linha,Tipo = detalhe.TipoDetalhe});
             }
         }
     }

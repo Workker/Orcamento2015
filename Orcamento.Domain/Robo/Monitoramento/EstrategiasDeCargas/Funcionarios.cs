@@ -26,7 +26,6 @@ namespace Orcamento.Domain.Entities.Monitoramento
             public double Salario { get; set; }
         }
 
-        //D:\\cargaorcamento2014\\FuncionariosCoorporativoComplementar.xls
         public void Processar(Carga carga)
         {
             var funcionarios = new List<FuncionarioExcel>();
@@ -46,7 +45,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
                     var setorCarga = setores.ObterPor(funcionarioExcel.Departamento);
 
                     if (setorCarga == null)
-                        carga.AdicionarDetalhe("Hospital/Setor nao encontrado", "Hospital/Setor: " + funcionarioExcel.Departamento + " inexistente.", funcionarioExcel.Linha);
+                        carga.AdicionarDetalhe("Hospital/Setor nao encontrado", "Hospital/Setor: " + funcionarioExcel.Departamento + " inexistente.", funcionarioExcel.Linha,TipoDetalheEnum.erro);
                     else
                         departamentos.Add(setorCarga);
                 }
@@ -56,7 +55,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
                     var centroCarga = centrosDeCusto.ObterPor(funcionarioExcel.CodigoCentroDeCusto);
 
                     if (centroCarga == null)
-                        carga.AdicionarDetalhe("Centro de custo nao encontrado", "centro de custo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha);
+                        carga.AdicionarDetalhe("Centro de custo nao encontrado", "centro de custo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                     else
                         centros.Add(centroCarga);
 
@@ -72,49 +71,49 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
                 if (centro == null)
                 {
-                    carga.AdicionarDetalhe("Centro de custo nulo", "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Centro de custo nulo", "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                     continue;
                 }
                 
                 if (centro == null)
                 {
-                    carga.AdicionarDetalhe("Centro de custo nulo", "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Centro de custo nulo", "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                     continue;
                 }
                 var funcionario = new Funcionario(setor);
 
                 if (funcionarioExcel.Ano == default(int))
-                    carga.AdicionarDetalhe("Ano não preenchido", "Ano do funcionário não preenchido", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Ano não preenchido", "Ano do funcionário não preenchido", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                 else
                     funcionario.AnoAdmissao = funcionarioExcel.Ano;
 
                 if (string.IsNullOrEmpty(funcionarioExcel.Funcao))
-                    carga.AdicionarDetalhe("Função não preenchida", "Função do funcionário não preenchida", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Função não preenchida", "Função do funcionário não preenchida", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                 else
                     funcionario.Cargo = funcionarioExcel.Funcao;
 
                 if (funcionarioExcel.Mes == default(int))
-                    carga.AdicionarDetalhe("Mês não preenchido", "Mês do funcionário não preenchido", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Mês não preenchido", "Mês do funcionário não preenchido", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                 else
                     funcionario.DataAdmissao = funcionarioExcel.Mes;
 
                 if (string.IsNullOrEmpty(funcionarioExcel.NumeroMatricula))
-                    carga.AdicionarDetalhe("Número de matrícula não preenchido", "Número de matrícula não preenchido", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Número de matrícula não preenchido", "Número de matrícula não preenchido", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                 else
                     funcionario.Matricula = funcionarioExcel.NumeroMatricula;
 
                 if (string.IsNullOrEmpty(funcionarioExcel.Nome))
-                    carga.AdicionarDetalhe("Nome não Preenchido", "Nome não Preenchido", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Nome não Preenchido", "Nome não Preenchido", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                 else
                     funcionario.Nome = funcionarioExcel.Nome;
 
                 if (funcionarioExcel.Salario == default(double))
-                    carga.AdicionarDetalhe("Salário não preenchido", "Salário não preenchido", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Salário não preenchido", "Salário não preenchido", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                 else
                     funcionario.Salario = funcionarioExcel.Salario;
 
                 if (funcionarioExcel.NumeroVaga == default(int))
-                    carga.AdicionarDetalhe("Número de vaga não preenchido", "Número de vaga não preenchido", funcionarioExcel.Linha);
+                    carga.AdicionarDetalhe("Número de vaga não preenchido", "Número de vaga não preenchido", funcionarioExcel.Linha, TipoDetalheEnum.erro);
                 else
                     funcionario.NumeroDeVaga = funcionarioExcel.NumeroVaga;
 

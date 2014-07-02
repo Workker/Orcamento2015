@@ -11,5 +11,17 @@ namespace Orcamento.Domain.Robo.Monitoramento
         public virtual string Nome { get; set; }
         public virtual string Descricao { get; set; }
         public virtual int Linha { get; set; }
+        public virtual TipoDetalheEnum TipoDetalhe { get; set; }
+
+        public  Detalhe()
+        {
+        }
+    }
+
+    public enum TipoDetalheEnum : short
+    {
+        erro = 1,
+        detalhe = 2,
+        sucesso = 3
     }
 }

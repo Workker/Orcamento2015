@@ -1,5 +1,5 @@
-2014/06/25-21:36:00.716 2ccc Recovering log #6
-2014/06/25-21:36:00.718 2ccc Level-0 table #8: started
-2014/06/25-21:36:00.724 2ccc Level-0 table #8: 267580 bytes OK
-2014/06/25-21:36:00.728 2ccc Delete type=0 #6
-2014/06/25-21:36:00.729 2ccc Delete type=3 #4
+2014/07/01-16:52:47.276 10fc Recovering log #3
+2014/07/01-16:52:47.385 10fc Level-0 table #5: started
+2014/07/01-16:52:47.557 10fc Level-0 table #5: 626077 bytes OK
+2014/07/01-16:52:47.682 10fc Delete type=0 #3
+2014/07/01-16:52:47.698 10fc Delete type=3 #2
