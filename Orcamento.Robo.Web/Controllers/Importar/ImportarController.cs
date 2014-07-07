@@ -16,7 +16,25 @@ namespace Orcamento.Robo.Web.Controllers.Importar
         public ActionResult Index()
         {
             ImportarModel model = new ImportarModel();
-            model.TiposImportacao.Add(new TipoImportacaoModel() { Id = TipoEstrategiaDeCargaEnum.Funcionarios, Selecionado = true, Tipo = "Funcionarios" });
+            model.TiposImportacao.Add
+                (
+                new TipoImportacaoModel()
+                    {
+                        Id = TipoEstrategiaDeCargaEnum.Funcionarios,
+                        Selecionado = true,
+                        Tipo = "Funcionarios"
+                    }
+                );
+            model.TiposImportacao.Add
+                (
+             new TipoImportacaoModel()
+             {
+                 Id = TipoEstrategiaDeCargaEnum.TicketsDeProducao,
+                 Selecionado = false,
+                 Tipo = "Ticket de Producao"
+             }
+                );
+
             return View(model);
         }
 
@@ -132,7 +150,7 @@ namespace Orcamento.Robo.Web.Controllers.Importar
         {
             foreach (var detalhe in carga.Detalhes)
             {
-                detalhes.Detalhes.Add(new DetalheImportacaoModel() { Nome = detalhe.Nome, Descricao = detalhe.Descricao, Linha = detalhe.Linha,Tipo = detalhe.TipoDetalhe});
+                detalhes.Detalhes.Add(new DetalheImportacaoModel() { Nome = detalhe.Nome, Descricao = detalhe.Descricao, Linha = detalhe.Linha, Tipo = detalhe.TipoDetalhe });
             }
         }
     }

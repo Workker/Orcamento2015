@@ -5,6 +5,8 @@ using System.Text;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeProducao;
 using NHibernate.Criterion;
+using NHibernate.Transform;
+using NHibernate.SqlCommand;
 
 namespace Orcamento.Domain.DB.Repositorio
 {
@@ -16,11 +18,18 @@ namespace Orcamento.Domain.DB.Repositorio
     public class TicketsDeProducao : BaseRepository, ITicketsDeProducao
     {
         public IList<TicketDeProducao> Todos(Departamento departamento)
-
-
         {
             var criterio = Session.CreateCriteria<TicketDeProducao>();
             criterio.Add(Expression.Eq("Hospital.Id", departamento.Id));
+
+            return criterio.List<TicketDeProducao>().ToList();
+        }
+
+        public IList<TicketDeProducao> Todos()
+        {
+            var criterio = Session.CreateCriteria<TicketDeProducao>("t");
+            criterio.CreateCriteria("t.Parcelas", "p", JoinType.InnerJoin);
+            criterio.SetResultTransformer(new DistinctRootEntityResultTransformer());
 
             return criterio.List<TicketDeProducao>().ToList();
         }

@@ -376,7 +376,7 @@
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\Funcionarios.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\IProcessaCarga.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketDePessoal.cs" />
-    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketDeProducao.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketsUnitariosDeProducao.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TipoEstrategiaDeCargaEnumcs.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\UnitariosDeInsumo.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\UsuarioEDepartamento.cs" />

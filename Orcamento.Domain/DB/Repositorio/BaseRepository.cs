@@ -70,6 +70,24 @@ namespace Orcamento.Domain.DB.Repositorio
             }
         }
 
+        public virtual void SalvarLista<T>(List<T> roots) where T : IAggregateRoot<int>
+        {
+            var transaction = Session.BeginTransaction();
+
+            try
+            {
+                foreach (var root in roots)
+                {
+                    Session.SaveOrUpdate(root);
+                }
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+        }
 
         public virtual void SalvarAndFlush(IAggregateRoot<int> root)
         {

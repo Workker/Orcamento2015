@@ -20,7 +20,8 @@ namespace Orcamento.Domain.Robo.Monitoramento
 
     public enum TipoDetalheEnum : short
     {
-        erro = 1,
+        erroLeituraExcel = 0,
+        erroDeProcesso = 1,
         detalhe = 2,
         sucesso = 3
     }
