@@ -176,6 +176,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Workker.Framework.Domain">
+      <HintPath>..\Lib\Workker.Framework.Domain.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ComponentesDeOrcamento\DRETotal.cs" />

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
+using Workker.Framework.Domain;
 
 namespace Orcamento.Domain.Entities.Monitoramento
 {
@@ -193,7 +194,6 @@ namespace Orcamento.Domain.Entities.Monitoramento
             {
                 carga.AdicionarDetalhe("Setor inexistente", "Setor: " + funcionarioExcel.Departamento + " inexistente.",
                                        funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
-                return true;
             }
 
             if (centro == null)
@@ -201,10 +201,14 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 carga.AdicionarDetalhe("Centro de custo nulo",
                                        "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.",
                                        funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
-                return true;
             }
 
-            return false;
+            return DiferentesDeNulo(setor, centro);
+        }
+
+        private static bool DiferentesDeNulo(Departamento setor, CentroDeCusto centro)
+        {
+            return setor != null && centro != null;
         }
 
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios)
