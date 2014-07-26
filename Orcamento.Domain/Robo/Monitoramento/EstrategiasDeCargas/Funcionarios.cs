@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Data.OleDb;
 using System.Linq;
 using System.Text;
-using Workker.Framework.Domain;
+
 
 namespace Orcamento.Domain.Entities.Monitoramento
 {

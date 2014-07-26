@@ -25,5 +25,7 @@ namespace Orcamento.Robo.Web.Models.Importar
         {
             this.TiposImportacao = new List<TipoImportacaoModel>();
         }
+
+        public DetalhesDaImportacaoModel DetalheImportacao { get; set; }
     }
 }

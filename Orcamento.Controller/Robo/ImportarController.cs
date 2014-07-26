@@ -10,16 +10,17 @@ namespace Orcamento.Controller.Robo
 {
     public class ImportarController
     {
-        public Carga ImportarCarga(TipoEstrategiaDeCargaEnum tipo)
+        //D:\\cargaorcamento2014\\FuncionariosCoorporativoComplementar.xls"
+        public Carga ImportarCarga(TipoEstrategiaDeCargaEnum tipo,string diretorio)
         {
             Carga carga = new Carga(FabricaDeImportacao.Criar(tipo));
             switch (tipo)
             {
                 case TipoEstrategiaDeCargaEnum.Funcionarios:
-                    carga.Diretorio = "D:\\cargaorcamento2014\\FuncionariosCoorporativoComplementar.xls";
+                    carga.Diretorio = diretorio;
                     break;
                 case TipoEstrategiaDeCargaEnum.TicketsDeProducao:
-                    carga.Diretorio = "D:\\Unitarios0908.xls";
+                    carga.Diretorio = diretorio;
                     break;
             }
 

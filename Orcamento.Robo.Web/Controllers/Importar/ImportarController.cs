@@ -2,6 +2,7 @@
 using Orcamento.Robo.Web.Models.Importar;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -15,15 +16,20 @@ namespace Orcamento.Robo.Web.Controllers.Importar
 
         public ActionResult Index()
         {
-            ImportarModel model = new ImportarModel();
+            ImportarModel model = this.CriarModel();
+            return View(model);
+        }
+        public ImportarModel CriarModel()
+        {
+            var model = new ImportarModel();
             model.TiposImportacao.Add
                 (
                 new TipoImportacaoModel()
-                    {
-                        Id = TipoEstrategiaDeCargaEnum.Funcionarios,
-                        Selecionado = true,
-                        Tipo = "Funcionarios"
-                    }
+                {
+                    Id = TipoEstrategiaDeCargaEnum.Funcionarios,
+                    Selecionado = true,
+                    Tipo = "Funcionarios"
+                }
                 );
             model.TiposImportacao.Add
                 (
@@ -35,7 +41,38 @@ namespace Orcamento.Robo.Web.Controllers.Importar
              }
                 );
 
-            return View(model);
+            return model;
+
+        }
+
+        [HttpPost]
+        public ActionResult Index(HttpPostedFileBase file,TipoEstrategiaDeCargaEnum IdTipo)
+        {
+            ImportarModel model = CriarModel();
+            try
+            {
+                DetalhesDaImportacaoModel detalhes = new DetalhesDaImportacaoModel();
+                if (file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                    file.SaveAs(path);
+
+                    var controller = new Controller.Robo.ImportarController();
+                    var carga = controller.ImportarCarga(IdTipo, path);
+
+                    TransformarDetalhes(carga, detalhes);
+                }
+                //TODO: Nao consigo liberar um excel(arquivo do tipo file) depois de utiliza-lo
+                //Ao tentar usar novamente, um erro de processo acontece pois ele diz que o arquivo esta sendo usado por outro processo.
+                model.DetalheImportacao = detalhes;
+                return View(model);
+            }
+            catch (Exception ex)
+            {
+                this.ShowMessage(MessageTypeEnum.danger, ex.Message);
+                return View(model);
+            }
         }
 
         //
@@ -125,26 +162,58 @@ namespace Orcamento.Robo.Web.Controllers.Importar
         }
 
 
-        [HttpPost]
-        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
-        public ActionResult Importar(TipoEstrategiaDeCargaEnum tipo)
-        {
-            try
-            {
-                var controller = new Controller.Robo.ImportarController();
-                var carga = controller.ImportarCarga(tipo);
+        //[HttpPost]
+        //[OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+        //public ActionResult Importar(TipoEstrategiaDeCargaEnum tipo)
+        //{
+        //    try
+        //    {
+        //        var controller = new Controller.Robo.ImportarController();
+        //        var carga = controller.ImportarCarga(tipo,"");
 
-                DetalhesDaImportacaoModel detalhes = new DetalhesDaImportacaoModel();
+        //        DetalhesDaImportacaoModel detalhes = new DetalhesDaImportacaoModel();
 
-                TransformarDetalhes(carga, detalhes);
-                return PartialView("_detalhesDaImportacao", detalhes);
-            }
-            catch (Exception ex)
-            {
-                this.ShowMessage(MessageTypeEnum.danger, ex.Message);
-                return PartialView("_detalhesDaImportacao", null);
-            }
-        }
+        //        TransformarDetalhes(carga, detalhes);
+        //        return PartialView("_detalhesDaImportacao", detalhes);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        this.ShowMessage(MessageTypeEnum.danger, ex.Message);
+        //        return PartialView("_detalhesDaImportacao", null);
+        //    }
+        //}
+
+        //[HttpPost]
+        //[OutputCache(NoStore = true, Duration = 0, VaryByParam = "None")]
+        //public ActionResult Importar(HttpPostedFileBase file, TipoEstrategiaDeCargaEnum IdTipo)
+        //{
+
+
+
+        //    try
+        //    {
+        //        DetalhesDaImportacaoModel detalhes = new DetalhesDaImportacaoModel();
+        //        if (file.ContentLength > 0)
+        //        {
+        //            var fileName = Path.GetFileName(file.FileName);
+        //            var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+        //            file.SaveAs(path);
+
+        //            var controller = new Controller.Robo.ImportarController();
+        //            var carga = controller.ImportarCarga(IdTipo, path);
+
+
+
+        //            TransformarDetalhes(carga, detalhes);
+        //        }
+        //        return PartialView("_detalhesDaImportacao", detalhes);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        this.ShowMessage(MessageTypeEnum.danger, ex.Message);
+        //        return PartialView("_detalhesDaImportacao", null);
+        //    }
+        //}
 
         private void TransformarDetalhes(Domain.Entities.Monitoramento.Carga carga, DetalhesDaImportacaoModel detalhes)
         {
