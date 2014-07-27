@@ -376,6 +376,8 @@
     <Compile Include="Robo\Fabricas\FabricaDeImportacao.cs" />
     <Compile Include="Robo\Monitoramento\Carga.cs" />
     <Compile Include="Robo\Monitoramento\Detalhe.cs" />
+    <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioCentroDeCustoNaoEncontrado.cs" />
+    <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioSetorNaoEncontrado.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\Funcionarios.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\IProcessaCarga.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketDePessoal.cs" />
@@ -383,6 +385,7 @@
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TipoEstrategiaDeCargaEnumcs.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\UnitariosDeInsumo.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\UsuarioEDepartamento.cs" />
+    <Compile Include="Robo\Monitoramento\Processo.cs" />
     <Compile Include="Servico\Hospitalar\IServicoSalvarDepartamento.cs" />
     <Compile Include="Servico\Hospitalar\ServicoCriarOrcamentoHospitalar.cs" />
     <Compile Include="Servico\Hospitalar\ServicoSalvarDepartamento.cs" />
@@ -398,6 +401,13 @@
     <Compile Include="Servico\Hospitalar\ServicoTrasnformaOrcamentoProducaoEmDTO.cs" />
     <Compile Include="TipoValor.cs" />
     <Compile Include="Util\ClonarObjetos.cs" />
+    <Compile Include="Util\Specification\AndSpecification.cs" />
+    <Compile Include="Util\Specification\EspecificacaoCargaFuncionariosNulos.cs" />
+    <Compile Include="Util\Specification\ExtensionMethods.cs" />
+    <Compile Include="Util\Specification\ISpecification.cs" />
+    <Compile Include="Util\Specification\NotSpecification.cs" />
+    <Compile Include="Util\Specification\OrSpecification.cs" />
+    <Compile Include="Util\Specification\EspecificacaoCargaFuncionario.cs" />
     <Compile Include="Util\VerificarTipo.cs" />
   </ItemGroup>
   <ItemGroup>

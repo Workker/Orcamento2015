@@ -1,0 +1,12 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Orcamento.Domain.Util.Specification
+{
+    public interface ISpecification<TEntity>
+    {
+        bool IsSatisfiedBy(TEntity candidate);
+    }
+}
