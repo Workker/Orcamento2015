@@ -8,7 +8,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
 {
     public interface IProcessaCarga
     {
-        void Processar(Carga carga);
+        void Processar(Carga carga,bool salvar);
      
     }
 }

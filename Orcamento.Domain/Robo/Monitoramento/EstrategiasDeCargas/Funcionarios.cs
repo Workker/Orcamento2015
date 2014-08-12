@@ -27,7 +27,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
             public double Salario { get; set; }
         }
 
-        public void Processar(Carga carga)
+        public void Processar(Carga carga, bool salvar = false)
         {
             var funcionarios = new List<FuncionarioExcel>();
             var setores = new Setores();

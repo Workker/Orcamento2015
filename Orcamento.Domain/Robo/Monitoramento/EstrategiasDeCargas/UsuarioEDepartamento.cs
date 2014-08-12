@@ -8,7 +8,7 @@ namespace Orcamento.Domain.Robo.Monitoramento
 {
     public class UsuarioEDepartamento : IProcessaCarga
     {
-        public void Processar(Carga carga)
+        public void Processar(Carga carga, bool salvar = false)
         {
             //aaa
             throw new NotImplementedException();

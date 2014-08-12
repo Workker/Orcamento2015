@@ -46,7 +46,12 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         public virtual void Processar()
         {
-            _processaCarga.Processar(this);
+            _processaCarga.Processar(this,false);
+
+            if(this.Ok())
+            {
+                //Processar de forma Assincrona.
+            }
         }
 
         public virtual bool Ok()

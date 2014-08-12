@@ -8,7 +8,7 @@ using fun =Orcamento.Domain.Entities.Monitoramento.Funcionarios;
 
 namespace Orcamento.Domain.Util.Specification
 {
-    public abstract  class EspecificacaoCargaFuncionario : ISpecification<Carga>
+    public abstract class EspecificacaoCargaFuncionario : ISpecification<Carga>
     {
         public Carga Carga { get; set; }
         public List<fun.FuncionarioExcel> Funcionarios { get; set; }
@@ -46,6 +46,7 @@ namespace Orcamento.Domain.Util.Specification
 
                 var setorNulo = new EspecificacaoCargaFuncionarioSetorNaoEncontrado();
                 var centroNulo = new EspecificacaoCargaFuncionarioCentroDeCustoNaoEncontrado();
+
                 setorNulo.And(centroNulo).IsSatisfiedBy(carga);
 
             }

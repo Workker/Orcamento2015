@@ -24,7 +24,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
         private Carga carga;
         private List<TicketDeProducao> Tickets { get; set; }
 
-        public void Processar(Carga carga)
+        public void Processar(Carga carga, bool salvar = false)
         {
             this.carga = carga;
             var ticketsDeProducaoExcel = new List<TicketDeProducaoExcel>();
@@ -107,7 +107,15 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
 
         private void InformarValor(IList<TicketParcela> parcelas, TicketDeProducaoExcel registro)
         {
-            parcelas.Single(p => p.Mes == (MesEnum)registro.mes).Valor = registro.valor;
+            try
+            {
+                parcelas.Single(p => p.Mes == (MesEnum)registro.mes).Valor = registro.valor;
+            }
+            catch (Exception)
+            {
+                this.carga.AdicionarDetalhe("Nao foi possivel processar Hospital", "Parcela do mes : " + registro.mes +" nao encontrada.", registro.Linha, TipoDetalheEnum.erroDeProcesso);
+            }
+            
         }
 
         private IList<TicketParcela> ObterParcelas(List<TicketDeProducao> ticketsDeHospital, TicketDeProducaoExcel registro)
