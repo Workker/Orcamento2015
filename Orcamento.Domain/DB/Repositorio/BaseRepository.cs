@@ -8,6 +8,7 @@ using System.Configuration;
 using NHibernate.Cfg;
 using System.Linq;
 using System.Web;
+using Orcamento.Domain.Session;
 namespace Orcamento.Domain.DB.Repositorio
 {
     public abstract class BaseRepository
@@ -23,7 +24,7 @@ namespace Orcamento.Domain.DB.Repositorio
             {
                 return NHibernateSessionPerRequest.GetCurrentSession();
             }
-
+            //get { return _session ?? (_session = new SessionBuilder().GetSession()); }
             //get { return _session ?? (_session = GetCurrentSession()); }
             //set { _session = value; }
         }
@@ -198,11 +199,11 @@ namespace Orcamento.Domain.DB.Repositorio
 
         public static ISessionFactory CreateSessionFactory()
         {
-            var ambiente = ConfigurationManager.AppSettings["Ambiente"];
+            //var ambiente = ConfigurationManager.AppSettings["Ambiente"];
 
-            if (ambiente != null && ambiente == "Teste")
-                return null;
-            else
+            //if (ambiente != null && ambiente == "Teste")
+            //    return null;
+            //else
                 return
                 Fluently.Configure().Database(MsSqlConfiguration.MsSql2005.ConnectionString(c => c
                     .FromAppSetting("Conexao")

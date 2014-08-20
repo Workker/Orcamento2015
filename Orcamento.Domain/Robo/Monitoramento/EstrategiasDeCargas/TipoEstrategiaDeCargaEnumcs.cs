@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
 {
-    public  enum TipoEstrategiaDeCargaEnum : short
+    public enum TipoEstrategiaDeCargaEnum : short
     {
-        Funcionarios,
-        TicketsDeProducao
+        Funcionarios = 0,
+        TicketsDeProducao = 1
     }
 }

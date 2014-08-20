@@ -11,13 +11,14 @@ namespace Orcamento.Robo.Web.Models.Carga
     {
         public virtual Guid Id { get; set; }
         public virtual DateTime DataCriacao { get; set; }
-        public virtual DateTime DataInicio { get; set; }
-        public virtual DateTime DataFim { get; set; }
+        public virtual DateTime? DataInicio { get; set; }
+        public virtual DateTime? DataFim { get; set; }
         public virtual string Diretorio { get; set; }
         public virtual Usuario Usuario { get; set; }
         public virtual string Status { get; set; }
         public virtual string NomeArquivo { get; set; }
         public virtual IList<DetalheModel> Detalhes { get; set; }
+
     }
 
     [Serializable]

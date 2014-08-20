@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orcamento.Domain.Entities.Monitoramento;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,7 +14,7 @@ namespace Orcamento.WS
     [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple, InstanceContextMode = InstanceContextMode.PerCall)]
     public class ServicoProcessaCargaDeOrcamento : IServicoProcessaCargaDeOrcamento
     {
-        public void ProcessarCargaDeOrcamento()
+        public void ProcessarCargaDeOrcamento(Guid id)
         {
             Thread.Sleep(5000);
         }

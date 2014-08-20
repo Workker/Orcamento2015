@@ -52,6 +52,16 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Orcamento.Domain\Orcamento.Domain.csproj">
+      <Project>{66d21d9a-dd04-4bd5-8ba4-a45be3b7f44c}</Project>
+      <Name>Orcamento.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Orcamento.InfraStructure\Orcamento.InfraStructure.csproj">
+      <Project>{9f07c30d-c5d9-4e10-8dae-7e3fb9485450}</Project>
+      <Name>Orcamento.InfraStructure</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>

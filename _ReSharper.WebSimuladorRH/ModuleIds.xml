@@ -7,4 +7,7 @@
   <Module PersistentId="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D" ModuleId="Orcamento.Robo.Web" />
   <Module PersistentId="697E988B-A018-4A44-85A4-C8B747942E33" ModuleId="Orcamento.Test.Regressao" />
   <Module PersistentId="Workker.Framework.Domain, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" ModuleId="Workker.Framework.Domain" />
+  <Module PersistentId="C6813064-60D8-4C6C-9D4E-5FE8A707496D" ModuleId="Orcamento.SelfHostingServices" />
+  <Module PersistentId="AF3F90DE-6C83-4C48-A4C5-2310E4383808" ModuleId="Orcamento.WS" />
+  <Module PersistentId="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="mscorlib" />
 </Modules>

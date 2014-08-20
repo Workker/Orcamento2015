@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orcamento.Domain.Entities.Monitoramento;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -13,6 +14,6 @@ namespace Orcamento.WS
     public interface IServicoProcessaCargaDeOrcamento
     {
         [OperationContract(IsOneWay = true)]
-        void ProcessarCargaDeOrcamento();
+        void ProcessarCargaDeOrcamento(Guid id);
     }
 }

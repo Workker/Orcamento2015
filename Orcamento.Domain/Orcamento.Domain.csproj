@@ -170,6 +170,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -372,10 +373,28 @@
     <Compile Include="ComponentesDeOrcamento\OrcamentoPessoal\TipoDespesaEnum.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Infra\Persistence\SessionConfiguration\ConfigurationFactory.cs" />
+    <Compile Include="Infra\Persistence\SessionConfiguration\IConfigurationFactory.cs" />
+    <Compile Include="Infra\Persistence\SessionManagement\FullSessionState.cs" />
+    <Compile Include="Infra\Persistence\SessionManagement\Interfaces\ISessionBuilder.cs" />
+    <Compile Include="Infra\Persistence\SessionManagement\Interfaces\ISessionFactoryBuilder.cs" />
+    <Compile Include="Infra\Persistence\SessionManagement\SessionBuilder.cs" />
+    <Compile Include="Infra\Persistence\SessionManagement\SessionFactoryBuilder.cs" />
+    <Compile Include="Infra\Persistence\UnitOfWorkComponent\IUnitOfWork.cs" />
+    <Compile Include="Infra\Persistence\UnitOfWorkComponent\UnitOfWork.cs" />
+    <Compile Include="Infra\Persistence\UnitOfWorkComponent\UnitOfWorkFactory.cs" />
+    <Compile Include="Infra\ScopeInstance\HttpInstanceScope.cs" />
+    <Compile Include="Infra\ScopeInstance\HybridInstanceScoper.cs" />
+    <Compile Include="Infra\ScopeInstance\IInstanceScoper.cs" />
+    <Compile Include="Infra\ScopeInstance\InstanceScoperBase.cs" />
+    <Compile Include="Infra\ScopeInstance\SingletonInstanceScoper.cs" />
+    <Compile Include="Infra\ScopeInstance\ThreadStaticInstanceScoper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robo\Fabricas\FabricaDeImportacao.cs" />
     <Compile Include="Robo\Monitoramento\Carga.cs" />
     <Compile Include="Robo\Monitoramento\Detalhe.cs" />
+    <Compile Include="Robo\Monitoramento\HttpClient.cs" />
+    <Compile Include="Robo\Monitoramento\TipoCarga.cs" />
     <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioCentroDeCustoNaoEncontrado.cs" />
     <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioSetorNaoEncontrado.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\Funcionarios.cs" />

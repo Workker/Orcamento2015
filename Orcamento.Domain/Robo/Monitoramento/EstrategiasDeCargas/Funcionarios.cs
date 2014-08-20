@@ -1,5 +1,6 @@
 ﻿using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal;
 using Orcamento.Domain.DB.Repositorio;
+using Orcamento.Domain.DB.Repositorio.Robo;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento;
 using System;
@@ -29,34 +30,55 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         public void Processar(Carga carga, bool salvar = false)
         {
-            var funcionarios = new List<FuncionarioExcel>();
-            var setores = new Setores();
-            var centrosDeCusto = new CentrosDeCusto();
-            var departamentos = new List<Departamento>();
-            var centros = new List<CentroDeCusto>();
-            var centrosNaoEncontrados = new List<string>();
-
-            LerExcel(carga, funcionarios);
-
-            if (funcionarios.Count == 0)
-            {
-                carga.AdicionarDetalhe("Nenhum registro foi obtido", "Nenhum registro foi obtido por favor verifique o excel.", 0, TipoDetalheEnum.erroLeituraExcel);
-                return;
-            }
-            ProcessarSetorECentroDeCusto(carga, funcionarios, departamentos, setores, centros, centrosDeCusto);
-
-            ProcessaFuncionario(carga, funcionarios, departamentos, centros);
-
             try
             {
-                if (carga.Ok())
-                    centrosDeCusto.SalvarLista(centros);
-            }
-            catch (Exception)
-            {
-                carga.AdicionarDetalhe("Erro ao Salvar Funcionarios", "Ocorreu um erro ao tentar salvar os funcionarios.", 0, TipoDetalheEnum.erroDeProcesso);
-            }
+                var funcionarios = new List<FuncionarioExcel>();
+                var setores = new Departamentos();
+                var centrosDeCusto = new CentrosDeCusto();
+                var departamentos = new List<Departamento>();
+                var centros = new List<CentroDeCusto>();
+                var centrosNaoEncontrados = new List<string>();
 
+                Cargas cargas = new Cargas();
+
+                LerExcel(carga, funcionarios);
+
+                if (funcionarios.Count == 0)
+                {
+                    carga.AdicionarDetalhe("Nenhum registro foi obtido", "Nenhum registro foi obtido por favor verifique o excel.", 0, TipoDetalheEnum.erroLeituraExcel);
+                    return;
+                }
+
+                ProcessarSetorECentroDeCusto(carga, funcionarios, departamentos, setores, centros, centrosDeCusto);
+                ProcessaFuncionario(carga, funcionarios, departamentos, centros);
+                ProcessarMudancas(carga, salvar, centrosDeCusto, centros, cargas);
+            }
+            catch (Exception ex)
+            {
+                carga.AdicionarDetalhe("Erro ao Salvar funcionarios", "Ocorreu um erro ao tentar salvar os funcionarios.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
+            }
+        }
+
+        private void ProcessarMudancas(Carga carga, bool salvar, CentrosDeCusto centrosDeCusto, List<CentroDeCusto> centros, Cargas cargas)
+        {
+            if (carga.Ok() && salvar)
+            {
+                SalvarCentrosDecusto(carga, centrosDeCusto, centros, cargas);
+            }
+        }
+
+        private void SalvarCentrosDecusto(Carga carga, CentrosDeCusto centrosDeCusto, List<CentroDeCusto> centros, Cargas cargas)
+        {
+            try
+            {
+                centrosDeCusto.SalvarLista(centros);
+                carga.AdicionarDetalhe("Carga realizada com sucesso.",
+                                       "Carga de funcionarios nome : " + carga.NomeArquivo + " .", 0, TipoDetalheEnum.sucesso);
+            }
+            catch (Exception ex)
+            {
+                carga.AdicionarDetalhe("Erro ao Tentar alterar os centros de custo", "Ocorreu um erro ao tentar salvar os funcionarios, veja a excecão.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
+            }
         }
 
         private void ProcessaFuncionario(Carga carga, List<FuncionarioExcel> funcionarios, List<Departamento> departamentos, List<CentroDeCusto> centros)
@@ -84,7 +106,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
             }
         }
 
-        private void ProcessarSetorECentroDeCusto(Carga carga, List<FuncionarioExcel> funcionarios, List<Departamento> departamentos, Setores setores,
+        private void ProcessarSetorECentroDeCusto(Carga carga, List<FuncionarioExcel> funcionarios, List<Departamento> departamentos, Departamentos setores,
                                                          List<CentroDeCusto> centros, CentrosDeCusto centrosDeCusto)
         {
             try
@@ -102,9 +124,9 @@ namespace Orcamento.Domain.Entities.Monitoramento
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                carga.AdicionarDetalhe("Erro processamento", "Ocorreu um erro ao tentar processar os setores e os centros de custo da carga.", 0, TipoDetalheEnum.erroDeProcesso);
+                carga.AdicionarDetalhe("Erro processamento", "Ocorreu um erro ao tentar processar os setores e os centros de custo da carga.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
             }
 
         }
@@ -122,9 +144,9 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 centros.Add(centroCarga);
         }
 
-        private void AdicionarSetor(Carga carga, Setores setores, FuncionarioExcel funcionarioExcel, List<Departamento> departamentos)
+        private void AdicionarSetor(Carga carga, Departamentos repoDepartamentos, FuncionarioExcel funcionarioExcel, List<Departamento> departamentos)
         {
-            var setorCarga = setores.ObterPor(funcionarioExcel.Departamento);
+            var setorCarga = repoDepartamentos.ObterPor(funcionarioExcel.Departamento);
 
             if (setorCarga == null)
                 carga.AdicionarDetalhe("Hospital/Setor nao encontrado",
@@ -181,9 +203,9 @@ namespace Orcamento.Domain.Entities.Monitoramento
                     funcionario.NumeroDeVaga = funcionarioExcel.NumeroVaga;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                carga.AdicionarDetalhe("Erro ao processar Funcionario", "Ocorreu um erro ao processar o Funcionario Matricula: " + funcionario.Matricula, funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
+                carga.AdicionarDetalhe("Erro ao processar Funcionario", "Ocorreu um erro ao processar o Funcionario Matricula: " + funcionario.Matricula, funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso, ex.Message);
             }
         }
 
@@ -192,7 +214,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
         {
             if (setor == null)
             {
-                carga.AdicionarDetalhe("Setor inexistente", "Setor: " + funcionarioExcel.Departamento + " inexistente.",
+                carga.AdicionarDetalhe("Setor/Hospital inexistente", "Setor/Hospital: " + funcionarioExcel.Departamento + " inexistente.",
                                        funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
             }
 
@@ -222,7 +244,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 LerExcel(carga, funcionarios, reader);
         }
 
-       
+
 
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios, OleDbDataReader reader)
         {
@@ -243,7 +265,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
                             continue;
 
                         funcionarioExcel.Departamento = (string)reader[1];
-                        funcionarioExcel.CodigoCentroDeCusto = (string)reader[2];
+                        funcionarioExcel.CodigoCentroDeCusto = Convert.ToString( reader[2]);
                         funcionarioExcel.NumeroMatricula = Convert.ToInt32(reader[5]).ToString();
                         funcionarioExcel.Nome = (string)reader[6];
                         funcionarioExcel.Funcao = (string)reader[7];
@@ -255,10 +277,10 @@ namespace Orcamento.Domain.Entities.Monitoramento
                         funcionarios.Add(funcionarioExcel);
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
                     carga.AdicionarDetalhe("Erro na linha", "Ocorreu um erro ao tentar ler a linha do excel", i + 1,
-                                           TipoDetalheEnum.erroLeituraExcel);
+                                           TipoDetalheEnum.erroLeituraExcel, ex.Message);
                 }
                 finally
                 {

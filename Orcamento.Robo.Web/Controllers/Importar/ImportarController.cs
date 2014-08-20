@@ -60,13 +60,14 @@ namespace Orcamento.Robo.Web.Controllers.Importar
                     file.SaveAs(path);
 
                     var controller = new Controller.Robo.ImportarController();
-                    var carga = controller.ImportarCarga(IdTipo, path);
+                    var carga = controller.ImportarCarga(IdTipo, path,fileName);
 
                     TransformarDetalhes(carga, detalhes);
                 }
                 //TODO: Nao consigo liberar um excel(arquivo do tipo file) depois de utiliza-lo
                 //Ao tentar usar novamente, um erro de processo acontece pois ele diz que o arquivo esta sendo usado por outro processo.
                 model.DetalheImportacao = detalhes;
+              
                 return View(model);
             }
             catch (Exception ex)
