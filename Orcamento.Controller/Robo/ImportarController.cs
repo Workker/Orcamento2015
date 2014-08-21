@@ -11,13 +11,11 @@ namespace Orcamento.Controller.Robo
 {
     public class ImportarController
     {
-        //D:\\cargaorcamento2014\\FuncionariosCoorporativoComplementar.xls"
-        public Carga ImportarCarga(TipoEstrategiaDeCargaEnum tipo, string diretorio,string fileName)
+        public Carga ImportarCarga(TipoEstrategiaDeCargaEnum tipo, string diretorio, string fileName)
         {
             Cargas cargas = new Cargas();
-            Carga carga = new Carga(FabricaDeImportacao.Criar(tipo));
-            carga.Tipo = tipo;
-            carga.NomeArquivo = fileName;
+            Carga carga = new Carga(FabricaDeImportacao.Criar(tipo), tipo, fileName,diretorio);
+
             switch (tipo)
             {
                 case TipoEstrategiaDeCargaEnum.Funcionarios:
@@ -29,9 +27,7 @@ namespace Orcamento.Controller.Robo
             }
 
             cargas.Salvar(carga);
-
             carga.Processar();
-
             cargas.Salvar(carga);
 
             return carga;

@@ -9,6 +9,10 @@ namespace Orcamento.Domain.Robo.Monitoramento
 {
     public class Processo
     {
+        private OleDbConnection Cn { get; set; }
+        private OleDbCommand Cmd { get; set; }
+
+
         public OleDbDataReader InicializarCarga(Carga carga)
         {
             try
@@ -18,10 +22,10 @@ namespace Orcamento.Domain.Robo.Monitoramento
                 _conectionstring += String.Format("Data Source={0};", carga.Diretorio);
                 _conectionstring += "Extended Properties='Excel 8.0;HDR=NO;'";
 
-                var cn = new OleDbConnection(_conectionstring);
-                var cmd = new OleDbCommand("Select * from [carga$]", cn);
-                cn.Open();
-                var reader = cmd.ExecuteReader();
+                Cn = new OleDbConnection(_conectionstring);
+                Cmd = new OleDbCommand("Select * from [carga$]", Cn);
+                Cn.Open();
+                var reader = Cmd.ExecuteReader();
                 return reader;
             }
             catch (Exception)
@@ -30,6 +34,16 @@ namespace Orcamento.Domain.Robo.Monitoramento
                                           TipoDetalheEnum.erroLeituraExcel);
                 return null;
             }
+        }
+
+        public void FinalizarCarga()
+        {
+            Cmd.Clone();
+            Cmd.Dispose();
+
+            Cn.Close();
+            Cn.Dispose();
+            
         }
     }
 }

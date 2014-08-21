@@ -28,6 +28,8 @@ namespace Orcamento.Domain.Entities.Monitoramento
             public double Salario { get; set; }
         }
 
+        private Processo Processo { get; set; }
+
         public void Processar(Carga carga, bool salvar = false)
         {
             try
@@ -236,12 +238,15 @@ namespace Orcamento.Domain.Entities.Monitoramento
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios)
         {
 
-            var reader = new Processo().InicializarCarga(carga);
+            Processo = new Processo();
+            var reader = Processo.InicializarCarga(carga);
 
             if (reader == null)
                 carga.AdicionarDetalhe("Nao foi possivel Ler o excel", "Nao foi possivel Ler o excel por favor verifique o layout.", 0, TipoDetalheEnum.erroLeituraExcel);
             else
                 LerExcel(carga, funcionarios, reader);
+
+            Processo.FinalizarCarga();
         }
 
 

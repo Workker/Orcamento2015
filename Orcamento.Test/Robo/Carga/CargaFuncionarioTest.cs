@@ -13,12 +13,12 @@ namespace Orcamento.Test.Robo
         [Test]
         public void Funcionario()
         {
-            Carga carga = new Carga(new Funcionarios());
-            carga.DataCriacao = DateTime.Now;
-            carga.DataInicio = DateTime.Now;
-            carga.DataFim = DateTime.Now;
-            carga.Diretorio = "D:\\cargaorcamento2014\\FuncionariosCoorporativoComplementar.xls";
-            carga.Processar();
+            //Carga carga = new Carga(new Funcionarios());
+            //carga.DataCriacao = DateTime.Now;
+            //carga.DataInicio = DateTime.Now;
+            //carga.DataFim = DateTime.Now;
+            //carga.Diretorio = "D:\\cargaorcamento2014\\FuncionariosCoorporativoComplementar.xls";
+            //carga.Processar();
 
         }
 

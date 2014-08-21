@@ -23,12 +23,24 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         }
 
-        public Carga(IProcessaCarga processaCarga)
+        public Carga(IProcessaCarga processaCarga,TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio)
         {
             _processaCarga = processaCarga;
             this.DataCriacao = DateTime.Now;
-            AtribuirTipo(processaCarga);
+            AtribuirNome(nome);
+            AtribuirTipo(tipo);
+            AtribuirDiretorio(diretorio);
             CriarCarga();
+        }
+
+        private void AtribuirDiretorio(string diretorio)
+        {
+            this.Diretorio = diretorio;
+        }
+
+        private void AtribuirNome(string nome)
+        {
+            this.NomeArquivo = nome;
         }
 
         private void CriarCarga()
@@ -48,13 +60,9 @@ namespace Orcamento.Domain.Entities.Monitoramento
             this.Status = "Finalizada";
         }
 
-        public virtual void AtribuirTipo(IProcessaCarga carga)
+        public virtual void AtribuirTipo(TipoEstrategiaDeCargaEnum tipo)
         {
-
-            Tipo = carga is Funcionarios
-                       ? TipoEstrategiaDeCargaEnum.Funcionarios
-                       : TipoEstrategiaDeCargaEnum.TicketsDeProducao;
-
+            Tipo = tipo;
         }
 
         public virtual DateTime DataCriacao { get; set; }
