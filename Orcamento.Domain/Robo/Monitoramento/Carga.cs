@@ -23,14 +23,26 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         }
 
-        public Carga(IProcessaCarga processaCarga,TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio)
+        public Carga(IProcessaCarga processaCarga,TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio,bool EntidadeRepetidaAltera = false)
         {
             _processaCarga = processaCarga;
             this.DataCriacao = DateTime.Now;
             AtribuirNome(nome);
             AtribuirTipo(tipo);
             AtribuirDiretorio(diretorio);
+            AtribuirEntidadeRepedita(EntidadeRepetidaAltera);
+
             CriarCarga();
+        }
+
+        public virtual void InformarErroDeProcesso()
+        {
+            this.Status = "Erro de processo.";
+        }
+
+        private void AtribuirEntidadeRepedita(bool altera)
+        {
+            this.EntidadeRepetidaAltera = altera;
         }
 
         private void AtribuirDiretorio(string diretorio)
@@ -74,6 +86,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
         public virtual string NomeArquivo { get; set; }
         public virtual IList<Detalhe> Detalhes { get; set; }
         public virtual TipoEstrategiaDeCargaEnum Tipo { get; set; }
+        public virtual bool EntidadeRepetidaAltera { get; set; }
 
         public virtual void AdicionarDetalhe(string nome, string descricao, int linha, TipoDetalheEnum detalheEnum)
         {

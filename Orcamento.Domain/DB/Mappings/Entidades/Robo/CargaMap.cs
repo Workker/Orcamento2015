@@ -21,6 +21,7 @@ namespace Orcamento.Domain.Mapping.Entities
             Map(x => x.Status);
             Map(x => x.NomeArquivo);
             Map(X => X.Tipo);
+            Map(x => x.EntidadeRepetidaAltera);
             References(x => x.Usuario);
             HasMany(x => x.Detalhes).Cascade.AllDeleteOrphan().LazyLoad();
         }

@@ -40,25 +40,40 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 var departamentos = new List<Departamento>();
                 var centros = new List<CentroDeCusto>();
                 var centrosNaoEncontrados = new List<string>();
-
                 Cargas cargas = new Cargas();
 
                 LerExcel(carga, funcionarios);
 
-                if (funcionarios.Count == 0)
-                {
-                    carga.AdicionarDetalhe("Nenhum registro foi obtido", "Nenhum registro foi obtido por favor verifique o excel.", 0, TipoDetalheEnum.erroLeituraExcel);
-                    return;
-                }
+                if (NenhunFuncionarioEncontrado(carga, funcionarios)) return;
 
-                ProcessarSetorECentroDeCusto(carga, funcionarios, departamentos, setores, centros, centrosDeCusto);
+                ProcessarDepartamentoECentroDeCusto(carga, funcionarios, departamentos, setores, centros, centrosDeCusto);
+                if(CargaContemErros(carga)) return;
+
                 ProcessaFuncionario(carga, funcionarios, departamentos, centros);
+                if (CargaContemErros(carga)) return;
+
                 ProcessarMudancas(carga, salvar, centrosDeCusto, centros, cargas);
             }
             catch (Exception ex)
             {
                 carga.AdicionarDetalhe("Erro ao Salvar funcionarios", "Ocorreu um erro ao tentar salvar os funcionarios.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
             }
+        }
+
+        private static bool CargaContemErros(Carga carga)
+        {
+            return !carga.Ok();
+        }
+
+        private static bool NenhunFuncionarioEncontrado(Carga carga, List<FuncionarioExcel> funcionarios)
+        {
+            if (funcionarios.Count == 0)
+            {
+                carga.AdicionarDetalhe("Nenhum registro foi obtido", "Nenhum registro foi obtido por favor verifique o excel.",
+                                       0, TipoDetalheEnum.erroLeituraExcel);
+                return true;
+            }
+            return false;
         }
 
         private void ProcessarMudancas(Carga carga, bool salvar, CentrosDeCusto centrosDeCusto, List<CentroDeCusto> centros, Cargas cargas)
@@ -89,16 +104,19 @@ namespace Orcamento.Domain.Entities.Monitoramento
             {
                 foreach (var funcionarioExcel in funcionarios)
                 {
-                    var setor = departamentos.FirstOrDefault(d => d.Nome == funcionarioExcel.Departamento);
+                    var departamento = ObterDepartamentoAtreladoAoFuncionario(departamentos, funcionarioExcel);
 
-                    var centro = centros.FirstOrDefault(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto);
+                    var centro = ObterCentroDeCustoAtreladoAoFuncionario(centros, funcionarioExcel);
 
-                    if (ValidarEstrutura(carga, setor, funcionarioExcel, centro)) continue;
+                    if (!ValidarEstrutura(carga, departamento, funcionarioExcel, centro)) continue;
 
-                    var funcionario = new Funcionario(setor);
+                    var matriculaExiste = centro.Funcionarios.Any(f => f.Matricula == funcionarioExcel.NumeroMatricula);
+
+                    if (ValidarMatriculaFuncionario(carga, matriculaExiste, funcionarioExcel)) continue;
+
+                    var funcionario = CriarFuncionario(matriculaExiste, centro, funcionarioExcel, departamento);
 
                     ValidarFuncionario(carga, funcionarioExcel, funcionario);
-
                     centro.Adicionar(funcionario);
                 }
             }
@@ -108,7 +126,40 @@ namespace Orcamento.Domain.Entities.Monitoramento
             }
         }
 
-        private void ProcessarSetorECentroDeCusto(Carga carga, List<FuncionarioExcel> funcionarios, List<Departamento> departamentos, Departamentos setores,
+        private static CentroDeCusto ObterCentroDeCustoAtreladoAoFuncionario(List<CentroDeCusto> centros, FuncionarioExcel funcionarioExcel)
+        {
+            return centros.FirstOrDefault(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto);
+        }
+
+        private static Departamento ObterDepartamentoAtreladoAoFuncionario(List<Departamento> departamentos, FuncionarioExcel funcionarioExcel)
+        {
+            return departamentos.FirstOrDefault(d => d.Nome == funcionarioExcel.Departamento);
+        }
+
+        private static bool ValidarMatriculaFuncionario(Carga carga, bool matriculaExiste, FuncionarioExcel funcionarioExcel)
+        {
+            if (matriculaExiste && !carga.EntidadeRepetidaAltera)
+            {
+                carga.AdicionarDetalhe("Matricula repetida.",
+                                       "Matricula:" + funcionarioExcel.NumeroMatricula + "já existe neste centro de custo.", 0,
+                                       TipoDetalheEnum.erroDeProcesso, "Matricula repetida.");
+                return true;
+            }
+            return false;
+        }
+
+        private static Funcionario CriarFuncionario(bool matriculaExiste, CentroDeCusto centro,
+                                                    FuncionarioExcel funcionarioExcel, Departamento setor)
+        {
+            Funcionario funcionario;
+            if (matriculaExiste)
+                funcionario = centro.Funcionarios.FirstOrDefault(c => c.Matricula == funcionarioExcel.NumeroMatricula);
+            else
+                funcionario = new Funcionario(setor);
+            return funcionario;
+        }
+
+        private void ProcessarDepartamentoECentroDeCusto(Carga carga, List<FuncionarioExcel> funcionarios, List<Departamento> departamentos, Departamentos repositorioDepartamentos,
                                                          List<CentroDeCusto> centros, CentrosDeCusto centrosDeCusto)
         {
             try
@@ -117,7 +168,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 {
                     if (!departamentos.Any(d => d.Nome == funcionarioExcel.Departamento))
                     {
-                        AdicionarSetor(carga, setores, funcionarioExcel, departamentos);
+                        AdicionarDepartamento(carga, repositorioDepartamentos, funcionarioExcel, departamentos);
                     }
 
                     if (!centros.Any(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto))
@@ -128,7 +179,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
             }
             catch (Exception ex)
             {
-                carga.AdicionarDetalhe("Erro processamento", "Ocorreu um erro ao tentar processar os setores e os centros de custo da carga.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
+                carga.AdicionarDetalhe("Erro processamento", "Ocorreu um erro, ao tentar processar departamentos e centros de custo da carga.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
             }
 
         }
@@ -146,7 +197,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 centros.Add(centroCarga);
         }
 
-        private void AdicionarSetor(Carga carga, Departamentos repoDepartamentos, FuncionarioExcel funcionarioExcel, List<Departamento> departamentos)
+        private void AdicionarDepartamento(Carga carga, Departamentos repoDepartamentos, FuncionarioExcel funcionarioExcel, List<Departamento> departamentos)
         {
             var setorCarga = repoDepartamentos.ObterPor(funcionarioExcel.Departamento);
 
@@ -203,7 +254,6 @@ namespace Orcamento.Domain.Entities.Monitoramento
                                            TipoDetalheEnum.erroDeProcesso);
                 else
                     funcionario.NumeroDeVaga = funcionarioExcel.NumeroVaga;
-
             }
             catch (Exception ex)
             {
@@ -214,20 +264,31 @@ namespace Orcamento.Domain.Entities.Monitoramento
         private bool ValidarEstrutura(Carga carga, Departamento setor, FuncionarioExcel funcionarioExcel,
                                              CentroDeCusto centro)
         {
-            if (setor == null)
-            {
-                carga.AdicionarDetalhe("Setor/Hospital inexistente", "Setor/Hospital: " + funcionarioExcel.Departamento + " inexistente.",
-                                       funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
-            }
+            ValidarDepartamento(carga, setor, funcionarioExcel);
 
+            ValidarCentroDeCusto(carga, funcionarioExcel, centro);
+
+            return DiferentesDeNulo(setor, centro);
+        }
+
+        private static void ValidarCentroDeCusto(Carga carga, FuncionarioExcel funcionarioExcel, CentroDeCusto centro)
+        {
             if (centro == null)
             {
                 carga.AdicionarDetalhe("Centro de custo nulo",
                                        "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.",
                                        funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
             }
+        }
 
-            return DiferentesDeNulo(setor, centro);
+        private static void ValidarDepartamento(Carga carga, Departamento setor, FuncionarioExcel funcionarioExcel)
+        {
+            if (setor == null)
+            {
+                carga.AdicionarDetalhe("Setor/Hospital inexistente",
+                                       "Setor/Hospital: " + funcionarioExcel.Departamento + " inexistente.",
+                                       funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
+            }
         }
 
         private static bool DiferentesDeNulo(Departamento setor, CentroDeCusto centro)
@@ -270,7 +331,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
                             continue;
 
                         funcionarioExcel.Departamento = (string)reader[1];
-                        funcionarioExcel.CodigoCentroDeCusto = Convert.ToString( reader[2]);
+                        funcionarioExcel.CodigoCentroDeCusto = Convert.ToString(reader[2]);
                         funcionarioExcel.NumeroMatricula = Convert.ToInt32(reader[5]).ToString();
                         funcionarioExcel.Nome = (string)reader[6];
                         funcionarioExcel.Funcao = (string)reader[7];

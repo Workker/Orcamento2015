@@ -36,8 +36,16 @@ namespace Orcamento.API.Controllers
             carga.Processa();
             cargas.Salvar(carga);
 
-            carga.FinalizarCarga();
-            cargas.Salvar(carga);
+            if (carga.Ok())
+            {
+                carga.FinalizarCarga();
+                cargas.Salvar(carga);
+            }
+            else
+            {
+                carga.InformarErroDeProcesso();
+                cargas.Salvar(carga);
+            }
 
             return carga;
         }
