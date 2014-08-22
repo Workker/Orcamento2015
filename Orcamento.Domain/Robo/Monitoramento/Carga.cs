@@ -23,16 +23,26 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         }
 
-        public Carga(IProcessaCarga processaCarga,TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio,bool EntidadeRepetidaAltera = false)
+        public Carga(IProcessaCarga processaCarga,TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio,bool EntidadeRepetidaAltera)
         {
-            _processaCarga = processaCarga;
-            this.DataCriacao = DateTime.Now;
+            AtribuirEstrategiaDeCargas(processaCarga);
+            AtribuirDataDeCriacao();
             AtribuirNome(nome);
             AtribuirTipo(tipo);
             AtribuirDiretorio(diretorio);
             AtribuirEntidadeRepedita(EntidadeRepetidaAltera);
 
             CriarCarga();
+        }
+
+        private void AtribuirEstrategiaDeCargas(IProcessaCarga processaCarga)
+        {
+            _processaCarga = processaCarga;
+        }
+
+        private void AtribuirDataDeCriacao()
+        {
+            this.DataCriacao = DateTime.Now;
         }
 
         public virtual void InformarErroDeProcesso()

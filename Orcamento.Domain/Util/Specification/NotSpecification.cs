@@ -6,11 +6,11 @@ using System.Text;
 
 namespace Orcamento.Domain.Util.Specification
 {
-    public class NotSpecification : EspecificacaoCargaFuncionario
+    public class NotSpecification : Especificacao
     {
-        private EspecificacaoCargaFuncionario Wrapped;
+        private Especificacao Wrapped;
 
-        public NotSpecification(EspecificacaoCargaFuncionario x)
+        public NotSpecification(Especificacao x)
         {
             Wrapped = x;
         }

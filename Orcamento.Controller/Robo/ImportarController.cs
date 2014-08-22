@@ -11,26 +11,28 @@ namespace Orcamento.Controller.Robo
 {
     public class ImportarController
     {
-        public Carga ImportarCarga(TipoEstrategiaDeCargaEnum tipo, string diretorio, string fileName)
+        public Cargas CargasRepo { get{return new Cargas();} }
+        public Carga Carga { get; set; }
+
+        public Carga ImportarCarga(TipoEstrategiaDeCargaEnum tipo, string diretorio, string fileName, bool atualizaEntidade)
         {
-            Cargas cargas = new Cargas();
-            Carga carga = new Carga(FabricaDeImportacao.Criar(tipo), tipo, fileName,diretorio);
+            CriarCarga(tipo, diretorio, fileName, atualizaEntidade);
+            ProcessarCarga();
 
-            switch (tipo)
-            {
-                case TipoEstrategiaDeCargaEnum.Funcionarios:
-                    carga.Diretorio = diretorio;
-                    break;
-                case TipoEstrategiaDeCargaEnum.TicketsDeProducao:
-                    carga.Diretorio = diretorio;
-                    break;
-            }
-
-            cargas.Salvar(carga);
-            carga.Processar();
-            cargas.Salvar(carga);
-
-            return carga;
+            return Carga;
         }
+
+        private void CriarCarga(TipoEstrategiaDeCargaEnum tipo, string diretorio, string fileName, bool atualizaEntidade)
+        {
+            Carga = new Carga(FabricaDeImportacao.Criar(tipo), tipo, fileName, diretorio, atualizaEntidade);
+            CargasRepo.Salvar(Carga);
+        }
+
+        private void ProcessarCarga()
+        {
+            Carga.Processar();
+            CargasRepo.Salvar(Carga);
+        }
+
     }
 }

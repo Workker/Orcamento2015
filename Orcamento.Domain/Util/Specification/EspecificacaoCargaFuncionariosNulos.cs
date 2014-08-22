@@ -7,17 +7,17 @@ using System.Text;
 
 namespace Orcamento.Domain.Util.Specification
 {
-    public class EspecificacaoCargaFuncionariosNulos : EspecificacaoCargaFuncionario
-    {
+    //public class EspecificacaoCargaFuncionariosNulos : Especificacao
+    //{
 
-        public override bool IsSatisfiedBy(Carga candidate)
-        {
-            var satisfeito = (this.Funcionarios != null && this.Funcionarios.Count > 0);
+    //    //public override bool IsSatisfiedBy(Carga candidate)
+    //    //{
+    //    //    var satisfeito = (this.Funcionarios != null && this.Funcionarios.Count > 0);
 
-            if(!satisfeito)
-                candidate.AdicionarDetalhe("Nenhum registro foi obtido", "Nenhum registro foi obtido por favor verifique o excel.", 0, TipoDetalheEnum.erroLeituraExcel);
+    //    //    if(!satisfeito)
+    //    //        candidate.AdicionarDetalhe("Nenhum registro foi obtido", "Nenhum registro foi obtido por favor verifique o excel.", 0, TipoDetalheEnum.erroLeituraExcel);
 
-            return satisfeito;
-        }
-    }
+    //    //    return satisfeito;
+    //    //}
+    //}
 }

@@ -6,12 +6,12 @@ using System.Text;
 
 namespace Orcamento.Domain.Util.Specification
 {
-    public class AndSpecification : EspecificacaoCargaFuncionario
+    public class AndSpecification : Especificacao
     {
-        private EspecificacaoCargaFuncionario One;
-        private EspecificacaoCargaFuncionario Other;
+        private Especificacao One;
+        private Especificacao Other;
 
-        public AndSpecification(EspecificacaoCargaFuncionario x, EspecificacaoCargaFuncionario y)
+        public AndSpecification(Especificacao x, Especificacao y)
         {
             One = x;
             Other = y;

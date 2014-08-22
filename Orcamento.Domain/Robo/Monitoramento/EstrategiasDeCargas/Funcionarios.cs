@@ -3,6 +3,7 @@ using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain.DB.Repositorio.Robo;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento;
+using Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.EspeficicacaoFuncionarios;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -26,33 +27,32 @@ namespace Orcamento.Domain.Entities.Monitoramento
             public int Mes { get; set; }
             public int Ano { get; set; }
             public double Salario { get; set; }
+            public Departamento DepartamentoEntidade { get; set; }
+            public CentroDeCusto CentroDeCusto { get; set; }
         }
 
         private Processo Processo { get; set; }
+        private List<FuncionarioExcel> funcionarios;
+        public MotorDeValidacaoDeFuncionario motor { get; set; }
+        private Carga carga;
 
         public void Processar(Carga carga, bool salvar = false)
         {
             try
             {
-                var funcionarios = new List<FuncionarioExcel>();
-                var setores = new Departamentos();
-                var centrosDeCusto = new CentrosDeCusto();
-                var departamentos = new List<Departamento>();
-                var centros = new List<CentroDeCusto>();
-                var centrosNaoEncontrados = new List<string>();
-                Cargas cargas = new Cargas();
+                funcionarios = new List<FuncionarioExcel>();
+                this.carga = carga;
 
                 LerExcel(carga, funcionarios);
 
-                if (NenhunFuncionarioEncontrado(carga, funcionarios)) return;
+                if (NenhunFuncionarioEncontrado())return;
 
-                ProcessarDepartamentoECentroDeCusto(carga, funcionarios, departamentos, setores, centros, centrosDeCusto);
-                if(CargaContemErros(carga)) return;
+                ValidarCarga();
 
-                ProcessaFuncionario(carga, funcionarios, departamentos, centros);
-                if (CargaContemErros(carga)) return;
+                ProcessaFuncionario();
+                if (CargaContemErros()) return;
 
-                ProcessarMudancas(carga, salvar, centrosDeCusto, centros, cargas);
+                ProcessarMudancas(salvar);
             }
             catch (Exception ex)
             {
@@ -60,12 +60,18 @@ namespace Orcamento.Domain.Entities.Monitoramento
             }
         }
 
-        private static bool CargaContemErros(Carga carga)
+        private void ValidarCarga()
+        {
+            motor = new MotorDeValidacaoDeFuncionario();
+            motor.Validar(carga, funcionarios);
+        }
+
+        private bool CargaContemErros()
         {
             return !carga.Ok();
         }
 
-        private static bool NenhunFuncionarioEncontrado(Carga carga, List<FuncionarioExcel> funcionarios)
+        private bool NenhunFuncionarioEncontrado()
         {
             if (funcionarios.Count == 0)
             {
@@ -76,19 +82,21 @@ namespace Orcamento.Domain.Entities.Monitoramento
             return false;
         }
 
-        private void ProcessarMudancas(Carga carga, bool salvar, CentrosDeCusto centrosDeCusto, List<CentroDeCusto> centros, Cargas cargas)
+        private void ProcessarMudancas(bool salvar)
         {
             if (carga.Ok() && salvar)
             {
-                SalvarCentrosDecusto(carga, centrosDeCusto, centros, cargas);
+                SalvarCentrosDecusto();
             }
         }
 
-        private void SalvarCentrosDecusto(Carga carga, CentrosDeCusto centrosDeCusto, List<CentroDeCusto> centros, Cargas cargas)
+        private void SalvarCentrosDecusto()
         {
             try
             {
-                centrosDeCusto.SalvarLista(centros);
+                CentrosDeCusto centros = new CentrosDeCusto();
+
+                centros.SalvarLista(motor.CentrosDeCusto);
                 carga.AdicionarDetalhe("Carga realizada com sucesso.",
                                        "Carga de funcionarios nome : " + carga.NomeArquivo + " .", 0, TipoDetalheEnum.sucesso);
             }
@@ -98,26 +106,14 @@ namespace Orcamento.Domain.Entities.Monitoramento
             }
         }
 
-        private void ProcessaFuncionario(Carga carga, List<FuncionarioExcel> funcionarios, List<Departamento> departamentos, List<CentroDeCusto> centros)
+        private void ProcessaFuncionario()
         {
             try
             {
                 foreach (var funcionarioExcel in funcionarios)
                 {
-                    var departamento = ObterDepartamentoAtreladoAoFuncionario(departamentos, funcionarioExcel);
-
-                    var centro = ObterCentroDeCustoAtreladoAoFuncionario(centros, funcionarioExcel);
-
-                    if (!ValidarEstrutura(carga, departamento, funcionarioExcel, centro)) continue;
-
-                    var matriculaExiste = centro.Funcionarios.Any(f => f.Matricula == funcionarioExcel.NumeroMatricula);
-
-                    if (ValidarMatriculaFuncionario(carga, matriculaExiste, funcionarioExcel)) continue;
-
-                    var funcionario = CriarFuncionario(matriculaExiste, centro, funcionarioExcel, departamento);
-
-                    ValidarFuncionario(carga, funcionarioExcel, funcionario);
-                    centro.Adicionar(funcionario);
+                    var funcionario = CriarFuncionario(funcionarioExcel);
+                    funcionarioExcel.CentroDeCusto.Adicionar(funcionario);
                 }
             }
             catch (Exception)
@@ -126,174 +122,35 @@ namespace Orcamento.Domain.Entities.Monitoramento
             }
         }
 
-        private static CentroDeCusto ObterCentroDeCustoAtreladoAoFuncionario(List<CentroDeCusto> centros, FuncionarioExcel funcionarioExcel)
-        {
-            return centros.FirstOrDefault(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto);
-        }
+       
 
-        private static Departamento ObterDepartamentoAtreladoAoFuncionario(List<Departamento> departamentos, FuncionarioExcel funcionarioExcel)
-        {
-            return departamentos.FirstOrDefault(d => d.Nome == funcionarioExcel.Departamento);
-        }
-
-        private static bool ValidarMatriculaFuncionario(Carga carga, bool matriculaExiste, FuncionarioExcel funcionarioExcel)
-        {
-            if (matriculaExiste && !carga.EntidadeRepetidaAltera)
-            {
-                carga.AdicionarDetalhe("Matricula repetida.",
-                                       "Matricula:" + funcionarioExcel.NumeroMatricula + "já existe neste centro de custo.", 0,
-                                       TipoDetalheEnum.erroDeProcesso, "Matricula repetida.");
-                return true;
-            }
-            return false;
-        }
-
-        private static Funcionario CriarFuncionario(bool matriculaExiste, CentroDeCusto centro,
-                                                    FuncionarioExcel funcionarioExcel, Departamento setor)
+        private Funcionario CriarFuncionario(FuncionarioExcel funcionarioExcel)
         {
             Funcionario funcionario;
-            if (matriculaExiste)
-                funcionario = centro.Funcionarios.FirstOrDefault(c => c.Matricula == funcionarioExcel.NumeroMatricula);
+            if (FuncionarioExiste(funcionarioExcel))
+                funcionario = funcionarioExcel.CentroDeCusto.Funcionarios.FirstOrDefault(c => c.Matricula == funcionarioExcel.NumeroMatricula);
             else
-                funcionario = new Funcionario(setor);
+                funcionario = new Funcionario(funcionarioExcel.DepartamentoEntidade);
+
+            PreencherFuncionario(funcionario,funcionarioExcel);
+
             return funcionario;
         }
 
-        private void ProcessarDepartamentoECentroDeCusto(Carga carga, List<FuncionarioExcel> funcionarios, List<Departamento> departamentos, Departamentos repositorioDepartamentos,
-                                                         List<CentroDeCusto> centros, CentrosDeCusto centrosDeCusto)
+        private void PreencherFuncionario(Funcionario funcionario, FuncionarioExcel funcionarioExcel)
         {
-            try
-            {
-                foreach (var funcionarioExcel in funcionarios)
-                {
-                    if (!departamentos.Any(d => d.Nome == funcionarioExcel.Departamento))
-                    {
-                        AdicionarDepartamento(carga, repositorioDepartamentos, funcionarioExcel, departamentos);
-                    }
-
-                    if (!centros.Any(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto))
-                    {
-                        AdicionarCentroDeCusto(carga, centrosDeCusto, funcionarioExcel, centros);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                carga.AdicionarDetalhe("Erro processamento", "Ocorreu um erro, ao tentar processar departamentos e centros de custo da carga.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
-            }
-
+            funcionario.Matricula = funcionarioExcel.NumeroMatricula;
+            funcionario.Salario = funcionarioExcel.Salario;
+            funcionario.Nome = funcionarioExcel.Nome;
+            funcionario.DataAdmissao = funcionarioExcel.Mes;
+            funcionario.Cargo = funcionarioExcel.Funcao;
+            funcionario.AnoAdmissao = funcionarioExcel.Ano;
+            //funcionario.NumeroDeVaga = funcionarioExcel.NumeroVaga;
         }
 
-        private void AdicionarCentroDeCusto(Carga carga, CentrosDeCusto centrosDeCusto, FuncionarioExcel funcionarioExcel,
-                                                   List<CentroDeCusto> centros)
+        private static bool FuncionarioExiste(FuncionarioExcel funcionarioExcel)
         {
-            var centroCarga = centrosDeCusto.ObterPor(funcionarioExcel.CodigoCentroDeCusto);
-
-            if (centroCarga == null)
-                carga.AdicionarDetalhe("Centro de custo nao encontrado",
-                                       "centro de custo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.",
-                                       funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
-            else
-                centros.Add(centroCarga);
-        }
-
-        private void AdicionarDepartamento(Carga carga, Departamentos repoDepartamentos, FuncionarioExcel funcionarioExcel, List<Departamento> departamentos)
-        {
-            var setorCarga = repoDepartamentos.ObterPor(funcionarioExcel.Departamento);
-
-            if (setorCarga == null)
-                carga.AdicionarDetalhe("Hospital/Setor nao encontrado",
-                                       "Hospital/Setor: " + funcionarioExcel.Departamento + " inexistente.",
-                                       funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
-            else
-                departamentos.Add(setorCarga);
-        }
-
-        private void ValidarFuncionario(Carga carga, FuncionarioExcel funcionarioExcel, Funcionario funcionario)
-        {
-            try
-            {
-                if (funcionarioExcel.Ano == default(int))
-                    carga.AdicionarDetalhe("Ano não preenchido", "Ano do funcionário não preenchido", funcionarioExcel.Linha,
-                                           TipoDetalheEnum.erroDeProcesso);
-                else
-                    funcionario.AnoAdmissao = funcionarioExcel.Ano;
-
-                if (string.IsNullOrEmpty(funcionarioExcel.Funcao))
-                    carga.AdicionarDetalhe("Função não preenchida", "Função do funcionário não preenchida", funcionarioExcel.Linha,
-                                           TipoDetalheEnum.erroDeProcesso);
-                else
-                    funcionario.Cargo = funcionarioExcel.Funcao;
-
-                if (funcionarioExcel.Mes == default(int))
-                    carga.AdicionarDetalhe("Mês não preenchido", "Mês do funcionário não preenchido", funcionarioExcel.Linha,
-                                           TipoDetalheEnum.erroDeProcesso);
-                else
-                    funcionario.DataAdmissao = funcionarioExcel.Mes;
-
-                if (string.IsNullOrEmpty(funcionarioExcel.NumeroMatricula))
-                    carga.AdicionarDetalhe("Número de matrícula não preenchido", "Número de matrícula não preenchido",
-                                           funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
-                else
-                    funcionario.Matricula = funcionarioExcel.NumeroMatricula;
-
-                if (string.IsNullOrEmpty(funcionarioExcel.Nome))
-                    carga.AdicionarDetalhe("Nome não Preenchido", "Nome não Preenchido", funcionarioExcel.Linha,
-                                           TipoDetalheEnum.erroDeProcesso);
-                else
-                    funcionario.Nome = funcionarioExcel.Nome;
-
-                if (funcionarioExcel.Salario == default(double))
-                    carga.AdicionarDetalhe("Salário não preenchido", "Salário não preenchido", funcionarioExcel.Linha,
-                                           TipoDetalheEnum.erroDeProcesso);
-                else
-                    funcionario.Salario = funcionarioExcel.Salario;
-
-                if (funcionarioExcel.NumeroVaga == default(int))
-                    carga.AdicionarDetalhe("Número de vaga não preenchido", "Número de vaga não preenchido", funcionarioExcel.Linha,
-                                           TipoDetalheEnum.erroDeProcesso);
-                else
-                    funcionario.NumeroDeVaga = funcionarioExcel.NumeroVaga;
-            }
-            catch (Exception ex)
-            {
-                carga.AdicionarDetalhe("Erro ao processar Funcionario", "Ocorreu um erro ao processar o Funcionario Matricula: " + funcionario.Matricula, funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso, ex.Message);
-            }
-        }
-
-        private bool ValidarEstrutura(Carga carga, Departamento setor, FuncionarioExcel funcionarioExcel,
-                                             CentroDeCusto centro)
-        {
-            ValidarDepartamento(carga, setor, funcionarioExcel);
-
-            ValidarCentroDeCusto(carga, funcionarioExcel, centro);
-
-            return DiferentesDeNulo(setor, centro);
-        }
-
-        private static void ValidarCentroDeCusto(Carga carga, FuncionarioExcel funcionarioExcel, CentroDeCusto centro)
-        {
-            if (centro == null)
-            {
-                carga.AdicionarDetalhe("Centro de custo nulo",
-                                       "Centro de custo codigo: " + funcionarioExcel.CodigoCentroDeCusto + " inexistente.",
-                                       funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
-            }
-        }
-
-        private static void ValidarDepartamento(Carga carga, Departamento setor, FuncionarioExcel funcionarioExcel)
-        {
-            if (setor == null)
-            {
-                carga.AdicionarDetalhe("Setor/Hospital inexistente",
-                                       "Setor/Hospital: " + funcionarioExcel.Departamento + " inexistente.",
-                                       funcionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
-            }
-        }
-
-        private static bool DiferentesDeNulo(Departamento setor, CentroDeCusto centro)
-        {
-            return setor != null && centro != null;
+            return funcionarioExcel.CentroDeCusto.Funcionarios != null && funcionarioExcel.CentroDeCusto.Funcionarios.Any(f => f.Matricula == funcionarioExcel.NumeroMatricula);
         }
 
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios)

@@ -9,22 +9,22 @@ using System.Text;
 
 namespace Orcamento.Domain.Util.Specification
 {
-    public class EspecificacaoCargaFuncionarioSetorNaoEncontrado : EspecificacaoCargaFuncionario
-    {
-        public override bool IsSatisfiedBy(Carga candidate)
-        {
-            Setores setores = new Setores();
+    //public class EspecificacaoCargaFuncionarioSetorNaoEncontrado : Especificacao
+    //{
+    //    public override bool IsSatisfiedBy(Carga candidate)
+    //    {
+    //        Setores setores = new Setores();
 
-            var setorCarga = setores.ObterPor(Funcionario.Departamento);
+    //        var setorCarga = setores.ObterPor(Funcionario.Departamento);
 
-            var satisfeito = setorCarga != null;
+    //        var satisfeito = setorCarga != null;
 
-            if (!satisfeito)
-                candidate.AdicionarDetalhe("Hospital/Setor nao encontrado",
-                                       "Hospital/Setor: " + Funcionario.Departamento + " inexistente.",
-                                       Funcionario.Linha, TipoDetalheEnum.erroDeProcesso);
+    //        if (!satisfeito)
+    //            candidate.AdicionarDetalhe("Hospital/Setor nao encontrado",
+    //                                   "Hospital/Setor: " + Funcionario.Departamento + " inexistente.",
+    //                                   Funcionario.Linha, TipoDetalheEnum.erroDeProcesso);
 
-            return satisfeito;
-        }
-    }
+    //        return satisfeito;
+    //    }
+    //}
 }
