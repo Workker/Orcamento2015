@@ -1,4 +1,5 @@
 ﻿using Orcamento.Domain.Entities.Monitoramento;
+using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.EspecificacaoEstruturaOrcamentaria;
 using System;
 using System.Collections.Generic;
@@ -102,12 +103,16 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
 
                         var itemEstruturaOrcamentariaExcel = new EstruturaOrcamentariaExcel();
                         itemEstruturaOrcamentariaExcel.Departamento = reader[0].ToString();
-                        itemEstruturaOrcamentariaExcel.TipoDepartamento = Convert.ToInt16(reader[1].ToString());
-                        itemEstruturaOrcamentariaExcel.NomeDaConta = reader[2].ToString();
-                        itemEstruturaOrcamentariaExcel.CodigoDaConta = reader[3].ToString();
-                        itemEstruturaOrcamentariaExcel.NomeCentroDeCusto = reader[4].ToString();
-                        itemEstruturaOrcamentariaExcel.CodigoCentroDeCusto = reader[5].ToString();
-                        itemEstruturaOrcamentariaExcel.NomeDoGrupoDeConta = reader[6].ToString();
+                        itemEstruturaOrcamentariaExcel.TipoDepartamento = (TipoDepartamento)int.Parse(reader[1].ToString());
+                        itemEstruturaOrcamentariaExcel.TipoAlteracaoDepartamento = (TipoAlteracao)int.Parse(reader[2].ToString());
+                        itemEstruturaOrcamentariaExcel.NomeDaConta = reader[3].ToString();
+                        itemEstruturaOrcamentariaExcel.CodigoDaConta = reader[4].ToString();
+                        itemEstruturaOrcamentariaExcel.TipoAlteracaoConta = (TipoAlteracao)int.Parse(reader[5].ToString());
+                        itemEstruturaOrcamentariaExcel.NomeCentroDeCusto = reader[6].ToString();
+                        itemEstruturaOrcamentariaExcel.CodigoCentroDeCusto = reader[7].ToString();
+                        itemEstruturaOrcamentariaExcel.TipoAlteracaoCentroDeCusto = (TipoAlteracao)int.Parse(reader[8].ToString());
+                        itemEstruturaOrcamentariaExcel.NomeDoGrupoDeConta = reader[9].ToString();
+                        itemEstruturaOrcamentariaExcel.TipoAlteracaoGrupoDeConta = (TipoAlteracao)int.Parse(reader[10].ToString());
                         itemEstruturaOrcamentariaExcel.Linha = i + 1;
 
                         estruturaOrcamentariaExcel.Add(itemEstruturaOrcamentariaExcel);
@@ -138,12 +143,23 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
     public class EstruturaOrcamentariaExcel
     {
         public string Departamento { get; set; }
-        public short TipoDepartamento { get; set; }
+        public TipoDepartamento TipoDepartamento { get; set; }
+        public TipoAlteracao TipoAlteracaoDepartamento { get; set; }
+        public Departamento DepartamentoEntidade { get; set; }
         public string NomeDaConta { get; set; }
         public string CodigoDaConta { get; set; }
+        public TipoAlteracao TipoAlteracaoConta { get; set; }
         public string NomeCentroDeCusto { get; set; }
         public string CodigoCentroDeCusto { get; set; }
+        public TipoAlteracao TipoAlteracaoCentroDeCusto { get; set; }
         public string NomeDoGrupoDeConta { get; set; }
+        public TipoAlteracao TipoAlteracaoGrupoDeConta { get; set; }
         public int Linha { get; set; }
+    }
+
+    public enum TipoAlteracao
+    {
+        Inclusao = 1,
+        Alteracao = 2
     }
 }
