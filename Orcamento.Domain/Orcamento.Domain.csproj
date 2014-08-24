@@ -177,7 +177,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="Workker.Framework.Domain">
+    <Reference Include="Workker.Framework.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Workker.Framework.Domain.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -394,6 +395,27 @@
     <Compile Include="Robo\Monitoramento\Carga.cs" />
     <Compile Include="Robo\Monitoramento\Detalhe.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoCarga.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoEstruturaOrcamentaria\EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoEstruturaOrcamentaria\EspecificacaoCargaValidaEstruturaOrcamentaria.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoEstruturaOrcamentaria\EspecificacaoCargaValidaEstruturaOrcamentariaCentroDeCusto.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoEstruturaOrcamentaria\EspecificacaoCargaValidaEstruturaOrcamentariaConta.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoEstruturaOrcamentaria\EspecificacaoCargaValidaEstruturaOrcamentariaGrupoConta.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoEstruturaOrcamentaria\FabricaDeEspecificacaoEstruturaOrcamentaria.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoEstruturaOrcamentaria\MotorDeValidacaoDeEstruturaOrcamentaria.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsUnitariosDeProducao\EspecificacaoCargaValidaTicketsUnitariosDeProducao.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsUnitariosDeProducao\EspecificacaoCargaValidaTicketDeProducaoDepartamento.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsUnitariosDeProducao\EspecificacaoCargaValidaTicketDeProducaoSetorHospitalar.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsUnitariosDeProducao\EspecificacaoCargaValidaTicketsUnitariosDeProducaoTicket.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsUnitariosDeProducao\EspecificacaoCargaValidaTicketUnitarioDeProducaoParcela.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsUnitariosDeProducao\EspecificacaoCargaValidaTicketUnitarioDeProducaoSubSetorHospital.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsUnitariosDeProducao\FabricaDeEspecificacaoTicketUnitarioDeProducao.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsUnitariosDeProducao\MotorDeValidacaoDeTicketDeProducao.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\EspecificacaoCargaValidaFuncionario.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\EspecificacaoCargaValidaFuncionarioValidaAno.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\EspecificacaoCargaValidaFuncionarioValidaCentroDeCusto.cs" />
@@ -406,11 +428,12 @@
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\EspecificacaoCargaValidaFuncionarioValidaSetor.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\FabricaDeEspeficicacaoFuncionario.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\MotorDeValidacaoDeFuncionario.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\EstruturaOrcamentaria.cs" />
     <Compile Include="Robo\Monitoramento\TipoCarga.cs" />
     <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioCentroDeCustoNaoEncontrado.cs" />
     <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioSetorNaoEncontrado.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\Funcionarios.cs" />
-    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\IProcessaCarga.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\ProcessaCarga.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketDePessoal.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TicketsUnitariosDeProducao.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\TipoEstrategiaDeCargaEnumcs.cs" />
@@ -448,7 +471,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Dominio.cd" />
+    <None Include="Robo\Monitoramento\EstrategiasDeCargas\Dominio.cd" />
     <None Include="ModeloPessoal.cd" />
   </ItemGroup>
   <ItemGroup />

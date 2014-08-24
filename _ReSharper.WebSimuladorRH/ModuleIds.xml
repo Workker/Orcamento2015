@@ -10,4 +10,5 @@
   <Module PersistentId="C6813064-60D8-4C6C-9D4E-5FE8A707496D" ModuleId="Orcamento.SelfHostingServices" />
   <Module PersistentId="AF3F90DE-6C83-4C48-A4C5-2310E4383808" ModuleId="Orcamento.WS" />
   <Module PersistentId="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" ModuleId="mscorlib" />
+  <Module PersistentId="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4" ModuleId="NHibernate" />
 </Modules>

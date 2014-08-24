@@ -14,7 +14,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
 {
     public class Carga : IAggregateRoot<Guid>
     {
-        private IProcessaCarga _processaCarga;
+        private ProcessaCarga _processaCarga;
 
         public virtual Guid Id { get; set; }
 
@@ -23,7 +23,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         }
 
-        public Carga(IProcessaCarga processaCarga,TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio,bool EntidadeRepetidaAltera)
+        public Carga(ProcessaCarga processaCarga,TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio,bool EntidadeRepetidaAltera)
         {
             AtribuirEstrategiaDeCargas(processaCarga);
             AtribuirDataDeCriacao();
@@ -35,7 +35,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
             CriarCarga();
         }
 
-        private void AtribuirEstrategiaDeCargas(IProcessaCarga processaCarga)
+        private void AtribuirEstrategiaDeCargas(ProcessaCarga processaCarga)
         {
             _processaCarga = processaCarga;
         }
@@ -156,7 +156,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         public virtual bool Ok()
         {
-            return this.Detalhes == null || this.Detalhes.Count == 0 || this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel) != null
+            return this.Detalhes == null || this.Detalhes.Count == 0 || this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel ||  d.TipoDetalhe == TipoDetalheEnum.erroDeValidacao) != null
                 && this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel).Count() == 0;
         }
     }

@@ -22,6 +22,10 @@ namespace Orcamento.Domain.DB.Repositorio
         {
             get
             {
+                if(NHibernateSessionPerRequest.GetCurrentSession() == null)
+                {
+                    NHibernateSessionPerRequest.BeginRequest(null, null);
+                }
                 return NHibernateSessionPerRequest.GetCurrentSession();
             }
             //get { return _session ?? (_session = new SessionBuilder().GetSession()); }

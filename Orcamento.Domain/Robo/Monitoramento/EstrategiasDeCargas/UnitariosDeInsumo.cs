@@ -6,9 +6,14 @@ using System.Text;
 
 namespace Orcamento.Domain.Robo.Monitoramento
 {
-    public class UnitariosDeInsumo : IProcessaCarga
+    public class UnitariosDeInsumo : ProcessaCarga
     {
-        public void Processar(Carga carga, bool salvar = false)
+        public override void Processar(Carga carga, bool salvar = false)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal override void SalvarDados()
         {
             throw new NotImplementedException();
         }

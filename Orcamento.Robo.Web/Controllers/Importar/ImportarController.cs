@@ -42,6 +42,16 @@ namespace Orcamento.Robo.Web.Controllers.Importar
              }
                 );
 
+            model.TiposImportacao.Add
+                (
+             new TipoImportacaoModel()
+             {
+                 Id = TipoEstrategiaDeCargaEnum.EstruturaOrcamentaria,
+                 Selecionado = false,
+                 Tipo = "Estrutura Orçamentária"
+             }
+                );
+
             return model;
 
         }

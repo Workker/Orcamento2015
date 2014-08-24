@@ -8,6 +8,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
     public enum TipoEstrategiaDeCargaEnum : short
     {
         Funcionarios = 0,
-        TicketsDeProducao = 1
+        TicketsDeProducao = 1,
+        EstruturaOrcamentaria = 2
     }
 }

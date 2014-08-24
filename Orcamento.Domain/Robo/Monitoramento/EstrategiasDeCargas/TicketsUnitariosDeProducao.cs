@@ -1,5 +1,7 @@
 ﻿using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain.Entities.Monitoramento;
+using Orcamento.Domain.Gerenciamento;
+using Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.EspecificacaoTicketsUnitariosDeProducao;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -15,87 +17,91 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
         public string subSetor { get; set; }
         public int mes { get; set; }
         public int valor { get; set; }
-
         public int Linha { get; set; }
+
+        public Departamento DepartamentoEntidade { get; set; }
+        public SetorHospitalar SetorHospitalar { get; set; }
+        public SubSetorHospital SubSetorHospital { get; set; }
+        public TicketDeProducao Ticket { get; set; }
+        public TicketParcela TicketParcela { get; set; }
     }
 
-    public class ProcessaTicketsDeProducao : IProcessaCarga
+    public class ProcessaTicketsDeProducao : ProcessaCarga
     {
-        private Carga carga;
-        private List<TicketDeProducao> Tickets { get; set; }
+        private List<TicketDeProducao> tickets;
+        private Processo processo;
+        private List<TicketDeProducaoExcel> ticketsDeProducaoExcel;
+        private MotorDeValidacaoDeTicketDeProducao motor;
 
-        public void Processar(Carga carga, bool salvar = false)
+        public override void Processar(Carga carga, bool salvar = false)
         {
-            this.carga = carga;
-            var ticketsDeProducaoExcel = new List<TicketDeProducaoExcel>();
-            var tickets = new TicketsDeProducao();
+            try
+            {
+                this.carga = carga;
+                ticketsDeProducaoExcel = new List<TicketDeProducaoExcel>();
 
-            LerExcel(ticketsDeProducaoExcel, carga);
+                LerExcel(ticketsDeProducaoExcel, carga);
 
+                if (NenhumRegistroEncontrado(carga)) return;
+
+                ValidarCarga();
+
+                if (CargaContemErros()) return;
+
+                ProcessarTicketsDeProducao();
+
+                if (CargaContemErros()) return;
+
+                SalvarAlteracoes(salvar);
+            }
+            catch (Exception ex)
+            {
+                carga.AdicionarDetalhe("Erro ao processar Tickets de produção", "Ocorreu um erro ao tentar processar os tickets de producão.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
+            }
+        }
+
+        private void ValidarCarga()
+        {
+            motor = new MotorDeValidacaoDeTicketDeProducao(carga, ticketsDeProducaoExcel);
+            motor.Validar();
+        }
+
+        private bool NenhumRegistroEncontrado(Carga carga)
+        {
             if (ticketsDeProducaoExcel.Count == 0)
             {
-                carga.AdicionarDetalhe("Nenhum registro foi obtido", "Nenhum registro foi obtido por favor verifique o excel.", 0, TipoDetalheEnum.erroLeituraExcel);
-                return;
+                carga.AdicionarDetalhe("Nenhum registro foi obtido", "Nenhum registro foi obtido por favor verifique o excel.",
+                                       0, TipoDetalheEnum.erroLeituraExcel);
+                return true;
             }
-
-            ProcessarTicketsDeProducao(ticketsDeProducaoExcel);
-
-            try
-            {
-                if (carga.Ok())
-                    tickets.SalvarLista(Tickets);
-            }
-            catch (Exception)
-            {
-                carga.AdicionarDetalhe("Erro ao Salvar Tickets de producao", "Ocorreu um erro ao tentar salvar os tickets de producao.", 0, TipoDetalheEnum.erroDeProcesso);
-            }
-
+            return false;
         }
 
-        private void ProcessarTicketsDeProducao(List<TicketDeProducaoExcel> ticketsDeProducaoExcel)
+        private void ProcessarTicketsDeProducao()
         {
             var departamentosExcel = ticketsDeProducaoExcel.Select(x => x.Departamento).Distinct();
-            var repositorioDepartamentos = new Hospitais();
-            var hospitais = repositorioDepartamentos.Todos();
+            tickets = new List<TicketDeProducao>();
 
-            Tickets = new List<TicketDeProducao>();
-
-            foreach (var hospital in hospitais)
+            foreach (var hospital in motor.Departamentos)
             {
-                TicketsDeProducao ticketsDeProducao = new TicketsDeProducao();
-                var ticketsDeHospital = ticketsDeProducao.Todos(hospital).ToList();
+                var ticketsDeHospital = motor.Tickets.Where(h => h.Hospital.Nome == hospital.Nome).ToList();
 
-                ProcessaTicket(ticketsDeProducaoExcel, hospital, ticketsDeHospital);
+                ProcessaTicket(hospital);
 
                 if (ticketsDeHospital != null && ticketsDeHospital.Count > 0)
-                    Tickets.AddRange(ticketsDeHospital);
+                    tickets.AddRange(ticketsDeHospital);
             }
-
         }
 
-        private void ProcessaTicket(List<TicketDeProducaoExcel> ticketsDeProducaoExcel, Hospital hospital, List<TicketDeProducao> ticketsDeHospital)
+        private void ProcessaTicket(Departamento hospital)
         {
             try
             {
-                var tickets = new TicketsDeProducao();
-
                 var registros = ticketsDeProducaoExcel.Where(d => d.Departamento == hospital.Nome).ToList();
-
 
                 foreach (var registro in registros)
                 {
-                    if (ticketsDeHospital == null || ticketsDeHospital.Count == 0 || ticketsDeHospital.Count(t => t.Setor.NomeSetor == registro.setor && t.SubSetor.NomeSetor == registro.subSetor) == 0)
-                    {
-                        carga.AdicionarDetalhe("Nao existem tickets de producao", "Nao existem tickets de producao para estes dados informados no hospital: " + hospital.Nome, registro.Linha, TipoDetalheEnum.erroDeProcesso);
-                        continue;
-                    }
-
-                    var parcelas = ObterParcelas(ticketsDeHospital, registro);
-
-                    if (parcelas == null)
-                        continue;
-
-                    InformarValor(parcelas, registro);
+                    InformarValor(registro);
                 }
             }
             catch (Exception)
@@ -105,68 +111,42 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
             }
         }
 
-        private void InformarValor(IList<TicketParcela> parcelas, TicketDeProducaoExcel registro)
+
+        private void InformarValor(TicketDeProducaoExcel registro)
         {
             try
             {
-                parcelas.Single(p => p.Mes == (MesEnum)registro.mes).Valor = registro.valor;
+                registro.TicketParcela.Valor = registro.valor;
             }
             catch (Exception)
             {
-                this.carga.AdicionarDetalhe("Nao foi possivel processar Hospital", "Parcela do mes : " + registro.mes +" nao encontrada.", registro.Linha, TipoDetalheEnum.erroDeProcesso);
-            }
-            
-        }
-
-        private IList<TicketParcela> ObterParcelas(List<TicketDeProducao> ticketsDeHospital, TicketDeProducaoExcel registro)
-        {
-            try
-            {
-                var parcelas = ticketsDeHospital.Single(
-                t => t.Setor.NomeSetor == registro.setor && t.SubSetor.NomeSetor == registro.subSetor).Parcelas;
-
-                return parcelas;
-            }
-            catch (Exception)
-            {
-                carga.AdicionarDetalhe("Erro ao processar", "Ocorreu um erro ao tentar obter as parcelas dos tickets de Receita no hospital: " + registro.Departamento + " podem ter mais de um conjunto de parcelas associadas com o setor e subsetor informado", registro.Linha, TipoDetalheEnum.erroDeProcesso);
-                return null;
+                this.carga.AdicionarDetalhe("Nao foi possivel processar Hospital", "Parcela do mes : " + registro.mes + " nao encontrada.", registro.Linha, TipoDetalheEnum.erroDeProcesso);
             }
 
         }
 
-        private OleDbDataReader InicializarCarga(Carga carga)
-        {
-            try
-            {
-                string _conectionstring;
-                _conectionstring = @"Provider=Microsoft.ACE.OLEDB.12.0;";
-                _conectionstring += String.Format("Data Source={0};", carga.Diretorio);
-                _conectionstring += "Extended Properties='Excel 8.0;HDR=NO;'";
 
-                var cn = new OleDbConnection(_conectionstring);
-                var cmd = new OleDbCommand("Select * from [carga$]", cn);
-                cn.Open();
 
-                var reader = cmd.ExecuteReader();
-                return reader;
-            }
-            catch (Exception)
-            {
-                carga.AdicionarDetalhe("Erro na leitura", "Nao foi possivel ler o excel, por favor verifque se o layout esta correto (colunas, valores, nome da aba(carga) )", 0,
-                                          TipoDetalheEnum.erroLeituraExcel);
-                return null;
-            }
-        }
         private void LerExcel(List<TicketDeProducaoExcel> ticketsDeProducaoExcel, Carga carga)
         {
-            var reader = InicializarCarga(carga);
+            try
+            {
+                processo = new Processo();
+                var reader = processo.InicializarCarga(carga);
 
-            if (reader == null)
-                carga.AdicionarDetalhe("Nao foi possivel Ler o excel", "Nao foi possivel Ler o excel por favor verifique o layout.", 0, TipoDetalheEnum.erroLeituraExcel);
-            else
-                LerExcel(ticketsDeProducaoExcel, carga, reader);
-
+                if (reader == null)
+                    carga.AdicionarDetalhe("Nao foi possivel Ler o excel", "Nao foi possivel Ler o excel por favor verifique o layout.", 0, TipoDetalheEnum.erroLeituraExcel);
+                else
+                    LerExcel(ticketsDeProducaoExcel, carga, reader);
+            }
+            catch (Exception ex)
+            {
+                carga.AdicionarDetalhe("Nao foi possivel Ler o excel", "Nao foi possivel Ler o excel por favor verifique o layout.", 0, TipoDetalheEnum.erroLeituraExcel, ex.Message);
+            }
+            finally
+            {
+                processo.FinalizarCarga();
+            }
         }
 
         private void LerExcel(List<TicketDeProducaoExcel> ticketsDeProducaoExcel, Carga carga,
@@ -183,14 +163,13 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                             break;
 
 
-                        var ticketDeProducaoExcel = new TicketDeProducaoExcel
-                                                        {
-                                                            Departamento = reader[0].ToString(),
-                                                            setor = reader[1].ToString(),
-                                                            subSetor = reader[2].ToString(),
-                                                            mes = Convert.ToInt32(reader[4]),
-                                                            valor = Convert.ToInt32(reader[5])
-                                                        };
+                        var ticketDeProducaoExcel = new TicketDeProducaoExcel();
+                        ticketDeProducaoExcel.Departamento = reader[0].ToString();
+                        ticketDeProducaoExcel.setor = reader[1].ToString();
+                        ticketDeProducaoExcel.subSetor = reader[2].ToString();
+                        ticketDeProducaoExcel.mes = Convert.ToInt32(reader[3]);
+                        ticketDeProducaoExcel.valor = Convert.ToInt32(reader[4]);
+
 
                         ticketDeProducaoExcel.Linha = i + 1;
 
@@ -207,6 +186,15 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                     i++;
                 }
             }
+        }
+
+        internal override void SalvarDados()
+        {
+            TicketsDeProducao repositorio = new TicketsDeProducao();
+            repositorio.SalvarLista(tickets);
+
+            carga.AdicionarDetalhe("Carga realizada com sucesso.",
+                                     "Carga de tickets unitários de produção nome: " + carga.NomeArquivo + " .", 0, TipoDetalheEnum.sucesso);
         }
     }
 }

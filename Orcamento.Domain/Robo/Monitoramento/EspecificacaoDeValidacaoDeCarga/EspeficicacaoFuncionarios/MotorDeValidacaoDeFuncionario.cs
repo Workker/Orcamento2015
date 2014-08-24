@@ -11,10 +11,11 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
     public class MotorDeValidacaoDeFuncionario
     {
         public virtual CentrosDeCusto CentrosRepo { get; set; }
-        public virtual Departamentos DepartamentosRepo { get; set; }
+        public virtual Departamentos DepartamentosRepositorio { get; set; }
         public virtual List<Departamento> Departamentos { get; set; }
         public virtual CentrosDeCusto CentrosDeCustoRepo { get; set; }
         public virtual List<CentroDeCusto> CentrosDeCusto { get; set; }
+
 
         public void Validar(Carga carga, List<Domain.Entities.Monitoramento.Funcionarios.FuncionarioExcel> funcionarios)
         {
@@ -54,7 +55,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
         public void ValidaDepartamentos(Carga carga, List<Domain.Entities.Monitoramento.Funcionarios.FuncionarioExcel> funcionarios)
         {
             Departamentos = new List<Departamento>();
-            DepartamentosRepo = new Departamentos();
+            DepartamentosRepositorio = new Departamentos();
 
             foreach (var funcionarioExcel in funcionarios)
             {
@@ -72,7 +73,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
 
         private void AdicionarDepartamento(Carga carga, Domain.Entities.Monitoramento.Funcionarios.FuncionarioExcel funcionarioExcel)
         {
-            var departamento = DepartamentosRepo.ObterPor(funcionarioExcel.Departamento);
+            var departamento = DepartamentosRepositorio.ObterPor(funcionarioExcel.Departamento);
 
             var espeficicacaoDepartamento = FabricaDeEspeficicacaoDepartamento.ObterEspeficicacao(funcionarioExcel, departamento);
 

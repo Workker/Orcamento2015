@@ -3,4 +3,7 @@
   <PropertyGroup>
     <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup>
+    <ReferencePath>B:\Documents\Orcamento2015\Orcamento.Controller\..\lib\</ReferencePath>
+  </PropertyGroup>
 </Project>

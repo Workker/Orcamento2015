@@ -6,11 +6,15 @@ using System.Text;
 
 namespace Orcamento.Domain.Robo.Monitoramento
 {
-    public class UsuarioEDepartamento : IProcessaCarga
+    public class UsuarioEDepartamento : ProcessaCarga
     {
-        public void Processar(Carga carga, bool salvar = false)
+        public override void Processar(Carga carga, bool salvar = false)
         {
-            //aaa
+            throw new NotImplementedException();
+        }
+
+        internal override void SalvarDados()
+        {
             throw new NotImplementedException();
         }
     }

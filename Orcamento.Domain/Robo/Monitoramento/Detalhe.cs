@@ -24,6 +24,7 @@ namespace Orcamento.Domain.Robo.Monitoramento
         erroLeituraExcel = 0,
         erroDeProcesso = 1,
         detalhe = 2,
-        sucesso = 3
+        sucesso = 3,
+        erroDeValidacao
     }
 }

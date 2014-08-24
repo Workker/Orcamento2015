@@ -1,5 +1,5 @@
-2014/08/22-09:19:36.970 1da0 Recovering log #32
-2014/08/22-09:19:36.970 1da0 Level-0 table #34: started
-2014/08/22-09:19:37.059 1da0 Level-0 table #34: 54025 bytes OK
-2014/08/22-09:19:37.190 1da0 Delete type=0 #32
-2014/08/22-09:19:37.190 1da0 Delete type=3 #30
+2014/08/23-16:38:36.617 3ffc Recovering log #41
+2014/08/23-16:38:36.617 3ffc Level-0 table #44: started
+2014/08/23-16:38:36.769 3ffc Level-0 table #44: 12873 bytes OK
+2014/08/23-16:38:36.854 3ffc Delete type=0 #41
+2014/08/23-16:38:36.854 3ffc Delete type=3 #39

@@ -19,9 +19,9 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga
             var satisfeito = Departamento != null;
 
             if (!satisfeito)
-                candidate.AdicionarDetalhe("Hospital/Setor nao encontrado",
+                candidate.AdicionarDetalhe("Hospital/Setor não encontrado",
                                        "Hospital/Setor: " + FuncionarioExcel.Departamento + " inexistente.",
-                                       FuncionarioExcel.Linha, TipoDetalheEnum.erroDeProcesso);
+                                       FuncionarioExcel.Linha, TipoDetalheEnum.erroDeValidacao);
 
             return satisfeito;
         }

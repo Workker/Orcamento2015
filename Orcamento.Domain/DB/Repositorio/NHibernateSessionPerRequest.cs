@@ -25,10 +25,21 @@ namespace Orcamento.Domain.DB.Repositorio
         }
         public static ISession GetCurrentSession()
         {
-            return _sessionFactory.GetCurrentSession();
+            try
+            {
+                return _sessionFactory.GetCurrentSession();
+            }
+            catch (Exception ex)
+            {
+                ISession session = _sessionFactory.OpenSession();
+                session.BeginTransaction();
+                CurrentSessionContext.Bind(session);
+                return _sessionFactory.GetCurrentSession(); ;
+            }
+            
         }
         public void Dispose() { }
-        private static void BeginRequest(object sender, EventArgs e)
+        public static void BeginRequest(object sender, EventArgs e)
         {
             ISession session = _sessionFactory.OpenSession();
             session.BeginTransaction();

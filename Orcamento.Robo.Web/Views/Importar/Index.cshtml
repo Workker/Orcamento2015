@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <label for="filtroCliente" class="col-lg-1">Tipo de Importacao</label>
                             <div class="col-lg-4">
-                                <select id="IdTipo" name="IdTipo" onchange="FiltrarVeiculos();" class="form-control">
+                                <select id="IdTipo" name="IdTipo" class="form-control">
                                     <option value="">Select...</option>
                                     @foreach (var importacao in Model.TiposImportacao)
                                     {
@@ -128,35 +128,6 @@
     </div>
     <!-- /col-md-12 -->
 </div>
-<script src="../../js/libs/jquery-1.9.1.min.js"></script>
-<script src="../../js/jquery.timer.js"></script>
 
-<script type="text/javascript">
-    function ObterLayout() {
-        //var idCliente = $("#IdCliente").val();
 
-        //$.ajax({
-        //    url: "/PosicoesDosVeiculos/FiltrarVeiculos",
-        //    type: "POST",
-        //    cache: false,
-        //    data: { IdClienteSelecionado: idCliente }
-        //}).success(function (veiculos) {
-        //    $('#Principal').replaceWith(veiculos);
-        //});
-    }
-
-    function Importar() {
-        var id = $("#IdTipo").val();
-
-        $.ajax({
-            url: "/Importar/Importar",
-            type: "POST",
-            cache: false,
-            data: { IdTipo: id }
-        }).success(function (detalhes) {
-            $('#Principal').replaceWith(detalhes);
-        });
-
-    }
-</script>
 

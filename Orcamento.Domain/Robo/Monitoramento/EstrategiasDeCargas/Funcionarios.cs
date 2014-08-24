@@ -13,7 +13,7 @@ using System.Text;
 
 namespace Orcamento.Domain.Entities.Monitoramento
 {
-    public class Funcionarios : IProcessaCarga
+    public class Funcionarios : ProcessaCarga
     {
         public class FuncionarioExcel
         {
@@ -27,16 +27,15 @@ namespace Orcamento.Domain.Entities.Monitoramento
             public int Mes { get; set; }
             public int Ano { get; set; }
             public double Salario { get; set; }
+
             public Departamento DepartamentoEntidade { get; set; }
             public CentroDeCusto CentroDeCusto { get; set; }
         }
 
-        private Processo Processo { get; set; }
         private List<FuncionarioExcel> funcionarios;
         public MotorDeValidacaoDeFuncionario motor { get; set; }
-        private Carga carga;
 
-        public void Processar(Carga carga, bool salvar = false)
+        public override void Processar(Carga carga, bool salvar = false)
         {
             try
             {
@@ -52,11 +51,11 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 ProcessaFuncionario();
                 if (CargaContemErros()) return;
 
-                ProcessarMudancas(salvar);
+                SalvarAlteracoes(salvar);
             }
             catch (Exception ex)
             {
-                carga.AdicionarDetalhe("Erro ao Salvar funcionarios", "Ocorreu um erro ao tentar salvar os funcionarios.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
+                carga.AdicionarDetalhe("Erro ao processar funcionários", "Ocorreu um erro ao tentar processar os funcionários.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
             }
         }
 
@@ -66,10 +65,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
             motor.Validar(carga, funcionarios);
         }
 
-        private bool CargaContemErros()
-        {
-            return !carga.Ok();
-        }
+       
 
         private bool NenhunFuncionarioEncontrado()
         {
@@ -80,14 +76,6 @@ namespace Orcamento.Domain.Entities.Monitoramento
                 return true;
             }
             return false;
-        }
-
-        private void ProcessarMudancas(bool salvar)
-        {
-            if (carga.Ok() && salvar)
-            {
-                SalvarCentrosDecusto();
-            }
         }
 
         private void SalvarCentrosDecusto()
@@ -154,20 +142,17 @@ namespace Orcamento.Domain.Entities.Monitoramento
         }
 
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios)
-        {
-
-            Processo = new Processo();
-            var reader = Processo.InicializarCarga(carga);
+        { 
+            processo = new Processo();
+            var reader = processo.InicializarCarga(carga);
 
             if (reader == null)
                 carga.AdicionarDetalhe("Nao foi possivel Ler o excel", "Nao foi possivel Ler o excel por favor verifique o layout.", 0, TipoDetalheEnum.erroLeituraExcel);
             else
                 LerExcel(carga, funcionarios, reader);
 
-            Processo.FinalizarCarga();
+            processo.FinalizarCarga();
         }
-
-
 
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios, OleDbDataReader reader)
         {
@@ -210,6 +195,11 @@ namespace Orcamento.Domain.Entities.Monitoramento
                     i++;
                 }
             }
+        }
+
+        internal override void SalvarDados()
+        {
+            SalvarCentrosDecusto();
         }
     }
 }

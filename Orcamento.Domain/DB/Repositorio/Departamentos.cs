@@ -6,6 +6,7 @@ using Orcamento.Domain.Gerenciamento;
 using NHibernate.SqlCommand;
 using NHibernate.Criterion;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeProducao;
+using NHibernate.Transform;
 
 namespace Orcamento.Domain.DB.Repositorio
 {
@@ -42,6 +43,16 @@ namespace Orcamento.Domain.DB.Repositorio
             }
 
 
+        }
+
+        public virtual List<Departamento> TodosComSetoresESubSetores()
+        {
+            var criterio = Session.CreateCriteria<Departamento>("d");
+            criterio.CreateCriteria("d.Setores", "s", JoinType.InnerJoin);
+            criterio.CreateCriteria("s.SubSetores", "ss", JoinType.InnerJoin);
+            criterio.SetResultTransformer(new DistinctRootEntityResultTransformer());
+
+            return criterio.List<Departamento>().ToList();
         }
 
         public virtual void Deletar(List<Setor> roots)

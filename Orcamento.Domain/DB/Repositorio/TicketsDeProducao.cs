@@ -35,7 +35,6 @@ namespace Orcamento.Domain.DB.Repositorio
         }
     }
 
-
     public interface ITicketsDeReceita
     {
         IList<TicketDeReceita> Todos(Departamento departamento);
