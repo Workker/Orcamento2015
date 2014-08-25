@@ -59,6 +59,13 @@ namespace Orcamento.Domain.Gerenciamento
             TipoConta = tipoConta;
         }
 
+        public Conta(string nome, TipoConta tipoConta, string codigo)
+        {
+            Nome = nome;
+            TipoConta = tipoConta;
+            CodigoDaConta = codigo;
+        }
+
         public virtual void Adicionar(TipoTicketDePessoal t)
         {
             if (TiposTickets == null)

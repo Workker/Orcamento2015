@@ -36,5 +36,24 @@ namespace Orcamento.Domain
         {
             return base.Todos<Conta>();
         }
+
+        public virtual void SalvarLista(IList<Conta> roots)
+        {
+            var transaction = Session.BeginTransaction();
+
+            try
+            {
+                foreach (var root in roots)
+                {
+                    Session.SaveOrUpdate(root);
+                }
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+        }
     }
 }

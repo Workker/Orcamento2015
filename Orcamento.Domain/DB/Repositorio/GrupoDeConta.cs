@@ -17,25 +17,30 @@ namespace Orcamento.Domain.DB.Repositorio
             return criterio.UniqueResult<GrupoDeConta>();
         }
 
-
         public virtual List<Object> ObterTodos()
         {
             var criterio = Session.CreateQuery("from DespesaPessoal");
-            //)
-            //var criterio = Session.CreateQuery("from DespesaPessoal");
-            //select GrupoDeConta from DespesaPessoal
-
-            //return criterio.List<GrupoDeConta>().ToList();
+            
             return criterio.List<Object>().ToList();
         }
 
-        //public virtual List<OrcamentoOperacionalVersao> TodosPor(CentroDeCusto centroDeCusto, Setor setor) 
-        //{
-        //    var criterio = Session.CreateCriteria<OrcamentoOperacionalVersao>();
-        //    criterio.Add(Expression.Eq("Setor", setor));
-        //    criterio.Add(Expression.Eq("CentroDeCusto", centroDeCusto));
+        public virtual void SalvarLista(List<GrupoDeConta> roots)
+        {
+            var transaction = Session.BeginTransaction();
 
-        //    return criterio.List<OrcamentoOperacionalVersao>().ToList();
-        //}
+            try
+            {
+                foreach (var root in roots)
+                {
+                    Session.SaveOrUpdate(root);
+                }
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+        }
     }
 }

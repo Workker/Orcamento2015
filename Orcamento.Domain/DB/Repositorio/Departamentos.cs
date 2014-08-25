@@ -78,26 +78,7 @@ namespace Orcamento.Domain.DB.Repositorio
         }
 
 
-        public virtual void SalvarLista(List<TicketDeProducao> roots)
-        {
-            var transaction = Session.BeginTransaction();
-
-            try
-            {
-                foreach (var root in roots)
-                {
-                    Session.SaveOrUpdate(root);
-                }
-                transaction.Commit();
-            }
-            catch (System.Exception ex)
-            {
-                transaction.Rollback();
-                throw ex;
-            }
-        }
-
-        public virtual void SalvarLista(List<TicketDeReceita> roots)
+        public virtual void SalvarLista(IList<Departamento> roots)
         {
             var transaction = Session.BeginTransaction();
 

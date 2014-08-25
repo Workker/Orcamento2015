@@ -313,6 +313,7 @@
     <Compile Include="Gerenciamento\CentroDeCusto.cs" />
     <Compile Include="Gerenciamento\Conta.cs" />
     <Compile Include="Gerenciamento\Departamento.cs" />
+    <Compile Include="Gerenciamento\FabricaDeDepartamento.cs" />
     <Compile Include="Gerenciamento\GrupoDeConta.cs" />
     <Compile Include="Gerenciamento\GrupoResumo.cs" />
     <Compile Include="Gerenciamento\Hospital\ContaHospital.cs" />

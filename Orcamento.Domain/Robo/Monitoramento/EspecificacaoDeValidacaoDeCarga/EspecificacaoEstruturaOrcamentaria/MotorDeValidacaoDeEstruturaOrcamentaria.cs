@@ -14,7 +14,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
     {
         private readonly Carga carga;
         private readonly List<EstruturaOrcamentariaExcel> estruturasOrcamentariasExcel;
-        public virtual List<Departamento> Departamentos { get; set; }
+        private TipoConta tipoContaOutras;
 
         public MotorDeValidacaoDeEstruturaOrcamentaria(Carga carga,
                                                        List<EstruturaOrcamentariaExcel> estruturasOrcamentariasExcel)
@@ -28,81 +28,150 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
         {
             get
             {
-                if (departamentos == null)
-                    departamentos = new Departamentos();
-
-                return departamentos;
+                return departamentos ?? (departamentos = new Departamentos());
             }
         }
+        public virtual List<Departamento> Departamentos { get; set; }
+
+        private Contas contasRepositorio;
+        public virtual Contas ContasRepositorio
+        {
+            get
+            {
+                return contasRepositorio ?? (contasRepositorio = new Contas());
+            }
+        }
+
+        private List<Conta> contas;
+        public virtual List<Conta> Contas
+        {
+            get
+            {
+                return contas ?? (contas = new List<Conta>());
+            }
+        }
+
+        private GruposDeConta gruposDeContaRepositorio;
+        public GruposDeConta GruposDeContaRepositorio { get { return gruposDeContaRepositorio ?? (gruposDeContaRepositorio = new GruposDeConta()); } }
+
+        private List<GrupoDeConta> gruposDeConta;
+        public virtual List<GrupoDeConta> GruposDeConta
+        {
+            get
+            {
+                return gruposDeConta ?? (gruposDeConta = new List<GrupoDeConta>());
+            }
+        }
+
+        private TiposConta tiposContaRepositorio;
+        public virtual TiposConta TiposContaRepositorio
+        {
+            get
+            {
+                return tiposContaRepositorio ?? (tiposContaRepositorio = new TiposConta());
+            }
+        }
+
+        private CentrosDeCusto centrosDeCustoRepositorio;
+        public virtual CentrosDeCusto CentrosDeCustoRepositorio { get { return centrosDeCustoRepositorio ?? (centrosDeCustoRepositorio = new CentrosDeCusto()); } }
+
+        private List<CentroDeCusto> centrosDeCustos;
+        public virtual List<CentroDeCusto> CentrosDeCustos { get { return centrosDeCustos ?? (centrosDeCustos = new List<CentroDeCusto>()); } }
 
         public void Validar()
         {
+            Departamentos = DepartamentosRepositorio.Todos();
+            Contract.Requires(Departamentos != null, "Departamentos não encontrados");
+
             foreach (EstruturaOrcamentariaExcel estruturaOrcamentariaExcel in estruturasOrcamentariasExcel)
             {
-                // FabricaDeEspecificacaoEstruturaOrcamentaria.ObterEspeficicacao(estruturaOrcamentariaExcel).
-                // IsSatisfiedBy(carga);
+                ValidaContas(estruturaOrcamentariaExcel);
 
-                // CONTA
-                // GRUPO DE CONTA
-                // CENTRO DE CUSTO
+                if (!carga.Ok())
+                    return;
 
-                // DEPARTAMENTOS
-                Departamentos = DepartamentosRepositorio.Todos();
-                Contract.Requires(Departamentos != null, "Departamentos não encontrados");
+                ValidaGrupoDeConta(estruturaOrcamentariaExcel);
 
-                ValidaDepartamentos();
+                if (!carga.Ok())
+                    return;
+
+                ValidaCentroDeCusto(estruturaOrcamentariaExcel);
+
+                if (!carga.Ok())
+                    return;
+
+                ValidaDepartamentos(estruturaOrcamentariaExcel);
             }
         }
 
+        private void ValidaGrupoDeConta(EstruturaOrcamentariaExcel estruturaOrcamentariaExcel)
+        {
+            GrupoDeConta grupoDeConta = null;
+
+            if (GruposDeConta.Any(c => c.Nome == estruturaOrcamentariaExcel.NomeDaConta))
+                grupoDeConta = GruposDeConta.First(c => c.Nome == estruturaOrcamentariaExcel.NomeDoGrupoDeConta);
+            else
+                grupoDeConta = GruposDeContaRepositorio.ObterPor(estruturaOrcamentariaExcel.NomeDoGrupoDeConta);
+
+            Especificacao especificacaoConta = FabricaDeEspecificacaoCargaValidaEstruturaOrcamentariaGrupoDeConta.ObterEspecificacao(estruturasOrcamentariasExcel,estruturaOrcamentariaExcel, grupoDeConta);
+
+            especificacaoConta.IsSatisfiedBy(carga);
+        }
+
+        private void ValidaCentroDeCusto(EstruturaOrcamentariaExcel estruturaOrcamentariaExcel)
+        {
+            CentroDeCusto centroDeCusto = null;
+
+            if (CentrosDeCustos.Any(c => c.CodigoDoCentroDeCusto == estruturaOrcamentariaExcel.CodigoCentroDeCusto))
+                centroDeCusto = CentrosDeCustos.First(c => c.CodigoDoCentroDeCusto == estruturaOrcamentariaExcel.CodigoCentroDeCusto);
+            else
+                centroDeCusto = CentrosDeCustoRepositorio.ObterPor(estruturaOrcamentariaExcel.CodigoCentroDeCusto);
+
+            Especificacao especificacaoConta = FabricaDeEspecificacaoCargaValidaEstruturaOrcamentariaCentroDeUso.ObterEspecificacao(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, centroDeCusto);
+
+            especificacaoConta.IsSatisfiedBy(carga);
+        }
+
+        #region Contas
+
+        private void ValidaContas(EstruturaOrcamentariaExcel estruturaOrcamentariaExcel)
+        {
+            tipoContaOutras = TiposContaRepositorio.ObterPor((int)TipoContaEnum.Outros);
+
+            Conta conta = null;
+
+            if (Contas.Any(c => c.CodigoDaConta == estruturaOrcamentariaExcel.CodigoDaConta))
+                conta = Contas.First(c => c.CodigoDaConta == estruturaOrcamentariaExcel.CodigoDaConta);
+            else
+                conta = ContasRepositorio.ObterContaPor(estruturaOrcamentariaExcel.CodigoDaConta);
+
+            Especificacao especificacaoConta = FabricaDeEspecificacaoCargaValidaEstruturaOrcamentariaConta.ObterEspecificacao(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, conta);
+            especificacaoConta.IsSatisfiedBy(carga);
+
+            estruturaOrcamentariaExcel.Conta = conta;
+        }
+
+        #endregion
+
         #region Departamentos
 
-        public void ValidaDepartamentos()
+        public void ValidaDepartamentos(EstruturaOrcamentariaExcel estruturaOrcamentariaExcel)
         {
-            foreach (EstruturaOrcamentariaExcel estruturaOrcamentariaExcel in estruturasOrcamentariasExcel)
-            {
-                if (estruturaOrcamentariaExcel.TipoAlteracaoDepartamento == TipoAlteracao.Inclusao)
-                {
-                    if (!Departamentos.Any(d => d.Nome == estruturaOrcamentariaExcel.Departamento))
-                        AdicionarDepartamento(carga, estruturaOrcamentariaExcel);
-                    else
-                        carga.AdicionarDetalhe("Departamento já existe", string.Format("Não foi possível incluir o departamento {0} pois o mesmo já está cadastrado.", estruturaOrcamentariaExcel.Departamento), estruturaOrcamentariaExcel.Linha, TipoDetalheEnum.erroDeValidacao);
-                }
-                else
-                {
-                    Especificacao espeficicacaoDepartamento = FabricaDeEspecificacaoEstruturaOrcamentariaDepartamento.ObterEspeficiacao(estruturaOrcamentariaExcel, departamento);
+            var departamento = Departamentos.FirstOrDefault(d => d.Nome == estruturaOrcamentariaExcel.Departamento);
 
-                    if (espeficicacaoDepartamento.IsSatisfiedBy(carga))
-                    {
-                        estruturaOrcamentariaExcel.DepartamentoEntidade = Departamentos.FirstOrDefault(d => d.Nome == estruturaOrcamentariaExcel.Departamento);
-                    }
-                }
-            }
+            Especificacao espeficicacaoDepartamento = FabricaDeEspecificacaoEstruturaOrcamentariaDepartamento.ObterEspeficiacao(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, departamento);
+
+            espeficicacaoDepartamento.IsSatisfiedBy(carga);
         }
 
         private void AdicionarDepartamento(Carga carga, EstruturaOrcamentariaExcel estruturaOrcamentariaExcel)
         {
-
-            var novoDepartamento = FabricaDepartamento.Construir(estruturaOrcamentariaExcel.TipoDepartamento,
+            var novoDepartamento = FabricaDeDepartamento.Construir(estruturaOrcamentariaExcel.TipoDepartamento,
                                                                  estruturaOrcamentariaExcel.Departamento);
             Departamentos.Add(novoDepartamento);
+            estruturaOrcamentariaExcel.DepartamentoEntidade = novoDepartamento;
         }
-    }
 
         #endregion
-
-    public class FabricaDepartamento
-    {
-        public static Departamento Construir(TipoDepartamento tipoDepartamento, string nome)
-        {
-            switch (tipoDepartamento)
-            {
-                case TipoDepartamento.hospital:
-                    return new Hospital(nome);
-                case TipoDepartamento.setor:
-                    return new Setor(nome);
-            }
-
-            throw new Exception("Erro ao criar um novo departamento.");
-        }
     }
 }

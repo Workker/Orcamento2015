@@ -1,9 +1,11 @@
-﻿using Orcamento.Domain.Entities.Monitoramento;
+﻿using Orcamento.Domain.DB.Repositorio;
+using Orcamento.Domain.Entities.Monitoramento;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.EspecificacaoEstruturaOrcamentaria;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Text;
 
@@ -14,7 +16,66 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
         private MotorDeValidacaoDeEstruturaOrcamentaria motor;
         private List<EstruturaOrcamentariaExcel> estruturaOrcamentariaExcel;
 
-        // TODO: implementar um serviço de dominio para criar as entidades
+        private Contas contasRepositorio;
+        public virtual Contas ContasRepositorio
+        {
+            get
+            {
+                return contasRepositorio ?? (contasRepositorio = new Contas());
+            }
+        }
+
+        private GruposDeConta gruposDeContaRepositorio;
+        public GruposDeConta GruposDeContaRepositorio { get { return gruposDeContaRepositorio ?? (gruposDeContaRepositorio = new GruposDeConta()); } }
+
+        private List<GrupoDeConta> gruposDeConta;
+        public virtual List<GrupoDeConta> GruposDeConta
+        {
+            get
+            {
+                return gruposDeConta ?? (gruposDeConta = new List<GrupoDeConta>());
+            }
+        }
+
+        private IList<Conta> contas;
+        public virtual IList<Conta> Contas
+        {
+            get
+            {
+                return contas ?? (contas = new List<Conta>());
+            }
+        }
+
+        private IList<Departamento> departamentos;
+        public virtual IList<Departamento> Departamentos
+        {
+            get { return departamentos; }
+            set { departamentos = value; }
+        }
+
+        private IList<CentroDeCusto> centrosDeCustos;
+        public virtual IList<CentroDeCusto> CentrosDeCustos { get { return centrosDeCustos ?? (centrosDeCustos = new List<CentroDeCusto>()); } }
+        private CentrosDeCusto centrosDeCustoRepositorio;
+        public virtual CentrosDeCusto CentrosDeCustoRepositorio { get { return centrosDeCustoRepositorio ?? (centrosDeCustoRepositorio = new CentrosDeCusto()); } }
+
+        private TiposConta tiposContaRepositorio;
+        public virtual TiposConta TiposContaRepositorio
+        {
+            get
+            {
+                return tiposContaRepositorio ?? (tiposContaRepositorio = new TiposConta());
+            }
+        }
+
+        private Departamentos departamentosRepositorio;
+        public virtual Departamentos DepartamentosRepositorio
+        {
+            get
+            {
+                return departamentosRepositorio ?? (departamentosRepositorio = new Departamentos());
+            }
+        }
+
         public override void Processar(Carga carga, bool salvar = false)
         {
             try
@@ -24,23 +85,21 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
 
                 LerExcel();
 
-                if (NenhumRegistroEncontrado(carga)) return;
+                if (NenhumRegistroEncontrado(carga))
+                    return;
 
                 ValidarCarga();
 
-                if (CargaContemErros()) return;
+                if (!CargaContemErros())
+                {
 
-                // TODO: implementar
-                ProcessarEstruturaOrcamentaria();
-
-                if (CargaContemErros()) return;
-
-                // TODO: implementar
-                SalvarAlteracoes(salvar);
+                    if (!CargaContemErros())
+                        SalvarAlteracoes(salvar);
+                }
             }
             catch (Exception ex)
             {
-                carga.AdicionarDetalhe("Erro ao processar Estrutura Orçamentária", "Ocorreu um erro ao tentar processar a estrutura orçamentária.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
+                carga.AdicionarDetalhe("Erro ao processar Estrutura Orçamentária", "Ocorreu um erro ao tentar processar a Estrutura Orçamentária.", 0, TipoDetalheEnum.erroDeProcesso, ex.Message);
             }
         }
 
@@ -58,11 +117,149 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                                        0, TipoDetalheEnum.erroLeituraExcel);
                 return true;
             }
+
             return false;
         }
 
         private void ProcessarEstruturaOrcamentaria()
         {
+            Departamentos = DepartamentosRepositorio.Todos();
+
+            Contract.Requires(Departamentos != null, "Departamentos não encontrados");
+
+            ProcessarContas();
+            ProcessarGruposDeConta();
+            ProcessarCentrosDeCusto();
+            ProcessarDepartamentos();
+        }
+
+        internal override void SalvarDados()
+        {
+            ProcessarEstruturaOrcamentaria();
+
+            ContasRepositorio.SalvarLista(Contas);
+            GruposDeContaRepositorio.SalvarLista(GruposDeConta);
+            CentrosDeCustoRepositorio.SalvarLista(CentrosDeCustos);
+            DepartamentosRepositorio.SalvarLista(Departamentos);
+
+            carga.AdicionarDetalhe("Carga realizada com sucesso.",
+                                     "Carga de Estrutura Orçamentária nome: " + carga.NomeArquivo + " .", 0, TipoDetalheEnum.sucesso);
+        }
+
+        private void ProcessarContas()
+        {
+            foreach (var estruturaOrcamentaria in estruturaOrcamentariaExcel)
+            {
+                TipoConta tipoContaOutras = TiposContaRepositorio.ObterPor((int)TipoContaEnum.Outros);
+                Conta conta = null;
+
+                if (estruturaOrcamentaria.TipoAlteracaoConta == TipoAlteracao.Inclusao)
+                {
+                    conta = new Conta(estruturaOrcamentaria.NomeDaConta, tipoContaOutras,
+                                          estruturaOrcamentaria.CodigoDaConta);
+                    Contas.Add(conta);
+                }
+                if (estruturaOrcamentaria.TipoAlteracaoConta == TipoAlteracao.Alteracao)
+                {
+                    conta = ContasRepositorio.ObterContaPor(estruturaOrcamentaria.CodigoDaConta);
+
+                    if (conta == null)
+                        conta = Contas.FirstOrDefault(p => p.CodigoDaConta == estruturaOrcamentaria.CodigoDaConta);
+
+                    conta.Nome = estruturaOrcamentaria.NomeDaConta;
+                }
+
+                if (!Contas.Any(p => p.CodigoDaConta == estruturaOrcamentaria.CodigoDaConta))
+                    Contas.Add(conta);
+            }
+        }
+
+        private void ProcessarGruposDeConta()
+        {
+            foreach (var estruturaOrcamentaria in estruturaOrcamentariaExcel)
+            {
+                GrupoDeConta grupoDeConta = null;
+
+                if (estruturaOrcamentaria.TipoAlteracaoGrupoDeConta == TipoAlteracao.Inclusao)
+                {
+                    grupoDeConta = new GrupoDeConta(estruturaOrcamentaria.NomeDoGrupoDeConta);
+                    grupoDeConta.Contas = new List<Conta>();
+                    GruposDeConta.Add(grupoDeConta);
+                }
+                if (estruturaOrcamentaria.TipoAlteracaoGrupoDeConta == TipoAlteracao.Alteracao)
+                {
+                    grupoDeConta = GruposDeContaRepositorio.ObterPor(estruturaOrcamentaria.NomeDoGrupoDeConta);
+
+                    if (grupoDeConta == null)
+                        grupoDeConta = GruposDeConta.FirstOrDefault(p => p.Nome == estruturaOrcamentaria.NomeDoGrupoDeConta);
+
+                    grupoDeConta.Nome = estruturaOrcamentaria.NomeCentroDeCusto;
+                }
+
+                var contas = estruturaOrcamentariaExcel.Where(p => p.NomeDoGrupoDeConta == grupoDeConta.Nome).Select(p => p.NomeDaConta);
+
+                foreach (var conta in contas)
+                {
+                    var contaRecuperada = Contas.FirstOrDefault(p => p.Nome == conta);
+
+                    Contract.Requires(conta != null, "Conta não existe no processamento.");
+
+                    if (!grupoDeConta.Contas.Any(p => p.Nome == contaRecuperada.Nome))
+                        grupoDeConta.Adicionar(contaRecuperada);
+                }
+            }
+
+        }
+
+        private void ProcessarCentrosDeCusto()
+        {
+            foreach (var estruturaOrcamentaria in estruturaOrcamentariaExcel)
+            {
+                if (estruturaOrcamentaria.TipoAlteracaoCentroDeCusto == TipoAlteracao.Inclusao)
+                {
+                    var centroDeCusto = new CentroDeCusto(estruturaOrcamentaria.NomeCentroDeCusto, estruturaOrcamentaria.CodigoCentroDeCusto);
+                    CentrosDeCustos.Add(centroDeCusto);
+                }
+                if (estruturaOrcamentaria.TipoAlteracaoCentroDeCusto == TipoAlteracao.Alteracao)
+                {
+                    CentroDeCusto centroDeCusto = null;
+
+                    centroDeCusto = CentrosDeCustoRepositorio.ObterPor(estruturaOrcamentaria.CodigoCentroDeCusto);
+
+                    if (centroDeCusto == null)
+                        centroDeCusto = CentrosDeCustos.FirstOrDefault(p => p.CodigoDoCentroDeCusto == estruturaOrcamentaria.CodigoCentroDeCusto);
+
+                    centroDeCusto.AlterarNome(estruturaOrcamentaria.NomeCentroDeCusto);
+
+                    if (!CentrosDeCustos.Any(p => p.CodigoDoCentroDeCusto == estruturaOrcamentaria.CodigoCentroDeCusto))
+                        CentrosDeCustos.Add(centroDeCusto);
+                }
+            }
+        }
+
+        private void ProcessarDepartamentos()
+        {
+            foreach (var estruturaOrcamentaria in estruturaOrcamentariaExcel)
+            {
+                if (estruturaOrcamentaria.TipoAlteracaoDepartamento == TipoAlteracao.Inclusao)
+                {
+                    var departamento = FabricaDeDepartamento.Construir(estruturaOrcamentaria.TipoDepartamento,
+                                                                       estruturaOrcamentaria.Departamento);
+                    Departamentos.Add(departamento);
+                }
+                if (estruturaOrcamentaria.TipoAlteracaoDepartamento == TipoAlteracao.Alteracao)
+                {
+                    Departamento departamento = null;
+
+                    if (Departamentos.Any(p => p.Nome == estruturaOrcamentaria.Departamento))
+                        departamento = Departamentos.FirstOrDefault(p => p.Nome == estruturaOrcamentaria.Departamento);
+                    else
+                        departamento = DepartamentosRepositorio.ObterPor(estruturaOrcamentaria.Departamento);
+
+                    departamento.Nome = estruturaOrcamentaria.Departamento;
+                }
+            }
+
 
         }
 
@@ -130,14 +327,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
             }
         }
 
-        internal override void SalvarDados()
-        {
-            //TicketsDeProducao repositorio = new TicketsDeProducao();
-            //repositorio.SalvarLista(tickets);
 
-            //carga.AdicionarDetalhe("Carga realizada com sucesso.",
-            //                         "Carga de tickets unitários de produção nome: " + carga.NomeArquivo + " .", 0, TipoDetalheEnum.sucesso);
-        }
     }
 
     public class EstruturaOrcamentariaExcel
@@ -148,10 +338,13 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
         public Departamento DepartamentoEntidade { get; set; }
         public string NomeDaConta { get; set; }
         public string CodigoDaConta { get; set; }
+        public Conta Conta { get; set; }
         public TipoAlteracao TipoAlteracaoConta { get; set; }
         public string NomeCentroDeCusto { get; set; }
         public string CodigoCentroDeCusto { get; set; }
+        public CentroDeCusto CentroDeCusto { get; set; }
         public TipoAlteracao TipoAlteracaoCentroDeCusto { get; set; }
+        public GrupoDeConta GrupoDeConta { get; set; }
         public string NomeDoGrupoDeConta { get; set; }
         public TipoAlteracao TipoAlteracaoGrupoDeConta { get; set; }
         public int Linha { get; set; }

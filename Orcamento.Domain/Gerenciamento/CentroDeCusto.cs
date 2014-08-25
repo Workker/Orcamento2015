@@ -40,6 +40,16 @@ namespace Orcamento.Domain.Gerenciamento
             Funcionarios = new List<Funcionario>();
         }
 
+        public CentroDeCusto(string nome, string codigo)
+        {
+            CodigoDoCentroDeCusto = codigo;
+            Contract.Requires(!string.IsNullOrEmpty(nome), "Nome deve ser preenchido.");
+            Nome = nome;
+            Contas = new List<Conta>();
+            GrupoDeContas = new List<GrupoDeConta>();
+            Funcionarios = new List<Funcionario>();
+        }
+
         public virtual void AdicionarConta(Conta conta)
         {
             Contract.Requires(conta != null, "Conta não informada.");

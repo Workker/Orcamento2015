@@ -47,7 +47,7 @@ namespace Orcamento.Domain.DB.Repositorio
             return base.Todos<CentroDeCusto>();
         }
 
-        public virtual void SalvarLista(List<CentroDeCusto> roots)
+        public virtual void SalvarLista(IList<CentroDeCusto> roots)
         {
             var transaction = Session.BeginTransaction();
 

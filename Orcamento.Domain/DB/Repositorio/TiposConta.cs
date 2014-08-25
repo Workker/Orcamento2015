@@ -9,5 +9,10 @@ namespace Orcamento.Domain.DB.Repositorio
         {
             Session.Save(tipoConta);
         }
+
+        public TipoConta ObterPor(int id)
+        {
+            return Session.QueryOver<TipoConta>().Where(c => c.Id == id).SingleOrDefault();
+        }
     }
 }

@@ -2,36 +2,39 @@
 using Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas;
 using Orcamento.Domain.Util.Specification;
 using System;
+using System.Collections.Generic;
 
 namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.EspecificacaoEstruturaOrcamentaria
 {
-    public class FabricaDeEspecificacaoEstruturaOrcamentaria
+    public class FabricaDeEspecificacaoEstruturaOrcamentariaDepartamento
     {
-        public static Especificacao ObterEspeficicacao(EstruturaOrcamentariaExcel estruturaOrcamentaria)
+        public static Especificacao ObterEspeficiacao(List<EstruturaOrcamentariaExcel> estruturasOrcamentariasExcel, EstruturaOrcamentariaExcel estruturaOrcamentariaExcel, Departamento departamento)
         {
-            //var validaDepartamento =
-            //    new EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento(estruturaOrcamentaria);
-
-            //var validaCentroDeCusto =
-            //    new EspecificacaoCargaValidaEstruturaOrcamentariaCentroDeCusto(estruturaOrcamentaria);
-
-            //var validaConta =
-            //    new EspecificacaoCargaValidaEstruturaOrcamentariaConta(estruturaOrcamentaria);
-
-            //var validaGrupoConta =
-            //    new EspecificacaoCargaValidaEstruturaOrcamentariaGrupoConta(estruturaOrcamentaria);
-
-            //return
-            //    validaDepartamento.And(validaCentroDeCusto).And(validaConta).And(validaGrupoConta);
-            throw new NotImplementedException();
+            return new EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, departamento);
         }
     }
 
-    public class FabricaDeEspecificacaoEstruturaOrcamentariaDepartamento
+    public class FabricaDeEspecificacaoCargaValidaEstruturaOrcamentariaConta
     {
-        public static Especificacao ObterEspeficiacao(EstruturaOrcamentariaExcel estruturaOrcamentariaExcel, Departamento departamento)
+        public static Especificacao ObterEspecificacao(List<EstruturaOrcamentariaExcel> estruturasOrcamentariasExcel, EstruturaOrcamentariaExcel estruturaOrcamentariaExcel, Conta conta)
         {
-            return new EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento(estruturaOrcamentariaExcel, departamento);
+            return new EspecificacaoCargaValidaEstruturaOrcamentariaConta(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, conta);
+        }
+    }
+
+    public class FabricaDeEspecificacaoCargaValidaEstruturaOrcamentariaGrupoDeConta
+    {
+        public static Especificacao ObterEspecificacao(List<EstruturaOrcamentariaExcel> estruturasOrcamentariasExcel, EstruturaOrcamentariaExcel estruturaOrcamentariaExcel, GrupoDeConta grupoDeConta)
+        {
+            return new EspecificacaoCargaValidaEstruturaOrcamentariaGrupoConta(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, grupoDeConta);
+        }
+    }
+
+    public class FabricaDeEspecificacaoCargaValidaEstruturaOrcamentariaCentroDeUso
+    {
+        public static Especificacao ObterEspecificacao(List<EstruturaOrcamentariaExcel> estruturasOrcamentariasExcel, EstruturaOrcamentariaExcel estruturaOrcamentariaExcel, CentroDeCusto centroDeCusto)
+        {
+            return new EspecificacaoCargaValidaEstruturaOrcamentariaCentroDeCusto(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, centroDeCusto);
         }
     }
 }

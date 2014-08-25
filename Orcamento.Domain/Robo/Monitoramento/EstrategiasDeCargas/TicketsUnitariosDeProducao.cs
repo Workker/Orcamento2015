@@ -42,15 +42,18 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
 
                 LerExcel(ticketsDeProducaoExcel, carga);
 
-                if (NenhumRegistroEncontrado(carga)) return;
+                if (NenhumRegistroEncontrado(carga))
+                    return;
 
                 ValidarCarga();
 
-                if (CargaContemErros()) return;
+                if (CargaContemErros())
+                    return;
 
                 ProcessarTicketsDeProducao();
 
-                if (CargaContemErros()) return;
+                if (CargaContemErros())
+                    return;
 
                 SalvarAlteracoes(salvar);
             }

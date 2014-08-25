@@ -69,10 +69,10 @@ namespace Orcamento.Domain.DB.Repositorio
         {
             return
             Fluently.Configure()
-            .ExposeConfiguration(c => c.SetProperty("current_session_context_class", "thread_static"))
+            .ExposeConfiguration(c =>  c.SetProperty("current_session_context_class", "thread_static"))
             .Database(MsSqlConfiguration.MsSql2005.ConnectionString(c => c
                 .FromAppSetting("Conexao")
-                )).Mappings(m => m.FluentMappings.AddFromAssemblyOf<SetorMap>()).BuildSessionFactory();
+                ).ShowSql()).Mappings(m => m.FluentMappings.AddFromAssemblyOf<SetorMap>()).BuildSessionFactory();
         }
     }
 }

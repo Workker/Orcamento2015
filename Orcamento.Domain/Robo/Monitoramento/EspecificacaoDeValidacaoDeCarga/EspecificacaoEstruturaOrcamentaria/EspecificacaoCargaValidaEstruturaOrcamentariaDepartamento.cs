@@ -1,13 +1,14 @@
 ﻿using Orcamento.Domain.Entities.Monitoramento;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas;
-
+using System.Collections.Generic;
+using System.Linq;
 namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.EspecificacaoEstruturaOrcamentaria
 {
     public class EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento : EspecificacaoCargaValidaEstruturaOrcamentaria
     {
-        public EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento(EstruturaOrcamentariaExcel estruturaOrcamentariaExcel, Departamento departamento)
-            : base(estruturaOrcamentariaExcel, departamento)
+        public EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento(List<EstruturaOrcamentariaExcel> estruturasOrcamentariasExcel, EstruturaOrcamentariaExcel estruturaOrcamentariaExcel, Departamento departamento)
+            : base(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, departamento)
         {
         }
 
@@ -15,12 +16,26 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
         {
             base.IsSatisfiedBy(candidate);
 
-            var satisfeito = Departamento != null;
+            var departamentoNaoExisteEDeSejaIncluir = this.Departamento == null
+                && EstruturaOrcamentariaExcel.TipoAlteracaoDepartamento == TipoAlteracao.Inclusao;
 
-            if (!satisfeito)
-                candidate.AdicionarDetalhe("Departamento não encontrado",
-                                       "Departamento: " + EstruturaOrcamentariaExcel.Departamento + " inexistente.",
-                                       EstruturaOrcamentariaExcel.Linha, TipoDetalheEnum.erroDeValidacao);
+            var contaExisteEDesejaAlterar = this.Departamento != null
+                && EstruturaOrcamentariaExcel.TipoAlteracaoDepartamento == TipoAlteracao.Alteracao;
+
+            var satisfeito = departamentoNaoExisteEDeSejaIncluir || contaExisteEDesejaAlterar;
+
+            var mensagemComplementarDeErro = EstruturaOrcamentariaExcel.TipoAlteracaoDepartamento == TipoAlteracao.Inclusao
+                                                 ? "já existe no banco de dados"
+                                                 : "não existe no banco de dados";
+
+            var alteracaoCorreta = (EstruturasOrcamentariasExcel != null && EstruturaOrcamentariaExcel.TipoAlteracaoDepartamento== TipoAlteracao.Alteracao && 
+             EstruturasOrcamentariasExcel.Any(
+                 p =>
+                 p.Departamento == EstruturaOrcamentariaExcel.Departamento &&
+                 p.TipoAlteracaoDepartamento == TipoAlteracao.Inclusao));
+
+            if (!satisfeito && !alteracaoCorreta)
+                candidate.AdicionarDetalhe("Departamento não pode ser salvo", string.Format("Departamento '{0}' {1}", EstruturaOrcamentariaExcel.Departamento, mensagemComplementarDeErro), EstruturaOrcamentariaExcel.Linha, TipoDetalheEnum.erroDeValidacao);
 
             return satisfeito;
         }

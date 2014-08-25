@@ -1,5 +1,5 @@
-2014/08/23-21:26:19.626 868 Recovering log #45
-2014/08/23-21:26:19.626 868 Level-0 table #47: started
-2014/08/23-21:26:19.705 868 Level-0 table #47: 69735 bytes OK
-2014/08/23-21:26:19.815 868 Delete type=0 #45
-2014/08/23-21:26:19.815 868 Delete type=3 #43
+2014/08/24-11:46:45.818 1afc Recovering log #58
+2014/08/24-11:46:45.818 1afc Level-0 table #60: started
+2014/08/24-11:46:45.910 1afc Level-0 table #60: 8968 bytes OK
+2014/08/24-11:46:46.134 1afc Delete type=0 #58
+2014/08/24-11:46:46.134 1afc Delete type=3 #56
