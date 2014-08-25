@@ -612,6 +612,7 @@
     <Content Include="Views\Importar\Index.cshtml" />
     <Content Include="Views\Importar\_detalhesDaImportacao.cshtml" />
     <Content Include="Views\Carga\_DetalheCarga.cshtml" />
+    <Content Include="Views\Carga\_Cargas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

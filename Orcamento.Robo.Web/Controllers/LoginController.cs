@@ -25,7 +25,7 @@ namespace Orcamento.Robo.Web.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(user.Nome, true);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Carga");
                 }
                 else
                 {

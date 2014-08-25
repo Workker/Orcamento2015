@@ -20,8 +20,10 @@ namespace Orcamento.Robo.Web.Controllers.Carga
 
             foreach (var carga in controllerCargas)
             {
-                cargasModel.Cargas.Add(new CargaModel() { DataCriacao = carga.DataCriacao, DataFim = carga.DataFim, DataInicio = carga.DataInicio, Diretorio = carga.Diretorio, Id = carga.Id, NomeArquivo = carga.NomeArquivo, Status = carga.Status, Usuario = carga.Usuario, Detalhes = null });
+                cargasModel.Cargas.Add(new CargaModel() { DataCriacao = carga.DataCriacao, DataFim = carga.DataFim, DataInicio = carga.DataInicio, Diretorio = carga.Diretorio, Id = carga.Id, NomeArquivo = carga.NomeArquivo, Status = carga.Status, Usuario = carga.Usuario, Detalhes = null,TipoDaCarga = carga.Tipo.ToString() });
             }
+
+            cargasModel.CarregarPaginas();
 
             return View(cargasModel);
         }

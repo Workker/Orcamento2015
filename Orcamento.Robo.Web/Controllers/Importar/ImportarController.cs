@@ -78,7 +78,7 @@ namespace Orcamento.Robo.Web.Controllers.Importar
                     file.InputStream.Dispose();
 
                 }
-                
+
                 model.DetalheImportacao = detalhes;
 
                 return View(model);
@@ -89,7 +89,7 @@ namespace Orcamento.Robo.Web.Controllers.Importar
                 return View(model);
             }
         }
-  
+
 
         //
         // GET: /Importar/Details/5
@@ -179,9 +179,12 @@ namespace Orcamento.Robo.Web.Controllers.Importar
 
         private void TransformarDetalhes(Domain.Entities.Monitoramento.Carga carga, DetalhesDaImportacaoModel detalhes)
         {
-            foreach (var detalhe in carga.Detalhes)
+            if (carga.Detalhes != null)
             {
-                detalhes.Detalhes.Add(new DetalheImportacaoModel() { Nome = detalhe.Nome, Descricao = detalhe.Descricao, Linha = detalhe.Linha, Tipo = detalhe.TipoDetalhe });
+                foreach (var detalhe in carga.Detalhes)
+                {
+                    detalhes.Detalhes.Add(new DetalheImportacaoModel() { Nome = detalhe.Nome, Descricao = detalhe.Descricao, Linha = detalhe.Linha, Tipo = detalhe.TipoDetalhe });
+                }
             }
         }
     }
