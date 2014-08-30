@@ -14,17 +14,7 @@ namespace Orcamento.Robo.Web.Controllers.Carga
 
         public ActionResult Index()
         {
-            var controllerCargas = _controller.Todos();
-
-            var cargasModel = new CargasModel();
-
-            foreach (var carga in controllerCargas)
-            {
-                cargasModel.Cargas.Add(new CargaModel() { DataCriacao = carga.DataCriacao, DataFim = carga.DataFim, DataInicio = carga.DataInicio, Diretorio = carga.Diretorio, Id = carga.Id, NomeArquivo = carga.NomeArquivo, Status = carga.Status, Usuario = carga.Usuario, Detalhes = null,TipoDaCarga = carga.Tipo.ToString() });
-            }
-
-            cargasModel.CarregarPaginas();
-
+            var cargasModel = this.ObterCargas(1);
             return View(cargasModel);
         }
 
@@ -34,7 +24,10 @@ namespace Orcamento.Robo.Web.Controllers.Carga
 
             var detalhes = controllerCarga.Detalhes.Select(controleDetalhe => new DetalheModel()
                                                                                   {
-                                                                                      Id = controleDetalhe.Id, Linha = controleDetalhe.Linha, Nome = controleDetalhe.Nome, Descricao = controleDetalhe.Descricao
+                                                                                      Id = controleDetalhe.Id,
+                                                                                      Linha = controleDetalhe.Linha,
+                                                                                      Nome = controleDetalhe.Nome,
+                                                                                      Descricao = controleDetalhe.Descricao
                                                                                   }).ToList();
 
 
@@ -43,5 +36,46 @@ namespace Orcamento.Robo.Web.Controllers.Carga
             return PartialView("_DetalheCarga", cargaModel);
         }
 
+        public ActionResult MaisResultados(int paginaAtual)
+        {
+            try
+            {
+                var cargasModel = ObterCargas(paginaAtual);
+
+                return PartialView("_Resultados", cargasModel);
+            }
+            catch (Exception ex)
+            {
+                this.ShowMessage(MessageTypeEnum.danger, ex.Message);
+                return null;
+            }
+        }
+
+        private CargasModel ObterCargas(int paginaAtual)
+        {
+            var cargas = _controller.MaisResultados(paginaAtual);
+
+            var cargasModel = new CargasModel();
+
+            foreach (var carga in cargas)
+            {
+                cargasModel.Cargas.Add(new CargaModel()
+                                           {
+                                               DataCriacao = carga.DataCriacao,
+                                               DataFim = carga.DataFim,
+                                               DataInicio = carga.DataInicio,
+                                               Diretorio = carga.Diretorio,
+                                               Id = carga.Id,
+                                               NomeArquivo = carga.NomeArquivo,
+                                               Status = carga.Status,
+                                               Usuario = carga.Usuario,
+                                               Detalhes = null,
+                                               TipoDaCarga = carga.Tipo.ToString()
+                                           });
+            }
+
+            cargasModel.Pagina = paginaAtual + 1;
+            return cargasModel;
+        }
     }
 }

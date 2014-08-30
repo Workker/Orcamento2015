@@ -60,8 +60,11 @@ namespace Orcamento.Robo.Web.Models.Carga
         public CargasModel()
         {
             this.Cargas = new List<CargaModel>();
+            this.Pagina = 1;
         }
 
+
+        public int Pagina { get; set; }
     }
 
     [Serializable]

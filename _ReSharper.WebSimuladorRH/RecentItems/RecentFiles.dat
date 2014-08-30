@@ -1,41 +1,37 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="1117" fromTop="28" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Fabricas/f:FabricaDeImportacao.cs" caret="440" fromTop="12" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoTicketsUnitariosDeProducao/f:FabricaDeEspecificacaoTicketUnitarioDeProducao.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoTicketsUnitariosDeProducao/f:EspecificacaoCargaValidaTicketUnitarioDeProducaoParcela.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoTicketsUnitariosDeProducao/f:EspecificacaoCargaValidaTicketDeProducaoSetorHospitalar.cs" caret="771" fromTop="15" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoTicketsUnitariosDeProducao/f:EspecificacaoCargaValidaTicketDeProducaoDepartamento.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoTicketsUnitariosDeProducao/f:EspecificacaoCargaValidaTicketsUnitariosDeProducao.cs" caret="344" fromTop="8" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspeficicacaoFuncionarios/f:EspecificacaoCargaValidaFuncionario.cs" caret="811" fromTop="16" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:EspecificacaoCargaValidaEstruturaOrcamentaria.cs" caret="194" fromTop="4" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:EspecificacaoCargaValidaEstruturaOrcamentariaCentroDeCusto.cs" caret="631" fromTop="14" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:EspecificacaoCargaValidaEstruturaOrcamentariaConta.cs" caret="676" fromTop="14" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:EspecificacaoCargaValidaEstruturaOrcamentariaGrupoConta.cs" caret="571" fromTop="12" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoTicketsUnitariosDeProducao/f:MotorDeValidacaoDeTicketDeProducao.cs" caret="2657" fromTop="40" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Funcionarios.cs" caret="691" fromTop="14" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:TicketsUnitariosDeProducao.cs" caret="2096" fromTop="19" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:FabricaDeEspecificacaoEstruturaOrcamentaria.cs" caret="399" fromTop="7" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspeficicacaoFuncionarios/f:FabricaDeEspeficicacaoFuncionario.cs" caret="1475" fromTop="31" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspeficicacaoFuncionarios/f:MotorDeValidacaoDeFuncionario.cs" caret="988" fromTop="18" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:ProcessaCarga.cs" caret="653" fromTop="25" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Carga/f:CargaModel.cs" caret="1728" fromTop="38" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:Index.cshtml" caret="4690" fromTop="74" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Carga/f:CargaController.cs" caret="1023" fromTop="10" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_DetalheCarga.cshtml" caret="0" fromTop="0" />
-    <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/d:Robo/f:ImportarController.cs" caret="1118" fromTop="32" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/f:Carga.cs" caret="4062" fromTop="27" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento.cs" caret="2392" fromTop="40" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:EstruturaOrcamentaria.cs" caret="3193" fromTop="17" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Importar/f:ImportarController.cs" caret="2373" fromTop="31" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:MotorDeValidacaoDeEstruturaOrcamentaria.cs" caret="3323" fromTop="11" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Cargas.cshtml" caret="848" fromTop="18" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Importar/f:ImportarController.cs" caret="2373" fromTop="31" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/f:_ViewStart.cshtml" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:demo/f:faq.js" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:demo/f:gallery.js" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:demo/f:signin.js" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:demo/f:sliders.js" caret="661" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:demo/f:validation.js" caret="444" fromTop="24" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:charts/f:area.js" caret="542" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:charts/f:bar.js" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:charts/f:donut.js" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:charts/f:line.js" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/f:infobox.js" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/f:Application.js" caret="1001" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:Index.cshtml" caret="1880" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:Error.cshtml" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:_Layout.cshtml" caret="8295" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Home/f:Index.cshtml" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:_LoginPartial.cshtml" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/f:jquery.timer.js" caret="0" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:charts/f:pie.js" caret="336" fromTop="13" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Login/f:Index.cshtml" caret="2346" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Scripts/f:jquery-1.8.2.js" caret="75580" fromTop="20" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Resultados.cshtml" caret="1351" fromTop="56" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:Funcionalidades/f:Paginacao.js" caret="284" fromTop="8" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/d:Robo/f:Cargas.cs" caret="816" fromTop="19" />
+    <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/d:Robo/f:CargaController.cs" caret="738" fromTop="13" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Carga/f:CargaModel.cs" caret="1149" fromTop="26" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Carga/f:CargaController.cs" caret="586" fromTop="12" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Cargas.cshtml" caret="2221" fromTop="62" />
   </RecentFiles>
   <RecentEdits>
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspeficicacaoFuncionarios/f:MotorDeValidacaoDeFuncionario.cs" caret="740" fromTop="17" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoTicketsUnitariosDeProducao/f:FabricaDeEspecificacaoTicketUnitarioDeProducao.cs" caret="2681" fromTop="26" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:ProcessaCarga.cs" caret="648" fromTop="25" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Importar/f:Index.cshtml" caret="6124" fromTop="10" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Web.config" caret="2489" fromTop="20" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/f:BaseRepository.cs" caret="836" fromTop="26" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/f:NHibernateSessionPerRequest.cs" caret="1174" fromTop="32" />
@@ -59,8 +55,12 @@
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:MotorDeValidacaoDeEstruturaOrcamentaria.cs" caret="783" fromTop="17" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:EstruturaOrcamentaria.cs" caret="605" fromTop="8" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:Index.cshtml" caret="4645" fromTop="19" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Carga/f:CargaController.cs" caret="1055" fromTop="26" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Carga/f:CargaModel.cs" caret="1514" fromTop="32" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Cargas.cshtml" caret="1310" fromTop="21" />
+    <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/d:Robo/f:CargaController.cs" caret="750" fromTop="30" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/d:Robo/f:Cargas.cs" caret="816" fromTop="19" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Models/d:Carga/f:CargaModel.cs" caret="1718" fromTop="41" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Cargas.cshtml" caret="2327" fromTop="20" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Resultados.cshtml" caret="1094" fromTop="25" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/d:Funcionalidades/f:Paginacao.js" caret="284" fromTop="8" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Carga/f:CargaController.cs" caret="516" fromTop="10" />
   </RecentEdits>
 </RecentFiles>

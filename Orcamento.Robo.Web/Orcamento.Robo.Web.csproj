@@ -450,6 +450,7 @@
     <Content Include="js\libs\jquery.ui.touch-punch.min.js" />
     <Content Include="js\libs\less-1.3.0.min.js" />
     <Content Include="js\markerclusterer.js" />
+    <Content Include="js\Funcionalidades\Paginacao.js" />
     <Content Include="js\plugins\cirque\cirque.css" />
     <Content Include="js\plugins\cirque\cirque.js" />
     <Content Include="js\plugins\easing\jquery.easing.js" />
@@ -613,6 +614,7 @@
     <Content Include="Views\Importar\_detalhesDaImportacao.cshtml" />
     <Content Include="Views\Carga\_DetalheCarga.cshtml" />
     <Content Include="Views\Carga\_Cargas.cshtml" />
+    <Content Include="Views\Carga\_Resultados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,60 @@
+﻿@model Orcamento.Robo.Web.Models.Carga.CargasModel
+
+
+@if (Model == null || Model.Cargas == null || Model.Cargas.Count <= 0)
+{
+    <tr>
+        <td>Sem resuldatos</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+}
+else
+{
+    foreach (var carga in Model.Cargas.OrderByDescending(x => x.DataCriacao))
+    {
+    <tr>
+        <td>@carga.NomeArquivo</td>
+        <td>@carga.TipoDaCarga</td>
+        <td>@carga.DataCriacao</td>
+        @if (carga.DataInicio.HasValue)
+        {
+            <td>@carga.DataInicio</td>
+        }
+        else
+        {
+            <td>"N/d"</td>
+        }
+
+
+        @if (carga.DataFim.HasValue)
+        {
+            <td>@carga.DataFim</td>
+        }
+        else
+        {
+            <td>"N/d"</td>
+        }
+
+
+        <td>@carga.Status</td>
+
+        <td>
+
+            <a href="javascript:;" onclick="DetalhesCarga('@carga.Id');"  class="btn btn-xs btn-primary">
+                <i class="btn-icon-only icon-ok">Detalhe</i>
+            </a>
+        </td>
+    </tr>
+    }
+    
+@*    <div class="panel-heading">
+        <h4 class="panel-title">
+            <a class="accordion-toggle" onclick="GetMore(this,@Model.Pagina)" data-toggle="collapse" data-parent=".accordion" href="#collapseOne">Exibir Mais
+            </a>
+        </h4>
+    </div>*@
+}
+

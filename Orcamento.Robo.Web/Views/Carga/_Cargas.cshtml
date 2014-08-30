@@ -15,7 +15,7 @@
             <th>Status do processo</th>
             <th>Detalhes</th>
         </thead>
-        <tbody>
+        <tbody id="bodyCarga">
 
             @if (Model == null || Model.Cargas == null || Model.Cargas.Count <= 0)
             {
@@ -68,6 +68,16 @@
             }
         </tbody>
     </table>
+     <div  class="panel-heading">
+            <h4 class="panel-title" id="ExibeMaisH4">
+                <a class="accordion-toggle" onclick="GetMore(this,@Model.Pagina)" data-toggle="collapse" data-parent=".accordion" href="#collapseOne">Exibir Mais
+                </a>
+            </h4>
+        </div>
+    
+   @* <div class="clearfix uiMorePager uiMorePagerCenter showMore">
+    <a class="pam uiBoxLightblue  uiMorePagerPrimary" >Exibir mais</a>
+</div>
     <ul class="pagination">
         <li class=""><a href="javascript:;">&larr;Cargas recentes</a></li>
 
@@ -84,9 +94,10 @@
     </ul>
     <br />
     <ul class="pager" style="text-align: left;">
-    </ul>
+    </ul>*@
 </section>
 
+<script src="../../Scripts/../js/Funcionalidades/Paginacao.js"></script>
 <script type="text/javascript">
 
     function Recentes() {

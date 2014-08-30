@@ -26,5 +26,10 @@ namespace Orcamento.Controller.Robo
             _cargas.Salvar(carga);
         }
 
+        public  IList<Carga> MaisResultados(int paginaAtual)
+        {
+            return _cargas.MaisResultados(paginaAtual);
+        }
+
     }
 }
