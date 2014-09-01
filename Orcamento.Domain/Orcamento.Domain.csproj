@@ -431,6 +431,7 @@
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\MotorDeValidacaoDeFuncionario.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\EstruturaOrcamentaria.cs" />
     <Compile Include="Robo\Monitoramento\TipoCarga.cs" />
+    <Compile Include="Servico\Robo\ConfiguracoesGeraisService.cs" />
     <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioCentroDeCustoNaoEncontrado.cs" />
     <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioSetorNaoEncontrado.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\Funcionarios.cs" />

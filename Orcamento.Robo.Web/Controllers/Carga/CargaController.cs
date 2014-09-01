@@ -51,6 +51,9 @@ namespace Orcamento.Robo.Web.Controllers.Carga
             }
         }
 
+
+
+
         private CargasModel ObterCargas(int paginaAtual)
         {
             var cargas = _controller.MaisResultados(paginaAtual);

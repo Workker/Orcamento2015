@@ -1328,7 +1328,7 @@ namespace Orcamento.Test.InfraStructure
         }
 
         [Test]
-        //[Ignore]
+        [Ignore]
         public void q_Inserir_DREDe2012()
         {
             Departamentos departamentos = new Departamentos();
@@ -1347,7 +1347,7 @@ namespace Orcamento.Test.InfraStructure
         }
 
         [Test]
-        [Ignore]
+       // [Ignore]
         public void r_insetir_setor_bercario()
         {
             ContasHospitalares contas = new ContasHospitalares();
@@ -1386,7 +1386,9 @@ namespace Orcamento.Test.InfraStructure
             }
 
         }
+
         [Test]
+        [Ignore]
         public void InserirTIcketDePEssoalDepartamento() 
         {
             Departamentos departamentos = new Departamentos();
@@ -1521,7 +1523,7 @@ namespace Orcamento.Test.InfraStructure
         }
 
         [Test]
-        [Ignore]
+       // [Ignore]
         public void t_amarrar_Pessoal_ao_centro_de_custo()
         {
             var departamentos = new Departamentos();
@@ -1541,7 +1543,7 @@ namespace Orcamento.Test.InfraStructure
             foreach (var departamento in todos)
             {
 
-                foreach (var centroDeCusto in departamento.CentrosDeCusto.Where(c => c.CodigoDoCentroDeCusto == "050748"))
+                foreach (var centroDeCusto in departamento.CentrosDeCusto)
                 {
                     if (!centroDeCusto.GrupoDeContas.Any(g => g.Id == beneficios.Id))
                         centroDeCusto.Adicionar(beneficios);

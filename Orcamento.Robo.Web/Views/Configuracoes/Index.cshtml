@@ -1,0 +1,37 @@
+﻿@model Orcamento.Robo.Web.Models.Configuracoes.Configuracao
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<div class="col-md-12">
+    <div class="widget stacked">
+        <div class="widget-header">
+            <i class="icon-ok"></i>
+            <h3>Configurações Gerais</h3>
+        </div>
+        <!-- /widget-header -->
+        <div class="widget-content">
+
+            <form action="/" id="validation-form" role="form" class="form-horizontal col-md-7" novalidate="novalidate">
+                <div class="alert alert-warning">
+
+                    <p>
+                        <strong>Apagar toda a estrutura orçamentaria: </strong>
+                        &nbsp;&nbsp;
+							<a href="javascript:;" class="btn btn-danger">Confirm Message</a>
+                    </p>
+
+                </div>
+            </form>
+
+        </div>
+        <!-- /widget-content -->
+
+    </div>
+    <!-- /widget -->
+
+</div>
