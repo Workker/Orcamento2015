@@ -69,6 +69,28 @@ namespace Orcamento.Domain.DB.Repositorio
 
         }
 
+        public virtual void DeletarTickets(IList<TicketDeReceita> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                // Session.Flush();
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
+
         public TicketDeReceita Obter(Departamento departamento, TipoTicketDeReceita tipo)
         {
             var criterio = Session.CreateCriteria<TicketDeReceita>();

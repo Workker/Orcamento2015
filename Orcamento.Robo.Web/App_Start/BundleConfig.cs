@@ -9,25 +9,25 @@ namespace Orcamento.Robo.Web
         public static void RegisterBundles(BundleCollection bundles)
         {
 
-            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
-                  "~/Scripts/jquery-1.9.1.min.js",
-                  "~/Scripts/jquery-ui-1.10.0.custom.min.js",
-                  "~/Scripts/bootstrap.min.js",
-                  "~/Scripts/jquery.flot.js",
-                  "~/Scripts/jquery.flot.pie.js",
-                  "~/Scripts/jquery.flot.resize.js",
-                  "~/Scripts/Application.js",
-                  "~/Scripts/charts/area.js",
-                  "~/Scripts/charts/donut.j",
-                  "~/Scripts/jquery-unobtrusive*",
-                  "~/Scripts/jquery.validate*",
-                  "~/Scripts/DocumentReady.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+            //      "~/Scripts/jquery-1.9.1.min.js",
+            //      "~/Scripts/jquery-ui-1.10.0.custom.min.js",
+            //      "~/Scripts/bootstrap.min.js",
+            //      "~/Scripts/jquery.flot.js",
+            //      "~/Scripts/jquery.flot.pie.js",
+            //      "~/Scripts/jquery.flot.resize.js",
+            //      "~/Scripts/Application.js",
+            //      "~/Scripts/charts/area.js",
+            //      "~/Scripts/charts/donut.j",
+            //      "~/Scripts/jquery-unobtrusive*",
+            //      "~/Scripts/jquery.validate*",
+            //      "~/Scripts/DocumentReady.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+            //            "~/Scripts/jquery-{version}.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
-                        "~/Scripts/jquery-ui-{version}.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
+            //            "~/Scripts/jquery-ui-{version}.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",

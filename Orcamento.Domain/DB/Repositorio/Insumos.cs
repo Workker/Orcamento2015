@@ -43,5 +43,27 @@ namespace Orcamento.Domain.DB.Repositorio
                 throw ex;
             }
         }
+
+        public virtual void Deletar(IList<Insumo> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                // Session.Flush();
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
     }
 }

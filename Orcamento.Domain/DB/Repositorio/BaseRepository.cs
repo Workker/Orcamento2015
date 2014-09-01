@@ -22,7 +22,7 @@ namespace Orcamento.Domain.DB.Repositorio
         {
             get
             {
-                if(NHibernateSessionPerRequest.GetCurrentSession() == null)
+                if (NHibernateSessionPerRequest.GetCurrentSession() == null)
                 {
                     NHibernateSessionPerRequest.BeginRequest(null, null);
                 }
@@ -170,6 +170,28 @@ namespace Orcamento.Domain.DB.Repositorio
 
         }
 
+        public virtual void Deletar(IList<IAggregateRoot<int>> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                // Session.Flush();
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
+
         public virtual IList<T> Todos<T>()
         {
             var objs = Session.CreateCriteria(typeof(T)).List<T>();
@@ -208,10 +230,10 @@ namespace Orcamento.Domain.DB.Repositorio
             //if (ambiente != null && ambiente == "Teste")
             //    return null;
             //else
-                return
-                Fluently.Configure().Database(MsSqlConfiguration.MsSql2005.ConnectionString(c => c
-                    .FromAppSetting("Conexao")
-                    ).ShowSql()).Mappings(m => m.FluentMappings.AddFromAssemblyOf<SetorMap>()).BuildSessionFactory();
+            return
+            Fluently.Configure().Database(MsSqlConfiguration.MsSql2008.ConnectionString(c => c
+                .FromAppSetting("Conexao")
+                ).ShowSql()).Mappings(m => m.FluentMappings.AddFromAssemblyOf<SetorMap>()).BuildSessionFactory();
         }
 
         #endregion

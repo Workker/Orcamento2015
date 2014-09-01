@@ -22,6 +22,28 @@ namespace Orcamento.Domain
             
         }
 
+        public virtual void Deletar(IList<Conta> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                // Session.Flush();
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
+
         public Conta ObterContaPor(string codigo)
         {
             return Session.QueryOver<Conta>().Where(c => c.CodigoDaConta == codigo).SingleOrDefault();

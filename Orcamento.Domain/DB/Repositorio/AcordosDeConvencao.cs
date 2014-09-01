@@ -17,7 +17,27 @@ namespace Orcamento.Domain.DB.Repositorio
 
             return criterio.UniqueResult<AcordoDeConvencao>();
         }
+        public virtual void Deletar(IList<AcordoDeConvencao> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                // Session.Flush();
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
 
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
         public virtual void SalvarLista(List<AcordoDeConvencao> roots)
         {
             var transaction = Session.BeginTransaction();

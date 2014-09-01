@@ -5,28 +5,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Configurações Gerais</h2>
 
 <div class="col-md-12">
     <div class="widget stacked">
         <div class="widget-header">
             <i class="icon-ok"></i>
-            <h3>Configurações Gerais</h3>
+            <h3>Configurar estrutura orçamentaria</h3>
         </div>
         <!-- /widget-header -->
         <div class="widget-content">
 
-            <form action="/" id="validation-form" role="form" class="form-horizontal col-md-7" novalidate="novalidate">
+            <div role="form" class="form-horizontal col-md-7" >
                 <div class="alert alert-warning">
 
                     <p>
                         <strong>Apagar toda a estrutura orçamentaria: </strong>
                         &nbsp;&nbsp;
-							<a href="javascript:;" class="btn btn-danger">Confirm Message</a>
+							<a href="javascript:;" onclick="DeletarEstrutura();" class="btn btn-danger">Apagar</a>
                     </p>
 
                 </div>
-            </form>
+            </div>
 
         </div>
         <!-- /widget-content -->
@@ -35,3 +35,6 @@
     <!-- /widget -->
 
 </div>
+<script src="../../js/Paginas/Configuracoes/Configuracoes.js"></script>
+<script src="../../js/demo/../plugins/msgbox/jquery.msgbox.min.js"></script>
+@*<script src="../../js/../js/jquery-ui-1.10.4.custom.min.js"></script>*@

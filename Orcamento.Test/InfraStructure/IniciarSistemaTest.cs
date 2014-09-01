@@ -73,7 +73,6 @@ namespace Orcamento.Test.InfraStructure
     }
 
     [TestFixture]
-   
     public class Iniciar_Com_Tudo_Que_O_Sistema_Precisa_Test
     {
         public Setor Setor { get; set; }
@@ -748,11 +747,11 @@ namespace Orcamento.Test.InfraStructure
 
         private void BuildSchema(Configuration config)
         {
-            new SchemaExport(config)
-                .Drop(false, false);
+            //new SchemaExport(config)
+            //    .Drop(false, false);
 
             new SchemaExport(config)
-                .Create(true, false);
+                .Create(true, true);
         }
 
         public void InserirContas(Departamento setor)
@@ -1253,7 +1252,7 @@ namespace Orcamento.Test.InfraStructure
         }
 
         [Test]
-        [Ignore]
+        //   [Ignore]
         public void p_importar_funcionarios_hospitalar_do_excel()
         {
             string _conectionstring;
@@ -1305,11 +1304,20 @@ namespace Orcamento.Test.InfraStructure
                     departamentos.Add(setores.ObterPor(funcionarioExcel.Departamento));
 
                 if (!centros.Any(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto))
-                    centros.Add(centrosDeCusto.ObterPor(funcionarioExcel.CodigoCentroDeCusto));
+                {
+                    var centroDeCusto = centrosDeCusto.ObterPor(funcionarioExcel.CodigoCentroDeCusto);
+                    if (centroDeCusto != null)
+                        centros.Add(centroDeCusto);
+                }
+
 
 
                 var setor = departamentos.Where(d => d.Nome == funcionarioExcel.Departamento).FirstOrDefault();
-                var centro = centros.Where(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto).FirstOrDefault();
+
+                var centro = centros.FirstOrDefault(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto);
+
+                if (centro == null)
+                    continue;
                 var funcionario = new Funcionario(setor)
                 {
                     AnoAdmissao = funcionarioExcel.Ano,
@@ -1319,8 +1327,8 @@ namespace Orcamento.Test.InfraStructure
                     Nome = funcionarioExcel.Nome,
                     Salario = funcionarioExcel.Salario
                 };
-
-                centro.Adicionar(funcionario);
+                if (centro != null)
+                    centro.Adicionar(funcionario);
             }
 
 
@@ -1328,7 +1336,7 @@ namespace Orcamento.Test.InfraStructure
         }
 
         [Test]
-        [Ignore]
+        //[Ignore]
         public void q_Inserir_DREDe2012()
         {
             Departamentos departamentos = new Departamentos();
@@ -1347,7 +1355,7 @@ namespace Orcamento.Test.InfraStructure
         }
 
         [Test]
-       // [Ignore]
+        // [Ignore]
         public void r_insetir_setor_bercario()
         {
             ContasHospitalares contas = new ContasHospitalares();
@@ -1389,7 +1397,7 @@ namespace Orcamento.Test.InfraStructure
 
         [Test]
         [Ignore]
-        public void InserirTIcketDePEssoalDepartamento() 
+        public void InserirTIcketDePEssoalDepartamento()
         {
             Departamentos departamentos = new Departamentos();
             var departamneto = departamentos.Obter(298);
@@ -1523,7 +1531,7 @@ namespace Orcamento.Test.InfraStructure
         }
 
         [Test]
-       // [Ignore]
+        // [Ignore]
         public void t_amarrar_Pessoal_ao_centro_de_custo()
         {
             var departamentos = new Departamentos();
@@ -1721,7 +1729,7 @@ namespace Orcamento.Test.InfraStructure
         }
 
         [Test]
-        [Ignore]
+      //  [Ignore]
         public void InserirBercarioParaOrcamentosAntigos()
         {
             Setores setores = new Setores();
@@ -1737,7 +1745,7 @@ namespace Orcamento.Test.InfraStructure
 
             var orcamentos = new Orcamentos();
 
-            var orcamentoHospitalar = orcamentos.Obter<OrcamentoHospitalar>(21);
+            var orcamentoHospitalar = orcamentos.Obter<OrcamentoHospitalar>(1);
 
 
             orcamentoHospitalar.CriarServico(leito, subAltoRisco, bercario);

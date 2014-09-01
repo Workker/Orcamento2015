@@ -6,8 +6,10 @@ using System.Web.Mvc;
 
 namespace Orcamento.Robo.Web.Controllers.Configuracoes
 {
-    public class ConfiguracoesController : Controller
+    public class ConfiguracoesController : System.Web.Mvc.Controller
     {
+        private  Orcamento.Controller.Robo.ConfiguracoesController controller = new Controller.Robo.ConfiguracoesController();
+
         //
         // GET: /Configuracoes/
 
@@ -16,9 +18,20 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
             return View();
         }
 
-        public ActionResult Deletetar() 
+        public ActionResult Deletar()
         {
-
+            try
+            {
+                controller.Deletar();
+                this.ShowMessage(MessageTypeEnum.success, "Estrutura deletada com sucesso!",true);
+                return null;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+            
         }
 
     }

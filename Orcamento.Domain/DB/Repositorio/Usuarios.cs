@@ -47,6 +47,28 @@ namespace Orcamento.Domain.DB.Repositorio
 
 
         }
+
+        public virtual void Salvar(List<Usuario> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+
+                foreach (var root in roots)
+                {
+                    Session.SaveOrUpdate(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
     }
 
 
