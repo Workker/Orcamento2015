@@ -22,7 +22,7 @@
                     <p>
                         <strong>Apagar toda a estrutura orçamentaria: </strong>
                         &nbsp;&nbsp;
-							<a href="javascript:;" onclick="DeletarEstrutura();" class="btn btn-danger">Apagar</a>
+                        <a href="javascript:;" onclick="DeletarEstrutura();" class="btn btn-danger">Apagar</a>
                     </p>
 
                 </div>
@@ -32,9 +32,33 @@
         <!-- /widget-content -->
 
     </div>
+    
+    @Html.Partial("_Processos",Model)
     <!-- /widget -->
 
 </div>
 <script src="../../js/Paginas/Configuracoes/Configuracoes.js"></script>
 <script src="../../js/demo/../plugins/msgbox/jquery.msgbox.min.js"></script>
 @*<script src="../../js/../js/jquery-ui-1.10.4.custom.min.js"></script>*@
+<script src="../../js/plugins/jquery.timer.js"></script>
+
+<script type="text/javascript">
+    SetTimer();
+
+    function SetTimer() {
+        var timer = $.timer(function () {
+            
+            $.ajax({
+                url:"http://localhost:52485/Configuracoes/Processos", 
+                type: "GET",
+                cache: false,
+                success: function (resultado) {
+                    $("#DivProcessos").replaceWith(resultado);
+                }
+            });
+            
+        });
+
+        timer.set({ time: 3000, autostart: true });
+    }
+    </script>

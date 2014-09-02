@@ -34,6 +34,69 @@ namespace Orcamento.Domain.DB.Repositorio
 
         }
 
+        public virtual void Deletar(List<OrcamentoDeViagem> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
+
+        public virtual void Deletar(List<OrcamentoHospitalar> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
+
+        public virtual void Deletar(List<OrcamentoOperacionalVersao> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
+
         public virtual void Salvar(List<Orcamento> roots)
         {
             var transaction = Session.BeginTransaction();

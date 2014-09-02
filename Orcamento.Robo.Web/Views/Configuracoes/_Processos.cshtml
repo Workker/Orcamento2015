@@ -1,0 +1,87 @@
+﻿@model Orcamento.Robo.Web.Models.Configuracoes.Configuracao
+
+
+<div id="DivProcessos" class="widget stacked widget-table action-table">
+
+    <div class="widget-header">
+        <i class="icon-th-list"></i>
+        <h3>Processos</h3>
+    </div>
+    <!-- /widget-header -->
+
+    <div class="widget-content">
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Processo</th>
+                    <th>Status</th>
+                    <th>Data Inicio</th>
+                    <th>Data Fim</th>
+                    <th>Deletar</th>
+
+            </thead>
+            <tbody>
+                @foreach (var processo in Model.Processos)
+                {
+                    <tr>
+                        <td>@processo.Nome</td>
+                        <td>@processo.Status</td>
+                        <td>@processo.Iniciado</td>
+                        <td>@processo.Finalizado</td>
+                        <td>
+                            <a href="javascript:;" onclick="DeletarProcesso('@processo.TipoProcesso');"  class="btn btn-xs btn-primary">
+                                <i class="btn-icon-only icon-ok"></i>
+                            </a>
+                        </td>
+                    </tr>
+    
+                }
+
+            </tbody>
+        </table>
+
+
+    </div>
+    @if (!string.IsNullOrEmpty(Model.Mensagem))
+    {
+        <script type="text/javascript">
+            /*--------------------------------------------------
+                Plugin: Msg Growl
+                --------------------------------------------------*/
+            $(function () {
+
+
+
+                $.msgGrowl({
+                    type: '@Model.Tipo'
+                    , title: '@Model.Titulo'
+                    , text: '@Model.Mensagem'
+                });
+            });
+        </script>    
+    }
+
+</div>
+<script src="../../js/plugins/msgGrowl/js/msgGrowl.min.js"></script>
+<script type="text/javascript">
+
+    function DeletarProcesso(tipoProcesso) {
+        $.ajax({
+            url: "http://localhost:52485/Configuracoes/Delete",
+            type: "GET",
+            data: { tipoprocesso: tipoProcesso },
+            cache: false,
+            success: function (resultado) {
+                $("#DivProcessos").replaceWith(resultado);
+                
+            //    $.msgGrowl({
+            //        type: $(this).attr('success')
+			//, title: 'Teste'
+			//, text: 'Lorem ipsum dolor sit amet, consectetur ipsum dolor sit amet, consectetur.'
+            //    });
+            }
+        });
+    }
+</script>
+

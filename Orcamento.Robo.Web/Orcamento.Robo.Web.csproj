@@ -464,6 +464,7 @@
     <Content Include="js\plugins\flot\jquery.flot.pie.js" />
     <Content Include="js\plugins\flot\jquery.flot.resize.js" />
     <Content Include="js\plugins\hoverIntent\jquery.hoverIntent.minified.js" />
+    <Content Include="js\plugins\jquery.timer.js" />
     <Content Include="js\plugins\lightbox\jquery.lightbox.min.js" />
     <Content Include="js\plugins\lightbox\themes\carbono\images\jquery-lightbox-theme-mobile.png" />
     <Content Include="js\plugins\lightbox\themes\carbono\images\jquery-lightbox-theme.gif" />
@@ -620,6 +621,7 @@
     <Content Include="Views\Carga\_Resultados.cshtml" />
     <Content Include="Views\Configuracoes\Index.cshtml" />
     <Content Include="Views\Configuracoes\_DetalheExclusaoEstrutura.cshtml" />
+    <Content Include="Views\Configuracoes\_Processos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

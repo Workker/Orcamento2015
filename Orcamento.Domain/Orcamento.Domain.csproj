@@ -231,6 +231,8 @@
     <Compile Include="DB\Mappings\Entidades\ParcelaMap.cs" />
     <Compile Include="DB\Mappings\Entidades\Robo\CargaMap.cs" />
     <Compile Include="DB\Mappings\Entidades\Robo\DetalheMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\Robo\ProcessoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\Robo\TipoProcessoMap.cs" />
     <Compile Include="DB\Mappings\Entidades\ServicoHospitalarMap.cs" />
     <Compile Include="DB\Mappings\Entidades\SetorHospitalMap.cs" />
     <Compile Include="DB\Mappings\Entidades\SetorMap.cs" />
@@ -282,6 +284,7 @@
     <Compile Include="DB\Repositorio\Orcamentos.cs" />
     <Compile Include="DB\Repositorio\OrcamentosDeViagens.cs" />
     <Compile Include="DB\Repositorio\OrcamentosOperacionaisVersoes.cs" />
+    <Compile Include="DB\Repositorio\Processos.cs" />
     <Compile Include="DB\Repositorio\Robo\Cargas.cs" />
     <Compile Include="DB\Repositorio\Setores.cs" />
     <Compile Include="DB\Repositorio\SetoresHospitalares.cs" />
@@ -290,6 +293,7 @@
     <Compile Include="DB\Repositorio\TicketsDeProducao.cs" />
     <Compile Include="DB\Repositorio\Tipos.cs" />
     <Compile Include="DB\Repositorio\TiposConta.cs" />
+    <Compile Include="DB\Repositorio\TiposDeProcesso.cs" />
     <Compile Include="DB\Repositorio\TipoUsuarios.cs" />
     <Compile Include="DB\Repositorio\Usuarios.cs" />
     <Compile Include="DB\Repositorio\Viagens.cs" />
@@ -430,6 +434,8 @@
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\FabricaDeEspeficicacaoFuncionario.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\MotorDeValidacaoDeFuncionario.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\EstruturaOrcamentaria.cs" />
+    <Compile Include="Robo\Monitoramento\EstruturaOrcamentaria\Processo.cs" />
+    <Compile Include="Robo\Monitoramento\EstruturaOrcamentaria\TipoProcesso.cs" />
     <Compile Include="Robo\Monitoramento\TipoCarga.cs" />
     <Compile Include="Servico\Robo\ConfiguracoesGeraisService.cs" />
     <Compile Include="Util\Specification\EspecificacaoCargaFuncionarioCentroDeCustoNaoEncontrado.cs" />
