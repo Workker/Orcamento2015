@@ -2,6 +2,7 @@
 using Orcamento.Domain.Entities.Monitoramento;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.EspecificacaoEstruturaOrcamentaria;
+using Orcamento.Domain.Servico.Hospitalar;
 using System;
 using System.Collections.Generic;
 using System.Data.OleDb;
@@ -158,6 +159,8 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                     conta = new Conta(estruturaOrcamentaria.NomeDaConta, tipoContaOutras,
                                           estruturaOrcamentaria.CodigoDaConta);
                     Contas.Add(conta);
+
+                    ContasRepositorio.Salvar(conta);
                 }
                 if (estruturaOrcamentaria.TipoAlteracaoConta == TipoAlteracao.Alteracao)
                 {
@@ -207,6 +210,9 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                     if (!grupoDeConta.Contas.Any(p => p.Nome == contaRecuperada.Nome))
                         grupoDeConta.Adicionar(contaRecuperada);
                 }
+
+                if (!GruposDeConta.Any(g => g.Nome == grupoDeConta.Nome))
+                    gruposDeConta.Add(grupoDeConta);
             }
 
         }
@@ -219,12 +225,14 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                 {
                     var centroDeCusto = new CentroDeCusto(estruturaOrcamentaria.NomeCentroDeCusto, estruturaOrcamentaria.CodigoCentroDeCusto);
                     CentrosDeCustos.Add(centroDeCusto);
+
+                    AdicionarContas(centroDeCusto);
+
+                    CentrosDeCustoRepositorio.Salvar(centroDeCusto);
                 }
                 if (estruturaOrcamentaria.TipoAlteracaoCentroDeCusto == TipoAlteracao.Alteracao)
                 {
-                    CentroDeCusto centroDeCusto = null;
-
-                    centroDeCusto = CentrosDeCustoRepositorio.ObterPor(estruturaOrcamentaria.CodigoCentroDeCusto);
+                    CentroDeCusto centroDeCusto = CentrosDeCustoRepositorio.ObterPor(estruturaOrcamentaria.CodigoCentroDeCusto);
 
                     if (centroDeCusto == null)
                         centroDeCusto = CentrosDeCustos.FirstOrDefault(p => p.CodigoDoCentroDeCusto == estruturaOrcamentaria.CodigoCentroDeCusto);
@@ -233,18 +241,28 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
 
                     if (!CentrosDeCustos.Any(p => p.CodigoDoCentroDeCusto == estruturaOrcamentaria.CodigoCentroDeCusto))
                         CentrosDeCustos.Add(centroDeCusto);
+
+                    AdicionarContas(centroDeCusto);
                 }
+
+
             }
         }
 
         private void ProcessarDepartamentos()
         {
+            ServicoSalvarDepartamento servico = new ServicoSalvarDepartamento();
+
             foreach (var estruturaOrcamentaria in estruturaOrcamentariaExcel)
             {
                 if (estruturaOrcamentaria.TipoAlteracaoDepartamento == TipoAlteracao.Inclusao)
                 {
                     var departamento = FabricaDeDepartamento.Construir(estruturaOrcamentaria.TipoDepartamento,
                                                                        estruturaOrcamentaria.Departamento);
+
+                    AdicionarCentrosDeCusto(departamento);
+
+                    servico.Salvar(departamento);
                     Departamentos.Add(departamento);
                 }
                 if (estruturaOrcamentaria.TipoAlteracaoDepartamento == TipoAlteracao.Alteracao)
@@ -254,13 +272,65 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                     if (Departamentos.Any(p => p.Nome == estruturaOrcamentaria.Departamento))
                         departamento = Departamentos.FirstOrDefault(p => p.Nome == estruturaOrcamentaria.Departamento);
                     else
+                    {
                         departamento = DepartamentosRepositorio.ObterPor(estruturaOrcamentaria.Departamento);
+                        Departamentos.Add(departamento);
+                    }
 
                     departamento.Nome = estruturaOrcamentaria.Departamento;
+                    AdicionarCentrosDeCusto(departamento);
                 }
+
+
             }
 
 
+        }
+
+        private void AdicionarContas(CentroDeCusto centro)
+        {
+            var registros = estruturaOrcamentariaExcel.Where(d => d.CodigoCentroDeCusto == centro.CodigoDoCentroDeCusto);
+
+            if (registros == null || registros.Count() == 0)
+                return;
+
+            foreach (var registro in registros)
+            {
+                var conta = Contas.FirstOrDefault(c => c.CodigoDaConta == registro.CodigoDaConta);
+                if (conta == null)
+                {
+                    carga.AdicionarDetalhe("Conta inexistente", "Não foi possivel adicionar a conta ao centro de custo, conta:" + registro.CodigoDaConta, 0, TipoDetalheEnum.erroDeProcesso);
+                    continue;
+                }
+
+                if (centro.Contas != null && centro.Contas.Count > 0 && centro.Contas.Any(c => c.CodigoDaConta == registro.CodigoDaConta))
+                    continue;
+
+                centro.AdicionarConta(conta);
+            }
+        }
+
+        private void AdicionarCentrosDeCusto(Departamento departamento)
+        {
+            var registros = estruturaOrcamentariaExcel.Where(d => d.Departamento == departamento.Nome);
+
+            if (registros == null || registros.Count() == 0)
+                return;
+
+            foreach (var registro in registros)
+            {
+                var centroDeCusto = CentrosDeCustos.FirstOrDefault(c => c.CodigoDoCentroDeCusto == registro.CodigoCentroDeCusto);
+                if (centroDeCusto == null)
+                {
+                    carga.AdicionarDetalhe("Centro de custo inexistente", "Não foi possivel adicionar o departamento no centro de custo informado:" + registro.CodigoCentroDeCusto, 0, TipoDetalheEnum.erroDeProcesso);
+                    continue;
+                }
+
+                if (departamento.CentrosDeCusto != null && departamento.CentrosDeCusto.Count > 0 && departamento.CentrosDeCusto.Any(c => c.CodigoDoCentroDeCusto == registro.CodigoCentroDeCusto))
+                    continue;
+
+                departamento.AdicionarCentroDeCusto(centroDeCusto);
+            }
         }
 
         private void LerExcel()

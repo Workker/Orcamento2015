@@ -146,7 +146,7 @@ namespace Orcamento.Test.InfraStructure._2014
                             bool podeCriarMaisUmaVersaoDeOrcamento = PodeCriarMaisUmaVersaoDeOrcamento(hospital, centroDeCusto.Id, orcamentosGerenciamento);
 
                             if (podeCriarMaisUmaVersaoDeOrcamento)
-                                orcamento = this.ServicoOrcamento.CriarOrcamentoOperacional(orcamentosGerenciamento, hospital, centroDeCusto, 2014);
+                                orcamento = this.ServicoOrcamento.CriarOrcamentoOperacional(orcamentosGerenciamento, hospital, centroDeCusto, 2015);
                             else
                                 throw new Exception();
 

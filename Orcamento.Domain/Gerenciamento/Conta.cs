@@ -66,12 +66,15 @@ namespace Orcamento.Domain.Gerenciamento
             CodigoDaConta = codigo;
         }
 
-        public virtual void Adicionar(TipoTicketDePessoal t)
+        public virtual void Adicionar(TipoTicketDePessoal ticket)
         {
             if (TiposTickets == null)
                 TiposTickets = new List<ContaTicket>();
 
-            var conta = new ContaTicket() { Ticket = t };
+            if (TiposTickets.Any(t => t.Ticket == ticket))
+                return;
+
+            var conta = new ContaTicket() { Ticket = ticket };
 
             TiposTickets.Add(conta);
         }

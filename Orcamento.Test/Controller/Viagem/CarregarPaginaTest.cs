@@ -67,7 +67,7 @@ namespace Orcamento.Test.Controller.Viagem
         {
             var orcamentoDeViagem = new OrcamentoDeViagem
                 {
-                    Ano = 2014,
+                    Ano = 2015,
                     CentroDeCusto = centroDeCusto,
                     NomeOrcamento = "Orçamento de Viagem"
                 };

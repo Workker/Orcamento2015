@@ -44,7 +44,7 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
                 configuracao.Tipo = "success";
                 configuracao.Mensagem = "Estrutura deletada com sucesso.";
                 configuracao.Titulo = "Estrutura deletada.";
-                return View(configuracao);
+                return PartialView("Index", configuracao);
             }
             catch (Exception)
             {
@@ -60,12 +60,13 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
             {
                 controller.Deletar((TipoProcessoEnum)tipoProcesso);
 
-                this.ShowMessage(MessageTypeEnum.success, "Estrutura deletada com sucesso!", true);
+                this.ShowMessage(MessageTypeEnum.success, "Estrutura deletada com sucesso!");
                 var configuracao = ObterProcessos();
                 configuracao.Tipo = "success";
                 configuracao.Mensagem = "Processo " + configuracao.Processos.FirstOrDefault(p => p.TipoProcesso == tipoProcesso).Nome + " foi concluido.";
                 configuracao.Titulo = "Processo: " + configuracao.Processos.FirstOrDefault(p => p.TipoProcesso == tipoProcesso).Nome;
-                return PartialView("_Processos", configuracao);
+
+                return PartialView("Index", configuracao);
             }
             catch (Exception)
             {

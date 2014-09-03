@@ -129,7 +129,7 @@ namespace Orcamento.Domain.Servico
                                 valorConta.Valor = 0;
                         }
 
-                        valorConta.Valor = valorConta.Valor * DateTime.DaysInMonth(2014, (int)valor.Mes);
+                        valorConta.Valor = valorConta.Valor * DateTime.DaysInMonth(2015, (int)valor.Mes);
 
                         conta.Conta = "Pac Dia";
                     }

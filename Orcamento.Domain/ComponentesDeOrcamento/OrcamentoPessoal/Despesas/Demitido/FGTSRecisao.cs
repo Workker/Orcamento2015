@@ -80,7 +80,7 @@ namespace Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Despesas.Demi
                     parcela.Valor = ObterValorMensalDeFGTS(salarioAumentoConvencao, percentualDeFGTS, decimoTerceiro, ferias);
                 }
 
-                if (i < mesAdmissao && Funcionario.AnoAdmissao == 2014)
+                if (i < mesAdmissao && Funcionario.AnoAdmissao == 2015)
                     parcela.Valor = 0;
 
                 VerificarMesFerias(parcela);

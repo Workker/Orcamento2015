@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System;
+using System.Linq;
 
 namespace Orcamento.Domain.Gerenciamento
 {
@@ -26,6 +27,9 @@ namespace Orcamento.Domain.Gerenciamento
 
             if (Contas == null)
                 Contas = new List<Conta>();
+
+            if(this.Contas.Any(c=> c.Nome == conta.Nome  && c.TipoConta.TipoContaEnum == conta.TipoConta.TipoContaEnum))
+                return;
 
             Contas.Add(conta);
         }

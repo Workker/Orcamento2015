@@ -1,5 +1,5 @@
 ﻿<%@ Page AutoEventWireup="true" CodeBehind="PainelOrcamento.aspx.cs" Inherits="WebSimuladorRH.PainelOrcamento"
-    Language="C#" MasterPageFile="Principal.Master" Title="Or&ccedil;amento 2014 - Sele&ccedil;&atilde;o de M&oacute;dulos" %>
+    Language="C#" MasterPageFile="Principal.Master" Title="Or&ccedil;amento 2015 - Sele&ccedil;&atilde;o de M&oacute;dulos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>

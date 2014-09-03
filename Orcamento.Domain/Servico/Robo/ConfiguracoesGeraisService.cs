@@ -69,6 +69,10 @@ namespace Orcamento.Domain.Servico.Robo
                 case TipoProcessoEnum.DeletarUsuarios:
                     DeletarUsuarios();
                     break;
+                case TipoProcessoEnum.DeletarTicketsDePessoal:
+                    DeletarTicketDePessoal();
+                    break;
+
                 default:
                     DeletarEstruturaOrcamentaria();
                     break;
@@ -110,6 +114,8 @@ namespace Orcamento.Domain.Servico.Robo
 
                 DeletarTicketsDeUnitarios();
 
+                DeletarTicketDePessoal();
+
                 DeletarInsumos();
 
                 DeletarOrcamentosDeProducao();
@@ -121,6 +127,7 @@ namespace Orcamento.Domain.Servico.Robo
                 DeletarAcordosDeConvencao();
 
                 DeletarUsuarios();
+
 
                 DeletarDepartamentos();
 
@@ -193,6 +200,23 @@ namespace Orcamento.Domain.Servico.Robo
             catch (Exception ex)
             {
                 ReportarErro(TipoProcessoEnum.DeletarTotaisDaDRE, ex.Message);
+            }
+        }
+
+        public void DeletarTicketDePessoal()
+        {
+            try
+            {
+                AdicionarProcesso(TipoProcessoEnum.DeletarTicketsDePessoal);
+                TicketsDeOrcamentoPessoal tickets = new TicketsDeOrcamentoPessoal();
+                var todos = tickets.Todos<TicketDeOrcamentoPessoal>();
+
+                tickets.Deletar(todos);
+                FinalizarProcesso(TipoProcessoEnum.DeletarTicketsDePessoal);
+            }
+            catch (Exception ex)
+            {
+                ReportarErro(TipoProcessoEnum.DeletarTicketsDePessoal, ex.Message);
             }
         }
 
@@ -476,6 +500,10 @@ namespace Orcamento.Domain.Servico.Robo
                 AdicionarProcesso(TipoProcessoEnum.DeletarDepartamentos);
                 Departamentos departamentos = new Departamentos();
                 var todos = departamentos.Todos();
+                foreach (var departamento in todos)
+                {
+                    departamento.Setores = null;
+                }
 
                 departamentos.Deletar(todos);
 

@@ -47,6 +47,9 @@ namespace Orcamento.Domain.Gerenciamento
             if (Setores == null)
                 Setores = new List<SetorHospitalar>();
 
+            if(Setores.Any(s=> s.NomeSetor == setor.NomeSetor))
+                return;
+
             Setores.Add(setor);
         }
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Or&ccedil;amento 2014 - Insumos" Language="C#" MasterPageFile="~/Principal.Master"
+﻿<%@ Page Title="Or&ccedil;amento 2015 - Insumos" Language="C#" MasterPageFile="~/Principal.Master"
          AutoEventWireup="true" CodeBehind="Insumos.aspx.cs" Inherits="WebSimuladorRH.Insumo.Insumos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">

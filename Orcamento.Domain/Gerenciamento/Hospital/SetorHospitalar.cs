@@ -28,6 +28,9 @@ namespace Orcamento.Domain
             if (SubSetores == null)
                 SubSetores = new List<SubSetorHospital>();
 
+            if (SubSetores.Count > 0 && SubSetores.Any(s => s.NomeSetor == setor.NomeSetor))
+                return;
+
             SubSetores.Add(setor);
         }
 
@@ -38,13 +41,16 @@ namespace Orcamento.Domain
             if (Contas == null)
                 Contas = new List<ContaHospital>();
 
+            if (Contas.Count > 0 && Contas.Any(s => s.Nome == conta.Nome))
+                return;
+
             Contas.Add(conta);
         }
 
 
         protected SetorHospitalar() { }
 
-        public SetorHospitalar(string nome) 
+        public SetorHospitalar(string nome)
         {
             SubSetores = new List<SubSetorHospital>();
             Contas = new List<ContaHospital>();

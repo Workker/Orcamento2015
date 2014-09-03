@@ -42,7 +42,7 @@ namespace Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Despesas.Bene
                             Valor = valorDaParcela
                         };
 
-                        if (i + 1 < mesadmissao && funcionario.AnoAdmissao == 2014)
+                        if (i + 1 < mesadmissao && funcionario.AnoAdmissao == 2015)
                             parcela.Valor = 0;
 
                         Adicionar(parcela);
@@ -59,7 +59,7 @@ namespace Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Despesas.Bene
                         Valor = valorDaParcela
                     };
 
-                    if (i + 1 < mesadmissao && funcionario.AnoAdmissao == 2014)
+                    if (i + 1 < mesadmissao && funcionario.AnoAdmissao == 2015)
                         parcela.Valor = 0;
 
                     Adicionar(parcela);

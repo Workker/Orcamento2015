@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Orçamento 2014 - Funcion&aacute;rio" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true"
+﻿<%@ Page Title="Orçamento 2015 - Funcion&aacute;rio" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true"
     CodeBehind="Funcionario.aspx.cs" Inherits="WebSimuladorRH.Pessoal.Funcionario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">

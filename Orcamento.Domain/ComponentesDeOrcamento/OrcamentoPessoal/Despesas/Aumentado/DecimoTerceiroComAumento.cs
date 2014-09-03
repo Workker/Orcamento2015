@@ -100,7 +100,7 @@ namespace Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Despesas.Aume
                     }
                 }
 
-                if (i < mesDeAdmissao && Funcionario.AnoAdmissao == 2014)
+                if (i < mesDeAdmissao && Funcionario.AnoAdmissao == 2015)
                     parcela.Valor = 0;
 
                 Adicionar(parcela);

@@ -50,14 +50,11 @@
                 Plugin: Msg Growl
                 --------------------------------------------------*/
             $(function () {
-
-
-
                 $.msgGrowl({
                     type: '@Model.Tipo'
                     , title: '@Model.Titulo'
                     , text: '@Model.Mensagem'
-                });
+});
             });
         </script>    
     }
@@ -73,13 +70,13 @@
             data: { tipoprocesso: tipoProcesso },
             cache: false,
             success: function (resultado) {
-                $("#DivProcessos").replaceWith(resultado);
-                
-            //    $.msgGrowl({
-            //        type: $(this).attr('success')
-			//, title: 'Teste'
-			//, text: 'Lorem ipsum dolor sit amet, consectetur ipsum dolor sit amet, consectetur.'
-            //    });
+                    $("#DivProcessos").replaceWith(resultado);
+
+                //    $.msgGrowl({
+                //        type: $(this).attr('success')
+                //, title: 'Teste'
+                //, text: 'Lorem ipsum dolor sit amet, consectetur ipsum dolor sit amet, consectetur.'
+                //    });
             }
         });
     }

@@ -28,8 +28,9 @@ namespace Orcamento.Domain.Servico.Hospitalar
                 departamentos.Salvar(departamento);
 
                 InserirAcordoConvencao(departamento);
+                InicializarModuloDePessoal();
                 InserirTicketsDePessoal(departamento);
-               // AtribuirPermissaoParaADM(departamento);
+                AtribuirPermissaoParaADM(departamento);
             }
             departamentos.Salvar(departamento);
         }
@@ -56,7 +57,7 @@ namespace Orcamento.Domain.Servico.Hospitalar
 
         private void InserirInformacoesHospitalares(Departamento departamento)
         {
-            //InserirSetoresESubSetores(departamento);
+            InserirSetoresESubSetores(departamento);
             InserirSetores(departamento);
             InserirInsumo(departamento);
             InserirTicketDeProducao(departamento);
@@ -67,8 +68,8 @@ namespace Orcamento.Domain.Servico.Hospitalar
         private void InserirSetores(Departamento departamento)
         {
             Departamentos repositorio = new Departamentos();
-            var barraDor = repositorio.Obter(1);
-            foreach (var setor in barraDor.Setores)
+
+            foreach (var setor in departamento.Setores)
             {
                 departamento.AdicionarSetor(setor);
             }
@@ -95,6 +96,215 @@ namespace Orcamento.Domain.Servico.Hospitalar
             ticketsDeReceita.Add(new TicketDeReceita(departamento, "Descontos Obtidos", TipoTicketDeReceita.Descontos));
 
             departamentos.SalvarLista(ticketsDeReceita);
+        }
+
+        private TipoConta ObterTipoConta(string nome)
+        {
+            TiposConta tipos = new TiposConta();
+            TipoConta tipoConta = tipos.ObterPor(nome);
+
+            if (tipoConta == null)
+            {
+                tipoConta = new TipoConta();
+            }
+
+            tipos.Salvar(tipoConta);
+            return tipoConta;
+        }
+
+        private Conta ObterConta(string nome, TipoConta tipoConta)
+        {
+            Contas contas = new Contas();
+            Conta conta = contas.ObterContaPor(nome, tipoConta);
+
+            if (conta == null)
+            {
+                conta = new Conta(nome, tipoConta);
+            }
+            else
+            {
+                return conta;
+            }
+
+            contas.Salvar(conta);
+            return conta;
+        }
+
+        private GrupoDeConta ObterGrupoConta(string nome)
+        {
+            GruposDeConta gruposDeConta = new GruposDeConta();
+            var grupoDeConta = gruposDeConta.ObterPor(nome);
+
+            if (grupoDeConta == null)
+            {
+                grupoDeConta = new GrupoDeConta(nome);
+            }
+            else
+            {
+                return grupoDeConta;
+            }
+
+            gruposDeConta.Salvar(grupoDeConta);
+            return grupoDeConta;
+        }
+
+
+        public void InicializarModuloDePessoal()
+        {
+            var tiposConta = new TiposConta();
+            var tipoContaBeneficios = ObterTipoConta("Beneficios");
+            tiposConta.Adicionar(tipoContaBeneficios);
+
+            Departamentos departamentos = new Departamentos();
+            var listaDepartamentos = departamentos.Todos();
+
+            var tipoContaFGTS = ObterTipoConta("FGTS");
+            var tipoContaINSS = ObterTipoConta("INSS");
+            var tipoContaFerias = ObterTipoConta("Férias");
+            var tipoContaIndenizacao = ObterTipoConta( "Indenização");
+            var tipoContaDecimoTerceiro = ObterTipoConta("Décimo Terceiro");
+            var tipoContaSalario = ObterTipoConta("Salário");
+            var tipoContaBolsasDeEstagio = ObterTipoConta("Bolsas de Estágio");
+            var tipoContaExtras = ObterTipoConta("Extras");
+
+            tiposConta.Adicionar(tipoContaFGTS);
+            tiposConta.Adicionar(tipoContaINSS);
+            tiposConta.Adicionar(tipoContaFerias);
+            tiposConta.Adicionar(tipoContaIndenizacao);
+            tiposConta.Adicionar(tipoContaDecimoTerceiro);
+            tiposConta.Adicionar(tipoContaSalario);
+            tiposConta.Adicionar(tipoContaBolsasDeEstagio);
+            tiposConta.Adicionar(tipoContaExtras);
+
+            var gruposDeConta = new GruposDeConta();
+            var encargosSociais = ObterGrupoConta("Encargos Sociais");
+            var remuneracao = ObterGrupoConta( "Remuneração");
+            var beneficios = ObterGrupoConta("Benefícios");
+
+            gruposDeConta.Salvar(beneficios);
+            gruposDeConta.Salvar(remuneracao);
+            gruposDeConta.Salvar(encargosSociais);
+
+            var contaAlimentacao = ObterConta("Alimentação", tipoContaBeneficios);
+            contaAlimentacao.Adicionar(TipoTicketDePessoal.Alimentação);
+
+            var contaAssistenciaMedica = ObterConta("Assistência Médica", tipoContaBeneficios);
+            contaAssistenciaMedica.Adicionar(TipoTicketDePessoal.AssistenciaMedica);
+
+            var contaOutrosBeneficios = ObterConta("Outros Benefícios", tipoContaBeneficios);
+            contaOutrosBeneficios.Adicionar(TipoTicketDePessoal.OutrosBeneficios);
+
+            var contaTreinamentoPessoal = ObterConta("Treinamento Pessoal", tipoContaBeneficios);
+            contaTreinamentoPessoal.Adicionar(TipoTicketDePessoal.TreinamentoPessoal);
+
+            var contaValeDeTransporte = ObterConta("Vale de Transporte", tipoContaBeneficios);
+            contaValeDeTransporte.Adicionar(TipoTicketDePessoal.ValeDeTransporte);
+
+            var contaOutrasDespesas = ObterConta("Outras Despesas", tipoContaBeneficios);
+            contaOutrasDespesas.Adicionar(TipoTicketDePessoal.OutrasDespesas);
+
+            var contaAssistenciaOdontologica = ObterConta("Assistência Odontológica", tipoContaBeneficios);
+            contaAssistenciaOdontologica.Adicionar(TipoTicketDePessoal.AssistenciaOdontologica);
+
+            beneficios.Adicionar(contaAlimentacao);
+            beneficios.Adicionar(contaAssistenciaMedica);
+            beneficios.Adicionar(contaAssistenciaOdontologica);
+            beneficios.Adicionar(contaOutrosBeneficios);
+            beneficios.Adicionar(contaTreinamentoPessoal);
+            beneficios.Adicionar(contaValeDeTransporte);
+            beneficios.Adicionar(contaOutrasDespesas);
+
+            var contaFGTS = ObterConta("FGTS", tipoContaFGTS);
+            contaFGTS.Adicionar(TipoTicketDePessoal.FGTS);
+            encargosSociais.Adicionar(contaFGTS);
+
+            var contaINSS = ObterConta("INSS", tipoContaINSS);
+            contaINSS.Adicionar(TipoTicketDePessoal.INSS);
+            encargosSociais.Adicionar(contaINSS);
+
+
+
+            var contaFerias = ObterConta("Férias", tipoContaFerias);
+            encargosSociais.Adicionar(contaFerias);
+
+            var contaIndenizacao = ObterConta("Indenização", tipoContaIndenizacao);
+            encargosSociais.Adicionar(contaIndenizacao);
+
+            var contaDecimoTerceiro = ObterConta("Décimo Terceiro", tipoContaDecimoTerceiro);
+            encargosSociais.Adicionar(contaDecimoTerceiro);
+
+            foreach (var conta in encargosSociais.Contas)
+            {
+                if (conta.Nome == "Indenização")
+                {
+                    conta.Adicionar(TipoTicketDePessoal.Indenizacao);
+                }
+                else
+                {
+                    if (conta.Nome == "INSS" || conta.Nome == "FGTS")
+                        conta.Adicionar(TipoTicketDePessoal.AdicionalDeSobreaviso);
+
+                    conta.Adicionar(TipoTicketDePessoal.AdicionalNoturno);
+                    conta.Adicionar(TipoTicketDePessoal.AdicionalDeInsalubridade);
+                    conta.Adicionar(TipoTicketDePessoal.AdicionaDePericulosidade);
+                    conta.Adicionar(TipoTicketDePessoal.Gratificacoes);
+                    conta.Adicionar(TipoTicketDePessoal.HorasExtras);
+                }
+            }
+
+            remuneracao.Adicionar(new Conta("Salário", tipoContaSalario));
+
+            var contaBolsaDeEstagio = ObterConta("Bolsas Estágio", tipoContaBolsasDeEstagio);
+            contaBolsaDeEstagio.Adicionar(TipoTicketDePessoal.BolsaDeEstagio);
+            remuneracao.Adicionar(contaBolsaDeEstagio);
+
+
+            var contaAdicionalNoturno = ObterConta("Adicional Noturno", tipoContaExtras);
+            contaAdicionalNoturno.Adicionar(TipoTicketDePessoal.AdicionalNoturno);
+            remuneracao.Adicionar(contaAdicionalNoturno);
+
+            var contaPericulosidade = ObterConta("Periculosidade", tipoContaExtras);
+            contaPericulosidade.Adicionar(TipoTicketDePessoal.AdicionaDePericulosidade);
+            remuneracao.Adicionar(contaPericulosidade);
+
+            var contaInsalubridade = ObterConta("Insalubridade", tipoContaExtras);
+            contaInsalubridade.Adicionar(TipoTicketDePessoal.AdicionalDeInsalubridade);
+            remuneracao.Adicionar(contaInsalubridade);
+
+            var contaHorasExtras = ObterConta("Horas Extras", tipoContaExtras);
+            contaHorasExtras.Adicionar(TipoTicketDePessoal.HorasExtras);
+            remuneracao.Adicionar(contaHorasExtras);
+
+            var contaGratificacoes = ObterConta("Gratificações", tipoContaExtras);
+            contaGratificacoes.Adicionar(TipoTicketDePessoal.Gratificacoes);
+            remuneracao.Adicionar(contaGratificacoes);
+
+            Contas contas = new Contas();
+
+            contas.Salvar(contaGratificacoes);
+            contas.Salvar(contaHorasExtras);
+            contas.Salvar(contaInsalubridade);
+            contas.Salvar(contaPericulosidade);
+            contas.Salvar(contaAdicionalNoturno);
+            contas.Salvar(contaBolsaDeEstagio);
+            contas.Salvar(contaDecimoTerceiro);
+            contas.Salvar(contaIndenizacao);
+            contas.Salvar(contaFerias);
+            contas.Salvar(contaINSS);
+            contas.Salvar(contaFGTS);
+            contas.Salvar(contaAssistenciaOdontologica);
+            contas.Salvar(contaOutrasDespesas);
+            contas.Salvar(contaValeDeTransporte);
+            contas.Salvar(contaTreinamentoPessoal);
+            contas.Salvar(contaOutrosBeneficios);
+            contas.Salvar(contaAssistenciaMedica);
+            contas.Salvar(contaAlimentacao);
+            contas.Salvar(contaAssistenciaMedica);
+            contas.Salvar(contaAssistenciaMedica);
+            contas.Salvar(contaAssistenciaMedica);
+            contas.Salvar(contaAssistenciaMedica);
+
+
         }
 
         public void InserirTicketsDePessoal(Departamento departamento)
@@ -168,33 +378,94 @@ namespace Orcamento.Domain.Servico.Hospitalar
             acordos.Salvar(acordo);
         }
 
+        private SetorHospitalar ObterSetor(string nome)
+        {
+            SetoresHospitalares setores = new SetoresHospitalares();
+            SetorHospitalar setor = setores.Obter(nome);
+
+            if (setor == null)
+            {
+                setor = new SetorHospitalar(nome);
+            }
+
+            setores.Salvar(setor);
+            return setor;
+        }
+
+        private SubSetorHospital ObterSubSetor(string nome)
+        {
+            SetoresHospitalares setores = new SetoresHospitalares();
+            SubSetorHospital setor = setores.ObterSub(nome);
+
+            if (setor == null)
+            {
+                setor = new SubSetorHospital(nome);
+            }
+
+            setores.Salvar(setor);
+            return setor;
+        }
+
+        private ContaHospital ObterConta(string nome, TipoValorContaEnum tipo, bool calculado, bool contabilizaProducao)
+        {
+            ContasHospitalares contas = new ContasHospitalares();
+            ContaHospital conta = contas.ObterContaPor(nome);
+
+            if (conta == null)
+            {
+                conta = new ContaHospital(nome, tipo, calculado, contabilizaProducao);
+            }
+
+            contas.Salvar(conta);
+            return conta;
+        }
+
+        private ContaHospital ObterConta(string nome, TipoValorContaEnum tipo)
+        {
+            ContasHospitalares contas = new ContasHospitalares();
+            ContaHospital conta = contas.ObterContaPor(nome);
+
+            if (conta == null)
+            {
+                conta = new ContaHospital(nome, tipo);
+            }
+
+            contas.Salvar(conta);
+            return conta;
+        }
+
+        private void InserirSubSetorNoSetor(SetorHospitalar setor, SubSetorHospital subSetor)
+        {
+            setor.AdicionarSetor(subSetor);
+        }
+
         public void InserirSetoresESubSetores(Departamento departamento)
         {
             Orcamentos orcamentos = new Orcamentos();
 
-            var setorHemodinamica = new SetorHospitalar("Hemodinâmica");
-            var subSetorHemodinamica = new SubSetorHospital("Hemodinâmica");
-            setorHemodinamica.AdicionarSetor(subSetorHemodinamica);
+            var setorHemodinamica = ObterSetor("Hemodinâmica");
+            var subSetorHemodinamica = ObterSubSetor("Hemodinâmica");
+            InserirSubSetorNoSetor(setorHemodinamica, subSetorHemodinamica);
 
-            var setorOncologia = new SetorHospitalar("Oncologia");
-            var subSetorOncologia = new SubSetorHospital("Oncologia");
-            setorOncologia.AdicionarSetor(subSetorOncologia);
+            var setorOncologia = ObterSetor("Oncologia");
+            var subSetorOncologia = ObterSubSetor("Oncologia");
+            InserirSubSetorNoSetor(setorOncologia, subSetorOncologia);
 
-            var procedimento = new ContaHospital("Procedimendo", TipoValorContaEnum.Quantidade);
+            var procedimento = ObterConta("Procedimendo", TipoValorContaEnum.Quantidade);
 
             setorHemodinamica.AdicionarConta(procedimento);
             setorOncologia.AdicionarConta(procedimento);
 
-            var centroCirurgico = new SetorHospitalar("Centro Cirúrgico");
-            var centroCirurgicoSubSetor = new SubSetorHospital("Centro Cirúrgico");
-            var centroCirurgicoObstetrico = new SubSetorHospital("Centro Obstétrico");
+            var centroCirurgico = ObterSetor("Centro Cirúrgico");
+            var centroCirurgicoSubSetor = ObterSubSetor("Centro Cirúrgico");
+            var centroCirurgicoObstetrico = ObterSubSetor("Centro Obstétrico");
             centroCirurgico.AdicionarSetor(centroCirurgicoSubSetor);
             centroCirurgico.AdicionarSetor(centroCirurgicoObstetrico);
 
             //Contas ta cirurgia
-            var cirurgia = new ContaHospital("Cirurgias", TipoValorContaEnum.Quantidade);
-            var salas = new ContaHospital("Salas", TipoValorContaEnum.Quantidade, false, true);
-            var cirurgiaPorSala = new ContaHospital("Cirurgias por Sala", TipoValorContaEnum.Quantidade, true, false);
+            var cirurgia = ObterConta("Cirurgias", TipoValorContaEnum.Quantidade);
+            var salas = ObterConta("Salas", TipoValorContaEnum.Quantidade, false, true);
+            var cirurgiaPorSala = ObterConta("Cirurgias por Sala", TipoValorContaEnum.Quantidade, true, false);
 
             centroCirurgico.AdicionarConta(cirurgia);
             centroCirurgico.AdicionarConta(salas);
@@ -204,17 +475,17 @@ namespace Orcamento.Domain.Servico.Hospitalar
             cirurgiaPorSala.AnexarConta(salas);
 
             //UTI
-            var uti = new SetorHospitalar("UTI");
-            var utiSemiMaternidade = new SubSetorHospital("UTI Semi Maternidade");
-            var utiAdulto = new SubSetorHospital("UTI Adulto");
-            var utiPediatrica = new SubSetorHospital("Uti Pediátrica");
-            var utiNeoNatal = new SubSetorHospital("Uti Neo-Natal");
-            var utiCoronariana = new SubSetorHospital("Uti Coronariana");
-            var semiIntensiva = new SubSetorHospital("Uti Semi-Intensiva");
+            var uti = ObterSetor("UTI");
+            var utiSemiMaternidade = ObterSubSetor("UTI Semi Maternidade");
+            var utiAdulto = ObterSubSetor("UTI Adulto");
+            var utiPediatrica = ObterSubSetor("Uti Pediátrica");
+            var utiNeoNatal = ObterSubSetor("Uti Neo-Natal");
+            var utiCoronariana = ObterSubSetor("Uti Coronariana");
+            var semiIntensiva = ObterSubSetor("Uti Semi-Intensiva");
 
             //Contas da UTI
-            var leito = new ContaHospital("Leito", TipoValorContaEnum.Quantidade);
-            var ocupacao = new ContaHospital("Taxa de Ocupação", TipoValorContaEnum.Porcentagem);
+            var leito = ObterConta("Leito", TipoValorContaEnum.Quantidade);
+            var ocupacao = ObterConta("Taxa de Ocupação", TipoValorContaEnum.Porcentagem);
             leito.MultiPlicaPorMes = true;
             uti.AdicionarConta(leito);
             uti.AdicionarConta(ocupacao);
@@ -228,10 +499,10 @@ namespace Orcamento.Domain.Servico.Hospitalar
             uti.AdicionarSetor(semiIntensiva);
 
             //UNI
-            var uni = new SetorHospitalar("UNI");
-            var uniAdulto = new SubSetorHospital("Uni Adulto");
-            var uniPediatrica = new SubSetorHospital("Uni Pediátrica");
-            var uniMaternidade = new SubSetorHospital("Maternidade");
+            var uni = ObterSetor("UNI");
+            var uniAdulto = ObterSubSetor("Uni Adulto");
+            var uniPediatrica = ObterSubSetor("Uni Pediátrica");
+            var uniMaternidade = ObterSubSetor("Maternidade");
 
             uni.AdicionarSetor(uniAdulto);
             uni.AdicionarSetor(uniPediatrica);
@@ -242,34 +513,34 @@ namespace Orcamento.Domain.Servico.Hospitalar
             uni.AdicionarConta(ocupacao);
 
             //Conta Atendimento
-            var atendimento = new ContaHospital("Atendimento", TipoValorContaEnum.Quantidade);
+            var atendimento = ObterConta("Atendimento", TipoValorContaEnum.Quantidade);
 
             //Emergencia
-            var emergencia = new SetorHospitalar("Emergência");
-            var subEmergenciaMaternidade = new SubSetorHospital("Emergência Maternidade");
-            var subEmergenciaAdulto = new SubSetorHospital("Emergência Adulto");
-            var subEmergenciaPediatrica = new SubSetorHospital("Emergência Pediátrica");
+            var emergencia = ObterSetor("Emergência");
+            var subEmergenciaMaternidade = ObterSubSetor("Emergência Maternidade");
+            var subEmergenciaAdulto = ObterSubSetor("Emergência Adulto");
+            var subEmergenciaPediatrica = ObterSubSetor("Emergência Pediátrica");
             emergencia.AdicionarSetor(subEmergenciaMaternidade);
             emergencia.AdicionarSetor(subEmergenciaAdulto);
             emergencia.AdicionarSetor(subEmergenciaPediatrica);
             emergencia.AdicionarConta(atendimento);
 
             //Ambulatorio
-            var ambulatorio = new SetorHospitalar("Ambulatório");
-            var subAmbulatorio = new SubSetorHospital("Ambulatório");
+            var ambulatorio = ObterSetor("Ambulatório");
+            var subAmbulatorio = ObterSubSetor("Ambulatório");
             ambulatorio.AdicionarSetor(subAmbulatorio);
             ambulatorio.AdicionarConta(atendimento);
 
             //SADT
-            var sadt = new SetorHospitalar("SADT");
-            var cardiologico = new SubSetorHospital("Cardiológico");
-            var resonanciaMagnetica = new SubSetorHospital("Resonância Mag");
-            var ultrassonografica = new SubSetorHospital("Ultrassonografia");
-            var tomografiaCompleta = new SubSetorHospital("Tomografia Comp");
-            var radiologia = new SubSetorHospital("Radiologia");
-            var patologiaClinica = new SubSetorHospital("Patologia Clínica");
-            var outros = new SubSetorHospital("Outros");
-            var exames = new ContaHospital("Exames", TipoValorContaEnum.Quantidade);
+            var sadt = ObterSetor("SADT");
+            var cardiologico = ObterSubSetor("Cardiológico");
+            var resonanciaMagnetica = ObterSubSetor("Resonância Mag");
+            var ultrassonografica = ObterSubSetor("Ultrassonografia");
+            var tomografiaCompleta = ObterSubSetor("Tomografia Comp");
+            var radiologia = ObterSubSetor("Radiologia");
+            var patologiaClinica = ObterSubSetor("Patologia Clínica");
+            var outros = ObterSubSetor("Outros");
+            var exames = ObterConta("Exames", TipoValorContaEnum.Quantidade);
 
             sadt.AdicionarSetor(cardiologico);
             sadt.AdicionarSetor(resonanciaMagnetica);
@@ -280,9 +551,9 @@ namespace Orcamento.Domain.Servico.Hospitalar
             sadt.AdicionarSetor(outros);
             sadt.AdicionarConta(exames);
 
-            var bercario = new SetorHospitalar("Berçário");
-            var bercarioAltoRisco = new SubSetorHospital("Berçário Alto Risco");
-            var bercarioSemiIntensiva = new SubSetorHospital("Berçário Semi-intensiva");
+            var bercario = ObterSetor("Berçário");
+            var bercarioAltoRisco = ObterSubSetor("Berçário Alto Risco");
+            var bercarioSemiIntensiva = ObterSubSetor("Berçário Semi-intensiva");
 
             bercario.AdicionarSetor(bercarioAltoRisco);
             bercario.AdicionarSetor(bercarioSemiIntensiva);

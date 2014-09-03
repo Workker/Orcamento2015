@@ -22,7 +22,8 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria
         DeletarCentrosDeCusto = 13,
         DeletarGruposDeContas = 14,
         DeletarConta = 15,
-        DeletarEstruturaCompleta = 16
+        DeletarEstruturaCompleta = 16,
+        DeletarTicketsDePessoal = 17
     }
 
     public class TipoProcesso : IAggregateRoot<int>

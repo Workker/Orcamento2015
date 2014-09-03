@@ -1102,7 +1102,7 @@ namespace Orcamento.Test.InfraStructure
 
                 foreach (var centroDeCusto in departamento.CentrosDeCusto)
                 {
-                    var orcamento = new NovoOrcamentoPessoal(departamento, centroDeCusto, 2014);
+                    var orcamento = new NovoOrcamentoPessoal(departamento, centroDeCusto, 2015);
 
                     orcamento.Adicionar(ticketDeAlimentacao);
                     orcamento.Adicionar(ticketDeAssistenciaMedica);
@@ -1564,7 +1564,7 @@ namespace Orcamento.Test.InfraStructure
 
                     var ticketsDepartamento = tickets.Todos(departamento);
 
-                    var orcamento = new NovoOrcamentoPessoal(departamento, centroDeCusto, 2014);
+                    var orcamento = new NovoOrcamentoPessoal(departamento, centroDeCusto, 2015);
 
                     foreach (var ticket in ticketsDepartamento)
                     {

@@ -14,7 +14,7 @@ namespace Orcamento.Robo.Web.Controllers.Carga
 
         public ActionResult Index()
         {
-            var cargasModel = this.ObterCargas(1);
+            var cargasModel = this.ObterCargas(0);
             return View(cargasModel);
         }
 

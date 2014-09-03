@@ -59,7 +59,7 @@ namespace Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Despesas.Norm
                     parcela.Valor = valorDaParcelaDeFerias;
                 }
 
-                if (i + 1 < mesAdmissao && Funcionario.AnoAdmissao == 2014)
+                if (i + 1 < mesAdmissao && Funcionario.AnoAdmissao == 2015)
                     parcela.Valor = 0;
 
 

@@ -58,6 +58,13 @@ namespace Orcamento.Domain
         public virtual void AnexarConta(ContaHospital conta) 
         {
             Contract.Requires(conta != null,"Conta não informada.");
+
+            if(ContasAnexadas == null)
+                ContasAnexadas = new List<ContaHospital>();
+
+            if(ContasAnexadas.Any(c=> c.Nome == conta.Nome))
+                return;
+
             this.ContasAnexadas.Add(conta);
         }
     }

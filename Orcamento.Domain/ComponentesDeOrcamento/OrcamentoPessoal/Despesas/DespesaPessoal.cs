@@ -57,7 +57,7 @@ namespace Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Despesas
                     Valor = valorDaParcela
                 };
 
-                if (i + 1 < mesAdmissao && Funcionario.AnoAdmissao == 2014)
+                if (i + 1 < mesAdmissao && Funcionario.AnoAdmissao == 2015)
                     parcela.Valor = 0;
 
 
@@ -118,7 +118,7 @@ namespace Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Despesas
 
         public virtual void VerificarMesFerias(Parcela parcela)
         {
-            if (Funcionario.AnoAdmissao < 2014 && parcela.Mes == Funcionario.DataAdmissao)
+            if (Funcionario.AnoAdmissao < 2015 && parcela.Mes == Funcionario.DataAdmissao)
                 parcela.Valor = 0;
         }
 

@@ -170,6 +170,28 @@ namespace Orcamento.Domain.DB.Repositorio
 
         }
 
+        public virtual void Deletar(IList<TicketDeOrcamentoPessoal> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                // Session.Flush();
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
+
         public virtual void Deletar(IList<IAggregateRoot<int>> roots)
         {
             var transaction = Session.BeginTransaction();

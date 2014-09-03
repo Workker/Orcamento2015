@@ -6,12 +6,13 @@ using System.Diagnostics.Contracts;
 using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.InfraStructure;
+using NHibernate.Criterion;
 
 namespace Orcamento.Domain
 {
     public class Contas : BaseRepository, IContas
     {
-        public void Salvar(Conta conta) 
+        public void Salvar(Conta conta)
         {
             Contract.Requires(conta != null, "Conta não informada.");
             base.Salvar(conta);
@@ -19,7 +20,7 @@ namespace Orcamento.Domain
 
         public void Alterar(Conta conta)
         {
-            
+
         }
 
         public virtual void Deletar(IList<Conta> roots)
@@ -76,6 +77,15 @@ namespace Orcamento.Domain
                 transaction.Rollback();
                 throw ex;
             }
+        }
+
+        public virtual Conta ObterContaPor(string nome, TipoConta ticket)
+        {
+            var criterio = Session.CreateCriteria<Conta>();
+            criterio.Add(Expression.Eq("Nome", nome));
+            criterio.Add(Expression.Eq("TipoConta", ticket));
+
+            return criterio.UniqueResult<Conta>();
         }
     }
 }
