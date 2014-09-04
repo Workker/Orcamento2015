@@ -18,6 +18,12 @@ namespace Orcamento.Robo.Web.Controllers.Carga
             return View(cargasModel);
         }
 
+        public ActionResult Cargas()
+        {
+            var cargasModel = this.ObterCargas(0);
+            return PartialView("_Cargas",cargasModel);
+        }
+
         public ActionResult Details(Guid id)
         {
             var controllerCarga = _controller.ObterPor(id);

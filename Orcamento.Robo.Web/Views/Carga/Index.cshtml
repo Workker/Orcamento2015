@@ -10,7 +10,7 @@
 <!--  modal -->
 <div id="detalheCarga" class="table table-striped table-bordered"></div>
 
-<section id="accordions">
+<section style="display:none" id="accordions">
     <h3>Filtros</h3>
 
 
@@ -110,88 +110,109 @@
 <script type="text/javascript" src="../../Scripts/jquery.validate.js"></script>
 <script type="text/javascript" src="../../Scripts/jquery.validate.unobtrusive.js"></script>
 <script type="text/javascript" src="../../Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="../../js/plugins/jquery.timer.js"></script>
 
 <script type="text/javascript">
-    CriarDate();
-    function CriarDate() {
+    
+    SetTimer();
 
-        /*--------------------------------------------------
-        Plugin: Date Picker
-        --------------------------------------------------*/
+    function SetTimer() {
+        var timer = $.timer(function () {
 
-        $("#datepicker-inline").datepicker();
-
-        $("#datepicker-multi").datepicker({
-            numberOfMonths: 2,
-            showButtonPanel: true
-        });
-
-
-        /*--------------------------------------------------
-        Plugin: Slider
-        --------------------------------------------------*/
-
-        /* Increment Slider */
-        $("#incrementSlider").slider({
-            range: "min",
-            value: 150,
-            min: 0,
-            max: 500,
-            step: 50,
-            slide: function (event, ui) {
-                $("#incrementAmount").text("$" + ui.value);
-            }
-        });
-
-        $("#incrementAmount").text("$" + $("#incrementSlider").slider("value"));
-
-
-        /* Min Value Slider */
-        $("#rangeMinSlider").slider({
-            range: "min",
-            value: 100,
-            min: 50,
-            max: 700,
-            slide: function (event, ui) {
-                $("#rangeMinAmount").text("$" + ui.value);
-            }
-        });
-
-        $("#rangeMinAmount").text("$" + $("#rangeMinSlider").slider("value"));
-
-
-        /* Default Slider */
-        $("#defaultSlider").slider({ value: 65, range: 'min' });
-
-
-        /* Vertical Slider */
-        $("#eq > span").each(function () {
-            var value = parseInt($(this).text());
-            $(this).empty().slider({
-                value: value,
-                range: "min",
-                animate: true,
-                orientation: "vertical"
+            $.ajax({
+                url: "http://localhost:52485/Carga/Cargas",
+                type: "GET",
+                cache: false,
+                success: function (resultado) {
+                    $("#divCargas").replaceWith(resultado);
+                }
             });
+
         });
 
-
-        /* Horizontal Slider */
-        $("#rangeSlider").slider({
-            range: true,
-            min: 0,
-            max: 500,
-            values: [75, 250],
-            slide: function (event, ui) {
-                $("#amount").text("$" + ui.values[0] + " - $" + ui.values[1]);
-            }
-        });
-
-        $("#amount").text("$" + $("#rangeSlider").slider("values", 0) +
-            " - $" + $("#rangeSlider").slider("values", 1));
-
-
+        timer.set({ time: 15000, autostart: true });
     }
+
+    //CriarDate();
+    //function CriarDate() {
+
+    //    /*--------------------------------------------------
+    //    Plugin: Date Picker
+    //    --------------------------------------------------*/
+
+    //    $("#datepicker-inline").datepicker();
+
+    //    $("#datepicker-multi").datepicker({
+    //        numberOfMonths: 2,
+    //        showButtonPanel: true
+    //    });
+
+
+    //    /*--------------------------------------------------
+    //    Plugin: Slider
+    //    --------------------------------------------------*/
+
+    //    /* Increment Slider */
+    //    $("#incrementSlider").slider({
+    //        range: "min",
+    //        value: 150,
+    //        min: 0,
+    //        max: 500,
+    //        step: 50,
+    //        slide: function (event, ui) {
+    //            $("#incrementAmount").text("$" + ui.value);
+    //        }
+    //    });
+
+    //    $("#incrementAmount").text("$" + $("#incrementSlider").slider("value"));
+
+
+    //    /* Min Value Slider */
+    //    $("#rangeMinSlider").slider({
+    //        range: "min",
+    //        value: 100,
+    //        min: 50,
+    //        max: 700,
+    //        slide: function (event, ui) {
+    //            $("#rangeMinAmount").text("$" + ui.value);
+    //        }
+    //    });
+
+    //    $("#rangeMinAmount").text("$" + $("#rangeMinSlider").slider("value"));
+
+
+    //    /* Default Slider */
+    //    $("#defaultSlider").slider({ value: 65, range: 'min' });
+
+
+    //    /* Vertical Slider */
+    //    $("#eq > span").each(function () {
+    //        var value = parseInt($(this).text());
+    //        $(this).empty().slider({
+    //            value: value,
+    //            range: "min",
+    //            animate: true,
+    //            orientation: "vertical"
+    //        });
+    //    });
+
+
+    //    /* Horizontal Slider */
+    //    $("#rangeSlider").slider({
+    //        range: true,
+    //        min: 0,
+    //        max: 500,
+    //        values: [75, 250],
+    //        slide: function (event, ui) {
+    //            $("#amount").text("$" + ui.values[0] + " - $" + ui.values[1]);
+    //        }
+    //    });
+
+    //    $("#amount").text("$" + $("#rangeSlider").slider("values", 0) +
+    //        " - $" + $("#rangeSlider").slider("values", 1));
+
+
+    //}
 
 
     function DetalhesCarga(id) {

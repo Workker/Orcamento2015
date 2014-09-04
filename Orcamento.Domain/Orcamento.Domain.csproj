@@ -479,6 +479,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Modelo\Dominio.cd" />
     <None Include="Robo\Monitoramento\EstrategiasDeCargas\Dominio.cd" />
     <None Include="ModeloPessoal.cd" />
   </ItemGroup>

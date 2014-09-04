@@ -1,2 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeProducao.CustoUnitario" BaseTypeListCollapsed="true">
+    <Position X="11.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKIAAAAAAAIAEEAAAAAACAAAAAAAAAAAAAAAAgBAA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoDeProducao\CustoUnitario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="SubSetor" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeProducao.CustoHospitalar" Collapsed="true">
+    <Position X="0.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoDeProducao\CustoUnitarioTotal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeProducao.CustoUnitarioTotal">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAKIAAAAAAAIAFAAAAAAACAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoDeProducao\CustoUnitarioTotal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeProducao.Insumo" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="1.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAiAAAAAACAIAAEAAAAAAAAAAAAAAAAQAAgAAAACQA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoDeProducao\Insumo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Departamento" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Orcamento.Domain.FatorReceita" BaseTypeListCollapsed="true">
+    <Position X="0.75" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAKAAIAAAAAIAEAAAAAAACAAAAAEAAAAAAAAAAgDgA=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoDeProducao\FatorReceita.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Orcamento.Domain.IncrementoDaComplexidade" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAIAAAgSAAADQAAAABAAAAAAEAAAAAAAAEAABig=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoDeProducao\IncrementoDaComplexidade.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Orcamento.Domain.OrcamentoHospitalar">
+    <Position X="2.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAgACAAAAAgAABAAAAgAAEAAFAAAAAgAIAAQ=</HashCode>
+      <FileName>ComponentesDeOrcamento\OrcamentoDeProducao\OrcamentoHospitalar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Orcamento.Domain.SubSetorHospital" Collapsed="true">
+    <Position X="9" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Gerenciamento\Hospital\SubSetorHospital.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Orcamento.Domain.Gerenciamento.Departamento" Collapsed="true">
+    <Position X="9" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAABAAAACAAAAFAAAAAAABAAAAAEAAAAQEAAAQ=</HashCode>
+      <FileName>Gerenciamento\Departamento.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
