@@ -1,0 +1,19 @@
+﻿@if (Session["Mensagem"] != null && !string.IsNullOrEmpty(Session["Mensagem"].ToString()))
+{
+    <script type="text/javascript">
+        /*--------------------------------------------------
+            Plugin: Msg Growl
+            --------------------------------------------------*/
+        $(function () {
+            $.msgGrowl({
+                type: '@Session["Tipo"]'
+                    , title: '@Session["Titulo"]'
+                    , text: '@Session["Mensagem"]'
+            });
+
+
+
+
+        });
+    </script>    
+}

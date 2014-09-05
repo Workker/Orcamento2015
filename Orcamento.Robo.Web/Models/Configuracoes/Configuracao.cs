@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orcamento.Robo.Web.Models.Notificacoes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -6,7 +7,7 @@ using System.Web;
 namespace Orcamento.Robo.Web.Models.Configuracoes
 {
     [Serializable]
-    public class Configuracao
+    public class Configuracao : Notificacao
     {
         private List<Processo> processos;
         public List<Processo> Processos
@@ -15,18 +16,15 @@ namespace Orcamento.Robo.Web.Models.Configuracoes
             set { this.processos = value; }
         }
 
-        public virtual string Mensagem { get; set; }
-        public virtual string Titulo { get; set; }
-
         public virtual void AdicionarProcesso(Domain.Robo.Monitoramento.EstruturaOrcamentaria.Processo processo)
         {
-            if( this.processos == null)
+            if (this.processos == null)
                 this.processos = new List<Processo>();
 
             var novo = new Processo()
                            {
                                Nome = processo.Nome,
-                               Iniciado = processo.Iniciado.HasValue? processo.Iniciado.Value.ToString():"N/D",
+                               Iniciado = processo.Iniciado.HasValue ? processo.Iniciado.Value.ToString() : "N/D",
                                Status = processo.Status,
                                Finalizado = processo.Finalizado.HasValue ? processo.Finalizado.Value.ToString() : "N/D",
                                TipoProcesso = processo.TipoProcesso.Id
@@ -35,7 +33,7 @@ namespace Orcamento.Robo.Web.Models.Configuracoes
             this.processos.Add(novo);
         }
 
-        public string Tipo { get; set; }
+
     }
 
     [Serializable]

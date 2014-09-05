@@ -416,6 +416,9 @@ namespace Orcamento.Domain.Servico.Robo
 
                 foreach (var usuario in adms)
                 {
+                    if (usuario.Nome == "isaac" || usuario.Nome == "master" || usuario.Nome == "Davi" || usuario.Nome == "Workker")
+                        continue;
+
                     usuario.Departamentos = null;
                 }
                 usuarios.Salvar(adms);

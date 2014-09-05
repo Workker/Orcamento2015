@@ -3,8 +3,8 @@
 <head>
     @using Orcamento.Robo.Web
 
-    <title>Sistema de integração</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Budgget</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,9 +16,9 @@
     <link href="../../css/font-awesome.min.css" rel="stylesheet">
 
     <link href="../../css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
-    <link href="../../js/plugins/msgGrowl/css/msgGrowl.css" rel="stylesheet"/>
-    <link href="../../js/plugins/lightbox/themes/evolution-dark/jquery.lightbox.css" rel="stylesheet"/>
-    <link href="../../js/plugins/msgbox/jquery.msgbox.css" rel="stylesheet"/>
+    <link href="../../js/plugins/msgGrowl/css/msgGrowl.css" rel="stylesheet" />
+    <link href="../../js/plugins/lightbox/themes/evolution-dark/jquery.lightbox.css" rel="stylesheet" />
+    <link href="../../js/plugins/msgbox/jquery.msgbox.css" rel="stylesheet" />
 
     <link href="../../css/base-admin-3.css" rel="stylesheet">
     <link href="../../css/base-admin-3-responsive.css" rel="stylesheet">
@@ -39,21 +39,21 @@
     <script src="../../js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="../../js/libs/bootstrap.min.js"></script>
     <script src="../../js/libs/jquery.ui.touch-punch.min.js"></script>
-    
+
     <script src="../../Scripts/jquery.validate.min.js"></script>
     <script src="../../Scripts/jquery.validate.unobtrusive.min.js"></script>
     <script src="../../Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 
 
-  @* <script src="../../js/plugins/flot/jquery.flot.js"></script>
+    @* <script src="../../js/plugins/flot/jquery.flot.js"></script>
     <script src="../../js/plugins/flot/jquery.flot.pie.js"></script>
     <script src="../../js/plugins/flot/jquery.flot.resize.js"></script>
 
     <script src="../../js/charts/area.js"></script>
     <script src="../../js/charts/donut.js"></script>*@
-    
-     @*  <script src="../../js/Application.js"></script>
+
+    @*  <script src="../../js/Application.js"></script>
     <script src="../../Scripts/DocumentReady.js"></script>
     <script src="../../js/Funcionalidades/Paginacao.js"></script>
     <script src="../../js/Paginas/Configuracoes/Configuracoes.js"></script>*@
@@ -107,7 +107,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     <i class="icon-cog"></i>
                 </button>
-                <a class="navbar-brand" href="~/PosicoesDosVeiculos">Configuração Orçamento | Rede Dor São Luiz</a>
+                <a class="navbar-brand" href="#">Configuração Orçamento | Rede Dor São Luiz</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -195,6 +195,13 @@
                                 <li><a href="~/Carga">Status importação</a></li>
                             </ul>
                         </li>
+                        
+                        <li class="active">
+                            <a href="~/Faq">
+                                <i class="icon-home"></i>
+                                <span>Faq</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.subnav-collapse -->
@@ -221,12 +228,13 @@
 
         </div>
         <!-- /container -->
-
+       out
+        @*RenderPage("../Notificacoes/Index.cshtml")*@
     </div>
     <!-- /main -->
 
-    
-    
+
+
 
     <div class="footer">
 
@@ -235,7 +243,7 @@
             <div class="row">
 
                 <div id="footer-copyright" class="col-md-6">
-                    &copy; 2012-13 Workker.
+                    &copy; 2011-50 Workker.
                 </div>
                 <!-- /span6 -->
 
@@ -258,7 +266,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
 
- @*   <script src="../../js/libs/jquery-1.9.1.min.js"></script>
+    @*   <script src="../../js/libs/jquery-1.9.1.min.js"></script>
     <script src="../../js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="../../js/libs/bootstrap.min.js"></script>
     <script src="../../js/libs/jquery.ui.touch-punch.min.js"></script>*@
@@ -274,7 +282,7 @@
     <script src="../../js/plugins/flot/jquery.flot.pie.js"></script>
     <script src="../../js/plugins/flot/jquery.flot.resize.js"></script>*@
 
-    
+
 
     <script src="../../Scripts/DocumentReady.js"></script>
     <script src="../../js/Application.js"></script>

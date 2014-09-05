@@ -6,9 +6,33 @@ namespace Orcamento.Domain.DB.Repositorio
 {
     public class Usuarios : BaseRepository
     {
+        public virtual void SalvarLista(List<Usuario> roots) 
+        {
+            var transaction = Session.BeginTransaction();
+
+            try
+            {
+                foreach (var root in roots)
+                {
+                    Session.SaveOrUpdate(root);
+                }
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+        }
+
         public virtual Usuario ObterAcesso(string login, string senha)
         {
             return Session.QueryOver<Usuario>().Where(x => x.Login == login).And(y => y.Senha == senha).SingleOrDefault();
+        }
+
+        public virtual Usuario ObterAcesso(string login)
+        {
+            return Session.QueryOver<Usuario>().Where(x => x.Login == login).SingleOrDefault();
         }
         
         public virtual List<Usuario> ObterPor(Departamento departamento)

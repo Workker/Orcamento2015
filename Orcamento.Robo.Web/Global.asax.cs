@@ -24,5 +24,7 @@ namespace Orcamento.Robo.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
         }
+
+        
     }
 }

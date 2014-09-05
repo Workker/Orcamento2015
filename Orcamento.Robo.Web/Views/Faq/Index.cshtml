@@ -1,0 +1,117 @@
+﻿@model Orcamento.Robo.Web.Models.Faq.Faqs
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Index</h2>
+
+<div class="row">
+
+    <!-- /span8 -->
+    @foreach (var faq in Model.faqs)
+    {
+          
+        <div class="col-md-8">
+
+            <div class="widget stacked">
+
+                <div class="widget-header" onclick="FecharAba('@faq.Id');">
+                    <i class="icon-pushpin"></i>
+                    <h3>@faq.Nome</h3>
+                </div>
+                <!-- /widget-header -->
+
+                <div class="widget-content" id="@faq.Id">
+
+                    <h3>Search</h3>
+
+                    <br />
+
+                    <ol class="faq-list">
+                        @foreach (var topico in faq.Topicos)
+                        {
+                            <li>
+                                <h4>@topico.Nome</h4>
+                                <p>@topico.Resposta</p>
+
+                            </li>
+                            
+                        }
+                    </ol>
+
+
+                </div>
+                <!-- /widget-content -->
+
+            </div>
+            <!-- /widget -->
+
+        </div>
+
+    }
+
+
+    <div class="col-md-4">
+
+        <div class="widget widget-plain">
+
+            <div class="widget-content">
+
+                <a href="javascript:;" class="btn btn-primary btn-support-ask">Ask A Question</a>
+
+
+                <a href="javascript:;" class="btn btn-default btn-support-contact">Contact Support</a>
+
+
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+
+
+
+        <div class="widget stacked widget-box">
+
+            <div class="widget-header">
+                <h3>Most Popular Questions</h3>
+            </div>
+            <!-- /widget-header -->
+
+            <div class="widget-content">
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            </div>
+            <!-- /widget-content -->
+
+        </div>
+        <!-- /widget -->
+
+    </div>
+    <!-- /span4 -->
+
+
+
+</div>
+<!-- /row -->
+<!-- /row -->
+
+<link href="../../js/plugins/faq/faq.css" rel="stylesheet">
+<script src="../../js/plugins/faq/faq.js"></script>
+<script type="text/javascript">
+    $(function () {
+
+        $('.faq-list').goFaq();
+
+    });
+
+    function FecharAba(id) {
+        $("#" + id).toggle();
+    }
+
+</script>

@@ -12,11 +12,19 @@ namespace Orcamento.Domain.Robo.Fabricas
                 case TipoEstrategiaDeCargaEnum.Funcionarios:
                     return new Funcionarios();
                     break;
+
                 case TipoEstrategiaDeCargaEnum.TicketsDeProducao:
                     return new ProcessaTicketsDeProducao();
                     break;
+
                 case TipoEstrategiaDeCargaEnum.EstruturaOrcamentaria:
                     return new EstruturaOrcamentaria();
+                    break;
+
+                case TipoEstrategiaDeCargaEnum.Usuarios:
+                    return new Usuarios();
+                    break;
+
                 default:
                     return null;
             }

@@ -43,9 +43,9 @@ namespace Orcamento.Domain.Servico.Hospitalar
             Departamentos repositorioDepartamentos = new Departamentos();
 
             Usuarios usuarios = new Usuarios();
-            var todos = usuarios.TodosPor(tipoUsuarios.Obter<TipoUsuario>(1));
+            var todos = usuarios.TodosPor(tipoUsuarios.Obter<TipoUsuario>((int)TipoUsuarioEnum.Administrador));
 
-            var departamentos = repositorioDepartamentos.Todos<Setor>();
+            var departamentos = repositorioDepartamentos.Todos<Departamento>();
 
             foreach (var usuario in todos)
             {

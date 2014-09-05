@@ -1,4 +1,5 @@
 ﻿using Orcamento.Domain.Gerenciamento;
+using Orcamento.Robo.Web.Models.Notificacoes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web;
 namespace Orcamento.Robo.Web.Models.Carga
 {
     [Serializable]
-    public class CargaModel
+    public class CargaModel : Notificacao
     {
         public virtual Guid Id { get; set; }
         public virtual DateTime DataCriacao { get; set; }

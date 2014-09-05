@@ -9,6 +9,8 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
     {
         Funcionarios = 0,
         TicketsDeProducao = 1,
-        EstruturaOrcamentaria = 2
+        EstruturaOrcamentaria = 2,
+        Usuarios = 3,
+        AmarracaoDeUsuarios = 4
     }
 }

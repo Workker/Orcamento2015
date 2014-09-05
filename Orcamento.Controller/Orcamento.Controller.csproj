@@ -200,6 +200,7 @@
     <Compile Include="OrcamentoPessoalController.cs" />
     <Compile Include="Robo\CargaController.cs" />
     <Compile Include="Robo\ConfiguracoesController.cs" />
+    <Compile Include="Robo\FaqsController.cs" />
     <Compile Include="Robo\ImportarController.cs" />
     <Compile Include="TicketsController.cs" />
     <Compile Include="Views\IViewDespesaOperacional.cs" />

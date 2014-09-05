@@ -14,11 +14,11 @@
         <table class="table table-striped table-bordered">
             <thead>
                 <tr>
-                    <th>Processo</th>
-                    <th>Status</th>
-                    <th>Data Inicio</th>
-                    <th>Data Fim</th>
-                    <th>Deletar</th>
+                <th>Processo</th>
+                <th>Status</th>
+                <th>Data Inicio</th>
+                <th>Data Fim</th>
+                <th>Deletar</th>
 
             </thead>
             <tbody>
@@ -43,6 +43,7 @@
 
 
     </div>
+
     @if (!string.IsNullOrEmpty(Model.Mensagem))
     {
         <script type="text/javascript">
@@ -60,7 +61,7 @@
     }
 
 </div>
-<script src="../../js/plugins/msgGrowl/js/msgGrowl.min.js"></script>
+
 <script type="text/javascript">
 
     function DeletarProcesso(tipoProcesso) {

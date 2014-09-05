@@ -231,7 +231,10 @@
     <Compile Include="DB\Mappings\Entidades\ParcelaMap.cs" />
     <Compile Include="DB\Mappings\Entidades\Robo\CargaMap.cs" />
     <Compile Include="DB\Mappings\Entidades\Robo\DetalheMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\Robo\FaqMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\Robo\PerguntaMap.cs" />
     <Compile Include="DB\Mappings\Entidades\Robo\ProcessoMap.cs" />
+    <Compile Include="DB\Mappings\Entidades\Robo\TipoFaqMap.cs" />
     <Compile Include="DB\Mappings\Entidades\Robo\TipoProcessoMap.cs" />
     <Compile Include="DB\Mappings\Entidades\ServicoHospitalarMap.cs" />
     <Compile Include="DB\Mappings\Entidades\SetorHospitalMap.cs" />
@@ -286,6 +289,7 @@
     <Compile Include="DB\Repositorio\OrcamentosOperacionaisVersoes.cs" />
     <Compile Include="DB\Repositorio\Processos.cs" />
     <Compile Include="DB\Repositorio\Robo\Cargas.cs" />
+    <Compile Include="DB\Repositorio\Robo\Faqs.cs" />
     <Compile Include="DB\Repositorio\Setores.cs" />
     <Compile Include="DB\Repositorio\SetoresHospitalares.cs" />
     <Compile Include="DB\Repositorio\Tickets.cs" />
@@ -397,6 +401,9 @@
     <Compile Include="Infra\ScopeInstance\ThreadStaticInstanceScoper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robo\Fabricas\FabricaDeImportacao.cs" />
+    <Compile Include="Robo\Faq\Faq.cs" />
+    <Compile Include="Robo\Faq\Pergunta.cs" />
+    <Compile Include="Robo\Faq\TipoFaq.cs" />
     <Compile Include="Robo\Monitoramento\Carga.cs" />
     <Compile Include="Robo\Monitoramento\Detalhe.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoCarga.cs" />
@@ -434,6 +441,7 @@
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\FabricaDeEspeficicacaoFuncionario.cs" />
     <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspeficicacaoFuncionarios\MotorDeValidacaoDeFuncionario.cs" />
     <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\EstruturaOrcamentaria.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\Usuarios.cs" />
     <Compile Include="Robo\Monitoramento\EstruturaOrcamentaria\Processo.cs" />
     <Compile Include="Robo\Monitoramento\EstruturaOrcamentaria\TipoProcesso.cs" />
     <Compile Include="Robo\Monitoramento\TipoCarga.cs" />

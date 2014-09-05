@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace Orcamento.Robo.Web.Controllers.Configuracoes
 {
-    public class ConfiguracoesController : System.Web.Mvc.Controller
+    public class ConfiguracoesController : ControllerBase
     {
         private Orcamento.Controller.Robo.ConfiguracoesController controller = new Controller.Robo.ConfiguracoesController();
 
@@ -44,7 +44,7 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
                 configuracao.Tipo = "success";
                 configuracao.Mensagem = "Estrutura deletada com sucesso.";
                 configuracao.Titulo = "Estrutura deletada.";
-                return PartialView("Index", configuracao);
+                return PartialView("_Processos", configuracao);
             }
             catch (Exception)
             {
@@ -62,11 +62,12 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
 
                 this.ShowMessage(MessageTypeEnum.success, "Estrutura deletada com sucesso!");
                 var configuracao = ObterProcessos();
-                configuracao.Tipo = "success";
-                configuracao.Mensagem = "Processo " + configuracao.Processos.FirstOrDefault(p => p.TipoProcesso == tipoProcesso).Nome + " foi concluido.";
-                configuracao.Titulo = "Processo: " + configuracao.Processos.FirstOrDefault(p => p.TipoProcesso == tipoProcesso).Nome;
 
-                return PartialView("Index", configuracao);
+                CriarConfiguracao(tipoProcesso, configuracao, "success", "Processo " +
+                                    configuracao.Processos.FirstOrDefault(p => p.TipoProcesso == tipoProcesso).Nome +
+                                    " foi concluido.", "Processo: " + configuracao.Processos.FirstOrDefault(p => p.TipoProcesso == tipoProcesso).Nome);
+
+                return PartialView("_Processos", configuracao);
             }
             catch (Exception)
             {

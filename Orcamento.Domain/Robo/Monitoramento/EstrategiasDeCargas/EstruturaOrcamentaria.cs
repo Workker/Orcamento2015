@@ -92,11 +92,8 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                 ValidarCarga();
 
                 if (!CargaContemErros())
-                {
+                    SalvarAlteracoes(salvar);
 
-                    if (!CargaContemErros())
-                        SalvarAlteracoes(salvar);
-                }
             }
             catch (Exception ex)
             {

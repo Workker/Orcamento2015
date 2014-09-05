@@ -262,21 +262,26 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\Configuracoes\ConfiguracoesController.cs" />
+    <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\Exportar\ExportarController.cs" />
     <Compile Include="Controllers\Carga\CargaController.cs" />
+    <Compile Include="Controllers\Faq\FaqController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Importar\ImportarController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\Notificacoes\NotificacoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Configuracoes\Configuracao.cs" />
     <Compile Include="Models\Exportar\ExportarModel.cs" />
+    <Compile Include="Models\Faq\Faq.cs" />
     <Compile Include="Models\Importar\DetalhesDaImportacaoModel.cs" />
     <Compile Include="Models\Carga\CargaModel.cs" />
     <Compile Include="Models\HtmlHelperExtensions.cs" />
     <Compile Include="Models\Importar\ImportarModel.cs" />
     <Compile Include="Models\Login\LoginModel.cs" />
+    <Compile Include="Models\Notificacoes\Notificacao.cs" />
     <Compile Include="Notification\ControllerExtensions.cs" />
     <Compile Include="Notification\Historico.cs" />
     <Compile Include="Notification\MessageTypeEnum.cs" />
@@ -624,6 +629,9 @@
     <Content Include="Views\Configuracoes\Index.cshtml" />
     <Content Include="Views\Configuracoes\_DetalheExclusaoEstrutura.cshtml" />
     <Content Include="Views\Configuracoes\_Processos.cshtml" />
+    <Content Include="Views\Faq\Index.cshtml" />
+    <Content Include="Views\Notificacoes\Index.cshtml" />
+    <Content Include="Views\Shared\_Notificacoes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

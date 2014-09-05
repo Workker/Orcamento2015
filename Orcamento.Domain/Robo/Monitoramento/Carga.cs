@@ -157,7 +157,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
         public virtual bool Ok()
         {
             return this.Detalhes == null || this.Detalhes.Count == 0 || this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel ||  d.TipoDetalhe == TipoDetalheEnum.erroDeValidacao) != null
-                && this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel).Count() == 0;
+                && this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel || d.TipoDetalhe == TipoDetalheEnum.erroDeValidacao).Count() == 0;
         }
     }
 }

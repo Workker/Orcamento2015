@@ -52,6 +52,16 @@ namespace Orcamento.Robo.Web.Controllers.Importar
              }
                 );
 
+            model.TiposImportacao.Add
+              (
+           new TipoImportacaoModel()
+           {
+               Id = TipoEstrategiaDeCargaEnum.Usuarios,
+               Selecionado = false,
+               Tipo = "Usuários"
+           }
+              );
+
             return model;
 
         }
