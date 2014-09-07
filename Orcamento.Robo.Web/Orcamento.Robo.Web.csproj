@@ -261,6 +261,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\ConfiguracoesPorDepartamento\ConfiguracoesPorDepartamentoController.cs" />
     <Compile Include="Controllers\Configuracoes\ConfiguracoesController.cs" />
     <Compile Include="Controllers\ControllerBase.cs" />
     <Compile Include="Controllers\Exportar\ExportarController.cs" />
@@ -273,7 +274,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ConfiguracoesPoDepartamento\ConfiguracoesPorDepartamento.cs" />
+    <Compile Include="Models\ConfiguracoesPoDepartamento\Departamento.cs" />
     <Compile Include="Models\Configuracoes\Configuracao.cs" />
+    <Compile Include="Models\Core\DepartamentoModel.cs" />
     <Compile Include="Models\Exportar\ExportarModel.cs" />
     <Compile Include="Models\Faq\Faq.cs" />
     <Compile Include="Models\Importar\DetalhesDaImportacaoModel.cs" />
@@ -461,6 +465,7 @@
     <Content Include="js\markerclusterer.js" />
     <Content Include="js\Funcionalidades\Paginacao.js" />
     <Content Include="js\Paginas\Configuracoes\Configuracoes.js" />
+    <Content Include="js\Paginas\Configuracoes\ConfiguracoesPorDepartamento.js" />
     <Content Include="js\plugins\cirque\cirque.css" />
     <Content Include="js\plugins\cirque\cirque.js" />
     <Content Include="js\plugins\easing\jquery.easing.js" />
@@ -627,11 +632,12 @@
     <Content Include="Views\Carga\_Cargas.cshtml" />
     <Content Include="Views\Carga\_Resultados.cshtml" />
     <Content Include="Views\Configuracoes\Index.cshtml" />
-    <Content Include="Views\Configuracoes\_DetalheExclusaoEstrutura.cshtml" />
     <Content Include="Views\Configuracoes\_Processos.cshtml" />
     <Content Include="Views\Faq\Index.cshtml" />
     <Content Include="Views\Notificacoes\Index.cshtml" />
     <Content Include="Views\Shared\_Notificacoes.cshtml" />
+    <Content Include="Views\ConfiguracoesPorDepartamento\Index.cshtml" />
+    <Content Include="Views\ConfiguracoesPorDepartamento\_Processos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

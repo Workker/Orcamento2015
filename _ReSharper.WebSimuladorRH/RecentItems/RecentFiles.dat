@@ -1,23 +1,6 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/f:Orcamento.cs" caret="1881" fromTop="16" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoDeProducao/f:TicketDeReceita.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoDeProducao/f:TicketDeProducao.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Gerenciamento/d:Hospital/f:SetorHospitalar.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Gerenciamento/d:Hospital/f:ContaHospital.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Gerenciamento/d:Hospital/f:SubSetorHospital.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Gerenciamento/d:Hospital/f:Hospital.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/d:OrcamentoDeProducao/f:OrcamentoHospitalar.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Servico/d:Robo/f:ConfiguracoesGeraisService.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Gerenciamento/f:Usuario.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:ProcessaCarga.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Servico/d:Hospitalar/f:ServicoSalvarDepartamento.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:EstruturaOrcamentaria.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/f:Carga.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/f:Usuarios.cs" caret="0" fromTop="0" />
-    <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/f:IniciarSistemaTest.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EstrategiasDeCargas/f:Usuarios.cs" caret="0" fromTop="0" />
-    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoTicketsUnitariosDeProducao/f:MotorDeValidacaoDeTicketDeProducao.cs" caret="0" fromTop="0" />
+    <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:ComponentesDeOrcamento/f:Orcamento.cs" caret="1881" fromTop="58" />
   </RecentFiles>
   <RecentEdits />
 </RecentFiles>

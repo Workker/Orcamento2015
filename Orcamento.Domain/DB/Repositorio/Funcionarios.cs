@@ -4,6 +4,7 @@ using System.Linq;
 using Orcamento.Domain.DB.Mappers;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal;
+using NHibernate.Criterion;
 
 namespace Orcamento.Domain.DB.Repositorio
 {
@@ -72,6 +73,13 @@ namespace Orcamento.Domain.DB.Repositorio
                                           };
 
             return funcionarios.ToList();
+        }
+
+        public List<Funcionario> ObterPor(Departamento departamento)
+        {
+            var criterio = Session.CreateCriteria<Funcionario>();
+            criterio.Add(Expression.Eq("Departamento", departamento));
+            return criterio.List<Funcionario>().ToList();
         }
 
         public virtual void SalvarLista(List<Funcionario> roots)

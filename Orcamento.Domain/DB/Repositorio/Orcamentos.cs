@@ -296,6 +296,13 @@ namespace Orcamento.Domain.DB.Repositorio
 
             return criterio.List<Orcamento>().ToList();
         }
+
+        public virtual List<Orcamento> TodosOrcamentosOperacionaisPor(Departamento setor)
+        {
+            var criterio = Session.CreateCriteria<OrcamentoOperacionalVersao>();
+            criterio.Add(Expression.Eq("Setor", setor));
+            return criterio.List<Orcamento>().ToList();
+        }
         public virtual List<Orcamento> TodosOrcamentosOperacionaisPor(CentroDeCusto centroDeCusto)
         {
             var criterio = Session.CreateCriteria<OrcamentoOperacionalVersao>();

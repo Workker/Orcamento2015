@@ -1,0 +1,115 @@
+﻿@model Orcamento.Robo.Web.Models.ConfiguracoesPoDepartamento.ConfiguracaoPorDepartamentoModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Configurações por departamento</h2>
+
+<div class="col-md-12">
+<div class="widget stacked">
+    <div class="widget-header">
+        <i class="icon-ok"></i>
+        <h3>Departamento</h3>
+    </div>
+    <!-- /widget-header -->
+    <div class="widget-content">
+
+        <div role="form" class="form-horizontal col-md-5">
+            <select id="IdDepartamento" name="IdTipo" onchange="ObterProcessos();" class="form-control">
+                @if (Model.Departamentos == null)
+                {
+                    <option value="">Nehum departamento</option>    
+                }
+                else
+                {
+
+                    foreach (var departamento in Model.Departamentos)
+                    {
+                        if (departamento.Selecionado)
+                        {
+                            <option selected="selected" value="@departamento.Id">@departamento.Nome</option>
+                        }
+                        else
+                        {
+                            <option value="@departamento.Id">@departamento.Nome</option>
+                        }
+                    }
+                }
+            </select>
+        </div>
+            
+    </div>
+    <!-- /widget-content -->
+
+</div>
+    </div>
+
+<div class="col-md-12">
+    <div class="widget stacked">
+        <div class="widget-header">
+            <i class="icon-ok"></i>
+            <h3>Configurar estrutura orçamentaria por departamento</h3>
+        </div>
+        <!-- /widget-header -->
+        <div class="widget-content">
+            
+        
+
+            <div role="form" class="form-horizontal col-md-7">
+               
+                <div class="alert alert-warning">
+
+                    <p>
+                        <strong>Apagar toda a estrutura do departamento: </strong>
+                        &nbsp;&nbsp;
+                        <a href="javascript:;" onclick="DeletarEstrutura();" class="btn btn-danger">Apagar</a>
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+        <!-- /widget-content -->
+
+    </div>
+
+    @Html.Partial("_Processos", Model)
+    <!-- /widget -->
+
+</div>
+<script src="../../js/Paginas/Configuracoes/ConfiguracoesPorDepartamento.js.js"></script>
+<script src="../../js/demo/../plugins/msgbox/jquery.msgbox.min.js"></script>
+<script src="../../js/plugins/msgGrowl/js/msgGrowl.min.js"></script>
+<script src="../../js/plugins/jquery.timer.js"></script>
+
+
+<script type="text/javascript">
+    SetTimer();
+
+    function SetTimer() {
+        var timer = $.timer(function () {
+
+            ObterProcessos();
+        });
+
+        timer.set({ time: 3000, autostart: true });
+
+
+        function ObterProcessos() {
+            var idDepartamento = $("#IdDepartamento").val();
+            if (idDepartamento != "") {
+                $.ajax({
+                    url: "http://localhost:52485/ConfiguracoesPorDepartamento/Processos",
+                    type: "GET",
+                    cache: false,
+                    data: { idDepartamento: idDepartamento },
+                    success: function (resultado) {
+                        $("#DivProcessos").replaceWith(resultado);
+                    }
+                });
+            }
+        }
+    }
+</script>

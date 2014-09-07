@@ -23,7 +23,21 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria
         DeletarGruposDeContas = 14,
         DeletarConta = 15,
         DeletarEstruturaCompleta = 16,
-        DeletarTicketsDePessoal = 17
+        DeletarTicketsDePessoal = 17,
+        DeletarTotaisdaDREporDepartamento = 18,
+        DeletarFuncionariosporDepartamento = 19,
+        DeletarOrcamentosPessoaisporDepartamento = 20,
+        DeletarTicketsDeReceitaporDepartamento = 21,
+        DeletarTicketsDeUnitáriosporDepartamento = 22,
+        DeletarTicketsDeInsumosporDepartamento = 23,
+        DeletarOrcammentosDeProduçãoporDepartamento = 24,
+        DeletarOrcammentosOperacionaisporDepartamento = 25,
+        DeletarOrcammentosDeViagemporDepartamento = 26,
+        DeletarAcordosdeconvencaoporDepartamento = 27,
+        DeletarUsuariosporDepartamento = 28,
+        DeletarDepartamentosporDepartamento = 29,
+        DeletarTicketsdePessoalporDepartamento = 30,
+        DeletarEstruturaCompletaPorDepartamento = 31
     }
 
     public class TipoProcesso : IAggregateRoot<int>

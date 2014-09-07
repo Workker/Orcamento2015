@@ -16,6 +16,7 @@ namespace Orcamento.Domain.DB.Mappings.Entidades.Robo
             Map(x => x.Status);
             Map(x => x.Iniciado);
             Map(x => x.Finalizado);
+            References(d => d.Departamento);
             References(x => x.TipoProcesso);
         }
     }

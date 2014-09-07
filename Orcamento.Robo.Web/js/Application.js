@@ -31,10 +31,10 @@ function displayMessages() {
         $("#messagewrapper").show();
         $("#messagewrapper").focus();
         //TODO: focus não esta funcionando.
-        $("#DivMenu").focus();
-        //$('body, html').animate({
-        //    scrollTop: 0
-        //}, 600);
+     //   $("#DivMenu").focus();
+        $('body, html').animate({
+            scrollTop: 0
+        }, 600);
 
         $(document).click(function () {
             clearMessages();

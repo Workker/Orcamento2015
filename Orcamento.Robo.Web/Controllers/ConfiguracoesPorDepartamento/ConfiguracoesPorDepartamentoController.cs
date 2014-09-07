@@ -1,19 +1,20 @@
 ﻿using Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria;
 using Orcamento.Robo.Web.Models.Configuracoes;
+using Orcamento.Robo.Web.Models.ConfiguracoesPoDepartamento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Orcamento.Robo.Web.Controllers.Configuracoes
+namespace Orcamento.Robo.Web.Controllers.ConfiguracoesPorDepartamento
 {
-    public class ConfiguracoesController : ControllerBase
+    public class ConfiguracoesPorDepartamentoController : ControllerBase
     {
         private Orcamento.Controller.Robo.ConfiguracoesController controller = new Controller.Robo.ConfiguracoesController();
 
         //
-        // GET: /Configuracoes/
+        // GET: /ConfiguracoesPorDepartamento/
 
         public ActionResult Index()
         {
@@ -22,11 +23,11 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
             return View(configuracao);
         }
 
-        private ConfiguracaoModel ObterProcessos()
+        private ConfiguracaoPorDepartamentoModel ObterProcessos(int IdDepartamento)
         {
-            List<Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria.Processo> processos = controller.ObterProcessos();
+            List<Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria.Processo> processos = controller.ObterProcessos(IdDepartamento);
 
-            ConfiguracaoModel configuracao = new ConfiguracaoModel();
+            ConfiguracaoPorDepartamentoModel configuracao = new ConfiguracaoPorDepartamentoModel();
             foreach (var processo in processos)
             {
                 configuracao.AdicionarProcesso(processo);
@@ -34,13 +35,28 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
             return configuracao;
         }
 
-        public ActionResult Deletar()
+        private ConfiguracaoPorDepartamentoModel ObterProcessos()
+        {
+            ConfiguracaoPorDepartamentoModel configuracao = new ConfiguracaoPorDepartamentoModel();
+            configuracao.Processos = new List<ProcessoModel>();
+
+            var departamentos = controller.ObterDepartamentos();
+
+            foreach (var departamento in departamentos)
+            {
+                configuracao.AdicionarDepartamento(departamento);
+            }
+
+            return configuracao;
+        }
+
+        public ActionResult Deletar(int departamentoId)
         {
             try
             {
                 controller.Deletar();
                 this.ShowMessage(MessageTypeEnum.success, "Estrutura deletada com sucesso!", true);
-                var configuracao = ObterProcessos();
+                var configuracao = ObterProcessos(departamentoId);
                 configuracao.Tipo = "success";
                 configuracao.Mensagem = "Estrutura deletada com sucesso.";
                 configuracao.Titulo = "Estrutura deletada.";
@@ -54,14 +70,14 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
 
         }
 
-        public ActionResult Delete(int tipoProcesso)
+        public ActionResult Delete(int tipoProcesso,int departamentoId)
         {
             try
             {
-                controller.Deletar((TipoProcessoEnum)tipoProcesso);
+                controller.Deletar((TipoProcessoEnum)tipoProcesso,departamentoId);
 
                 this.ShowMessage(MessageTypeEnum.success, "Estrutura deletada com sucesso!");
-                var configuracao = ObterProcessos();
+                var configuracao = ObterProcessos(departamentoId);
 
                 CriarConfiguracao(tipoProcesso, configuracao, "success", "Processo " +
                                     configuracao.Processos.FirstOrDefault(p => p.TipoProcesso == tipoProcesso).Nome +
@@ -77,11 +93,11 @@ namespace Orcamento.Robo.Web.Controllers.Configuracoes
 
         }
 
-        public ActionResult Processos()
+        public ActionResult Processos(int idDepartamento)
         {
             try
             {
-                var configuracao = ObterProcessos();
+                var configuracao = ObterProcessos(idDepartamento);
                 return PartialView("_Processos", configuracao);
             }
             catch (Exception ex)

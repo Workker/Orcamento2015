@@ -1,4 +1,5 @@
 ﻿using Orcamento.Domain.DB.Repositorio;
+using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria;
 using Orcamento.Domain.Servico.Robo;
 using System;
@@ -10,9 +11,9 @@ namespace Orcamento.Controller.Robo
 {
     public class ConfiguracoesController
     {
-        private ConfiguracoesGeraisService service; 
+        private ConfiguracoesGeraisService service;
 
-        public void Deletar() 
+        public void Deletar()
         {
             service = new ConfiguracoesGeraisService();
             service.DeletarEstruturaOrcamentaria();
@@ -28,6 +29,25 @@ namespace Orcamento.Controller.Robo
         {
             Processos processos = new Processos();
             return processos.Todos<Processo>().ToList();
+        }
+
+        public List<Processo> ObterProcessos(int IdDepartamento)
+        {
+            GerenciarProcessosPorDepartamentoService gerenciador = new GerenciarProcessosPorDepartamentoService();
+            return gerenciador.ObterProcessos(IdDepartamento);
+        }
+
+        public List<Departamento> ObterDepartamentos()
+        {
+            Departamentos departamentos = new Departamentos();
+            return departamentos.Todos();
+        }
+
+        public void Deletar(TipoProcessoEnum tipo,int departamentoId)
+        {
+            var configuracoesDoDepartamento = new ConfiguracoesGeraisDoDepartamentoService();
+            Departamentos departamentos = new Departamentos();
+            configuracoesDoDepartamento.DeletarEstruturaOrcamentaria(tipo, departamentos.Obter(departamentoId));
         }
     }
 }

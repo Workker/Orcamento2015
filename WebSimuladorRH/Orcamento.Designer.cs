@@ -196,7 +196,7 @@ namespace WebSimuladorRH
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -215,7 +215,7 @@ namespace WebSimuladorRH
                 {
                     Onid_CargoChanging(value);
                     ReportPropertyChanging("id_Cargo");
-                    _id_Cargo = StructuralObject.SetValidValue(value);
+                    _id_Cargo = StructuralObject.SetValidValue(value, "id_Cargo");
                     ReportPropertyChanged("id_Cargo");
                     Onid_CargoChanged();
                 }
@@ -240,7 +240,7 @@ namespace WebSimuladorRH
             {
                 OnRJ_FUNCAOChanging(value);
                 ReportPropertyChanging("RJ_FUNCAO");
-                _RJ_FUNCAO = StructuralObject.SetValidValue(value, true);
+                _RJ_FUNCAO = StructuralObject.SetValidValue(value, true, "RJ_FUNCAO");
                 ReportPropertyChanged("RJ_FUNCAO");
                 OnRJ_FUNCAOChanged();
             }
@@ -264,7 +264,7 @@ namespace WebSimuladorRH
             {
                 OnRJ_DESCChanging(value);
                 ReportPropertyChanging("RJ_DESC");
-                _RJ_DESC = StructuralObject.SetValidValue(value, true);
+                _RJ_DESC = StructuralObject.SetValidValue(value, true, "RJ_DESC");
                 ReportPropertyChanged("RJ_DESC");
                 OnRJ_DESCChanged();
             }
@@ -275,7 +275,6 @@ namespace WebSimuladorRH
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -301,7 +300,7 @@ namespace WebSimuladorRH
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -320,7 +319,7 @@ namespace WebSimuladorRH
                 {
                     Onid_CentroCustoChanging(value);
                     ReportPropertyChanging("id_CentroCusto");
-                    _id_CentroCusto = StructuralObject.SetValidValue(value);
+                    _id_CentroCusto = StructuralObject.SetValidValue(value, "id_CentroCusto");
                     ReportPropertyChanged("id_CentroCusto");
                     Onid_CentroCustoChanged();
                 }
@@ -345,7 +344,7 @@ namespace WebSimuladorRH
             {
                 OnRA_CCChanging(value);
                 ReportPropertyChanging("RA_CC");
-                _RA_CC = StructuralObject.SetValidValue(value, true);
+                _RA_CC = StructuralObject.SetValidValue(value, true, "RA_CC");
                 ReportPropertyChanged("RA_CC");
                 OnRA_CCChanged();
             }
@@ -369,7 +368,7 @@ namespace WebSimuladorRH
             {
                 OnI3_DESCChanging(value);
                 ReportPropertyChanging("I3_DESC");
-                _I3_DESC = StructuralObject.SetValidValue(value, true);
+                _I3_DESC = StructuralObject.SetValidValue(value, true, "I3_DESC");
                 ReportPropertyChanged("I3_DESC");
                 OnI3_DESCChanged();
             }
@@ -380,7 +379,6 @@ namespace WebSimuladorRH
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -406,7 +404,7 @@ namespace WebSimuladorRH
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -425,7 +423,7 @@ namespace WebSimuladorRH
                 {
                     Onid_FuncionariosChanging(value);
                     ReportPropertyChanging("id_Funcionarios");
-                    _id_Funcionarios = StructuralObject.SetValidValue(value);
+                    _id_Funcionarios = StructuralObject.SetValidValue(value, "id_Funcionarios");
                     ReportPropertyChanged("id_Funcionarios");
                     Onid_FuncionariosChanged();
                 }
@@ -450,7 +448,7 @@ namespace WebSimuladorRH
             {
                 Oncod_EmpresaChanging(value);
                 ReportPropertyChanging("cod_Empresa");
-                _cod_Empresa = StructuralObject.SetValidValue(value, true);
+                _cod_Empresa = StructuralObject.SetValidValue(value, true, "cod_Empresa");
                 ReportPropertyChanged("cod_Empresa");
                 Oncod_EmpresaChanged();
             }
@@ -474,7 +472,7 @@ namespace WebSimuladorRH
             {
                 Onnome_EmpresaChanging(value);
                 ReportPropertyChanging("nome_Empresa");
-                _nome_Empresa = StructuralObject.SetValidValue(value, true);
+                _nome_Empresa = StructuralObject.SetValidValue(value, true, "nome_Empresa");
                 ReportPropertyChanged("nome_Empresa");
                 Onnome_EmpresaChanged();
             }
@@ -498,7 +496,7 @@ namespace WebSimuladorRH
             {
                 OnCNPJChanging(value);
                 ReportPropertyChanging("CNPJ");
-                _CNPJ = StructuralObject.SetValidValue(value, true);
+                _CNPJ = StructuralObject.SetValidValue(value, true, "CNPJ");
                 ReportPropertyChanged("CNPJ");
                 OnCNPJChanged();
             }
@@ -509,7 +507,6 @@ namespace WebSimuladorRH
 
         #endregion
 
-    
     }
     
     /// <summary>
@@ -541,7 +538,7 @@ namespace WebSimuladorRH
 
         #endregion
 
-        #region Primitive Properties
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -560,7 +557,7 @@ namespace WebSimuladorRH
                 {
                     OnID_FUNCIONARIOChanging(value);
                     ReportPropertyChanging("ID_FUNCIONARIO");
-                    _ID_FUNCIONARIO = StructuralObject.SetValidValue(value);
+                    _ID_FUNCIONARIO = StructuralObject.SetValidValue(value, "ID_FUNCIONARIO");
                     ReportPropertyChanged("ID_FUNCIONARIO");
                     OnID_FUNCIONARIOChanged();
                 }
@@ -587,7 +584,7 @@ namespace WebSimuladorRH
                 {
                     OnEMPRESAChanging(value);
                     ReportPropertyChanging("EMPRESA");
-                    _EMPRESA = StructuralObject.SetValidValue(value, false);
+                    _EMPRESA = StructuralObject.SetValidValue(value, false, "EMPRESA");
                     ReportPropertyChanged("EMPRESA");
                     OnEMPRESAChanged();
                 }
@@ -614,7 +611,7 @@ namespace WebSimuladorRH
                 {
                     OnRA_FILIALChanging(value);
                     ReportPropertyChanging("RA_FILIAL");
-                    _RA_FILIAL = StructuralObject.SetValidValue(value, false);
+                    _RA_FILIAL = StructuralObject.SetValidValue(value, false, "RA_FILIAL");
                     ReportPropertyChanged("RA_FILIAL");
                     OnRA_FILIALChanged();
                 }
@@ -641,7 +638,7 @@ namespace WebSimuladorRH
                 {
                     OnRA_MATChanging(value);
                     ReportPropertyChanging("RA_MAT");
-                    _RA_MAT = StructuralObject.SetValidValue(value, false);
+                    _RA_MAT = StructuralObject.SetValidValue(value, false, "RA_MAT");
                     ReportPropertyChanged("RA_MAT");
                     OnRA_MATChanged();
                 }
@@ -666,7 +663,7 @@ namespace WebSimuladorRH
             {
                 OnRA_NOMEChanging(value);
                 ReportPropertyChanging("RA_NOME");
-                _RA_NOME = StructuralObject.SetValidValue(value, true);
+                _RA_NOME = StructuralObject.SetValidValue(value, true, "RA_NOME");
                 ReportPropertyChanged("RA_NOME");
                 OnRA_NOMEChanged();
             }
@@ -690,7 +687,7 @@ namespace WebSimuladorRH
             {
                 OnRA_SALARIOChanging(value);
                 ReportPropertyChanging("RA_SALARIO");
-                _RA_SALARIO = StructuralObject.SetValidValue(value);
+                _RA_SALARIO = StructuralObject.SetValidValue(value, "RA_SALARIO");
                 ReportPropertyChanged("RA_SALARIO");
                 OnRA_SALARIOChanged();
             }
@@ -714,7 +711,7 @@ namespace WebSimuladorRH
             {
                 OnRA_ADMISSAChanging(value);
                 ReportPropertyChanging("RA_ADMISSA");
-                _RA_ADMISSA = StructuralObject.SetValidValue(value);
+                _RA_ADMISSA = StructuralObject.SetValidValue(value, "RA_ADMISSA");
                 ReportPropertyChanged("RA_ADMISSA");
                 OnRA_ADMISSAChanged();
             }
@@ -738,7 +735,7 @@ namespace WebSimuladorRH
             {
                 OnRA_CCChanging(value);
                 ReportPropertyChanging("RA_CC");
-                _RA_CC = StructuralObject.SetValidValue(value, true);
+                _RA_CC = StructuralObject.SetValidValue(value, true, "RA_CC");
                 ReportPropertyChanged("RA_CC");
                 OnRA_CCChanged();
             }
@@ -749,10 +746,8 @@ namespace WebSimuladorRH
 
         #endregion
 
-    
     }
 
     #endregion
 
-    
 }

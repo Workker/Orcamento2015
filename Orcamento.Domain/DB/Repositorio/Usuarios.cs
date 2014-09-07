@@ -6,7 +6,7 @@ namespace Orcamento.Domain.DB.Repositorio
 {
     public class Usuarios : BaseRepository
     {
-        public virtual void SalvarLista(List<Usuario> roots) 
+        public virtual void SalvarLista(List<Usuario> roots)
         {
             var transaction = Session.BeginTransaction();
 
@@ -34,7 +34,7 @@ namespace Orcamento.Domain.DB.Repositorio
         {
             return Session.QueryOver<Usuario>().Where(x => x.Login == login).SingleOrDefault();
         }
-        
+
         public virtual List<Usuario> ObterPor(Departamento departamento)
         {
             return Session.QueryOver<Usuario>().JoinQueryOver(d => d.Departamentos).Where(u => u.ToList().Any(ui => ui.Id == departamento.Id)).List<Usuario>().ToList();
@@ -48,6 +48,11 @@ namespace Orcamento.Domain.DB.Repositorio
         public virtual List<Usuario> TodosPor(TipoUsuario tipo)
         {
             return Session.QueryOver<Usuario>().Where(u => u.TipoUsuario == tipo).List<Usuario>().ToList();
+        }
+
+        public virtual List<Usuario> TodosPor(Departamento departamento)
+        {
+            return Session.QueryOver<Usuario>().Where(u => u.Departamentos.Any(d => d.Id == departamento.Id)).List<Usuario>().ToList();
         }
 
         public virtual void Deletar(List<Usuario> roots)

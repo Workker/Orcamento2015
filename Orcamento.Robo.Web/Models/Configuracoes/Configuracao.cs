@@ -7,21 +7,21 @@ using System.Web;
 namespace Orcamento.Robo.Web.Models.Configuracoes
 {
     [Serializable]
-    public class Configuracao : Notificacao
+    public class ConfiguracaoModel : Notificacao
     {
-        private List<Processo> processos;
-        public List<Processo> Processos
+        private List<ProcessoModel> processos;
+        public List<ProcessoModel> Processos
         {
-            get { return processos ?? (new List<Processo>()); }
+            get { return processos ?? (new List<ProcessoModel>()); }
             set { this.processos = value; }
         }
 
         public virtual void AdicionarProcesso(Domain.Robo.Monitoramento.EstruturaOrcamentaria.Processo processo)
         {
             if (this.processos == null)
-                this.processos = new List<Processo>();
+                this.processos = new List<ProcessoModel>();
 
-            var novo = new Processo()
+            var novo = new ProcessoModel()
                            {
                                Nome = processo.Nome,
                                Iniciado = processo.Iniciado.HasValue ? processo.Iniciado.Value.ToString() : "N/D",
@@ -37,7 +37,7 @@ namespace Orcamento.Robo.Web.Models.Configuracoes
     }
 
     [Serializable]
-    public class Processo
+    public class ProcessoModel
     {
         public string Nome { get; set; }
         public string Status { get; set; }

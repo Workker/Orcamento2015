@@ -1,4 +1,4 @@
-﻿@model Orcamento.Robo.Web.Models.Configuracoes.ConfiguracaoModel
+﻿@model Orcamento.Robo.Web.Models.ConfiguracoesPoDepartamento.ConfiguracaoPorDepartamentoModel
 
 
 <div id="DivProcessos" class="widget stacked widget-table action-table">
@@ -65,10 +65,11 @@
 <script type="text/javascript">
 
     function DeletarProcesso(tipoProcesso) {
+        var idDepartamento = $("#IdDepartamento").val();
         $.ajax({
             url: "http://localhost:52485/Configuracoes/Delete",
             type: "GET",
-            data: { tipoprocesso: tipoProcesso },
+            data: { tipoprocesso: tipoProcesso,departamentoId : idDepartamento },
             cache: false,
             success: function (resultado) {
                     $("#DivProcessos").replaceWith(resultado);

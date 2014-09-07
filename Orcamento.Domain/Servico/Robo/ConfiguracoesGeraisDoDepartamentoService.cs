@@ -9,16 +9,24 @@ using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeProducao;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeViagem;
+using Workker.Framework.Domain;
+
 
 namespace Orcamento.Domain.Servico.Robo
 {
-    public class ConfiguracoesGeraisService
+    public class ConfiguracoesGeraisDoDepartamentoService
     {
+
         public List<Processo> processos;
         public Processos repositorioProcessos = new Processos();
+        private Departamento Departamento { get; set; }
 
-        public void DeletarEstruturaOrcamentaria(TipoProcessoEnum processo)
+        public void DeletarEstruturaOrcamentaria(TipoProcessoEnum processo, Departamento departamento)
         {
+            Assertion.NotNull(departamento, "Departamento nulo.").Validate();
+
+            this.Departamento = departamento;
+
             switch (processo)
             {
                 case TipoProcessoEnum.DeletarEstruturaCompleta:
@@ -27,20 +35,11 @@ namespace Orcamento.Domain.Servico.Robo
                 case TipoProcessoEnum.DeletarAcordosdeconvencao:
                     DeletarAcordosDeConvencao();
                     break;
-                case TipoProcessoEnum.DeletarCentrosDeCusto:
-                    DeletarCentrosDeCusto();
-                    break;
-                case TipoProcessoEnum.DeletarConta:
-                    DeletarContas();
-                    break;
                 case TipoProcessoEnum.DeletarDepartamentos:
                     DeletarDepartamentos();
                     break;
                 case TipoProcessoEnum.DeletarFuncionarios:
                     DeletarFuncionarios();
-                    break;
-                case TipoProcessoEnum.DeletarGruposDeContas:
-                    DeletarGrupoDeContas();
                     break;
                 case TipoProcessoEnum.DeletarOrcamentosPessoais:
                     DeletarOrcamentoDePessoal();
@@ -83,11 +82,14 @@ namespace Orcamento.Domain.Servico.Robo
         {
             processos = new List<Processo>();
             repositorioProcessos = new Processos();
+
             try
             {
-                ReiniciarProcessos();
-                AdicionarProcesso(TipoProcessoEnum.DeletarEstruturaCompleta);
+                Iniciar();
 
+                ReiniciarProcessos();
+
+                AdicionarProcesso(TipoProcessoEnum.DeletarEstruturaCompleta);
 
                 IniciarProcessos();
 
@@ -130,11 +132,6 @@ namespace Orcamento.Domain.Servico.Robo
 
                 DeletarDepartamentos();
 
-                DeletarCentrosDeCusto();
-
-                DeletarGrupoDeContas();
-
-                DeletarContas();
             }
             catch (Exception)
             {
@@ -144,9 +141,14 @@ namespace Orcamento.Domain.Servico.Robo
 
         }
 
+        private void Iniciar()
+        {
+            processos = CriarProcessos();
+        }
+
         public void ReiniciarProcessos()
         {
-            var processos = repositorioProcessos.Todos<Processo>();
+
             foreach (var processo in processos)
             {
                 processo.Status = "Não Iniciado.";
@@ -154,22 +156,25 @@ namespace Orcamento.Domain.Servico.Robo
                 processo.Finalizado = null;
                 repositorioProcessos.Salvar(processo);
             }
+        }
 
-
+        private List<Processo> CriarProcessos()
+        {
+           GerenciarProcessosPorDepartamentoService gerenciador = new GerenciarProcessosPorDepartamentoService();
+           return gerenciador.ObterProcessos(Departamento.Id);
         }
 
         public void AdicionarProcesso(TipoProcessoEnum tipo)
         {
-            var processo = repositorioProcessos.ObterProcesso(tipo);
+            var processo = repositorioProcessos.ObterProcesso(tipo, Departamento);
             processo.Status = "Iniciado.";
             processo.Iniciado = DateTime.Now;
             repositorioProcessos.Salvar(processo);
-
         }
 
         public void FinalizarProcesso(TipoProcessoEnum tipo)
         {
-            var processo = repositorioProcessos.ObterProcesso(tipo);
+            var processo = repositorioProcessos.ObterProcesso(tipo, Departamento);
             processo.Status = "Finalizado.";
             processo.Finalizado = DateTime.Now;
             repositorioProcessos.Salvar(processo);
@@ -177,7 +182,7 @@ namespace Orcamento.Domain.Servico.Robo
 
         public void ReportarErro(TipoProcessoEnum tipo, string msg)
         {
-            var processo = repositorioProcessos.ObterProcesso(tipo);
+            var processo = repositorioProcessos.ObterProcesso(tipo, Departamento);
             processo.Status = "Erro.";
             processo.MsgDeErro = msg;
             processo.Finalizado = DateTime.Now;
@@ -191,9 +196,9 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarTotaisDaDRE);
                 DRES dres = new DRES();
-                var todos = dres.Todos();
+                var dre = dres.Obter(Departamento);
 
-                dres.Deletar(todos);
+                dres.Deletar(dre);
                 FinalizarProcesso(TipoProcessoEnum.DeletarTotaisDaDRE);
             }
             catch (Exception ex)
@@ -207,8 +212,9 @@ namespace Orcamento.Domain.Servico.Robo
             try
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarTicketsDePessoal);
+
                 TicketsDeOrcamentoPessoal tickets = new TicketsDeOrcamentoPessoal();
-                var todos = tickets.Todos<TicketDeOrcamentoPessoal>();
+                var todos = tickets.Todos(Departamento);
 
                 tickets.Deletar(todos);
                 FinalizarProcesso(TipoProcessoEnum.DeletarTicketsDePessoal);
@@ -225,7 +231,7 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarFuncionarios);
                 Funcionarios funcionarios = new Funcionarios();
-                var todos = funcionarios.Todos<Funcionario>();
+                var todos = funcionarios.ObterPor(Departamento);
 
                 funcionarios.Deletar(todos.ToList());
 
@@ -245,7 +251,7 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarOrcamentosPessoais);
                 NovosOrcamentosPessoais orcamentos = new NovosOrcamentosPessoais();
-                var todos = orcamentos.Todos();
+                var todos = orcamentos.Todos(Departamento.Id);
 
                 orcamentos.Deletar(todos.ToList());
 
@@ -267,7 +273,7 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarTicketsDeReceita);
                 var receitas = new TicketsDeReceita();
-                var todos = receitas.Todos<TicketDeReceita>();
+                var todos = receitas.Todos(Departamento);
                 receitas.Deletar(todos.ToList());
 
                 FinalizarProcesso(TipoProcessoEnum.DeletarTicketsDeReceita);
@@ -286,7 +292,7 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarAcordosdeconvencao);
                 AcordosDeConvencao acordos = new AcordosDeConvencao();
-                var todos = acordos.Todos<AcordoDeConvencao>();
+                var todos = acordos.ObterAcordoDeConvencao(Departamento);
 
                 acordos.Deletar(todos);
                 FinalizarProcesso(TipoProcessoEnum.DeletarAcordosdeconvencao);
@@ -306,7 +312,7 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarTicketsDeUnitários);
                 TicketsDeProducao tickets = new TicketsDeProducao();
-                var todos = tickets.Todos();
+                var todos = tickets.Todos(Departamento);
 
                 tickets.Deletar(todos.ToList());
 
@@ -326,7 +332,7 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarTicketsDeInsumos);
                 Insumos insumos = new Insumos();
-                var todos = insumos.Todos<Insumo>();
+                var todos = insumos.ObterInsumo(Departamento);
 
                 insumos.Deletar(todos);
 
@@ -345,8 +351,8 @@ namespace Orcamento.Domain.Servico.Robo
             try
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarOrcammentosDeViagem);
-                Orcamentos orcamentos = new Orcamentos();
-                var todos = orcamentos.Todos<OrcamentoDeViagem>();
+                OrcamentosDeViagens orcamentos = new OrcamentosDeViagens();
+                var todos = orcamentos.TodosPor(Departamento);
 
                 orcamentos.Deletar(todos.ToList());
 
@@ -356,8 +362,6 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 ReportarErro(TipoProcessoEnum.DeletarOrcammentosDeViagem, ex.Message);
             }
-
-
         }
 
         public void DeletarOrcamentosDeProducao()
@@ -366,7 +370,7 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarOrcammentosDeProdução);
                 Orcamentos orcamentos = new Orcamentos();
-                var todos = orcamentos.Todos<OrcamentoHospitalar>();
+                var todos = orcamentos.TodosOrcamentosHospitalares(Departamento);
 
                 orcamentos.Deletar(todos.ToList());
 
@@ -385,7 +389,7 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarOrcammentosOperacionais);
                 Orcamentos orcamentos = new Orcamentos();
-                var todos = orcamentos.Todos<OrcamentoOperacionalVersao>();
+                var todos = orcamentos.TodosOrcamentosOperacionaisPor(Departamento);
 
                 orcamentos.Deletar(todos.ToList());
 
@@ -409,20 +413,15 @@ namespace Orcamento.Domain.Servico.Robo
                 Usuarios usuarios = new Usuarios();
                 TipoUsuarios tipos = new TipoUsuarios();
 
-                var hospitalares = usuarios.TodosPor(tipos.Obter<TipoUsuario>((int)TipoUsuarioEnum.Hospital));
-                var corporativos = usuarios.TodosPor(tipos.Obter<TipoUsuario>((int)TipoUsuarioEnum.Corporativo));
-                var adms = usuarios.TodosPor(tipos.Obter<TipoUsuario>((int)TipoUsuarioEnum.Administrador));
+                var usuariosobj = usuarios.TodosPor(Departamento);
 
-                foreach (var usuario in adms)
+                foreach (var usuario in usuariosobj.Where(u => u.TipoUsuario.Id == (int)TipoUsuarioEnum.Administrador))
                 {
-                    //if (usuario.Nome == "isaac" || usuario.Nome == "master" || usuario.Nome == "Davi" || usuario.Nome == "Workker")
-                    //    continue;
-
                     usuario.Departamentos = null;
                 }
-                usuarios.Salvar(adms);
-                usuarios.Deletar(hospitalares);
-                usuarios.Deletar(corporativos);
+
+                usuarios.Salvar(usuariosobj.Where(u => (u.TipoUsuario.Id == (int)TipoUsuarioEnum.Administrador)).ToList());
+                usuarios.Deletar(usuariosobj.Where(u => !(u.TipoUsuario.Id == (int)TipoUsuarioEnum.Administrador)).ToList());
 
                 FinalizarProcesso(TipoProcessoEnum.DeletarUsuarios);
             }
@@ -430,70 +429,9 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 ReportarErro(TipoProcessoEnum.DeletarUsuarios, ex.Message);
             }
-
-
         }
 
-        public void DeletarGrupoDeContas()
-        {
-            try
-            {
-                AdicionarProcesso(TipoProcessoEnum.DeletarGruposDeContas);
-                GruposDeConta gruposDeConta = new GruposDeConta();
-                var todos = gruposDeConta.Todos<GrupoDeConta>();
 
-                gruposDeConta.Deletar(todos.ToList());
-
-                FinalizarProcesso(TipoProcessoEnum.DeletarGruposDeContas);
-            }
-            catch (Exception ex)
-            {
-                ReportarErro(TipoProcessoEnum.DeletarGruposDeContas, ex.Message);
-            }
-
-
-        }
-
-        public void DeletarContas()
-        {
-            try
-            {
-                AdicionarProcesso(TipoProcessoEnum.DeletarConta);
-                Contas contas = new Contas();
-                var todas = contas.Todos();
-
-                contas.Deletar(todas);
-
-                FinalizarProcesso(TipoProcessoEnum.DeletarConta);
-            }
-            catch (Exception ex)
-            {
-                ReportarErro(TipoProcessoEnum.DeletarConta, ex.Message);
-            }
-
-
-        }
-
-        public void DeletarCentrosDeCusto()
-        {
-            try
-            {
-                AdicionarProcesso(TipoProcessoEnum.DeletarCentrosDeCusto);
-                CentrosDeCusto centros = new CentrosDeCusto();
-                var todos = centros.Todos();
-
-                centros.Deletar(todos.ToList());
-
-                FinalizarProcesso(TipoProcessoEnum.DeletarCentrosDeCusto);
-            }
-            catch (Exception ex)
-            {
-                ReportarErro(TipoProcessoEnum.DeletarCentrosDeCusto, ex.Message);
-            }
-
-
-
-        }
 
         public void DeletarDepartamentos()
         {
@@ -501,15 +439,11 @@ namespace Orcamento.Domain.Servico.Robo
             {
                 AdicionarProcesso(TipoProcessoEnum.DeletarDepartamentos);
                 Departamentos departamentos = new Departamentos();
-                var todos = departamentos.Todos();
-                foreach (var departamento in todos)
-                {
-                    departamento.Setores = null;
-                    departamento.CentrosDeCusto = null;
-                    
-                }
 
-                departamentos.Deletar(todos);
+                Departamento.Setores = null;
+                Departamento.CentrosDeCusto = null;
+
+                departamentos.Deletar(Departamento);
 
                 FinalizarProcesso(TipoProcessoEnum.DeletarDepartamentos);
             }

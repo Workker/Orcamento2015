@@ -37,5 +37,33 @@ namespace Orcamento.Domain.DB.Repositorio
 
             return criterio.List<OrcamentoDeViagem>().ToList();
         }
+
+        public virtual List<OrcamentoDeViagem> TodosPor(Departamento departamento)
+        {
+            var criterio = Session.CreateCriteria<OrcamentoDeViagem>();
+            criterio.Add(Expression.Eq("Setor", departamento));
+            return criterio.List<OrcamentoDeViagem>().ToList();
+        }
+
+        public virtual void Deletar(List<OrcamentoDeViagem> roots)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                foreach (var root in roots)
+                {
+                    Session.Delete(root);
+                }
+
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
     }
 }

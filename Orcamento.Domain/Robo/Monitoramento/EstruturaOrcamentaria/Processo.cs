@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Orcamento.Domain.Gerenciamento;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,6 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria
         public virtual DateTime? Iniciado { get; set; }
         public virtual DateTime? Finalizado { get; set; }
         public virtual string MsgDeErro { get; set; }
-        
-
+        public virtual Departamento Departamento { get; set; }
     }
 }
