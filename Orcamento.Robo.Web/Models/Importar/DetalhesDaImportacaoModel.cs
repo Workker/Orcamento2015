@@ -16,7 +16,7 @@ namespace Orcamento.Robo.Web.Models.Importar
     }
 
     [Serializable]
-    public class DetalhesDaImportacaoModel
+    public class DetalhesDaImportacaoModel : Notificacoes.Notificacao
     {
         public List<DetalheImportacaoModel> Detalhes { get; set; }
 

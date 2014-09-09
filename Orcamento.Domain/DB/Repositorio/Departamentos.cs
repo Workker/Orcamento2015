@@ -45,6 +45,32 @@ namespace Orcamento.Domain.DB.Repositorio
 
         }
 
+
+        public virtual void Deletar(Departamento root)
+        {
+            var transaction = Session.BeginTransaction();
+            try
+            {
+                var processos = new Processos();
+                var todos =  processos.Todos(root);
+
+                foreach (var processo in todos)
+                {
+                    Session.Delete(processo);
+                }
+
+                Session.Delete(root);
+                transaction.Commit();
+            }
+            catch (System.Exception ex)
+            {
+                transaction.Rollback();
+                throw ex;
+            }
+
+
+        }
+
         public virtual List<Departamento> TodosComSetoresESubSetores()
         {
             var criterio = Session.CreateCriteria<Departamento>("d");
@@ -97,7 +123,7 @@ namespace Orcamento.Domain.DB.Repositorio
             }
         }
 
-        public Departamento Obter(int id) 
+        public Departamento Obter(int id)
         {
             return base.Obter<Departamento>(id);
         }
@@ -107,7 +133,7 @@ namespace Orcamento.Domain.DB.Repositorio
             return Session.QueryOver<Departamento>().Where(h => h.Nome == nome).SingleOrDefault();
         }
 
-        public List<Departamento> Todos() 
+        public List<Departamento> Todos()
         {
             return base.Todos<Departamento>().ToList();
         }

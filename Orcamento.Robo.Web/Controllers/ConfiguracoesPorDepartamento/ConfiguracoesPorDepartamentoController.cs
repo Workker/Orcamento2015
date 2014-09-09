@@ -1,4 +1,5 @@
-﻿using Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria;
+﻿using Orcamento.Domain.Gerenciamento;
+using Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria;
 using Orcamento.Robo.Web.Models.Configuracoes;
 using Orcamento.Robo.Web.Models.ConfiguracoesPoDepartamento;
 using System;
@@ -47,19 +48,39 @@ namespace Orcamento.Robo.Web.Controllers.ConfiguracoesPorDepartamento
                 configuracao.AdicionarDepartamento(departamento);
             }
 
+            AdicionarProcessosAoPrimeiroDepartamento(departamentos, configuracao);
+
             return configuracao;
+        }
+
+        private void AdicionarProcessosAoPrimeiroDepartamento(List<Departamento> departamentos, ConfiguracaoPorDepartamentoModel configuracao)
+        {
+            if (departamentos != null && departamentos.Count > 0)
+            {
+                List<Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria.Processo> processos =
+                    controller.ObterProcessos(departamentos.FirstOrDefault().Id);
+
+                foreach (var processo in processos)
+                {
+                    configuracao.AdicionarProcesso(processo);
+                }
+            }
         }
 
         public ActionResult Deletar(int departamentoId)
         {
             try
             {
-                controller.Deletar();
+                controller.Deletar(TipoProcessoEnum.DeletarEstruturaCompletaPorDepartamento,departamentoId);
+
                 this.ShowMessage(MessageTypeEnum.success, "Estrutura deletada com sucesso!", true);
-                var configuracao = ObterProcessos(departamentoId);
+
+                var configuracao = new ConfiguracaoPorDepartamentoModel();
+
                 configuracao.Tipo = "success";
                 configuracao.Mensagem = "Estrutura deletada com sucesso.";
                 configuracao.Titulo = "Estrutura deletada.";
+
                 return PartialView("_Processos", configuracao);
             }
             catch (Exception)
@@ -70,11 +91,11 @@ namespace Orcamento.Robo.Web.Controllers.ConfiguracoesPorDepartamento
 
         }
 
-        public ActionResult Delete(int tipoProcesso,int departamentoId)
+        public ActionResult Delete(int tipoProcesso, int departamentoId)
         {
             try
             {
-                controller.Deletar((TipoProcessoEnum)tipoProcesso,departamentoId);
+                controller.Deletar((TipoProcessoEnum)tipoProcesso, departamentoId);
 
                 this.ShowMessage(MessageTypeEnum.success, "Estrutura deletada com sucesso!");
                 var configuracao = ObterProcessos(departamentoId);

@@ -40,13 +40,17 @@ namespace Orcamento.Domain.DB.Repositorio
             return criterio.List<Processo>().ToList();
         }
 
-        public virtual void Salvar(List<Processo> root)
+        public virtual void Salvar(List<Processo> roots)
         {
             var transaction = Session.BeginTransaction();
 
             try
             {
-                Session.SaveOrUpdate(root);
+                foreach (var root in roots)
+                {
+                    Session.SaveOrUpdate(root);
+                }
+
                 transaction.Commit();
             }
             catch (System.Exception ex)

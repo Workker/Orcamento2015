@@ -1,6 +1,9 @@
 ﻿using Orcamento.Domain.Gerenciamento;
 using System.Linq;
 using System.Collections.Generic;
+using NHibernate.SqlCommand;
+using NHibernate.Criterion;
+using NHibernate.Transform;
 
 namespace Orcamento.Domain.DB.Repositorio
 {
@@ -37,7 +40,12 @@ namespace Orcamento.Domain.DB.Repositorio
 
         public virtual List<Usuario> ObterPor(Departamento departamento)
         {
-            return Session.QueryOver<Usuario>().JoinQueryOver(d => d.Departamentos).Where(u => u.ToList().Any(ui => ui.Id == departamento.Id)).List<Usuario>().ToList();
+            var criterio = Session.CreateCriteria<Usuario>("u");
+            criterio.CreateCriteria("u.Departamentos", "d", JoinType.InnerJoin);
+            criterio.Add(Expression.Eq("d.Id", departamento.Id));
+            criterio.SetResultTransformer(new DistinctRootEntityResultTransformer());
+
+            return criterio.List<Usuario>().ToList();
         }
 
         public virtual Usuario ObterUsuarioPorId(int id)
@@ -52,7 +60,12 @@ namespace Orcamento.Domain.DB.Repositorio
 
         public virtual List<Usuario> TodosPor(Departamento departamento)
         {
-            return Session.QueryOver<Usuario>().Where(u => u.Departamentos.Any(d => d.Id == departamento.Id)).List<Usuario>().ToList();
+            var criterio = Session.CreateCriteria<Usuario>("u");
+            criterio.CreateCriteria("u.Departamentos", "d", JoinType.InnerJoin);
+            criterio.Add(Expression.Eq("d.Id", departamento.Id));
+            criterio.SetResultTransformer(new DistinctRootEntityResultTransformer());
+
+            return criterio.List<Usuario>().ToList();
         }
 
         public virtual void Deletar(List<Usuario> roots)

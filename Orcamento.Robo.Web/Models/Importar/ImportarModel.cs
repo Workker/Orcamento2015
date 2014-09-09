@@ -16,7 +16,7 @@ namespace Orcamento.Robo.Web.Models.Importar
     }
 
     [Serializable]
-    public class ImportarModel
+    public class ImportarModel : Notificacoes.Notificacao
     {
         public virtual string NomeImportacao { get; set; }
         public virtual List<TipoImportacaoModel> TiposImportacao { get; set; }

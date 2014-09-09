@@ -91,6 +91,20 @@ namespace Orcamento.Robo.Web.Controllers.Importar
 
                 model.DetalheImportacao = detalhes;
 
+                if (model.DetalheImportacao.ImportacaoOk)
+                {
+                    model.Tipo = "success";
+                    model.Mensagem = "Processo foi iniciado, aguarde.";
+                    model.Titulo = "Processo iniciado.";    
+                }
+                else
+                {
+                    model.Tipo = "error";
+                    model.Mensagem = "Ocorreu um erro na validação, verifique os detalhes.";
+                    model.Titulo = "Erro ao processar o arquivo.";    
+                }
+                
+
                 return View(model);
             }
             catch (Exception ex)

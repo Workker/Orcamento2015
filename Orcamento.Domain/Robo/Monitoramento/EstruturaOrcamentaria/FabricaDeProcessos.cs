@@ -29,8 +29,8 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstruturaOrcamentaria
             CriarProcesso("Deletar Orçammentos Operacionais", TipoProcessoEnum.DeletarOrcammentosOperacionaisporDepartamento);
             CriarProcesso("Deletar Usuarios", TipoProcessoEnum.DeletarUsuariosporDepartamento);
             CriarProcesso("Deletar Departamentos", TipoProcessoEnum.DeletarDepartamentosporDepartamento);
-            CriarProcesso("Deletar Acordos de convenção",TipoProcessoEnum.DeletarAcordosdeconvencao);
-            CriarProcesso("Deletar Estrutura por departamento/Hospital", TipoProcessoEnum.DeletarEstruturaCompleta);
+            CriarProcesso("Deletar Acordos de convenção",TipoProcessoEnum.DeletarAcordosdeconvencaoporDepartamento);
+            CriarProcesso("Deletar Estrutura por departamento/Hospital", TipoProcessoEnum.DeletarEstruturaCompletaPorDepartamento);
          
             Processos repositorio = new Processos();
 
