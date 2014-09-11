@@ -3,6 +3,7 @@
   <PropertyGroup>
     <ReferencePath>B:\Documents\Orcamento2015\Orcamento.Robo.Web\..\lib\</ReferencePath>
     <ProjectView>ShowAllFiles</ProjectView>
+    <NameOfLastUsedPublishProfile>teste</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

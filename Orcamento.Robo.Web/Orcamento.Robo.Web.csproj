@@ -117,10 +117,6 @@
     <Reference Include="nunit.framework">
       <HintPath>..\Lib\nunit.framework.dll</HintPath>
     </Reference>
-    <Reference Include="Oracle.DataAccess, Version=4.121.1.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Lib\Oracle.DataAccess.dll</HintPath>
-    </Reference>
     <Reference Include="PostSharp">
       <HintPath>..\Lib\PostSharp.dll</HintPath>
     </Reference>
@@ -130,9 +126,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\Lib\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -394,6 +387,7 @@
     <Content Include="font\glyphicons-halflings-regular.eot" />
     <Content Include="font\glyphicons-halflings-regular.ttf" />
     <Content Include="font\glyphicons-halflings-regular.woff" />
+    <None Include="Properties\PublishProfiles\teste.pubxml" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Images\online.png" />
     <Content Include="img\avatar.png" />
@@ -676,7 +670,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>19208</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:52485/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

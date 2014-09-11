@@ -719,8 +719,8 @@ namespace Orcamento.Test.InfraStructure
 
             Usuario usuario = new Usuario()
             {
-                Nome = "isaac",
-                Login = "isaac",
+                Nome = "master",
+                Login = "master",
                 Senha = "123456",
                 TipoUsuario = tipoUsuarios.Obter<TipoUsuario>(1)
             };
