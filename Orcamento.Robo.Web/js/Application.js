@@ -1,6 +1,12 @@
+var serverBudgget;
+
 $(function () {
-	
-	Application.init ();
+
+    //serverBudgget = "10.250.0.94";
+    serverBudgget = "localhost";
+    Application.init();
+    
+
 	
 });
 

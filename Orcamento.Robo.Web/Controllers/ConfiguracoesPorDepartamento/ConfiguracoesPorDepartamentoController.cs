@@ -81,7 +81,7 @@ namespace Orcamento.Robo.Web.Controllers.ConfiguracoesPorDepartamento
                 configuracao.Mensagem = "Estrutura deletada com sucesso.";
                 configuracao.Titulo = "Estrutura deletada.";
 
-                return PartialView("_Processos", configuracao);
+                return View("Index",configuracao);
             }
             catch (Exception)
             {

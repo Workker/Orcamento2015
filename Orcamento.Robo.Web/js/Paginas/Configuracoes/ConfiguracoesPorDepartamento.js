@@ -18,12 +18,12 @@
 function Deletar() {
     var idDepartamento = $("#IdDepartamento").val();
     $.ajax({
-        url: "http://localhost:52485/ConfiguracoesPorDepartamento/Deletar", //+ window.location.host + url,
+        url: "http://" + window.location.host + "/ConfiguracoesPorDepartamento/Deletar", //+ window.location.host + url,
         type: "POST",
         cache: false,
         data: { departamentoId: idDepartamento },
         success: function (resultado) {
-            // alert('Estrutura Deletada com sucesso!');
+            $("#bodyRobo").replaceWith(resultado);
         }
     });
 }

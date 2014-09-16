@@ -8,7 +8,7 @@ namespace Orcamento.API.Areas.HelpPage.Controllers
     /// <summary>
     /// The controller that will handle requests for the help page.
     /// </summary>
-    public class HelpController : Controller
+    public class HelpController : System.Web.Mvc.Controller
     {
         public HelpController()
             : this(GlobalConfiguration.Configuration)
@@ -39,6 +39,11 @@ namespace Orcamento.API.Areas.HelpPage.Controllers
             }
 
             return View("Error");
+        }
+
+        protected override void ExecuteCore()
+        {
+            throw new NotImplementedException();
         }
     }
 }

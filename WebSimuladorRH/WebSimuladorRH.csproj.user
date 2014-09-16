@@ -2,7 +2,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <ProjectView>ProjectFiles</ProjectView>
-    <NameOfLastUsedPublishProfile>Profile1</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>Budgget</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <PropertyGroup>
     <ReferencePath>C:\ProjetosEmpresaPhexix\Worker\Orcamento\WebSimuladorRH\..\Lib\</ReferencePath>

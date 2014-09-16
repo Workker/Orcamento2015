@@ -50,7 +50,7 @@
         var timer = $.timer(function () {
             
             $.ajax({
-                url:"http://localhost:52485/Configuracoes/Processos", 
+                url: "http://" + window.location.host + "/Configuracoes/Processos",
                 type: "GET",
                 cache: false,
                 success: function (resultado) {

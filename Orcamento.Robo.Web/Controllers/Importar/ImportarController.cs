@@ -76,7 +76,8 @@ namespace Orcamento.Robo.Web.Controllers.Importar
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                    //var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
+                    var path = Path.Combine("E:\\Budgget\\Uploads\\", fileName);
                     file.SaveAs(path);
 
                     var controller = new Controller.Robo.ImportarController();

@@ -1,7 +1,7 @@
 ﻿function GetMore(element, pagina) {
 
     $.ajax({
-        url: "http://localhost:52485/Carga/MaisResultados", //+ window.location.host + url,
+        url: "http://" + window.location.host + "/Carga/MaisResultados", //+ window.location.host + url,
         type: "GET",
         data: { paginaAtual: pagina },
         cache: false,

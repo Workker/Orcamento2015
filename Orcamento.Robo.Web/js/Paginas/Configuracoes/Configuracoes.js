@@ -35,9 +35,9 @@ function DeletarEstrutura() {
 }
 
 function Deletar() {
-
+    
     $.ajax({
-        url: "http://localhost:52485/Configuracoes/Deletar", //+ window.location.host + url,
+        url: "http://" + window.location.host + "/Configuracoes/Deletar", //+ window.location.host + url,
         type: "POST",
         cache: false,
         success: function (resultado) {

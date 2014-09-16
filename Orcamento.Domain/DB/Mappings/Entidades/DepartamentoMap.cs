@@ -16,6 +16,7 @@ namespace Orcamento.Domain.DB.Mappings
             Map(s => s.Nome);
             HasManyToMany(s => s.CentrosDeCusto).Cascade.All();
             HasManyToMany(x => x.Setores).Cascade.All();
+            
         }
     }
     

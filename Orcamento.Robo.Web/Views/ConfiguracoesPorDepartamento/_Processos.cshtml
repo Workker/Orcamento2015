@@ -67,7 +67,7 @@
     function DeletarProcesso(tipoProcesso) {
         var idDepartamento = $("#IdDepartamento").val();
         $.ajax({
-            url: "http://localhost:52485/ConfiguracoesPorDepartamento/Delete",
+            url: "http://" + window.location.host + "/ConfiguracoesPorDepartamento/Delete",
             type: "GET",
             data: { tipoprocesso: tipoProcesso,departamentoId : idDepartamento },
             cache: false,

@@ -8,7 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Web.Http;
 
-namespace Orcamento.API.Controllers
+namespace Orcamento.API.Controller
 {
     public class CargasController : ApiController
     {

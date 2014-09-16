@@ -12,7 +12,7 @@
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <link href="../../css/bootstrap-responsive.min.css" rel="stylesheet">
 
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">
+    @*  <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet">*@
     <link href="../../css/font-awesome.min.css" rel="stylesheet">
 
     <link href="../../css/ui-lightness/jquery-ui-1.10.0.custom.min.css" rel="stylesheet">
@@ -50,30 +50,30 @@
 </head>
 
 <body>
+    <div id="bodyRobo">
+        @if (!Request.IsAuthenticated)
+        {
+            Response.Redirect("/Login");
+        }
 
-    @if (!Request.IsAuthenticated)
-    {
-        Response.Redirect("/Login");
-    }
+        <nav class="navbar navbar-inverse" role="navigation">
 
-    <nav class="navbar navbar-inverse" role="navigation">
+            <div class="container">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="icon-cog"></i>
+                    </button>
+                    <a class="navbar-brand" href="#">Configuração Orçamento | Rede Dor São Luiz</a>
+                </div>
 
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="icon-cog"></i>
-                </button>
-                <a class="navbar-brand" href="#">Configuração Orçamento | Rede Dor São Luiz</a>
-            </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        @*<li class="dropdown">*@
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    @*<li class="dropdown">*@
-
-                    @*                        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+                        @*                        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-cog"></i>
                             Configurações
                                 <b class="caret"></b>
@@ -88,100 +88,100 @@
 
                     </li>*@
 
-                    <li class="dropdown">
-
-                        <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-user"></i>
-                            @User.Identity.Name
-                            <b class="caret"></b>
-                        </a>
-
-                        <ul class="dropdown-menu">
-                            <li><a href="~/Login/Logout">Sair</a></li>
-                        </ul>
-
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container -->
-    </nav>
-
-    <div class="subnavbar">
-
-        <div class="subnavbar-inner">
-
-            <div class="container">
-
-                <a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="icon-reorder"></i>
-
-                </a>
-
-                @*id="DivMenu"*@
-
-                <div class="collapse subnav-collapse">
-                    <ul class="mainnav">
-
-                        <li class="active">
-                            <a href="~/Carga">
-                                <i class="icon-hospital"></i>
-                                <span>Principal</span>
-                            </a>
-                        </li>
                         <li class="dropdown">
-                            <a href="~/Carga">
-                                <i class="icon-dashboard"></i>
-                                <span>Status importação</span>
-                            </a>
-                        </li>
 
-                        <li class="dropdown">
-                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                                <i class="icon-copy"></i>
-                                <span>Configuração Orçamentaria</span>
+                            <a href="javscript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="icon-user"></i>
+                                @User.Identity.Name
                                 <b class="caret"></b>
                             </a>
+
                             <ul class="dropdown-menu">
-                                <li><a href="~/Configuracoes">Configurações gerais</a></li>
-                                <li><a href="~/ConfiguracoesPorDepartamento">Configurações por departamento</a></li>
-                                <li><a href="~/Importar">Importação de carga</a></li>
+                                <li><a href="~/Login/Logout">Sair</a></li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="~/Faq">
-                                <i class="icon-archive"></i>
-                                <span>Faq</span>
-                            </a>
+
                         </li>
                     </ul>
                 </div>
-                <!-- /.subnav-collapse -->
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+        <div class="subnavbar">
+
+            <div class="subnavbar-inner">
+
+                <div class="container">
+
+                    <a href="javascript:;" class="subnav-toggle" data-toggle="collapse" data-target=".subnav-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="icon-reorder"></i>
+
+                    </a>
+
+                    @*id="DivMenu"*@
+
+                    <div class="collapse subnav-collapse">
+                        <ul class="mainnav">
+
+                            <li class="active">
+                                <a href="~/Carga">
+                                    <i class="icon-hospital"></i>
+                                    <span>Principal</span>
+                                </a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="~/Carga">
+                                    <i class="icon-dashboard"></i>
+                                    <span>Status importação</span>
+                                </a>
+                            </li>
+
+                            <li class="dropdown">
+                                <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="icon-copy"></i>
+                                    <span>Configuração Orçamentaria</span>
+                                    <b class="caret"></b>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Configuracoes">Configurações gerais</a></li>
+                                    <li><a href="~/ConfiguracoesPorDepartamento">Configurações por departamento</a></li>
+                                    <li><a href="~/Importar">Importação de carga</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="~/Faq">
+                                    <i class="icon-archive"></i>
+                                    <span>Faq</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.subnav-collapse -->
+
+                </div>
+                <!-- /container -->
 
             </div>
-            <!-- /container -->
+            <!-- /subnavbar-inner -->
 
         </div>
-        <!-- /subnavbar-inner -->
+        <!-- /subnavbar -->
+        <script src="../../js/libs/jquery-1.9.1.min.js"></script>
+        <script src="../../js/jquery-ui-1.10.4.custom.min.js"></script>
+        <script src="../../js/libs/bootstrap.js"></script>
+        <script src="../../js/libs/jquery.ui.touch-punch.min.js"></script>
 
-    </div>
-    <!-- /subnavbar -->
-     <script src="../../js/libs/jquery-1.9.1.min.js"></script>
-    <script src="../../js/jquery-ui-1.10.4.custom.min.js"></script>
-    <script src="../../js/libs/bootstrap.js"></script>
-    <script src="../../js/libs/jquery.ui.touch-punch.min.js"></script>
-
-    <script src="../../Scripts/jquery.validate.min.js"></script>
-    <script src="../../Scripts/jquery.validate.unobtrusive.min.js"></script>
-    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js"></script>
+        <script src="../../Scripts/jquery.validate.min.js"></script>
+        <script src="../../Scripts/jquery.validate.unobtrusive.min.js"></script>
+        <script src="../../Scripts/jquery.unobtrusive-ajax.min.js"></script>
 
 
-    <script src="../../Scripts/DocumentReady.js"></script>
-    <script src="../../js/Application.js"></script>
-    <script src="../../js/plugins/msgGrowl/js/msgGrowl.min.js"></script>
-    
+        <script src="../../Scripts/DocumentReady.js"></script>
+        <script src="../../js/Application.js"></script>
+        <script src="../../js/plugins/msgGrowl/js/msgGrowl.min.js"></script>
+
         <script>
 
             $("#dialog").dialog({
@@ -212,73 +212,73 @@
 
 
 
-    </script>
+        </script>
 
-    <div class="main">
+        <div class="main">
 
-        <div class="container">
+            <div class="container">
 
-            <div id="messagewrapper" style="display: block">
-                @Html.RenderMessages()
+                <div id="messagewrapper" style="display: block">
+                    @Html.RenderMessages()
+                </div>
+
+                @RenderBody()
+
             </div>
-
-            @RenderBody()
-
-        </div>
-        <!-- /container -->
+            <!-- /container -->
             @*RenderPage("../Notificacoes/Index.cshtml")*@
-    </div>
-    <!-- /main -->
+        </div>
+        <!-- /main -->
 
 
 
 
-    <div class="footer">
+        <div class="footer">
 
-        <div class="container">
+            <div class="container">
 
-            <div class="row">
+                <div class="row">
 
-                <div id="footer-copyright" class="col-md-6">
-                    &copy; 2011-50 Workker.
+                    <div id="footer-copyright" class="col-md-6">
+                        &copy; 2011-50 Workker.
+                    </div>
+                    <!-- /span6 -->
+
+                    <div id="footer-terms" class="col-md-6">
+                        Powered by <a href="http://workker.com.br" target="_blank">Workker</a>
+                    </div>
+                    <!-- /.span6 -->
+
                 </div>
-                <!-- /span6 -->
-
-                <div id="footer-terms" class="col-md-6">
-                    Powered by <a href="http://workker.com.br" target="_blank">Workker</a>
-                </div>
-                <!-- /.span6 -->
+                <!-- /row -->
 
             </div>
-            <!-- /row -->
+            <!-- /container -->
 
         </div>
-        <!-- /container -->
+        <!-- /footer -->
 
-    </div>
-    <!-- /footer -->
-
-    <!-- Le javascript
+        <!-- Le javascript
             ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+        <!-- Placed at the end of the document so the pages load faster -->
 
 
-   
 
 
-    @*   <script src="../../js/libs/jquery-1.9.1.min.js"></script>
+
+        @*   <script src="../../js/libs/jquery-1.9.1.min.js"></script>
     <script src="../../js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="../../js/libs/bootstrap.min.js"></script>
     <script src="../../js/libs/jquery.ui.touch-punch.min.js"></script>*@
 
-    @* <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
+        @* <script src="@Url.Content("~/Scripts/jquery-1.9.1.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/js/plugins/../jquery-ui-1.10.4.custom.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/jquery.unobtrusive-ajax.js")" type="text/javascript"></script>*@
 
 
-    @*    <script src="../../js/plugins/flot/jquery.flot.js"></script>
+        @*    <script src="../../js/plugins/flot/jquery.flot.js"></script>
     <script src="../../js/plugins/flot/jquery.flot.pie.js"></script>
     <script src="../../js/plugins/flot/jquery.flot.resize.js"></script>*@
 
@@ -286,12 +286,12 @@
 
 
 
-    @*    <script src="../../js/charts/area.js"></script>
+        @*    <script src="../../js/charts/area.js"></script>
     <script src="../../js/charts/donut.js"></script>*@
 
-    @*  @Scripts.Render("~/bundless/otf")*@
+        @*  @Scripts.Render("~/bundless/otf")*@
 
-
+    </div>
 </body>
 
 

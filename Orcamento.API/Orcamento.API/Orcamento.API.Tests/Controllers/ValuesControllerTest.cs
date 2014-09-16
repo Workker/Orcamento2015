@@ -8,6 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.API;
 using Orcamento.API.Controllers;
 using Orcamento.Domain.Entities.Monitoramento;
+using Orcamento.API.Controller;
 
 namespace Orcamento.API.Tests.Controllers
 {

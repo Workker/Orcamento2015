@@ -91,8 +91,6 @@ namespace Orcamento.Domain.Servico.Robo
                 AdicionarProcesso(TipoProcessoEnum.DeletarEstruturaCompletaPorDepartamento);
 
                 IniciarProcessos();
-
-                FinalizarProcesso(TipoProcessoEnum.DeletarEstruturaCompletaPorDepartamento);
             }
             catch (Exception)
             {
@@ -129,8 +127,9 @@ namespace Orcamento.Domain.Servico.Robo
 
                 DeletarUsuarios();
 
-                DeletarDepartamentos();
+                FinalizarProcessoDepartamento();
 
+                DeletarDepartamentos();
             }
             catch (Exception)
             {
@@ -439,15 +438,12 @@ namespace Orcamento.Domain.Servico.Robo
         {
             try
             {
-                AdicionarProcesso(TipoProcessoEnum.DeletarDepartamentosporDepartamento);
                 Departamentos departamentos = new Departamentos();
 
                 Departamento.Setores = null;
                 Departamento.CentrosDeCusto = null;
 
                 departamentos.Deletar(Departamento);
-
-            //    FinalizarProcesso(TipoProcessoEnum.DeletarDepartamentosporDepartamento);
             }
             catch (Exception ex)
             {
@@ -455,6 +451,12 @@ namespace Orcamento.Domain.Servico.Robo
             }
 
 
+        }
+
+        private void FinalizarProcessoDepartamento()
+        {
+            var todos = repositorioProcessos.Todos(Departamento);
+            repositorioProcessos.Deletar(todos);
         }
     }
 }

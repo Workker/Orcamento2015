@@ -66,7 +66,7 @@
 
     function DeletarProcesso(tipoProcesso) {
         $.ajax({
-            url: "http://localhost:52485/Configuracoes/Delete",
+            url: "http://" + window.location.host + "/Configuracoes/Delete",
             type: "GET",
             data: { tipoprocesso: tipoProcesso },
             cache: false,

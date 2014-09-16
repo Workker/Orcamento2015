@@ -6,11 +6,16 @@ using System.Web.Mvc;
 
 namespace Orcamento.API.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController :  System.Web.Mvc.Controller
     {
         public ActionResult Index()
         {
             return View();
+        }
+
+        protected override void ExecuteCore()
+        {
+            throw new NotImplementedException();
         }
     }
 }
