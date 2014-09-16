@@ -2,9 +2,11 @@
 using Orcamento.Robo.Web.Models.Importar;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace Orcamento.Robo.Web.Controllers.Importar
@@ -76,8 +78,14 @@ namespace Orcamento.Robo.Web.Controllers.Importar
                 if (file.ContentLength > 0)
                 {
                     var fileName = Path.GetFileName(file.FileName);
-                    //var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
-                    var path = Path.Combine("E:\\Budgget\\Uploads\\", fileName);
+                    var root = WebConfigurationManager.AppSettings["PathUpload"];
+
+                    string path;
+                    if (root.First().Equals('~'))
+                        path = Path.Combine(Server.MapPath(root), fileName);
+                    else
+                        path = Path.Combine(root, fileName);
+
                     file.SaveAs(path);
 
                     var controller = new Controller.Robo.ImportarController();
@@ -96,15 +104,15 @@ namespace Orcamento.Robo.Web.Controllers.Importar
                 {
                     model.Tipo = "success";
                     model.Mensagem = "Processo foi iniciado, aguarde.";
-                    model.Titulo = "Processo iniciado.";    
+                    model.Titulo = "Processo iniciado.";
                 }
                 else
                 {
                     model.Tipo = "error";
                     model.Mensagem = "Ocorreu um erro na validação, verifique os detalhes.";
-                    model.Titulo = "Erro ao processar o arquivo.";    
+                    model.Titulo = "Erro ao processar o arquivo.";
                 }
-                
+
 
                 return View(model);
             }

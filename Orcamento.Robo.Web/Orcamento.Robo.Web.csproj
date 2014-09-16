@@ -392,6 +392,8 @@
     <Content Include="Images\online.png" />
     <Content Include="img\avatar.png" />
     <Content Include="img\body-bg.png" />
+    <Content Include="img\Budgeet Topo.png" />
+    <Content Include="img\Budgget.JPG" />
     <Content Include="img\gallery\lr1.png" />
     <Content Include="img\gallery\lr1_large.png" />
     <Content Include="img\gallery\lr2.png" />

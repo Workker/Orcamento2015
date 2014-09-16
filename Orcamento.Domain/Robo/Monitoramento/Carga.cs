@@ -9,6 +9,7 @@ using Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas;
 using Orcamento.Domain.Robo.Fabricas;
 using Orcamento.Domain.DB.Repositorio.Robo;
 using System.Net.Http;
+using System.Configuration;
 
 namespace Orcamento.Domain.Entities.Monitoramento
 {
@@ -23,7 +24,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         }
 
-        public Carga(ProcessaCarga processaCarga,TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio,bool EntidadeRepetidaAltera)
+        public Carga(ProcessaCarga processaCarga, TipoEstrategiaDeCargaEnum tipo, string nome, string diretorio, bool EntidadeRepetidaAltera)
         {
             AtribuirEstrategiaDeCargas(processaCarga);
             AtribuirDataDeCriacao();
@@ -115,7 +116,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
             if (Detalhes == null)
                 Detalhes = new List<Detalhe>();
 
-            var detalhe = new Detalhe() { Nome = nome, Descricao = descricao, Linha = linha, TipoDetalhe = detalheEnum ,Excecao = execao};
+            var detalhe = new Detalhe() { Nome = nome, Descricao = descricao, Linha = linha, TipoDetalhe = detalheEnum, Excecao = execao };
             if (detalheEnum != TipoDetalheEnum.sucesso)
                 this.RegistrarExecao();
 
@@ -140,12 +141,13 @@ namespace Orcamento.Domain.Entities.Monitoramento
         private void ChamarServico()
         {
             //HttpClient client = new HttpClient();
-            //HttpResponseMessage resp = client.GetAsync(string.Format("http://localhost:2884/api/cargas?idCarga={0}", Id)).Result;
+            //HttpResponseMessage resp = client.GetAsync(string.Format("/api/cargas?idCarga={0}", Id)).Result;
             //resp.EnsureSuccessStatusCode();
-
+            //http:/localhost:2884/api/cargas?idCarga=34c965bc-6c58-4a85-a8ad-2e0d8fab7c3e
             HttpClient client = new HttpClient();
-            client.GetAsync(string.Format("http://localhost:2884/api/cargas?idCarga={0}", Id));
-
+            var hostBudgget = ConfigurationManager.AppSettings["BudggetManager"];
+            var uri = string.Format("http://{0}/api/cargas?idCarga={1}", hostBudgget, Id);
+            client.GetAsync(uri);
         }
 
         public virtual void Processa()
@@ -156,7 +158,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         public virtual bool Ok()
         {
-            return this.Detalhes == null || this.Detalhes.Count == 0 || this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel ||  d.TipoDetalhe == TipoDetalheEnum.erroDeValidacao) != null
+            return this.Detalhes == null || this.Detalhes.Count == 0 || this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel || d.TipoDetalhe == TipoDetalheEnum.erroDeValidacao) != null
                 && this.Detalhes.Where(d => d.TipoDetalhe == TipoDetalheEnum.erroDeProcesso || d.TipoDetalhe == TipoDetalheEnum.erroLeituraExcel || d.TipoDetalhe == TipoDetalheEnum.erroDeValidacao).Count() == 0;
         }
     }
