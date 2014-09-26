@@ -31,7 +31,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
                                                  ? "já existe no banco de dados"
                                                  : "não existe no banco de dados";
 
-            var alteracaoCorreta = (EstruturasOrcamentariasExcel != null && EstruturaOrcamentariaExcel.TipoAlteracaoConta == TipoAlteracao.Alteracao &&
+            var alteracaoCorreta = (EstruturasOrcamentariasExcel != null && EstruturaOrcamentariaExcel.TipoAlteracaoCentroDeCusto == TipoAlteracao.Alteracao &&
            EstruturasOrcamentariasExcel.Any(
                p =>
                p.CodigoCentroDeCusto == EstruturaOrcamentariaExcel.CodigoCentroDeCusto &&

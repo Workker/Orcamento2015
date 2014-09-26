@@ -26,7 +26,8 @@ namespace Orcamento.Domain.DB.Repositorio.Robo
 
         public IList<Carga> MaisResultados(int paginaAtual)
         {
-            return Session.QueryOver<Carga>().Skip(paginaAtual*50).Take(50).List<Carga>();
+
+            return Session.QueryOver<Carga>().OrderBy(x=> x.DataCriacao).Desc.Skip(paginaAtual*50).Take(50).List<Carga>();
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Orcamento.Controller.Robo
         public List<Domain.Robo.Monitoramento.EstruturaOrcamentaria.Processo> ObterProcessos()
         {
             Processos processos = new Processos();
-            return processos.Todos<Processo>().ToList();
+            return processos.TodosGerais();
         }
 
         public List<Processo> ObterProcessos(int IdDepartamento)

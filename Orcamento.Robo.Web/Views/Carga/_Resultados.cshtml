@@ -15,7 +15,7 @@
 }
 else
 {
-    foreach (var carga in Model.Cargas.OrderByDescending(x => x.DataCriacao))
+    foreach (var carga in Model.Cargas.OrderByDescending(x => x.DataCriacao.Date))
     {
     <tr>
         <td>@carga.NomeArquivo</td>

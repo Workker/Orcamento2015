@@ -108,7 +108,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
         {
             GrupoDeConta grupoDeConta = null;
 
-            if (GruposDeConta.Any(c => c.Nome == estruturaOrcamentariaExcel.NomeDaConta))
+            if (GruposDeConta.Any(c => c.Nome == estruturaOrcamentariaExcel.NomeDoGrupoDeConta))
                 grupoDeConta = GruposDeConta.First(c => c.Nome == estruturaOrcamentariaExcel.NomeDoGrupoDeConta);
             else
                 grupoDeConta = GruposDeContaRepositorio.ObterPor(estruturaOrcamentariaExcel.NomeDoGrupoDeConta);
@@ -116,6 +116,9 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
             Especificacao especificacaoConta = FabricaDeEspecificacaoCargaValidaEstruturaOrcamentariaGrupoDeConta.ObterEspecificacao(estruturasOrcamentariasExcel,estruturaOrcamentariaExcel, grupoDeConta);
 
             especificacaoConta.IsSatisfiedBy(carga);
+
+            if(!GruposDeConta.Any(c => c.Nome == estruturaOrcamentariaExcel.NomeCentroDeCusto) && grupoDeConta != null)
+                GruposDeConta.Add(grupoDeConta);
         }
 
         private void ValidaCentroDeCusto(EstruturaOrcamentariaExcel estruturaOrcamentariaExcel)
@@ -130,6 +133,9 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
             Especificacao especificacaoConta = FabricaDeEspecificacaoCargaValidaEstruturaOrcamentariaCentroDeUso.ObterEspecificacao(estruturasOrcamentariasExcel, estruturaOrcamentariaExcel, centroDeCusto);
 
             especificacaoConta.IsSatisfiedBy(carga);
+
+            if (!CentrosDeCustos.Any(c => c.CodigoDoCentroDeCusto == estruturaOrcamentariaExcel.CodigoCentroDeCusto) && centroDeCusto != null)
+                CentrosDeCustos.Add(centroDeCusto);
         }
 
         #region Contas
@@ -149,6 +155,9 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
             especificacaoConta.IsSatisfiedBy(carga);
 
             estruturaOrcamentariaExcel.Conta = conta;
+
+            if (!Contas.Any(c => c.CodigoDaConta == estruturaOrcamentariaExcel.CodigoDaConta) && conta != null)
+                Contas.Add(conta);
         }
 
         #endregion

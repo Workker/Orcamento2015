@@ -80,5 +80,12 @@ namespace Orcamento.Domain.DB.Repositorio
 
 
         }
+
+        public List<Processo> TodosGerais()
+        {
+            var criterio = Session.CreateCriteria<Processo>();
+            criterio.Add(Expression.IsNull("Departamento"));
+            return criterio.List<Processo>().ToList();
+        }
     }
 }

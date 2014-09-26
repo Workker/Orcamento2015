@@ -180,12 +180,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
             {
                 GrupoDeConta grupoDeConta = null;
 
-                if (estruturaOrcamentaria.TipoAlteracaoGrupoDeConta == TipoAlteracao.Inclusao)
-                {
-                    grupoDeConta = new GrupoDeConta(estruturaOrcamentaria.NomeDoGrupoDeConta);
-                    grupoDeConta.Contas = new List<Conta>();
-                    GruposDeConta.Add(grupoDeConta);
-                }
+                grupoDeConta = CriarGrupo(estruturaOrcamentaria);
                 if (estruturaOrcamentaria.TipoAlteracaoGrupoDeConta == TipoAlteracao.Alteracao)
                 {
                     grupoDeConta = GruposDeContaRepositorio.ObterPor(estruturaOrcamentaria.NomeDoGrupoDeConta);
@@ -193,7 +188,10 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                     if (grupoDeConta == null)
                         grupoDeConta = GruposDeConta.FirstOrDefault(p => p.Nome == estruturaOrcamentaria.NomeDoGrupoDeConta);
 
-                    grupoDeConta.Nome = estruturaOrcamentaria.NomeCentroDeCusto;
+                    if (grupoDeConta == null)
+                        grupoDeConta = CriarGrupo(estruturaOrcamentaria);
+
+                    grupoDeConta.Nome = estruturaOrcamentaria.NomeDoGrupoDeConta;
                 }
 
                 var contas = estruturaOrcamentariaExcel.Where(p => p.NomeDoGrupoDeConta == grupoDeConta.Nome).Select(p => p.NomeDaConta);
@@ -212,6 +210,19 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                     gruposDeConta.Add(grupoDeConta);
             }
 
+        }
+
+        private GrupoDeConta CriarGrupo(EstruturaOrcamentariaExcel estruturaOrcamentaria)
+        {
+            GrupoDeConta grupoDeConta = null;
+            if (estruturaOrcamentaria.TipoAlteracaoGrupoDeConta == TipoAlteracao.Inclusao)
+            {
+                grupoDeConta = new GrupoDeConta(estruturaOrcamentaria.NomeDoGrupoDeConta);
+                grupoDeConta.Contas = new List<Conta>();
+                GruposDeConta.Add(grupoDeConta);
+            }
+
+            return grupoDeConta;
         }
 
         private void ProcessarCentrosDeCusto()
