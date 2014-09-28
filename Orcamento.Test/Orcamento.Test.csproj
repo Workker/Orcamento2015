@@ -14,6 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <CodeContractsAssemblyMode>1</CodeContractsAssemblyMode>
     <TargetFrameworkProfile />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -183,6 +185,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\Castle.Core.dll</HintPath>
     </Reference>
+    <Reference Include="FakeItEasy">
+      <HintPath>..\packages\FakeItEasy.1.24.0\lib\net40\FakeItEasy.dll</HintPath>
+    </Reference>
     <Reference Include="FluentNHibernate, Version=1.2.0.712, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Lib\FluentNHibernate.dll</HintPath>
@@ -259,8 +264,10 @@
     <Compile Include="PersistenceTestBase.cs" />
     <Compile Include="Mappings\TicketDeOrcamentoMapTest.cs" />
     <Compile Include="Repositorio\GrupoDeContaTeste.cs" />
-    <Compile Include="Robo\Carga\CargaFuncionarioTest.cs" />
-    <Compile Include="Robo\Carga\InserirCargaTeste.cs" />
+    <Compile Include="Robo\CenariosDeCarga\CargaFuncionarioTest.cs" />
+    <Compile Include="Robo\CenariosDeCarga\EstrategiaDeCargas\CargaTicketsDeProducaoTest.cs" />
+    <Compile Include="Robo\CenariosDeCarga\EstrategiaDeCargas\TestFixtre.cs" />
+    <Compile Include="Robo\CenariosDeCarga\InserirCargaTeste.cs" />
     <Compile Include="Servico\ServicoCriarOrcamentoHospitalarTest.cs" />
     <Compile Include="Servico\ServicoCriarOrcamentoOperacionalTest.cs" />
     <Compile Include="Servico\ServicoGerarOrcamentoPessoalPorDepartamentoECentroDeCustoTeste.cs" />
@@ -275,6 +282,7 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Orcamento.Controller\Orcamento.Controller.csproj">
@@ -295,6 +303,13 @@
     <Folder Include="Domain\Orcamentos\OrcamentoPessoalTest\TestesDeFuncionario\RecebimentosNormais\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

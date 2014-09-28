@@ -116,7 +116,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
             foreach (TicketDeProducaoExcel ticketDeProducaoExcel in ticketsUnitariosDeProducao)
             {
                 // TODO: evitar que busque + de uma vez o mesmo ticket de produção (pasar pra outro lugar)
-                if (!Tickets.Any(t => t.Hospital.Nome == ticketDeProducaoExcel.Departamento))
+                if (!Tickets.Any(t => t.Hospital.Nome == ticketDeProducaoExcel.Departamento && t.Setor.NomeSetor == ticketDeProducaoExcel.setor && t.SubSetor.NomeSetor == ticketDeProducaoExcel.subSetor))
                     Tickets.AddRange(tickets.Todos(ticketDeProducaoExcel.DepartamentoEntidade).ToList());
 
                 Especificacao especificacaoTicket =
@@ -125,7 +125,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
                 if (especificacaoTicket.IsSatisfiedBy(carga))
                 {
                     TicketDeProducao ticket =
-                        Tickets.FirstOrDefault(t => t.Setor.NomeSetor == ticketDeProducaoExcel.setor);
+                        Tickets.FirstOrDefault(t => t.Setor.NomeSetor == ticketDeProducaoExcel.setor && t.SubSetor.NomeSetor == ticketDeProducaoExcel.subSetor);
                     ticketDeProducaoExcel.SetorHospitalar = ticket.Setor;
                     ticketDeProducaoExcel.SubSetorHospital = ticket.SubSetor;
                     ticketDeProducaoExcel.Ticket = ticket;

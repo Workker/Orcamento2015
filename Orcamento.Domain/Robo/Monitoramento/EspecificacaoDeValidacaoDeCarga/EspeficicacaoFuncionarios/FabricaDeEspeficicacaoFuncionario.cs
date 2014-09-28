@@ -26,8 +26,8 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
             var validaNome =
                 new EspecificacaoCargaValidaFuncionarioValidaNome(funcionario);
 
-           // var validaNumeroVaga =
-           //new EspecificacaoCargaValidaFuncionarioValidaNumeroVaga(funcionario);
+            var validaNumeroVaga =
+           new EspecificacaoCargaValidaFuncionarioValidaNumeroVaga(funcionario);
 
             var validaSalario =
            new EspecificacaoCargaValidaFuncionarioValidaSalario(funcionario);

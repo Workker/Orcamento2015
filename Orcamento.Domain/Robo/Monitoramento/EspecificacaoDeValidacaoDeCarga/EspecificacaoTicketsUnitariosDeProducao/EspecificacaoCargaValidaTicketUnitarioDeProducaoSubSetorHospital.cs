@@ -21,7 +21,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
 
             if (!satisfeito)
                 candidate.AdicionarDetalhe("SubSetor não encontrado",
-                                           "SubSetor: " + TicketDeProducaoExcel.setor + " inexistente.",
+                                           "SubSetor: " + TicketDeProducaoExcel.subSetor + " inexistente.",
                                            TicketDeProducaoExcel.Linha, TipoDetalheEnum.erroDeValidacao);
 
             return satisfeito;

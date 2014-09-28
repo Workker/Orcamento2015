@@ -89,14 +89,14 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
             {
                 var ticketsDeHospital = motor.Tickets.Where(h => h.Hospital.Nome == hospital.Nome).ToList();
 
-                ProcessaTicket(hospital);
+                ProcessaTicket(hospital,  ticketsDeHospital);
 
                 if (ticketsDeHospital != null && ticketsDeHospital.Count > 0)
                     tickets.AddRange(ticketsDeHospital);
             }
         }
 
-        private void ProcessaTicket(Departamento hospital)
+        private void ProcessaTicket(Departamento hospital, List<TicketDeProducao> tickets)
         {
             try
             {
@@ -104,7 +104,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
 
                 foreach (var registro in registros)
                 {
-                    InformarValor(registro);
+                    InformarValor(registro, tickets);
                 }
             }
             catch (Exception)
@@ -114,12 +114,18 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
             }
         }
 
-
-        private void InformarValor(TicketDeProducaoExcel registro)
+        private void InformarValor(TicketDeProducaoExcel registro, List<TicketDeProducao> tickets)
         {
             try
             {
-                registro.TicketParcela.Valor = registro.valor;
+                var ticket = tickets.FirstOrDefault(
+                    t =>
+                    t.Hospital.Nome == registro.Departamento && t.Setor.NomeSetor == registro.setor &&
+                    t.SubSetor.NomeSetor == registro.subSetor);
+
+                var parcela = ticket.Parcelas.FirstOrDefault(t => registro.mes ==(int) t.Mes);
+
+                parcela.Valor = registro.valor;
             }
             catch (Exception)
             {

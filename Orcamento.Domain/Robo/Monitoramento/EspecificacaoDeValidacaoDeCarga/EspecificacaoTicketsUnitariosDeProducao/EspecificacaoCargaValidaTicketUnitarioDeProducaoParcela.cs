@@ -22,6 +22,13 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
             TicketsParcela != null && TicketsParcela.Count > 0 &&
             TicketsParcela.Any(t => TicketDeProducaoExcel.mes == (int) t.Mes);
 
+            //if (TicketsParcela.Count(t => TicketDeProducaoExcel.mes == (int)t.Mes) == 1)
+            //    candidate.AdicionarDetalhe("Mais de uma parcela",
+            //                               string.Format("Existe mais de uma Parcela: {0} do subsetor : {1}",
+            //                                             TicketDeProducaoExcel.mes,
+            //                                             TicketDeProducaoExcel.subSetor),
+            //                               TicketDeProducaoExcel.Linha, TipoDetalheEnum.erroDeValidacao);
+
             if (!satisfeito)
                 candidate.AdicionarDetalhe("Parcela não encontrada",
                                            string.Format("Não foi possível encontrar a Parcela: {0} do subsetor : {1}",

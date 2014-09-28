@@ -123,7 +123,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
             funcionario.DataAdmissao = funcionarioExcel.Mes;
             funcionario.Cargo = funcionarioExcel.Funcao;
             funcionario.AnoAdmissao = funcionarioExcel.Ano;
-            //funcionario.NumeroDeVaga = funcionarioExcel.NumeroVaga;
+            funcionario.NumeroDeVaga = funcionarioExcel.NumeroVaga;
         }
 
         private static bool FuncionarioExiste(FuncionarioExcel funcionarioExcel)
@@ -169,9 +169,9 @@ namespace Orcamento.Domain.Entities.Monitoramento
                         funcionarioExcel.NumeroMatricula = Convert.ToInt32(reader[5]).ToString();
                         funcionarioExcel.Nome = (string) reader[6];
                         funcionarioExcel.Funcao = (string) reader[7];
-                        funcionarioExcel.Salario = (double) reader[8];
-                        funcionarioExcel.Mes = (int) (double) reader[10];
-                        funcionarioExcel.Ano = (int) (double) reader[11];
+                        funcionarioExcel.Salario = double.Parse( reader[8].ToString());
+                        funcionarioExcel.Mes = int.Parse( reader[10].ToString());
+                        funcionarioExcel.Ano = int.Parse( reader[11].ToString());
                         funcionarioExcel.NumeroVaga = int.Parse(reader[13].ToString());
                         funcionarioExcel.Linha = i + 1;
                         funcionarios.Add(funcionarioExcel);

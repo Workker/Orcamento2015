@@ -12,12 +12,8 @@
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Importar/f:ImportarController.cs" caret="2671" fromTop="46" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Configuracoes/f:Index.cshtml" caret="1631" fromTop="11" />
     <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/d:Jquery/f:jquery-1.5.2.js" caret="38032" fromTop="26" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Cargas.cshtml" caret="1088" fromTop="33" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Carga/f:CargaController.cs" caret="2659" fromTop="22" />
     <File id="701515A0-20B7-4565-AF31-AD2DF93CD465/d:Robo/f:CargaController.cs" caret="735" fromTop="22" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:Index.cshtml" caret="6729" fromTop="167" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Resultados.cshtml" caret="391" fromTop="14" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_DetalheCarga.cshtml" caret="28" fromTop="0" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:EspecificacaoCargaValidaEstruturaOrcamentariaCentroDeCusto.cs" caret="1118" fromTop="19" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:EspecificacaoCargaValidaEstruturaOrcamentariaConta.cs" caret="1285" fromTop="26" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:Robo/d:Monitoramento/d:EspecificacaoDeValidacaoDeCarga/d:EspecificacaoEstruturaOrcamentaria/f:EspecificacaoCargaValidaEstruturaOrcamentariaDepartamento.cs" caret="0" fromTop="0" />
@@ -25,11 +21,15 @@
     <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/f:PainelOrcamento.aspx.cs" caret="6123" fromTop="19" />
     <File id="66D21D9A-DD04-4BD5-8BA4-A45BE3B7F44C/d:DB/d:Repositorio/d:Robo/f:Cargas.cs" caret="809" fromTop="20" />
     <File id="1BB71C6C-AC85-4A32-9E58-DA0F36C30488/f:Web.config" caret="852" fromTop="16" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Web.config" caret="1073" fromTop="16" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Controllers/d:Configuracoes/f:ConfiguracoesController.cs" caret="1736" fromTop="20" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:js/f:Application.js" caret="341" fromTop="15" />
     <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Shared/f:_Layout.cshtml" caret="2962" fromTop="13" />
-    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Login/f:Index.cshtml" caret="4045" fromTop="10" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Cargas.cshtml" caret="1088" fromTop="33" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:Index.cshtml" caret="6729" fromTop="167" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_Resultados.cshtml" caret="391" fromTop="14" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Carga/f:_DetalheCarga.cshtml" caret="28" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/d:Views/d:Login/f:Index.cshtml" caret="114" fromTop="0" />
+    <File id="FB6DF9DA-10C5-40FB-B2A2-2580E31DE38D/f:Web.config" caret="928" fromTop="13" />
   </RecentFiles>
   <RecentEdits>
     <File id="4A1D6955-43E3-4A09-BE4B-B21C6653B8FD/d:InfraStructure/f:IniciarSistemaTest.cs" caret="28594" fromTop="21" />
