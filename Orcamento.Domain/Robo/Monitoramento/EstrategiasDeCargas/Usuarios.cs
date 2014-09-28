@@ -16,12 +16,15 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
         public string Login { get; set; }
         public TipoUsuarioEnum TipoUsuario { get; set; }
         public Usuario Usuario { get; set; }
+        public string NomeDepartamento { get; set; }
+        public Departamento Departamento { get; set; }
     }
 
     public class Usuarios : ProcessaCarga
     {
         private IList<UsuarioExcel> usuariosExcel { get; set; }
         private Domain.DB.Repositorio.Usuarios repositorioUsuarios;
+        private Domain.DB.Repositorio.Departamentos departamentos { get; set; }
 
 
         public override void Processar(Carga carga, bool salvar)
@@ -58,31 +61,40 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
             try
             {
                 repositorioUsuarios = new DB.Repositorio.Usuarios();
+                departamentos = new Departamentos();
 
                 foreach (var usuarioExcel in usuariosExcel)
                 {
 
                     if (string.IsNullOrEmpty(usuarioExcel.Login))
-                        carga.AdicionarDetalhe("Erro ao processar usuários", "Login não informado.", 0, TipoDetalheEnum.erroDeValidacao);
+                        carga.AdicionarDetalhe("Erro ao processar usuários", "Login não informado.", usuarioExcel.Linha, TipoDetalheEnum.erroDeValidacao);
 
                     if (string.IsNullOrEmpty(usuarioExcel.Nome))
-                        carga.AdicionarDetalhe("Erro ao processar usuários", "Nome não informado.", 0, TipoDetalheEnum.erroDeValidacao);
+                        carga.AdicionarDetalhe("Erro ao processar usuários", "Nome não informado.", usuarioExcel.Linha, TipoDetalheEnum.erroDeValidacao);
 
                     if (usuarioExcel.TipoUsuario == null)
-                        carga.AdicionarDetalhe("Erro ao processar usuários", "Tipo usuário não informado.", 0, TipoDetalheEnum.erroDeValidacao);
+                        carga.AdicionarDetalhe("Erro ao processar usuários", "Tipo usuário não informado.", usuarioExcel.Linha, TipoDetalheEnum.erroDeValidacao);
 
 
                     var usuario = repositorioUsuarios.ObterAcesso(usuarioExcel.Login);
 
                     if (usuario != null)
-                        carga.AdicionarDetalhe("Erro ao processar usuários", "Usuário: " + usuarioExcel.Login + " já existe.", 0, TipoDetalheEnum.erroDeValidacao);
+                        carga.AdicionarDetalhe("Erro ao processar usuários", "Usuário: " + usuarioExcel.Login + " já existe.", usuarioExcel.Linha, TipoDetalheEnum.erroDeValidacao);
 
 
                     if (string.IsNullOrEmpty(usuarioExcel.Login))
-                        carga.AdicionarDetalhe("Erro ao processar usuários", "Login não informado.", 0, TipoDetalheEnum.erroDeValidacao);
+                        carga.AdicionarDetalhe("Erro ao processar usuários", "Login não informado.", usuarioExcel.Linha, TipoDetalheEnum.erroDeValidacao);
 
-                    if (carga.Ok() && usuario != null)
-                        usuarioExcel.Usuario = usuario;
+                    if (string.IsNullOrEmpty(usuarioExcel.NomeDepartamento))
+                        carga.AdicionarDetalhe("Erro ao processar usuários", "Departamento não informado.", usuarioExcel.Linha, TipoDetalheEnum.erroDeValidacao);
+
+                    var departamento = departamentos.ObterPor(usuarioExcel.NomeDepartamento);
+
+                    if (departamento == null)
+                        carga.AdicionarDetalhe("Erro ao processar usuários", "Departamento não informado.", usuarioExcel.Linha, TipoDetalheEnum.erroDeValidacao);
+                    else
+                        usuarioExcel.Departamento = departamento;
+
                 }
             }
             catch (Exception ex)
@@ -122,6 +134,12 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                         usuarioExcel.Usuario = new Usuario();
                         usuarioExcel.Usuario.Nome = usuarioExcel.Nome;
                         usuarioExcel.Usuario.Login = usuarioExcel.Login;
+
+                        if(usuarioExcel.Usuario.Departamentos == null )
+                            usuarioExcel.Usuario.Departamentos = new List<Departamento>();
+
+
+                        usuarioExcel.Usuario.ParticiparDe(usuarioExcel.Departamento);
 
                         switch (usuarioExcel.TipoUsuario)
                         {
@@ -198,6 +216,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
                         usuarioExcel.Nome = reader[0].ToString();
                         usuarioExcel.Login = reader[1].ToString();
                         usuarioExcel.TipoUsuario = (TipoUsuarioEnum)int.Parse(reader[2].ToString());
+                        usuarioExcel.NomeDepartamento = reader[3].ToString();
 
                         usuarioExcel.Linha = i + 1;
 
