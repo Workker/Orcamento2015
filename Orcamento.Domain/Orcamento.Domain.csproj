@@ -408,6 +408,16 @@
     <Compile Include="Infra\ScopeInstance\ThreadStaticInstanceScoper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robo\Fabricas\FabricaDeImportacao.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\EspecificacaoCargaValidaTicketDeInsumoDepartamento.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\EspecificacaoCargaValidaTicketDeInsumoSetorHospitalar.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\EspecificacaoCargaValidaTicketsDeInsumoCustoUnitariocs.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\EspecificacaoCargaValidaTicketsDeInsumoGeral.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\EspecificacaoCargaValidaTicketsDeInsumo.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\EspecificacaoCargaValidaTicketDeInsumoProducaoHospitalar.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\EspecificacaoCargaValidaTicketUnitarioDeInsumoSubSetorHospital.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\FabricaDeEspecificacaoDeInsumo.cs" />
+    <Compile Include="Robo\Monitoramento\EspecificacaoDeValidacaoDeCarga\EspecificacaoTicketsDeInsumo\MotorDeValidacaoTicketDeInsumo.cs" />
+    <Compile Include="Robo\Monitoramento\EstrategiasDeCargas\ProcessaTicketsDeInsumo.cs" />
     <Compile Include="Robo\Faq\Faq.cs" />
     <Compile Include="Robo\Faq\Pergunta.cs" />
     <Compile Include="Robo\Faq\TipoFaq.cs" />
@@ -452,6 +462,7 @@
     <Compile Include="Robo\Monitoramento\EstruturaOrcamentaria\FabricaDeProcessos.cs" />
     <Compile Include="Robo\Monitoramento\EstruturaOrcamentaria\Processo.cs" />
     <Compile Include="Robo\Monitoramento\EstruturaOrcamentaria\TipoProcesso.cs" />
+    <Compile Include="Robo\Monitoramento\MotorDeValidacao.cs" />
     <Compile Include="Robo\Monitoramento\TipoCarga.cs" />
     <Compile Include="Servico\Robo\ConfiguracoesGeraisDoDepartamentoService.cs" />
     <Compile Include="Servico\Robo\ConfiguracoesGeraisService.cs" />

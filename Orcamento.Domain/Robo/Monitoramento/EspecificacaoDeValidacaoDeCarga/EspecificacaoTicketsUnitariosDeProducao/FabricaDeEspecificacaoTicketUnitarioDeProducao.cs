@@ -1,27 +1,12 @@
-﻿using Orcamento.Domain.Gerenciamento;
+﻿using Orcamento.Domain.Entities.Monitoramento;
+using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas;
 using Orcamento.Domain.Util.Specification;
 using System.Collections.Generic;
 
 namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.EspecificacaoTicketsUnitariosDeProducao
 {
-    public class FabricaDeEspecificacaoTicketUnitarioDeProducao
-    {
-        public static Especificacao ObterEspecificacao(TicketDeProducaoExcel ticketDeProducaoExcel,
-                                                       Departamento departamento, SetorHospitalar setorHospitalar,
-                                                       SubSetorHospital subSetorHospital)
-        {
-            var validaDepartamento = new EspecificacaoCargaValidaTicketDeProducaoDepartamento(ticketDeProducaoExcel,
-                                                                                              departamento);
-
-            //var validaSetor = new EspecificacaoCargaValidaTicketDeProducaoSetorHospitalar(ticketDeProducaoExcel, setorHospitalar);
-            //var validaSubSetor = new EspecificacaoCargaTicketUnitarioDeProducaoSubSetorHospital(ticketDeProducaoExcel,
-            //                                                                            subSetorHospital);
-
-            return validaDepartamento;
-        }
-    }
-
+   
     public class FabricaDeEspeficicacaoDepartamento
     {
         public static Especificacao ObterEspeficicacao(TicketDeProducaoExcel ticketDeProducao, Departamento departamento)
@@ -65,6 +50,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
                 validaSetor;
         }
     }
+
     public class FabricaDeEspeficicacaoSubSetor
     {
         public static Especificacao ObterEspeficicacao(TicketDeProducaoExcel ticketDeProducao, List<SubSetorHospital> subsetores)

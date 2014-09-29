@@ -10,6 +10,17 @@ using NHibernate.SqlCommand;
 
 namespace Orcamento.Domain.DB.Repositorio
 {
+    public class CustosUnitarios : BaseRepository
+    {
+        public IList<CustoUnitario> Todos(Departamento departamento)
+        {
+            var criterio = Session.CreateCriteria<CustoUnitario>();
+            criterio.Add(Expression.Eq("Departamento", departamento));
+
+            return criterio.List<CustoUnitario>().ToList();
+        }
+    }
+
     public interface ITicketsDeProducao
     {
         IList<TicketDeProducao> Todos(Departamento departamento);
@@ -100,7 +111,7 @@ namespace Orcamento.Domain.DB.Repositorio
             return criterio.UniqueResult<TicketDeReceita>();
         }
 
-        public List<TicketDeReceita> Obter( TipoTicketDeReceita tipo)
+        public List<TicketDeReceita> Obter(TipoTicketDeReceita tipo)
         {
             var criterio = Session.CreateCriteria<TicketDeReceita>();
             criterio.Add(Expression.Eq("TipoTicket", tipo));

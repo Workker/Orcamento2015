@@ -25,6 +25,8 @@ namespace Orcamento.Domain.Robo.Fabricas
                     return new Usuarios();
                     break;
 
+                    case TipoEstrategiaDeCargaEnum.insumos:
+                    return new ProcessaTicketsDeInsumo();
                 default:
                     return null;
             }

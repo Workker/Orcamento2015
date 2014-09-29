@@ -11,6 +11,7 @@ namespace Orcamento.Domain.Robo.Monitoramento.EstrategiasDeCargas
         TicketsDeProducao = 1,
         EstruturaOrcamentaria = 2,
         Usuarios = 3,
-        AmarracaoDeUsuarios = 4
+        AmarracaoDeUsuarios = 4,
+        insumos = 5
     }
 }
