@@ -259,6 +259,7 @@
     <Compile Include="InfraStructure\2014\AtualizarFuncionarios.cs" />
     <Compile Include="InfraStructure\2014\AtualizarOrcamentosDeDespesasOperacionaisHospitalares.cs" />
     <Compile Include="InfraStructure\2015\CriaFaqTest.cs" />
+    <Compile Include="InfraStructure\2015\TicketDeProducaoTest.cs" />
     <Compile Include="InfraStructure\BeneficioUtilTest.cs" />
     <Compile Include="InfraStructure\IniciarSistemaTest.cs" />
     <Compile Include="PersistenceTestBase.cs" />

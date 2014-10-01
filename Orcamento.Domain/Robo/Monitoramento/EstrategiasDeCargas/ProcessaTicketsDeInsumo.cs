@@ -86,12 +86,12 @@ namespace Orcamento.Domain.Entities.Monitoramento
             var departamentosExcel = ticketsDeInsumoExcel.Select(x => x.Departamento).Distinct();
             custosUnitarios = new List<CustoUnitario>();
 
-            foreach (var hospital in motor.Departamentos)
+            foreach (var departamento in departamentosExcel)
             {
                 var Insumo =
-                    motor.Insumos.FirstOrDefault(h => h.Departamento.Nome == hospital.Nome);
+                    motor.Insumos.FirstOrDefault(h => h.Departamento.Nome == departamento);
 
-                ProcessaTicket(hospital, Insumo.CustosUnitarios.ToList());
+                ProcessaTicket(Insumo.Departamento, Insumo.CustosUnitarios.ToList());
 
                 if (Insumo.CustosUnitarios != null && Insumo.CustosUnitarios.Count > 0)
                     custosUnitarios.AddRange(Insumo.CustosUnitarios);
