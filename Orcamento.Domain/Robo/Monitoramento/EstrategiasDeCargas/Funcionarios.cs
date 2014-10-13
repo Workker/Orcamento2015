@@ -29,8 +29,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
                 ValidarCarga();
 
-                ProcessaFuncionario();
-
+               
                 if (CargaContemErros()) 
                     return;
 
@@ -106,7 +105,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
             if (FuncionarioExiste(funcionarioExcel))
                 funcionario =
                     funcionarioExcel.CentroDeCusto.Funcionarios.FirstOrDefault(
-                        c => c.Matricula == funcionarioExcel.NumeroMatricula);
+                        c => c.Matricula == funcionarioExcel.NumeroMatricula && funcionarioExcel.Departamento == c.Departamento.Nome);
             else
                 funcionario = new Funcionario(funcionarioExcel.DepartamentoEntidade);
 
@@ -129,7 +128,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
         private static bool FuncionarioExiste(FuncionarioExcel funcionarioExcel)
         {
             return funcionarioExcel.CentroDeCusto.Funcionarios != null &&
-                   funcionarioExcel.CentroDeCusto.Funcionarios.Any(f => f.Matricula == funcionarioExcel.NumeroMatricula);
+                   funcionarioExcel.CentroDeCusto.Funcionarios.Any(f => f.Matricula == funcionarioExcel.NumeroMatricula && f.Departamento.Nome == funcionarioExcel.Departamento);
         }
 
         private void LerExcel(Carga carga, List<FuncionarioExcel> funcionarios)
@@ -191,6 +190,7 @@ namespace Orcamento.Domain.Entities.Monitoramento
 
         internal override void SalvarDados()
         {
+            ProcessaFuncionario();
             SalvarCentrosDecusto();
         }
 

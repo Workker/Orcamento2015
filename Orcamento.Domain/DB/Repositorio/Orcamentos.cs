@@ -234,6 +234,12 @@ namespace Orcamento.Domain.DB.Repositorio
             return criterio.List<Orcamento>().ToList();
         }
 
+        public virtual List<OrcamentoHospitalar> TodosOrcamentosHospitalares()
+        {
+            var criterio = Session.CreateCriteria<OrcamentoHospitalar>();
+            return criterio.List<OrcamentoHospitalar>().ToList();
+        }
+
         public virtual List<Orcamento> TodosOrcamentosHospitalaresMenos(Departamento departamento, int id)
         {
             return Session.QueryOver<OrcamentoHospitalar>().Where(o => o.Id != id && o.Setor.Id == departamento.Id).List<Orcamento>().ToList();

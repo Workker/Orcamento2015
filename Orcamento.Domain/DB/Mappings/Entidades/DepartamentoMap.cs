@@ -15,8 +15,9 @@ namespace Orcamento.Domain.DB.Mappings
             DiscriminateSubClassesOnColumn("TipoOrcamento");
             Map(s => s.Nome);
             HasManyToMany(s => s.CentrosDeCusto).Cascade.All();
-            HasManyToMany(x => x.Setores).Cascade.All();
-            
+            //HasManyToMany(x => x.Setores).Cascade.All();
+            HasManyToMany(x => x.Setores);
+
         }
     }
     
