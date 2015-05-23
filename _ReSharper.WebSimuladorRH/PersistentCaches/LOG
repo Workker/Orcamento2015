@@ -1,5 +1,5 @@
-2014/09/29-05:11:39.659 1bdc Recovering log #99
-2014/09/29-05:11:39.661 1bdc Level-0 table #101: started
-2014/09/29-05:11:39.727 1bdc Level-0 table #101: 155020 bytes OK
-2014/09/29-05:11:39.826 1bdc Delete type=0 #99
-2014/09/29-05:11:39.826 1bdc Delete type=3 #97
+2014/10/13-23:26:21.239 175c Recovering log #122
+2014/10/13-23:26:21.239 175c Level-0 table #124: started
+2014/10/13-23:26:21.239 175c Level-0 table #124: 0 bytes OK
+2014/10/13-23:26:22.251 175c Delete type=0 #122
+2014/10/13-23:26:22.251 175c Delete type=3 #120

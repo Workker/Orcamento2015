@@ -14,8 +14,13 @@ namespace Orcamento.Domain.DB.Repositorio
             var criterio = Session.CreateCriteria<Setor>();
             criterio.Add(Expression.Eq("Nome", nome));
             return criterio.UniqueResult<Setor>();
+        }
 
-           // return Session.QueryOver<Setor>().Where(h => h.Nome == nome).SingleOrDefault();
+        public virtual SubSetorHospital ObterSubSetorPor(string nome)
+        {
+            var criterio = Session.CreateCriteria<SubSetorHospital>();
+            criterio.Add(Expression.Eq("NomeSetor", nome));
+            return criterio.UniqueResult<SubSetorHospital>();
         }
 
         public virtual List<Setor> Todos() 

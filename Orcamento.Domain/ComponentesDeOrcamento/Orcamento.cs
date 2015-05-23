@@ -25,21 +25,15 @@ namespace Orcamento.Domain
     public abstract class Orcamento : IAggregateRoot<int>
     {
         private IList<ServicoHospitalar> servicos;
-        //   private IList<CustoUnitario> custos;
         private IList<CustoUnitarioTotal> custosTotal;
 
         [NonSerialized()]
         private int id;
-
-
         public virtual int Id
         {
             get { return id; }
             set { id = value; }
         }
-
-      
-
         public virtual string Legenda { get; set; }
         public virtual double ValorTotalDRE { get; set; }
         public virtual bool VersaoFinal { get; set; }
@@ -51,9 +45,7 @@ namespace Orcamento.Domain
         public virtual long ValorTotal { get; set; }
         public virtual string MemoriaDeCalculoComplexidade { get; set; }
         public virtual string MemoriaDeCalculoUnitarios { get; set; }
-
         public virtual IList<DespesaDeViagem> Despesas { get; set; }
-
         public virtual IList<Despesa> DespesasOperacionais { get; set; }
 
         public virtual IList<ServicoHospitalar> Servicos
@@ -61,12 +53,6 @@ namespace Orcamento.Domain
             get { return servicos ?? (servicos = new List<ServicoHospitalar>()); }
             set { servicos = value; }
         }
-
-        //public virtual IList<CustoUnitario> CustosUnitarios
-        //{
-        //    get { return custos ?? (custos = new List<CustoUnitario>()); }
-        //    set { custos = value; }
-        //}
 
         public virtual void AtualizarDespesas() { }
         public virtual IList<CustoUnitarioTotal> CustosUnitariosTotal
