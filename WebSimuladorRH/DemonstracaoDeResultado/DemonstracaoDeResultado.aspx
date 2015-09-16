@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Or&ccedil;amento 2015 - Demonstra&ccedil;&atilde;o de Resultado" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="DemonstracaoDeResultado.aspx.cs" Inherits="WebSimuladorRH.DemonstracaoDeResultado.DemonstracaoDeResultado" %>
+﻿<%@ Page Title="Or&ccedil;amento 2016 - Demonstra&ccedil;&atilde;o de Resultado" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="DemonstracaoDeResultado.aspx.cs" Inherits="WebSimuladorRH.DemonstracaoDeResultado.DemonstracaoDeResultado" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -50,10 +50,10 @@
                         Dez
                     </th>
                     <th class="coluna100px" style="border-left: 1px solid #dfe8f7 !important;">
-                        Or&ccedil;ado 2015
+                        Or&ccedil;ado 2016
                     </th>
                      <th class="coluna100px" style="border-left: 1px solid #dfe8f7 !important;">
-                        Realizado 2014
+                        Realizado 2015
                     </th>
                 </tr>
             </thead>

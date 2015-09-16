@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Or&ccedil;amento 2015 - Total Or&ccedil;ado" Language="C#" MasterPageFile="~/Principal.Master"
+﻿<%@ Page Title="Or&ccedil;amento 2016 - Total Or&ccedil;ado" Language="C#" MasterPageFile="~/Principal.Master"
     AutoEventWireup="true" CodeBehind="Totalizador.aspx.cs" Inherits="WebSimuladorRH.Totalizador" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">

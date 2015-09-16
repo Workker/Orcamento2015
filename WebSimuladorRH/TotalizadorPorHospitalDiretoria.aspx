@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Or&ccedil;amento 2015 - Total por Hospital / Diretoria" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="TotalizadorPorHospitalDiretoria.aspx.cs" Inherits="WebSimuladorRH.TotalizadorPorHospitalDiretoria" %>
+﻿<%@ Page Title="Or&ccedil;amento 2016 - Total por Hospital / Diretoria" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="TotalizadorPorHospitalDiretoria.aspx.cs" Inherits="WebSimuladorRH.TotalizadorPorHospitalDiretoria" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

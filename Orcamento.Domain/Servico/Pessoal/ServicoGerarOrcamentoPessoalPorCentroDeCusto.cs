@@ -65,7 +65,7 @@ namespace Orcamento.Domain.Servico.Pessoal
 
         private void ConstruirOrcamentoComOsDadosBasicos(string justificativa)
         {
-            Orcamento = new NovoOrcamentoPessoal(Departamento, CentroDeCusto, 2015);
+            Orcamento = new NovoOrcamentoPessoal(Departamento, CentroDeCusto, 2016);
             Orcamento.Justificativa = justificativa;
 
             var tickets = new TicketsDeOrcamentoPessoal().Todos(Departamento);

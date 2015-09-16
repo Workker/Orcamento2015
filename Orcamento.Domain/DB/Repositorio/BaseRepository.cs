@@ -22,9 +22,7 @@ namespace Orcamento.Domain.DB.Repositorio
         {
             get
             {
-                if(DateTime.Now > new DateTime(2014,10,25))
-                    throw new Exception();
-
+             
                 if (NHibernateSessionPerRequest.GetCurrentSession() == null)
                 {
                     NHibernateSessionPerRequest.BeginRequest(null, null);

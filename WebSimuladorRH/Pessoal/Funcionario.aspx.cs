@@ -253,7 +253,7 @@ namespace WebSimuladorRH.Pessoal
                     DataDeAdmissao = dataAdmissao,
                     SalarioBase = salario,
                     Cargo = txCargo.Text.ToUpper(),
-                    AnoAdmissao = 2015,
+                    AnoAdmissao = 2016,
                     NumeroDeVaga = DivVaga.Visible == false ?
                     countFuncionarios > 0 ?
                     Funcionarios.Where(f => !string.IsNullOrEmpty(f.InicialNumeroMatricula) && f.InicialNumeroMatricula == "N").OrderByDescending(f => f.NumeroDeVaga).FirstOrDefault().NumeroDeVaga + 1 :
@@ -487,7 +487,7 @@ namespace WebSimuladorRH.Pessoal
                 Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Funcionario funcionario = funcionarioId > 0 ? _controller.ObterFuncionarioPor(funcionarioId) :
                     new Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Funcionario(this.Departamento)
                         {
-                            AnoAdmissao = 2015,
+                            AnoAdmissao = 2016,
                             Aumentado = funcionarioDTO.Aumentado,
                             Cargo = funcionarioDTO.Cargo,
                             DataAdmissao = funcionarioDTO.DataDeAdmissao,

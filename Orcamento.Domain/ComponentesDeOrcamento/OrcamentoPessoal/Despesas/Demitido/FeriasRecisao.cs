@@ -59,7 +59,7 @@ namespace Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal.Despesas.Demi
                     var salarioAumentoConvencao = CalcularAumentoConvencao(salario, aumentoConvencao);
                     parcela.Valor = ((base.ObterSalarioAcrescidoDoValorDosTicketsDaContaDaDespesa(salarioAumentoConvencao) + salarioAumentoConvencao) / 12) * 1.3333;
                 }
-                if (i < mesAdmissao && Funcionario.AnoAdmissao == 2015)
+                if (i < mesAdmissao && Funcionario.AnoAdmissao == 2016)
                     parcela.Valor = 0;
 
 

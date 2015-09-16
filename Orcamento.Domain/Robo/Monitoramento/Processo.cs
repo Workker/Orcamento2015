@@ -17,7 +17,7 @@ namespace Orcamento.Domain.Robo.Monitoramento
         {
             try
             {
-                string _conectionstring;
+                string _conectionstring;     //Microsoft.Jet.OLEDB.4.0;
                 _conectionstring = @"Provider=Microsoft.ACE.OLEDB.12.0;";
                 _conectionstring += String.Format("Data Source={0};", carga.Diretorio);
                 _conectionstring += "Extended Properties='Excel 8.0;HDR=NO;'";
@@ -26,12 +26,18 @@ namespace Orcamento.Domain.Robo.Monitoramento
                 Cmd = new OleDbCommand("Select * from [carga$]", Cn);
                 Cn.Open();
                 var reader = Cmd.ExecuteReader();
+
+                if (reader == null)
+                {
+                    carga.AdicionarDetalhe("Erro na leitura", "Nao foi possivel ler o excel, reader nulo )", 0,
+                                              TipoDetalheEnum.erroLeituraExcel);
+                }
                 return reader;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 carga.AdicionarDetalhe("Erro na leitura", "Nao foi possivel ler o excel, por favor verifque se o layout esta correto (colunas, valores, nome da aba(carga) )", 0,
-                                          TipoDetalheEnum.erroLeituraExcel);
+                                          TipoDetalheEnum.erroLeituraExcel, ex.Message);
                 return null;
             }
         }

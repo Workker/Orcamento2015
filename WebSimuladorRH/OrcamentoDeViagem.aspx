@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Or&ccedil;amento 2015 - Or&ccedil;amento de Viagem" Language="C#" MasterPageFile="Principal.Master"
+﻿<%@ Page Title="Or&ccedil;amento 2016 - Or&ccedil;amento de Viagem" Language="C#" MasterPageFile="Principal.Master"
          AutoEventWireup="true" CodeBehind="OrcamentoDeViagem.aspx.cs" Inherits="WebSimuladorRH.OrcamentoDeViagem" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
@@ -216,7 +216,7 @@
                                 Dez
                             </th>
                             <th class="coluna66px">
-                                2015
+                                2016
                             </th>
                         </tr>
                     </thead>
@@ -319,7 +319,7 @@
                                 Dez
                             </th>
                             <th class="coluna66px">
-                                2015
+                                2016
                             </th>
                         </tr>
                     </thead>

@@ -71,7 +71,7 @@ namespace Orcamento.Domain
             ReceitaBruta = ValorServico * Ticket;
 
             if (multiplicaPorMes)
-                ReceitaBruta = ReceitaBruta * DateTime.DaysInMonth(2015, (int)this.Mes);
+                ReceitaBruta = ReceitaBruta * DateTime.DaysInMonth(2016, (int)this.Mes);
         }
 
         private double CalcularPorcentagem(double ValorServico, ProducaoHospitalar valor)
@@ -116,7 +116,7 @@ namespace Orcamento.Domain
 
         private void IncrementarMesesNoAno()
         {
-            ReceitaLiquida = ReceitaLiquida * DateTime.DaysInMonth(2015, (int)this.Mes);
+            ReceitaLiquida = ReceitaLiquida * DateTime.DaysInMonth(2016, (int)this.Mes);
         }
 
         private double CalcularContaPorcentagem(double ValorServico, List<ServicoHospitalar> servicosPorcentagem)

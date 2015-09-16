@@ -23,6 +23,10 @@ namespace Orcamento.Robo.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+
+            AppDomain.CurrentDomain.SetData("ExecutingDir", Server.MapPath("~/bin"));
+
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         
