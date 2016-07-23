@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Orcamento.Test.Robo.EstrategiaDeCargas
+namespace Orcamento.TestMethod.Robo.EstrategiaDeCargas
 {
-    class TestFixtreAttribute : Attribute
+    class TestMethodFixtreAttribute : Attribute
     {
     }
 }

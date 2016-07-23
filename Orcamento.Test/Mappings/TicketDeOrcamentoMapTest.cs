@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FluentNHibernate.Testing;
-using NUnit.Framework;
-using Orcamento.Domain;
 
-namespace Orcamento.Test.Mappings
+using Orcamento.Domain;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FluentNHibernate.Testing;
+
+namespace Orcamento.TestMethod.Mappings
 {
-    [TestFixture]
-    public class TicketDeOrcamentoMapTest : PersistenceTestBase
+    [TestClass]
+    public class TicketDeOrcamentoMapTestMethod : PersistenceTestMethodBase
     {
-        [Test]
-        public void testar_mapeamentos_do_ticke_de_orcamento()
+        [TestMethod]
+        public void TestMethodar_mapeamentos_do_ticke_de_orcamento()
         {
             new PersistenceSpecification<TicketDeOrcamentoPessoal>(session: Session)
                 .CheckProperty(x => x.Id, 1)

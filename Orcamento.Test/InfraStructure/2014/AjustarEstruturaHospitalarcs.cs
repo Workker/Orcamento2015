@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.Domain;
 using Orcamento.Domain.DB.Repositorio;
 using System;
@@ -6,14 +7,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Orcamento.Test.InfraStructure._2014
+namespace Orcamento.TestMethod.InfraStructure._2014
 {
-    [TestFixture]
+    [TestClass]
    // [Ignore]
     public class AjustarEstruturaHospitalarcs
     {
     
-        [Test]
+        [TestMethod]
         // [Ignore]
         public void a_InserirQuimioTerapiaNaOncologia()
         {
@@ -56,7 +57,7 @@ namespace Orcamento.Test.InfraStructure._2014
             }
         }
 
-        [Test]
+        [TestMethod]
         //  [Ignore]
         public void b_InserirQuimioTerapiaParaOsAntigos()
         {
@@ -83,11 +84,11 @@ namespace Orcamento.Test.InfraStructure._2014
             }
         }
 
-        [Test]
+        [TestMethod]
         // [Ignore]
         public void c_InserirCapacidadeFisica()
         {
-            //TODO: ao executar este teste retirar o cascade all de SetorHospitalar para conta,
+            //TODO: ao executar este TestMethode retirar o cascade all de SetorHospitalar para conta,
             //Caso contrário, duplica a conta.
 
             var contas = new ContasHospitalares();
@@ -133,7 +134,7 @@ namespace Orcamento.Test.InfraStructure._2014
 
         }
 
-        [Test]
+        [TestMethod]
         // [Ignore]
         public void d_insetir_SubSetoresParaUti()
         {
@@ -211,7 +212,7 @@ namespace Orcamento.Test.InfraStructure._2014
 
         }
 
-        [Test]
+        [TestMethod]
         //   [Ignore]
         public void f_insetir_setor_Suporte()
         {

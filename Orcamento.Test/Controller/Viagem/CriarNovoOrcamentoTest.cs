@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using NUnit.Framework;
+
 using Orcamento.Controller;
 using Orcamento.Domain;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeViagem;
@@ -8,12 +8,13 @@ using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Servico;
 using Rhino.Mocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Controller.Viagem
+namespace Orcamento.TestMethod.Controller.Viagem
 {
-    [TestFixture]
+    [TestClass]
     [Ignore]
-    class CriarNovoOrcamentoViagemTest
+    class CriarNovoOrcamentoViagemTestMethod
     {
         #region atributos
         private IViewOrcamentoDeViagem view;
@@ -25,15 +26,15 @@ namespace Orcamento.Test.Controller.Viagem
 
         #region Setup/Teardown
 
-        [Test]
+        [TestMethod]
         public void inicializar()
         {
-            var centroDeCusto = new CentroDeCusto("TesteCD") { Id = 1 };
+            var centroDeCusto = new CentroDeCusto("TestMethodeCD") { Id = 1 };
 
             departamento = MockRepository.GenerateMock<Departamento>();
             departamento.Expect(x => x.ObterCentroDeCustoPor(1)).Return(centroDeCusto);
             departamento.Id = 1;
-            departamento.Nome = "teste";
+            departamento.Nome = "TestMethode";
 
             view = MockRepository.GenerateMock<IViewOrcamentoDeViagem>();
             view.Departamento = departamento;
@@ -77,7 +78,7 @@ namespace Orcamento.Test.Controller.Viagem
 
         #endregion
 
-        #region metodos de teste
+        #region metodos de TestMethode
         #endregion
     }
 }

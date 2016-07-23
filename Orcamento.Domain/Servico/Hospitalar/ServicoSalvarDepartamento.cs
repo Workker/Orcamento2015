@@ -106,6 +106,7 @@ namespace Orcamento.Domain.Servico.Hospitalar
             if (tipoConta == null)
             {
                 tipoConta = new TipoConta();
+                tipoConta.Nome = nome;
             }
 
             tipos.Salvar(tipoConta);

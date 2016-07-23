@@ -1,4 +1,4 @@
-﻿using NUnit.Framework;
+﻿
 using Orcamento.Controller.Robo;
 using System;
 using System.Collections.Generic;
@@ -7,15 +7,16 @@ using System.Text;
 using Orcamento.Domain.Entities.Monitoramento;
 using Orcamento.Domain.Robo.Monitoramento;
 using Orcamento.Domain.Gerenciamento;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Robo
+namespace Orcamento.TestMethod.Robo
 {
-    [TestFixture]
-    public class InserirCargaTeste
+    [TestClass]
+    public class InserirCargaTestMethode
     {
         readonly CargaController _controller = new CargaController();
 
-        [Test]
+        [TestMethod]
         public void Insert()
         {
             var detalhes = new List<Detalhe>();

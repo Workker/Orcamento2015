@@ -64,7 +64,7 @@ namespace Orcamento.Controller
         }
 
         public IList<OrcamentoPessoalDTO> ObterTotalizadorDePessoalPor(int centroDeCustoId, Departamento departamento)
-        {
+{
             var centroDeCusto = CentrosDeCusto.Obter<CentroDeCusto>(centroDeCustoId);
             var servicoCalculaPessoal = new ServicoGerarOrcamentoPessoalPorCentroDeCusto();
             servicoCalculaPessoal.CentroDeCusto = centroDeCusto;

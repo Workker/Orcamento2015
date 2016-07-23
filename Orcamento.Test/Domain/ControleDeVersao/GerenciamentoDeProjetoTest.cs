@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+
 using Orcamento.Domain;
 using Orcamento.Domain.Gerenciamento;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Domain
+namespace Orcamento.TestMethod.Domain
 {
-    [TestFixture]
+    [TestClass]
     [Ignore]
-    public class GerenciadorDeOrcamentosTest
+    public class GerenciadorDeOrcamentosTestMethod
     {
-       // [Test]
+       // [TestMethod]
         public void AoCriarPrimeiroOrcamentoNomeDeveSerIgualAVersaoUm()
         {
             GerenciadorDeOrcamentos gerenciamento = new GerenciadorDeOrcamentos();
@@ -23,7 +24,7 @@ namespace Orcamento.Test.Domain
             Assert.IsTrue(orcamento.NomeOrcamento == "Versão 1");
         }
 
-        [Test]
+        [TestMethod]
         public void AoCriarSegundoOrcamentoNomeDeveSerIgualAVersaoDois()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -36,7 +37,7 @@ namespace Orcamento.Test.Domain
 
         }
 
-        [Test]
+        [TestMethod]
         public void AoCriarSegundoOrcamentoDeletantoOsegundoOterceiroDeveSerVersaoDois()
         {
  

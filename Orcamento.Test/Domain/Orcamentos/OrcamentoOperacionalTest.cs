@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+
 using Orcamento.Domain;
 using Orcamento.Domain.Gerenciamento;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Domain.Orcamentos
+namespace Orcamento.TestMethod.Domain.Orcamentos
 {
-    [TestFixture]
-    public class OrcamentoOperacionalTest
+    [TestClass]
+    public class OrcamentoOperacionalTestMethod
     {
-        [Test]
+        [TestMethod]
         public void OrcamentoOperacionalCriadoDeveTerSetorDiferenteDeNulo()
         {
             var setor = new Setor("TI");
@@ -22,10 +23,10 @@ namespace Orcamento.Test.Domain.Orcamentos
 
             var orcamento = new OrcamentoOperacionalVersao(setor, centroDeCusto, 2014);
 
-            Assert.NotNull(orcamento.Setor);
+            Assert.IsNotNull(orcamento.Setor);
         }
 
-        [Test]
+        [TestMethod]
         public void OrcamentoOperacionalCriadoDeveTerCentroDeCustoDiferenteDeNulo()
         {
             var setor = new Setor("TI");
@@ -36,10 +37,10 @@ namespace Orcamento.Test.Domain.Orcamentos
 
             var orcamento = new OrcamentoOperacionalVersao(setor, centroDeCusto, 2014);
 
-            Assert.NotNull(orcamento.CentroDeCusto);
+            Assert.IsNotNull(orcamento.CentroDeCusto);
         }
 
-        [Test]
+        [TestMethod]
         public void CriarDespesasComUmCentroDeCustoComUmaContaDeveTerDespesasIguamADoze()
         {
             var setor = new Setor("TI");

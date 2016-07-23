@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+
 using Orcamento.Domain;
 using Orcamento.Domain.Gerenciamento;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Domain.Gerenciamento
+namespace Orcamento.TestMethod.Domain.Gerenciamento
 {
 
-    [TestFixture]
-    public class OrcamentoHospitalarTest
+    [TestClass]
+    public class OrcamentoHospitalarTestMethod
     {
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoHospitalarComUmSetorComUmaContaDeveTerIncrementosIgualADoze()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -31,7 +32,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(orcamento.FatoresReceita.FirstOrDefault().Incrementos.Count == 12);
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoHospitalarComUmSetorComUmaContaDeveTeFatoresReceitaIgualAUm()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -49,7 +50,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(orcamento.FatoresReceita.Count == 1);
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoHospitalarComUmSetorComUmaContaDeveTerProducaoHospitalarIgualADoze()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -68,7 +69,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(orcamento.Servicos.FirstOrDefault().Valores.Count == 12);
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoHospitalarComUmSetorComUmaContaDeveTeServicosHospitalaresIgualAUm()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -86,7 +87,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(orcamento.Servicos.Count == 1);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaBrutaOrcamentoHospitalarCOmUmSetorComUmaContaEContaDeQuantidadeEvalorDaContaEmJaneiroIgualAUmEUnitarioIgualACemValorReceitaBrutaDeveSerIgualACem()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -137,7 +138,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             return tickets;
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaBrutaOrcamentoHospitalarCOmUmSetorComUmaContaEContaDeQuantidadeEvalorDaContaEmJaneiroIgualADoisEUnitarioIgualAQuinhentosValorReceitaBrutaDeveSerIgualAMil()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -166,7 +167,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
         }
 
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaLiquidaOrcamentoHospitalarCOmUmSetorComUmaContaEContaDeQuantidadeEvalorDaContaEmJaneiroIgualAUmEUnitarioIgualACemEValorComplexidadeIgualA10PorCentoValorReceitaLiquidaDeveSerIgualACentoEDez()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -195,7 +196,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(incremento.ReceitaLiquida == 110);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaLiquidaOrcamentoHospitalarCOmUmSetorComDuasContasEContaDeQuantidadeEUmaDePorcentagemEvalorDaContaEmJaneiroIgualAUmEporcentagemIgualAcemEUnitarioIgualACemEValorComplexidadeIgualA10PorCentoValorReceitaLiuidaDeveSerIgualACentoEDez()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -229,7 +230,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(incremento.ReceitaLiquida == 3410);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaLiquidaOrcamentoHospitalarCOmUmSetorComDuasContasEContaDeQuantidadeEUmaDePorcentagemEvalorDaContaEmJaneiroIgualAUmEporcentagemIgualACinquentaEUnitarioIgualACemEValorComplexidadeIgualA10PorCentoValorReceitaLiuidaDeveSerIgualACentoEDez()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -263,7 +264,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(incremento.ReceitaLiquida == 1705);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaLiquidaOrcamentoHospitalarCOmUmSetorComDuasContasEContaDeQuantidadeEUmaDePorcentagemEvalorDaContaEmJaneiroIgualAUmEporcentagemIgualANoventaEUnitarioIgualACemEValorComplexidadeIgualA10PorCentoValorReceitaLiuidaDeveSerIgualDoisMilSeticentosEnoventa()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -296,7 +297,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(incremento.ReceitaLiquida == 2790);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaLiquidaOrcamentoHospitalarEmFevereiroComUmSetorComDuasContasEContaDeQuantidadeEUmaDePorcentagemEvalorDaContaEmJaneiroIgualAUmEporcentagemIgualANoventaEUnitarioIgualACemEValorComplexidadeIgualA10PorCentoValorReceitaLiuidaDeveSerIgualDoisMilSeticentosEnoventa()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -331,7 +332,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(fevereiro.ReceitaLiquida == 3080);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaLiquidaOrcamentoHospitalarEmFevereiroComUmSetorComDuasContasEContaDeQuantidadeEUmaDePorcentagemEvalorDaContaEmJaneiroIgualAUmEporcentagemIgualANoventaEUnitarioIgualACemEValorComplexidadeIgualA10PorCentoNegativaValorReceitaLiuidaDeveSerIgualDoisMilSeticentosEnoventa()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -367,7 +368,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(fevereiro.ReceitaLiquida == 2520);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaBrutaOrcamentoHospitalarCOmUmSetorComDuasContasEContaDeQuantidadeEUmaDePorcentagemEvalorDaContaEmJaneiroIgualAUmEporcentagemIgualACinquentaEUnitarioIgualACemEValorComplexidadeIgualA10PorCentoValorReceitaLiuidaDeveSerIgualACentoEDez()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -401,7 +402,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(incremento.ReceitaBruta == 1550);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaBrutaOrcamentoHospitalarReceitaBrutaDeveSerIgualATrintaEUmMil()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -436,7 +437,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
         }
 
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaBrutaOrcamentoHospitalarReceitaBrutaDeveSerIgualAQUinzeMilEQuinhentos()
         {
             Departamento departamento = new Hospital("Barra Dor");
@@ -470,7 +471,7 @@ namespace Orcamento.Test.Domain.Gerenciamento
             Assert.IsTrue(incremento.ReceitaBruta == 15500);
         }
 
-        [Test]
+        [TestMethod]
         public void CalcularReceitaLiquidaOrcamentoHospitalarCOmUmSetorComUmaContaEContaDeQuantidadeEvalorDaContaEmJaneiroIgualADoisEUnitarioIgualA500EValorComplexidadeIgualA10PorCentoValorReceitaLiquidaDeveSerIgualAMilECem()
         {
             Departamento departamento = new Hospital("Barra Dor");

@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Servico;
 using Orcamento.Domain;
 using Rhino.Mocks;
 using Orcamento.Domain.DB.Repositorio;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Servico
+namespace Orcamento.TestMethod.Servico
 {
-    [TestFixture]
-    public class ServicoCriarOrcamentoOperacionalTest
+    [TestClass]
+    public class ServicoCriarOrcamentoOperacionalTestMethod
     {
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoDeveTerOrcamentoNomeOrcamentoDeveSerVersaoUm()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -31,7 +32,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão1");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComUmORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoDois()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -50,7 +51,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão2");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComDoisORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoTres()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -70,7 +71,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão3");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComTresORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoQuatro()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -91,7 +92,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão4");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComQuatroOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoCinco()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -113,7 +114,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão5");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComCincoOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoSeis()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -136,7 +137,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão6");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComSeisOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoSete()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -160,7 +161,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão7");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComSeteOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoOito()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -185,7 +186,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão8");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComOitoOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoNove()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -211,7 +212,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão9");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComNoveOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoDez()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -238,8 +239,8 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão10");
         }
 
-        [Test]
-        [ExpectedException(UserMessage = "Orçamento já tem dez versões")]
+        [TestMethod]
+        // [ExpectedException(UserMessage = "Orçamento já tem dez versões")]
         public void CriarOrcamentoComSucessoComDezDeveRetornarExecao()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -266,7 +267,7 @@ namespace Orcamento.Test.Servico
 
         }
 
-        [Test]
+        [TestMethod]
         public void AtribuirVersaoFinalComSucesso()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -288,7 +289,7 @@ namespace Orcamento.Test.Servico
             Assert.IsTrue(orcamento.VersaoFinal);
         }
 
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDoisOrcamentosNaListaPrimeiroItemDaListaDeveTerNomeDeVersaoUm()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -312,7 +313,7 @@ namespace Orcamento.Test.Servico
             Assert.IsTrue(orcamentosLista.FirstOrDefault().NomeOrcamento == "Versão1");
         }
 
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDoisOrcamentosNaListaDeveRetornarApenasCountUm()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();
@@ -335,7 +336,7 @@ namespace Orcamento.Test.Servico
 
             Assert.IsTrue(orcamentosLista.Count == 1);
         }
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDezOrcamentosNaListaDeveRetornarNomesDosORcamentosComSequenciaCerta()
         {
             ServicoOrcamentoOperacionalVersao servico = new ServicoOrcamentoOperacionalVersao();

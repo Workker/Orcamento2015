@@ -1,16 +1,17 @@
-﻿using NUnit.Framework;
+﻿
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.Domain.Entities.Monitoramento;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Orcamento.Test.Robo
+namespace Orcamento.TestMethod.Robo
 {
-    [TestFixture]
-    public class CargaFuncionarioTest
+    [TestClass]
+    public class CargaFuncionarioTestMethod
     {
-        [Test]
+        [TestMethod]
         public void Funcionario()
         {
             //Carga carga = new Carga(new Funcionarios());

@@ -34,6 +34,10 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
 
         public void ValidaCentrosDeCustos(Carga carga, List<Domain.Entities.Monitoramento.Funcionarios.FuncionarioExcel> funcionarios)
         {
+            try
+            {
+
+            
             CentrosDeCustoRepo = new CentrosDeCusto();
             CentrosDeCusto = new List<CentroDeCusto>();
 
@@ -48,6 +52,13 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
                     funcionarioExcel.CentroDeCusto = CentrosDeCusto.FirstOrDefault(d => d.CodigoDoCentroDeCusto == funcionarioExcel.CodigoCentroDeCusto);
 
                 }
+            }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
 
         }
@@ -86,6 +97,10 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
 
         private void AdicionarCentroDeCusto(Carga carga, Domain.Entities.Monitoramento.Funcionarios.FuncionarioExcel funcionarioExcel)
         {
+            try
+            {
+
+            
             var centro = CentrosDeCustoRepo.ObterPor(funcionarioExcel.CodigoCentroDeCusto);
 
             var espeficicacaoCentro = FabricaDeEspeficicacaoCentroDeCusto.ObterEspeficicacao(funcionarioExcel, centro);
@@ -94,6 +109,13 @@ namespace Orcamento.Domain.Robo.Monitoramento.EspecificacaoDeValidacaoDeCarga.Es
             {
                 CentrosDeCusto.Add(centro);
                 funcionarioExcel.CentroDeCusto = centro;
+            }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
             }
         }
 

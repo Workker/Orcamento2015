@@ -11,7 +11,7 @@ namespace Orcamento.Domain.Servico.Pessoal
     {
         #region Atributos
 
-      //  private IDespesasPessoais despesasPessoais;
+        //  private IDespesasPessoais despesasPessoais;
         private INovosOrcamentosPessoais _novosOrcamentosPessoais;
 
         #endregion
@@ -52,26 +52,29 @@ namespace Orcamento.Domain.Servico.Pessoal
         {
             Orcamento = NovosOrcamentosPessoais.ObterPor(Departamento.Id, CentroDeCusto.Id);
 
-            if (Orcamento == null)
-                ConstruirOrcamentoComOsDadosBasicos(justificativa);
-            else
-            {
-                if (!string.IsNullOrEmpty(justificativa))
-                    Orcamento.Justificativa = justificativa;
+            ConstruirOrcamentoComOsDadosBasicos(justificativa);
 
-                NovosOrcamentosPessoais.Salvar(Orcamento);
-            }
+            if (!string.IsNullOrEmpty(justificativa))
+                Orcamento.Justificativa = justificativa;
+
+            NovosOrcamentosPessoais.Salvar(Orcamento);
+
         }
 
         private void ConstruirOrcamentoComOsDadosBasicos(string justificativa)
         {
-            Orcamento = new NovoOrcamentoPessoal(Departamento, CentroDeCusto, 2016);
-            Orcamento.Justificativa = justificativa;
-
+            if (Orcamento == null)
+            {
+                Orcamento = new NovoOrcamentoPessoal(Departamento, CentroDeCusto, 2016);
+                Orcamento.Justificativa = justificativa;
+            }
             var tickets = new TicketsDeOrcamentoPessoal().Todos(Departamento);
 
-            foreach (var ticketDeOrcamentoPessoal in tickets)
-                Orcamento.Adicionar(ticketDeOrcamentoPessoal);        
+            if (Orcamento.Tickets == null || Orcamento.Tickets.Count() == 0)
+            {
+                foreach (var ticketDeOrcamentoPessoal in tickets)
+                    Orcamento.Adicionar(ticketDeOrcamentoPessoal);
+            }
         }
 
         private void CalcularDespesas()

@@ -6,17 +6,18 @@ using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
-using NUnit.Framework;
 
-namespace Orcamento.Test.Mappings
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace Orcamento.TestMethod.Mappings
 {
-    [TestFixture]
-    public abstract class PersistenceTestBase
+    [TestClass]
+    public abstract class PersistenceTestMethodBase
     {
         public DataSession DataSession { get; set; }
         public ISession Session { get; set; }
 
-        [TestFixtureSetUp]
+      //  [SetUp]
         public void Inicializar()
         {
             DataSession = new DataSession(SQLiteConfiguration.Standard.InMemory());
@@ -31,8 +32,8 @@ namespace Orcamento.Test.Mappings
             export.Execute(true, true, false, session.Connection, null);
         }
 
-        [TestFixtureTearDown]
-        public void TestFixtureTearDown()
+        //[TearDown]
+        public void TestClassTearDown()
         {
             Session.Close();
 

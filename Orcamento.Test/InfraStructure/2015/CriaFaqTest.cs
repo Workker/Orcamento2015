@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.Domain.DB.Repositorio.Robo;
 using Orcamento.Domain.Robo.Faq;
 using System;
@@ -6,15 +7,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Orcamento.Test.InfraStructure._2015
+namespace Orcamento.TestMethod.InfraStructure._2015
 {
-    [TestFixture]
-    public class CriaFaqTest 
+    [TestClass]
+    public class CriaFaqTestMethod 
     {
         Faqs faqs = new Faqs();
 
 
-        [Test]
+        [TestMethod]
         public  void InicializarFaq()
         {
 

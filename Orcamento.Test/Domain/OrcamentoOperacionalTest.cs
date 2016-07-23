@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Orcamento.Domain;
-using NUnit.Framework;
 
-namespace Orcamento.Test.Domain
+
+namespace Orcamento.TestMethod.Domain
 {
-    //[TestFixture]
-    //public class OrcamentoOperacionalTest
+    //[TestClass]
+    //public class OrcamentoOperacionalTestMethod
     //{
-    //    [Test]
+    //    [TestMethod]
     //    public void construtor_orcamento_operacional()
     //    {
     //        OrcamentoOperacional orcamento = new OrcamentoOperacional(2014, "Orcamentonovo");

@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcamento.API", "Orcamento.API\Orcamento.API.csproj", "{51158816-0EFA-468E-A2C2-4A42159FB922}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcamento.API.Tests", "Orcamento.API.Tests\Orcamento.API.Tests.csproj", "{3078600E-7EDF-41B8-B404-FDC6C9BDF8DC}"

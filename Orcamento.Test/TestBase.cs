@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Rhino.Mocks;
-using NUnit.Framework;
+
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate.Cfg;
@@ -11,9 +11,9 @@ using System.IO;
 using NHibernate.Tool.hbm2ddl;
 using Orcamento.Domain.DB.Mappings;
 
-namespace Orcamento.Test
+namespace Orcamento.TestMethod
 {
-    public abstract class TestBase
+    public abstract class TestMethodBase
     {
         private MockRepository repository;
         protected MockRepository Repository
@@ -25,7 +25,7 @@ namespace Orcamento.Test
             }
         }
 
-        [SetUp]
+       // [SetUp]
         protected virtual void SetUp()
         {
             log4net.Config.XmlConfigurator.Configure();

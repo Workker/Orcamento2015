@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+
 using Orcamento.Domain;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeViagem;
 using Orcamento.Domain.Gerenciamento;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Domain.Orcamentos
+namespace Orcamento.TestMethod.Domain.Orcamentos
 {
-    [TestFixture]
-    public class OrcamentoDeViagemTest
+    [TestClass]
+    public class OrcamentoDeViagemTestMethod
     {
         public List<Cidade> Cidades { get; set; }
         public List<TipoTicket> Tipos { get; set; }
@@ -93,7 +94,7 @@ namespace Orcamento.Test.Domain.Orcamentos
             }
         }
 
-        [Test]
+        [TestMethod]
         public void OrcamentoDeViagemCriadoComDuasCidadesDuasViagensEDuasDiariasDeveTerDespesasCountIgualAQuarentaEOito()
         {
             Departamento Ti = new Setor("TI");
@@ -117,7 +118,7 @@ namespace Orcamento.Test.Domain.Orcamentos
             Assert.IsTrue(orcamentoDeViagem.Despesas.Count == 48);
         }
 
-        [Test]
+        [TestMethod]
         public void OrcamentoDeViagemCriadoDeveTerCentroDeCustoDiferenteDeNulo()
         {
             Departamento Ti = new Setor("TI");
@@ -135,7 +136,7 @@ namespace Orcamento.Test.Domain.Orcamentos
             Assert.IsTrue(orcamentoDeViagem.CentroDeCusto != null);
         }
 
-        [Test]
+        [TestMethod]
         public void OrcamentoDeViagemCriadoDeveTerSetorDiferenteDeNulo()
         {
             Departamento Ti = new Setor("TI");

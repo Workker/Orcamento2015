@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+
 using Orcamento.Domain;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal;
 using Orcamento.Domain.Gerenciamento;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFuncionario.Demissao
+namespace Orcamento.TestMethod.Domain.Orcamentos.OrcamentoPessoalTestMethod.TestMethodesDeFuncionario.Demissao
 {
-    [TestFixture]
-    public class TestesDeFuncionarioDemitidoTest
+    [TestClass]
+    public class TestMethodesDeFuncionarioDemitidoTestMethod
     {
         private Funcionario funcionarioDemitido;
 
-        [SetUp]
+       // [SetUp]
         public void Inicializar()
         {
             funcionarioDemitido = new Funcionario(new Setor("nome"))
@@ -28,10 +29,10 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
             var orcamento =  new NovoOrcamentoPessoal(new Setor("Nome"),centroDeCustoDeTI,2014);
             
             orcamento.Adicionar(new TicketDeOrcamentoPessoal(new Setor("nome")) { Ticket= TipoTicketDePessoal.Indenizacao,  Descricao = "Indenização", Valor = 1 });
-            orcamento.Adicionar(new TicketDeOrcamentoPessoal(new Setor("nome")) { Ticket = TipoTicketDePessoal.OutrasDespesas, Descricao = "Test", Valor = 0 });
-            orcamento.Adicionar(new TicketDeOrcamentoPessoal(new Setor("nome")) { Ticket = TipoTicketDePessoal.FGTS, Descricao = "Test", Valor = 0 });
+            orcamento.Adicionar(new TicketDeOrcamentoPessoal(new Setor("nome")) { Ticket = TipoTicketDePessoal.OutrasDespesas, Descricao = "TestMethod", Valor = 0 });
+            orcamento.Adicionar(new TicketDeOrcamentoPessoal(new Setor("nome")) { Ticket = TipoTicketDePessoal.FGTS, Descricao = "TestMethod", Valor = 0 });
             orcamento.Adicionar(new TicketDeOrcamentoPessoal(new Setor("nome")) { Ticket = TipoTicketDePessoal.FGTS, Descricao = "FGTS", Valor = 8 });
-            orcamento.Adicionar(new TicketDeOrcamentoPessoal(new Setor("nome")) { Ticket = TipoTicketDePessoal.FGTS, Descricao = "Test", Valor = 0 });
+            orcamento.Adicionar(new TicketDeOrcamentoPessoal(new Setor("nome")) { Ticket = TipoTicketDePessoal.FGTS, Descricao = "TestMethod", Valor = 0 });
 
             var contaIndenizacao = new Conta("Indenização", new TipoConta { Id = (int)TipoContaEnum.Indenizacao });
             contaIndenizacao.Adicionar(TipoTicketDePessoal.Indenizacao);
@@ -57,7 +58,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
 
         #region Indenização
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void recebimento_de_indenizacao()
         {
@@ -67,7 +68,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
             Assert.AreEqual(despesaIndenizacao.Parcelas.Count, 1);
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void valor_de_indenizacao_foi_igual_a_100()
         {
@@ -81,7 +82,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
 
         #region DecimoTerceiro
 
-        [Test]
+        [TestMethod]
         public void decimo_terceiro_de_recisao_recebido()
         {
             var despesaDecimoTerceiro =
@@ -90,7 +91,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
             Assert.AreEqual(despesaDecimoTerceiro.Parcelas.Count, 5);
         }
 
-        [Test]
+        [TestMethod]
         public void valor_do_decimo_terceiro_recebido_igual_a_8_ponto_33()
         {
             var despesaDecimoTerceiro =
@@ -103,7 +104,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
 
         #region Ferias relativas
 
-        [Test]
+        [TestMethod]
         public void valor_por_mes_das_ferias_ralativas_da_recisao_e_de_22_ponto_22()
         {
             var despesaFerias =
@@ -112,7 +113,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
             Assert.AreEqual(Math.Round( despesaFerias.Parcelas.First().Valor,2), 11.11d);
         }
 
-        [Test]
+        [TestMethod]
         public void ferias_relativas_gerou_6_parcelas()
         {
             var despesaFerias =
@@ -125,7 +126,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
 
         #region FGTS de Recisão
 
-        [Test]
+        [TestMethod]
         public void FGTS_de_recisao_recebido()
         {
             var despesaFGTS = funcionarioDemitido.Despesas.Where(x => x.Conta.TipoConta.TipoContaEnum == TipoContaEnum.FGTS).SingleOrDefault();
@@ -133,7 +134,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
             Assert.AreEqual(despesaFGTS.Parcelas.Count, 5);
         }
 
-        [Test]
+        [TestMethod]
         public void valor_do_fgts_recebido_igual_a_100()
         {
             var despesaFGTS = funcionarioDemitido.Despesas.Where(x => x.Conta.TipoConta.TipoContaEnum == TipoContaEnum.FGTS).SingleOrDefault();
@@ -145,7 +146,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
 
         #region Salário antes da indenização
 
-        [Test]
+        [TestMethod]
         public void salario_de_recisao_recebido()
         {
             var despesaSalario = funcionarioDemitido.Despesas.Where(x => x.Conta.TipoConta.TipoContaEnum == TipoContaEnum.Salario).SingleOrDefault();
@@ -153,7 +154,7 @@ namespace Orcamento.Test.Domain.Orcamentos.OrcamentoPessoalTest.TestesDeFunciona
             Assert.AreEqual(despesaSalario.Parcelas.Count, 5);
         }
 
-        [Test]
+        [TestMethod]
         public void valor_do_salario_recebido_igual_a_100()
         {
             var despesaSalario = funcionarioDemitido.Despesas.Where(x => x.Conta.TipoConta.TipoContaEnum == TipoContaEnum.Salario).SingleOrDefault();

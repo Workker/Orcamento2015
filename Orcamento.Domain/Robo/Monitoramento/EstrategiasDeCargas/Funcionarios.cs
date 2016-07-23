@@ -49,7 +49,6 @@ namespace Orcamento.Domain.Entities.Monitoramento
             motor.Validar(carga, funcionarios);
         }
 
-
         private bool NenhunFuncionarioEncontrado()
         {
             if (funcionarios.Count == 0)

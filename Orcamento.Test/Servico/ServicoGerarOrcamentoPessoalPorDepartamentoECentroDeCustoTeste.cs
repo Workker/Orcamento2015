@@ -1,17 +1,18 @@
 ﻿
 
-using NUnit.Framework;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.Domain;
 using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Servico;
 
-namespace Orcamento.Test.Servico
+namespace Orcamento.TestMethod.Servico
 {
-    [TestFixture]
-    public class ServicoGerarOrcamentoPessoalPorDepartamentoECentroDeCustoTeste
+    [TestClass]
+    public class ServicoGerarOrcamentoPessoalPorDepartamentoECentroDeCustoTestMethode
     {
-        //[Test]
+        //[TestMethod]
         //[Ignore]
         //public void debugar()
         //{

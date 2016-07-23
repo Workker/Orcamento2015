@@ -5,9 +5,5 @@ using NUnit.Framework;
 
 namespace Orcamento.Test.Regressao
 {
-    [TestFixture]
-    [Ignore]
-    public class IniciarTeste
-    {
-    }
+
 }

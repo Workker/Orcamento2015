@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.Domain;
 using Orcamento.Domain.DB.Repositorio;
 using System;
@@ -7,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Orcamento.Test.InfraStructure._2015
+namespace Orcamento.TestMethod.InfraStructure._2015
 {
-    [TestFixture]
-    public class TicketDeProducaoTest
+    [TestClass]
+    public class TicketDeProducaoTestMethod
     {
 
-        [Test]
+        [TestMethod]
         public void InserirTicketDeProducao()
         {
             var novo = new Departamentos().ObterPor("COPA");

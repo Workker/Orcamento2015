@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Servico;
 using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain;
 using Rhino.Mocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Servico
+namespace Orcamento.TestMethod.Servico
 {
-    [TestFixture]
-    public class ServicoCriarOrcamentoHospitalarTest
+    [TestClass]
+    public class ServicoCriarOrcamentoHospitalarTestMethod
     {
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoDeveTerOrcamentoDiferenteDeNulo()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -25,10 +26,10 @@ namespace Orcamento.Test.Servico
             Departamento departamento = new Hospital("Barra dor");
             var orcamento = servico.CriarOrcamentoHospitalar(new List<Orcamento.Domain.Orcamento>(), departamento, 2014);
 
-            Assert.NotNull(orcamento);
+            Assert.IsNotNull(orcamento);
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoDeveTerOrcamentoNomeOrcamentoDeveSerVersaoUm()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -42,7 +43,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão1");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComUmORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoDois()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -59,7 +60,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão2");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComDoisORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoTres()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -77,7 +78,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão3");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComTresORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoQuatro()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -96,7 +97,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão4");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComQuatroOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoCinco()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -116,7 +117,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão5");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComCincoOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoSeis()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -137,7 +138,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão6");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComSeisOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoSete()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -159,7 +160,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão7");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComSeteOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoOito()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -182,7 +183,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão8");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComOitoOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoNove()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -206,7 +207,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão9");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComNoveOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoDez()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -231,8 +232,8 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão10");
         }
 
-        [Test]
-        [ExpectedException(UserMessage = "Orçamento já tem dez versões")]
+        [TestMethod]
+        // [ExpectedException(UserMessage = "Orçamento já tem dez versões")]
         public void CriarOrcamentoComSucessoComDezDeveRetornarExecao()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -256,7 +257,7 @@ namespace Orcamento.Test.Servico
             var orcamento = servico.CriarOrcamentoHospitalar(orcamentosLista, departamento, 2014);
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void AtribuirVersaoFinalComSucesso()
         {
@@ -273,7 +274,7 @@ namespace Orcamento.Test.Servico
             Assert.IsTrue(orcamento.VersaoFinal);
         }
 
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDoisOrcamentosNaListaPrimeiroItemDaListaDeveTerNomeDeVersaoUm()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -293,7 +294,7 @@ namespace Orcamento.Test.Servico
             Assert.IsTrue(orcamentosLista.FirstOrDefault().NomeOrcamento == "Versão1");
         }
 
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDoisOrcamentosNaListaDeveRetornarApenasCountUm()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();
@@ -312,7 +313,7 @@ namespace Orcamento.Test.Servico
 
             Assert.IsTrue(orcamentosLista.Count == 1);
         }
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDezOrcamentosNaListaDeveRetornarNomesDosORcamentosComSequenciaCerta()
         {
             ServicoCriarOrcamentoHospitalar servico = new ServicoCriarOrcamentoHospitalar();

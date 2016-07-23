@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal;
 using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain.Gerenciamento;
@@ -8,13 +9,13 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 
-namespace Orcamento.Test.InfraStructure._2014
+namespace Orcamento.TestMethod.InfraStructure._2014
 {
-    [TestFixture]
-    public class AtualizarFuncionariosTest
+    [TestClass]
+    public class AtualizarFuncionariosTestMethod
     {
 
-        [Test]
+        [TestMethod]
         public void atualizar_quadro_de_funcionarios_atualizar_salario_hospitalares()
         {
             string _conectionstring;
@@ -102,11 +103,11 @@ namespace Orcamento.Test.InfraStructure._2014
                 var funcionario = centro.Funcionarios.Where(f=> f.Departamento.Nome == funcionarioExcel.Departamento).Single(f => f.Matricula == funcionarioExcel.NumeroMatricula);
                 funcionario.Salario = funcionarioExcel.Salario;
             }
-            var teste = centrosNaoEncontradosNew.Distinct();
+            var TestMethode = centrosNaoEncontradosNew.Distinct();
             centrosDeCusto.SalvarLista(centros);
         }
 
-        [Test]
+        [TestMethod]
         public void atualizar_quadro_de_funcionarios_hospitalares()
         {
             string _conectionstring;
@@ -202,11 +203,11 @@ namespace Orcamento.Test.InfraStructure._2014
                 };
                 centro.Adicionar(funcionario);
             }
-            var teste = centrosNaoEncontradosNew.Distinct();
+            var TestMethode = centrosNaoEncontradosNew.Distinct();
             centrosDeCusto.SalvarLista(centros);
         }
 
-        [Test]
+        [TestMethod]
         public void atualizar_quadro_de_funcionarios_Coorporativo()
         {
             string _conectionstring;
@@ -307,11 +308,11 @@ namespace Orcamento.Test.InfraStructure._2014
                 };
                 centro.Adicionar(funcionario);
             }
-            var teste = centrosNaoEncontradosNew.Distinct();
+            var TestMethode = centrosNaoEncontradosNew.Distinct();
             centrosDeCusto.SalvarLista(centros);
         }
 
-        [Test]
+        [TestMethod]
         public  void AssociarUsuarioToDepartamentoCoorporativos()
         {
             var usuario = new Usuarios().ObterUsuarioPorId(51);

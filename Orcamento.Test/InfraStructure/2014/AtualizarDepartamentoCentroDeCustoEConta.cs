@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.Domain;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal;
 using Orcamento.Domain.DB.Repositorio;
@@ -10,12 +11,12 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 
-namespace Orcamento.Test.InfraStructure._2014
+namespace Orcamento.TestMethod.InfraStructure._2014
 {
-    [TestFixture]
+    [TestClass]
     public class AtualizarDepartamentoCentroDeCustoEConta
     {
-        [Test]
+        [TestMethod]
         public void atualizar_estrutura_coorporativa()
         {
             var tiposConta = new TiposConta();
@@ -182,7 +183,7 @@ namespace Orcamento.Test.InfraStructure._2014
 
         }
 
-        [Test]
+        [TestMethod]
         public void atualizar_estrutura_hospitalar()
         {
 
@@ -348,7 +349,7 @@ namespace Orcamento.Test.InfraStructure._2014
             }
         }
 
-        [Test]
+        [TestMethod]
         public void atualizar_estrutura_hospitalar_departamentoExistentes()
         {
 

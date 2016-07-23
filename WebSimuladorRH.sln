@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSimuladorRH", "WebSimuladorRH\WebSimuladorRH.csproj", "{1BB71C6C-AC85-4A32-9E58-DA0F36C30488}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orcamento.Test", "Orcamento.Test\Orcamento.Test.csproj", "{4A1D6955-43E3-4A09-BE4B-B21C6653B8FD}"

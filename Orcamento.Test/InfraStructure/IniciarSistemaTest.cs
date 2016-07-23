@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoPessoal;
@@ -16,8 +16,9 @@ using Orcamento.Domain.ComponentesDeOrcamento;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeProducao;
 using Orcamento.Domain.Servico.Pessoal;
 using Orcamento.Domain.Servico.Hospitalar;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.InfraStructure
+namespace Orcamento.TestMethod.InfraStructure
 {
     public class RegistroExcel
     {
@@ -72,8 +73,8 @@ namespace Orcamento.Test.InfraStructure
         public double Salario { get; set; }
     }
 
-    [TestFixture]
-    public class Iniciar_Com_Tudo_Que_O_Sistema_Precisa_Test
+    [TestClass]
+    public class Iniciar_Com_Tudo_Que_O_Sistema_Precisa_TestMethod
     {
         public Setor Setor { get; set; }
         public List<Conta> Contas { get; set; }
@@ -82,7 +83,8 @@ namespace Orcamento.Test.InfraStructure
         public List<Ticket> TicketsViagem { get; set; }
         public List<Ticket> TicketsDiaria { get; set; }
 
-        [Test]
+        [TestMethod]
+        [Ignore]
         public void a_Criar_Banco_De_Dados_Por_Modelo()
         {
             try
@@ -98,7 +100,7 @@ namespace Orcamento.Test.InfraStructure
             }
         }
 
-        [Test]
+        [TestMethod]
         public void b_InserirTiposDeUsuario()
         {
             TipoUsuario tipoUsuarioAdministrador = new TipoUsuario { Nome = "Administrador" };
@@ -112,8 +114,8 @@ namespace Orcamento.Test.InfraStructure
             tipoUsuarios.Salvar(tipoUsuarioCorporativo);
         }
 
-        [Test]
-        public void c_integrar_dados_do_excel_test()
+        [TestMethod]
+        public void c_integrar_dados_do_excel_TestMethod()
         {
             var tiposConta = new TiposConta();
 
@@ -123,7 +125,7 @@ namespace Orcamento.Test.InfraStructure
 
             string _conectionstring;
             _conectionstring = @"Provider=Microsoft.Jet.OLEDB.4.0;";
-            _conectionstring += String.Format("Data Source={0};", "D:\\Hospital2.xls");
+            _conectionstring += String.Format("Data Source={0};", "C:\\Users\\sammuel\\Documents\\GitHubVisualStudio\\Orcamento2015\\Carga Orcamento\\Hospital2.xls");
             _conectionstring += "Extended Properties='Excel 8.0;HDR=NO;'";
 
             OleDbConnection cn = new OleDbConnection(_conectionstring);
@@ -259,7 +261,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         public void d_InserirCidadesTiposTicketETicketEViagem()
         {
             Tipos<Cidade> repositorioCidades = new Tipos<Cidade>();
@@ -282,7 +284,7 @@ namespace Orcamento.Test.InfraStructure
             InserirDiarias();
         }
 
-        [Test]
+        [TestMethod]
         public void e_InserirHospitaisComSetoresESubSetores()
         {
             Orcamentos orcamentos = new Orcamentos();
@@ -421,12 +423,12 @@ namespace Orcamento.Test.InfraStructure
             }
         }
 
-        [Test]
+        [TestMethod]
         public void f_importar_centro_de_custo_conta_coorporativo_do_excel()
         {
             string _conectionstring;
             _conectionstring = @"Provider=Microsoft.Jet.OLEDB.4.0;";
-            _conectionstring += String.Format("Data Source={0};", "D:\\Coorporativo.xls");
+            _conectionstring += String.Format("Data Source={0};", "C:\\Users\\sammuel\\Documents\\GitHubVisualStudio\\Orcamento2015\\Carga Orcamento\\Coorporativo.xls");
             _conectionstring += "Extended Properties='Excel 8.0;HDR=NO;'";
 
             TiposConta tiposDeconta = new TiposConta();
@@ -550,7 +552,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         public void g_importar_usuario_do_excel()
         {
             string _conectionstring;
@@ -619,7 +621,7 @@ namespace Orcamento.Test.InfraStructure
             }
         }
 
-        [Test]
+        [TestMethod]
         public void h_importar_usuario_coorporativo_do_excel()
         {
             string _conectionstring;
@@ -712,8 +714,8 @@ namespace Orcamento.Test.InfraStructure
             }
         }
 
-        [Test]
-        public void i_inicializar_usuario_de_teste()
+        [TestMethod]
+        public void i_inicializar_usuario_de_TestMethode()
         {
             TipoUsuarios tipoUsuarios = new TipoUsuarios();
 
@@ -739,7 +741,7 @@ namespace Orcamento.Test.InfraStructure
             usuarios.Salvar(usuario);
         }
 
-        [Test]
+        [TestMethod]
         public void j_SalvarTickets()
         {
             InserirTicketsDeProducao();
@@ -885,7 +887,7 @@ namespace Orcamento.Test.InfraStructure
             departamentos.SalvarLista(ticketsDeReceita);
         }
 
-        [Test]
+        [TestMethod]
         public void l_InserirContasEGrupoDeContasNosDepartamentos()
         {
             var tiposConta = new TiposConta();
@@ -1133,7 +1135,7 @@ namespace Orcamento.Test.InfraStructure
             }
         }
 
-        [Test]
+        [TestMethod]
         public void m_Inserir_tickets_de_producao()
         {
             Departamentos departamentos = new Departamentos();
@@ -1152,7 +1154,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         public void n_Inserir_acordoConvencao_no_departamento()
         {
             Departamentos departamentos = new Departamentos();
@@ -1177,7 +1179,7 @@ namespace Orcamento.Test.InfraStructure
             set { _servicoGerarOrcamentoPessoalPor = value; }
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void o_importar_funcionarios_coorporativo_do_excel()
         {
@@ -1251,8 +1253,8 @@ namespace Orcamento.Test.InfraStructure
             centrosDeCusto.SalvarLista(centros);
         }
 
-        [Test]
-        //   [Ignore]
+        [TestMethod]
+       [Ignore]
         public void p_importar_funcionarios_hospitalar_do_excel()
         {
             string _conectionstring;
@@ -1335,7 +1337,7 @@ namespace Orcamento.Test.InfraStructure
             centrosDeCusto.SalvarLista(centros);
         }
 
-        [Test]
+        [TestMethod]
         //[Ignore]
         public void q_Inserir_DREDe2012()
         {
@@ -1354,7 +1356,7 @@ namespace Orcamento.Test.InfraStructure
             dres.SalvarLista(dreTotal);
         }
 
-        [Test]
+        [TestMethod]
         // [Ignore]
         public void r_insetir_setor_bercario()
         {
@@ -1395,7 +1397,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void InserirTIcketDePEssoalDepartamento()
         {
@@ -1407,7 +1409,7 @@ namespace Orcamento.Test.InfraStructure
             servico.Salvar(departamneto);
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void s_inserir_novo_centro_de_custo_hospitalar()
         {
@@ -1530,7 +1532,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         // [Ignore]
         public void t_amarrar_Pessoal_ao_centro_de_custo()
         {
@@ -1582,7 +1584,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void z_deletar_Orcamentos_coorporativo()
         {
@@ -1605,7 +1607,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void z_deletar_Orcamento_pessoal_Coorporativo()
         {
@@ -1617,7 +1619,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void Deletar_todos_Ticket_de_pessoal()
         {
@@ -1636,7 +1638,7 @@ namespace Orcamento.Test.InfraStructure
             tickets.Deletar(todosTickets);
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void Deletar_DRE_TOtal()
         {
@@ -1649,7 +1651,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void z_deletar_usuarios_coorporativo()
         {
@@ -1663,7 +1665,7 @@ namespace Orcamento.Test.InfraStructure
             usuarios.Deletar(todos);
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void Deletar_Departamento_centro_deCusto_coorporativo()
         {
@@ -1688,7 +1690,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void z_atribuirDepartamentos_para_Adm()
         {
@@ -1715,7 +1717,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void inserirTcketsParaOCrianca()
         {
@@ -1728,8 +1730,8 @@ namespace Orcamento.Test.InfraStructure
             servico.InserirTicketsDePessoal(departamento);
         }
 
-        [Test]
-      //  [Ignore]
+        [TestMethod]
+       [Ignore]
         public void InserirBercarioParaOrcamentosAntigos()
         {
             Setores setores = new Setores();
@@ -1760,7 +1762,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void s_inserir_novo_centro_de_custo_com_usuarios_coorporativo()
         {
@@ -1888,7 +1890,7 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void DeletarCentrosDeCusto()
         {
@@ -2044,9 +2046,9 @@ namespace Orcamento.Test.InfraStructure
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
-        public void TesteDepartamento()
+        public void TestMethodeDepartamento()
         {
             Departamentos departamentos = new Departamentos();
             var departamento = departamentos.Obter(300);

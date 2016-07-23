@@ -10,7 +10,7 @@ using NHibernate.Cfg;
 using Orcamento.Domain;
 using Orcamento.Domain.DB.Mappings;
 
-namespace Orcamento.Test
+namespace Orcamento.TestMethod
 {
     public class DataSession
     {

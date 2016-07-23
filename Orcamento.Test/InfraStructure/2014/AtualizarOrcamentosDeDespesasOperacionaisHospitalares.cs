@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Orcamento.Domain;
 using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain.Gerenciamento;
@@ -10,13 +11,13 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 
-namespace Orcamento.Test.InfraStructure._2014
+namespace Orcamento.TestMethod.InfraStructure._2014
 {
-    [TestFixture]
+    [TestClass]
     public class AtualizarOrcamentosDeDespesasOperacionaisHospitalares
     {
         public ServicoOrcamentoOperacionalVersao ServicoOrcamento { get { return new ServicoOrcamentoOperacionalVersao(); } }
-        [Test]
+        [TestMethod]
         public void Executar()
         {
             var tiposConta = new TiposConta();
@@ -226,19 +227,19 @@ namespace Orcamento.Test.InfraStructure._2014
         }
     }
 
-    public class DepartamentoTest
+    public class DepartamentoTestMethod
     {
         public string Nome { get; set; }
-        public List<CentroDeCustoTest> Centros { get; set; }
+        public List<CentroDeCustoTestMethod> Centros { get; set; }
     }
 
-    public class CentroDeCustoTest
+    public class CentroDeCustoTestMethod
     {
         public string CodCentro { get; set; }
-        public List<ContaTest> Contas { get; set; }
+        public List<ContaTestMethod> Contas { get; set; }
     }
 
-    public class ContaTest
+    public class ContaTestMethod
     {
         public string CodConta { get; set; }
         public string Mes { get; set; }

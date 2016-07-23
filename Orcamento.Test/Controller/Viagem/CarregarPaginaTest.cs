@@ -1,16 +1,17 @@
 ﻿using System.Collections.Generic;
-using NUnit.Framework;
+
 using Orcamento.Controller;
 using Orcamento.Domain;
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeViagem;
 using Orcamento.Domain.DB.Repositorio;
 using Orcamento.Domain.Gerenciamento;
 using Rhino.Mocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Controller.Viagem
+namespace Orcamento.TestMethod.Controller.Viagem
 {
-    [TestFixture]
-    public class CarregarPaginaTest
+    [TestClass]
+    public class CarregarPaginaTestMethod
     {
         #region Atributos
         
@@ -23,11 +24,11 @@ namespace Orcamento.Test.Controller.Viagem
         
         #region Setup/Teardown
         
-        [SetUp]
+       // [SetUp]
         public void Inicializar()
         {
             repositorioOrcamentos = MockRepository.GenerateMock<IOrcamentos>();
-            view = MockRepository.GenerateStub<IViewOrcamentoDeViagem>();
+         //   view = MockRepository.GeneraTestMethodub<IViewOrcamentoDeViagem>();
 
             view.CentroDeCustoId = 1;
             view.Departamento = MockRepository.GenerateMock<Departamento>();
@@ -49,15 +50,15 @@ namespace Orcamento.Test.Controller.Viagem
 
         #endregion
 
-        #region metodos de teste
+        #region metodos de TestMethode
 
-        [Test]
+        [TestMethod]
         public void a_view_executou_todas_as_instrucoes_com_sucesso()
         {
             view.VerifyAllExpectations();
         }
 
-        [Test]
+        [TestMethod]
         public void o_repositorio_de_orcamento_executou_todas_as_instrucoes_com_sucesso()
         {
             repositorioOrcamentos.VerifyAllExpectations();

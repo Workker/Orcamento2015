@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using NUnit.Framework;
+
 using Orcamento.Domain.ComponentesDeOrcamento.OrcamentoDeViagem;
 using Orcamento.Domain.Gerenciamento;
 using Orcamento.Domain.Servico;
 using Orcamento.Domain;
 using Orcamento.Domain.DB.Repositorio;
 using Rhino.Mocks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Orcamento.Test.Servico
+namespace Orcamento.TestMethod.Servico
 {
-    [TestFixture]
-    public class ServicoOrcamentoDeViagensTest
+    [TestClass]
+    public class ServicoOrcamentoDeViagensTestMethod
     {
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoDeveTerOrcamentoNomeOrcamentoDeveSerVersaoUm()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -42,7 +43,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão1");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComUmORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoDois()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -71,7 +72,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão2");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComDoisORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoTres()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -101,7 +102,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão3");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComTresORcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoQuatro()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -132,7 +133,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão4");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComQuatroOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoCinco()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -164,7 +165,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão5");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComCincoOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoSeis()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -197,7 +198,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão6");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComSeisOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoSete()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -231,7 +232,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão7");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComSeteOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoOito()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -266,7 +267,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão8");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComOitoOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoNove()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -302,7 +303,7 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão9");
         }
 
-        [Test]
+        [TestMethod]
         public void CriarOrcamentoComSucessoComNoveOrcamentoJaCriadoDeveTeNomeOrcamentoIgualAVersaoDez()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -339,8 +340,8 @@ namespace Orcamento.Test.Servico
             Assert.AreEqual(orcamento.NomeOrcamento, "Versão10");
         }
 
-        [Test]
-        [ExpectedException(UserMessage = "Orçamento já tem dez versões")]
+        [TestMethod]
+        // [ExpectedException(UserMessage = "Orçamento já tem dez versões")]
         public void CriarOrcamentoComSucessoComDezDeveRetornarExecao()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -377,7 +378,7 @@ namespace Orcamento.Test.Servico
 
         }
 
-        [Test]
+        [TestMethod]
         [Ignore]
         public void AtribuirVersaoFinalComSucesso()
         {
@@ -423,7 +424,7 @@ namespace Orcamento.Test.Servico
             Assert.IsTrue(orcamento.VersaoFinal);
         }
 
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDoisOrcamentosNaListaPrimeiroItemDaListaDeveTerNomeDeVersaoUm()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -456,7 +457,7 @@ namespace Orcamento.Test.Servico
             Assert.IsTrue(orcamentosLista.FirstOrDefault().NomeOrcamento == "Versão1");
         }
 
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDoisOrcamentosNaListaDeveRetornarApenasCountUm()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
@@ -488,7 +489,7 @@ namespace Orcamento.Test.Servico
 
             Assert.IsTrue(orcamentosLista.Count == 1);
         }
-        [Test]
+        [TestMethod]
         public void DeletarOrcamentoComDezOrcamentosNaListaDeveRetornarNomesDosORcamentosComSequenciaCerta()
         {
             ServicoOrcamentoDeViagens servico = new ServicoOrcamentoDeViagens();
